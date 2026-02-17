@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
+import { ThemeProvider } from "next-themes"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,11 +17,13 @@ const RootLayout = ({
 }: Readonly<{
   children: React.ReactNode
 }>) =>
-<html lang="en">
+<html lang="en" suppressHydrationWarning>
   <body
     className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-    {children}
+    <ThemeProvider attribute="class" defaultTheme="dark">
+      {children}
+    </ThemeProvider>
   </body>
 </html>
 
