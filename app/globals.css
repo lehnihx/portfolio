@@ -116,10 +116,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-h1 {
-  cursor: default;
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -127,6 +123,12 @@ h1 {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+h1, p {
+  cursor: default;
+  user-select: none;
 }
 
 html {
