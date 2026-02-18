@@ -11,10 +11,10 @@ const ShowNav = ({ setStates }: State<{ nav: boolean }>) =>
     <X/>
   </Button>
   <nav className="h-screen flex flex-col items-center justify-center text-background text-8xl">
-    <a>Home</a>
-    <a>About</a>
-    <a>Projects</a>
-    <a>Contact</a>
+    <a href="#">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
