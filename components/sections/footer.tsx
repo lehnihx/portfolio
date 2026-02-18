@@ -1,4 +1,8 @@
+import { DockDemo } from "../social"
+
 const Footer = () => 
-<div className="h-screen bg-foreground"></div>
+<footer className="h-screen flex flex-col items-center justify-end">
+  <DockDemo/>
+</footer>
 
 export { Footer }
