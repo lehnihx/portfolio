@@ -12,7 +12,7 @@ const Home = () => {
   }
   const [states, setStates] = useState(initStates)
   return (
-    <>
+    <main>
       <Button {...{
         className: "bg-foreground text-background absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
         onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
@@ -22,7 +22,7 @@ const Home = () => {
       {states.nav && <ShowNav {...{ states, setStates }} />}
       <Hero/>
       <Footer/>
-    </>
+    </main>
   )
 }
 
