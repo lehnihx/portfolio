@@ -18,9 +18,7 @@ const RootLayout = ({
   children: React.ReactNode
 }>) =>
 <html lang="en" suppressHydrationWarning>
-  <body
-    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
+  <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="">
       {children}
     </ThemeProvider>
