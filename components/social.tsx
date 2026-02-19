@@ -66,7 +66,7 @@ export function DockDemo() {
 
   const DATA = {
     navbar: [
-      { href: "#hero", icon: HomeIcon, label: "Home" },
+      { href: "#hero", icon: HomeIcon, label: Dict.home },
     ],
     contact: {
       social: {
