@@ -1,11 +1,16 @@
 import 'server-only'
+ 
+const dictionaries = {
+  en: () => import('./dictionaries/en.json').then((module) => module.default),
+  fr: () => import('./dictionaries/fr.json').then((module) => module.default),
+  de: () => import('./dictionaries/de.json').then((module) => module.default),
+  ar: () => import('./dictionaries/ar.json').then((module) => module.default),
+}
+ 
+type Locale = keyof typeof dictionaries
+ 
+export const hasLocale = (locale: string): locale is Locale => locale in dictionaries
 
-const locales = ['en', 'ar', 'fr', 'de'] as const
-export type Locale = typeof locales[number]
-
-const dictionaries = Object.fromEntries(
-  locales.map(locale => [locale, () => import(`./dictionaries/${locale}.json`).then(module => module.default)])
-) as Record<Locale, () => Promise<unknown>>
-
-export const hasLocale = (locale: string): locale is Locale => locales.includes(locale as Locale)
 export const getDictionary = async (locale: Locale) => dictionaries[locale]()
+
+export type Locales = Awaited<ReturnType<typeof dictionaries["en"]>>
