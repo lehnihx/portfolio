@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <main>
       <Button {...{
-        className: "bg-foreground text-background absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
+        className: "bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
         onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
       }}>
         <Expand/>
