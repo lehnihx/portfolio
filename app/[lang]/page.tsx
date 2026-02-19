@@ -1,31 +1,17 @@
-"use client"
-import { Button } from "@/components/ui/button"
-import { Expand } from "lucide-react"
-import { ShowNav } from "@/components/nav"
-import { useState } from "react"
-import { Hero } from "@/components/sections/hero"
-import { Footer } from "@/components/sections/footer"
+import Home from "@/components/page-client"
+import { getDictionary, hasLocale } from "./dictionaries"
+import { notFound } from "next/navigation"
+import { DictProvider } from "@/lib/dict-context"
 
-const Home = async ({ params }: PageProps<'/[lang]'>) => {
+const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
-  console.log(lang)
-  const initStates = {
-    nav: false
-  }
-  const [states, setStates] = useState(initStates)
+  if (!hasLocale(lang)) notFound()
+  const dict = await getDictionary(lang)
   return (
-    <main>
-      <Button {...{
-        className: "bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
-        onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
-      }}>
-        <Expand/>
-      </Button>
-      {states.nav && <ShowNav {...{ states, setStates }} />}
-      <Hero/>
-      <Footer/>
-    </main>
+    <DictProvider dict={dict}>
+      <Home dict={dict} />
+    </DictProvider>
   )
 }
 
-export default Home
+export default Page
