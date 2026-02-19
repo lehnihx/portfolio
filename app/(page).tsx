@@ -1,30 +1,15 @@
 "use client"
 
-import { Button } from "@/components/shadcn/button"
-import { Expand } from "lucide-react"
-import { ShowNav } from "@/components/nav"
-import { useState } from "react"
+import { Nav } from "@/components/nav"
 import { Hero } from "@/sections/hero"
 import { Footer } from "@/sections/footer"
 
-const Home = () => {
-  const [states, setStates] = useState({
-    nav: false
-  })
-
-  return (
-    <main>
-      <Button {...{
-        className: "bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
-        onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
-      }}>
-        <Expand/>
-      </Button>
-      {states.nav && <ShowNav {...{ states, setStates }} />}
-      <Hero/>
-      <Footer/>
-    </main>
-  )
-}
+const Home = () => (
+  <main>
+    <Nav/>
+    <Hero/>
+    <Footer/>
+  </main>
+)
 
 export default Home
