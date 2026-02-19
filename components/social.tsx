@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/registry/magicui/dock"
+import { useDict } from "@/lib/dict-context"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -60,38 +61,39 @@ const Icons = {
     </svg>
   ),
 }
+export function DockDemo() {
+  const Dict = useDict()
 
-const DATA = {
-  navbar: [
-    { href: "#hero", icon: HomeIcon, label: "Home" },
-  ],
-  contact: {
-    social: {
-      GitHub: {
-        name: "GitHub",
-        url: "https://github.com/lenixdev",
-        icon: Icons.github,
-      },
-      LinkedIn: {
-        name: "LinkedIn",
-        url: "https://www.linkedin.com/in/lenixdev/",
-        icon: Icons.linkedin,
-      },
-      X: {
-        name: "X",
-        url: "https://x.com/lenixdev",
-        icon: Icons.x,
-      },
-      Email: {
-        name: "Send Email",
-        url: "mailto:lenixdev@proton.me",
-        icon: Icons.email,
+  const DATA = {
+    navbar: [
+      { href: "#hero", icon: HomeIcon, label: "Home" },
+    ],
+    contact: {
+      social: {
+        [Dict.github]: {
+          name: "Github",
+          url: "https://github.com/lenixdev",
+          icon: Icons.github,
+        },
+        [Dict.linkedin]: {
+          name: "LinkedIn",
+          url: "https://www.linkedin.com/in/lenixdev/",
+          icon: Icons.linkedin,
+        },
+        [Dict.twitter]: {
+          name: "Twitter",
+          url: "https://x.com/lenixdev",
+          icon: Icons.x,
+        },
+        [Dict.email]: {
+          name: "Send Email",
+          url: "mailto:lenixdev@proton.me",
+          icon: Icons.email,
+        },
       },
     },
-  },
-}
+  }
 
-export function DockDemo() {
   return (
     <div className="flex flex-col items-center justify-center">
       <TooltipProvider>
