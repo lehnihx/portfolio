@@ -1,6 +1,6 @@
 "use client"
 
-import { useDict } from "@/lib/dict-context"
+import { useDict } from "@/lib/dict"
 
 const Hero = () => {
   const Dict = useDict()

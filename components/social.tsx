@@ -14,7 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/tooltip"
 import { Dock, DockIcon } from "@/registry/magicui/dock"
-import { useDict } from "@/lib/dict-context"
+import { useDict } from "@/lib/dict"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
