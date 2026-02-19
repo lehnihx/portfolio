@@ -12,17 +12,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-const RootLayout = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) =>
-<html lang="en" suppressHydrationWarning>
-  <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="">
-      {children}
-    </ThemeProvider>
-  </body>
-</html>
+const RootLayout = async ({
+  children, params
+}: {
+  children: Readonly<React.ReactNode>
+  params: Promise<{ lang: string }>
+}) => {
+  const { lang } = await params
+  return (
+    <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="">
+          {children}
+        </ThemeProvider>
+      </body>
+    </html>
+  )
+}
 
 export default RootLayout
