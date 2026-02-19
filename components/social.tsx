@@ -2,7 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
-import { CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
+import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -128,6 +128,7 @@ export function DockDemo() {
                   <Link
                     href={social.url}
                     aria-label={social.name}
+                    target="_blank"
                     className={cn(
                       buttonVariants({ variant: "ghost", size: "icon" }),
                       "size-12 rounded-full"
@@ -137,7 +138,7 @@ export function DockDemo() {
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{name}</p>
+                  <p className="flex items-center">{name} <ArrowUpRight size={16}/></p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>
