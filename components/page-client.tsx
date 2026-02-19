@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/shadcn/button"
 import { Expand } from "lucide-react"
 import { ShowNav } from "@/components/nav"
 import { useState } from "react"

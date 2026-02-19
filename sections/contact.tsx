@@ -3,10 +3,10 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/shadcn/field"
+import { Input } from "@/components/shadcn/input"
+import { Button } from "@/components/shadcn/button"
+import { Textarea } from "@/components/shadcn/textarea"
 
 interface InputDemoProps {
   id: string

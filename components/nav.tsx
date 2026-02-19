@@ -1,7 +1,7 @@
 "use client"
 
 import { State } from "@/lib/types"
-import { Button } from "./ui/button"
+import { Button } from "./shadcn/button"
 import { X } from "lucide-react"
 import { useDict } from "@/lib/dict-context"
 
