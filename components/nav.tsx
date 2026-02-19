@@ -1,3 +1,5 @@
+"use client"
+
 import { State } from "@/lib/types"
 import { Button } from "./ui/button"
 import { X } from "lucide-react"

@@ -1,3 +1,5 @@
+"use client"
+
 import { useDict } from "@/lib/dict-context"
 
 const Hero = () => {
