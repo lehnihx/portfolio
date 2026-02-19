@@ -4,11 +4,12 @@
   "contact": "Contact",
   "intro": "Hi, I'm Lenix, and I'm a Junior Full Stack Backend-Focused Software Engineer",
   "home": "Home",
-  "locales": "Change The Language",
+  "locales": "Select The Language",
   "github": "GitHub",
   "linkedin": "LinkedIn",
   "twitter": "Twitter",
   "email": "Send Email",
   "lenix": "Lenix",
-  "rights": "All rights reserved"
+  "rights": "All rights reserved",
+  "not_recommended": "Not recommended"
 }
