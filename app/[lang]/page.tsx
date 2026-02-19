@@ -6,7 +6,9 @@ import { useState } from "react"
 import { Hero } from "@/components/sections/hero"
 import { Footer } from "@/components/sections/footer"
 
-const Home = () => {
+const Home = async ({ params }: PageProps<'/[lang]'>) => {
+  const { lang } = await params
+  console.log(lang)
   const initStates = {
     nav: false
   }
