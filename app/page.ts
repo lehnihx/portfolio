@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
 const Root = () => {
-  redirect('/en')
+  redirect('/ar')
 }
 export default Root

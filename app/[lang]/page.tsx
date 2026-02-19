@@ -9,7 +9,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const dict = await getDictionary(lang)
   return (
     <DictProvider dict={dict}>
-      <Home dict={dict} />
+      <Home />
     </DictProvider>
   )
 }
