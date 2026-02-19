@@ -1,5 +1,5 @@
 "use client"
-import { Locales } from '@/app/[lang]/dictionaries'
+import { Locales } from '@/app/dictionaries'
 import { createContext, useContext } from 'react'
 
 const DictContext = createContext<Locales>({} as Locales)

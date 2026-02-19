@@ -1,5 +1,5 @@
 import Home from "@/app/(page)"
-import { getDictionary, hasLocale } from "./dictionaries"
+import { getDictionary, hasLocale } from "../dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/lib/dict-context"
 
