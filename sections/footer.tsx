@@ -1,5 +1,5 @@
 import { useDict } from "@/lib/dict-context"
-import { DockDemo } from "../social"
+import { DockDemo } from "../components/social"
 
 const Footer = () => {
   const Dict = useDict()

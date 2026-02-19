@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 import { Expand } from "lucide-react"
 import { ShowNav } from "@/components/nav"
 import { useState } from "react"
-import { Hero } from "@/components/sections/hero"
-import { Footer } from "@/components/sections/footer"
+import { Hero } from "@/sections/hero"
+import { Footer } from "@/sections/footer"
 
 const Home = () => {
   const [states, setStates] = useState({
