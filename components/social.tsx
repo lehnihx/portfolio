@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/registry/magicui/dock"
 import { useDict } from "@/lib/dict"
+import { DropdownMenuDemo } from "./locales"
+import { DropdownMenuTrigger } from "./ui/dropdown-menu"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -67,7 +69,7 @@ export function DockDemo() {
   const DATA = {
     navbar: [
       { href: "#hero", icon: HomeIcon, label: Dict.home },
-      { onClick: () => {}, icon: PencilIcon, label: Dict.locales },
+      { icon: PencilIcon, label: Dict.locales },
     ],
     contact: {
       social: {
@@ -99,22 +101,22 @@ export function DockDemo() {
     <div className="flex flex-col items-center justify-center">
       <TooltipProvider>
         <Dock direction="middle">
-          {DATA.navbar.map((item) => (
-            <React.Fragment key={item.label}>
-              {item.onClick ? (
+          {DATA.navbar.map((item, index) => (
+            <React.Fragment key={`${index}-${item.label}`}>
+              {item.href ? (
                 <DockIcon>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <button
-                          onClick={item.onClick}
-                          aria-label={item.label}
-                          className={cn(
-                            buttonVariants({ variant: "ghost", size: "icon" }),
-                            "size-12 rounded-full"
-                          )}
-                        >
+                      <Link
+                        href={item.href}
+                        aria-label={item.label}
+                        className={cn(
+                          buttonVariants({ variant: "ghost", size: "icon" }),
+                          "size-12 rounded-full"
+                        )}
+                      >
                         <item.icon className="size-4" />
-                      </button>
+                      </Link>
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{item.label}</p>
@@ -124,21 +126,16 @@ export function DockDemo() {
               ) : (
                 <DockIcon>
                   <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Link
-                          href={item.href}
-                          aria-label={item.label}
-                          className={cn(
-                            buttonVariants({ variant: "ghost", size: "icon" }),
-                            "size-12 rounded-full"
-                          )}
-                        >
-                        <item.icon className="size-4" />
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>{item.label}</p>
-                    </TooltipContent>
+                    <DropdownMenuDemo>
+                      <TooltipTrigger asChild>
+                        <DropdownMenuTrigger asChild>
+                          <button suppressHydrationWarning aria-label={item.label} className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12 rounded-full")}>
+                            <item.icon className="size-4" />
+                          </button>
+                        </DropdownMenuTrigger>
+                      </TooltipTrigger>
+                      <TooltipContent><p>{item.label}</p></TooltipContent>
+                    </DropdownMenuDemo>
                   </Tooltip>
                 </DockIcon>
               )}
