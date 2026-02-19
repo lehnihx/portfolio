@@ -9,18 +9,23 @@ const dictionaries = {
 }
  
 type Locale = keyof typeof dictionaries
- 
+export type Locales = Awaited<ReturnType<typeof dictionaries["en"]>>
+
 const translateDict = unstable_cache(
   async (locale: Locale) => {
     const dicts = await dictionaries['en']()
-    return Object.fromEntries(await Promise.all(
-      Object.entries(dicts).map(async ([key, value]) => {
-        const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
-        const { responseData: { translatedText } } = await res.json()
-        if (locale === 'ar' && translatedText === value) console.warn(`MeMemory failed to translate (${key}) '${value}'`)
-        return [key, translatedText]
-      })
-    ))
+
+    const pairs = Object.entries(dicts) as [keyof Locales, string][]
+    const translatedPromises = pairs.map(async ([key, value]) => {
+      const { ok, json } = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
+      if (!ok) throw new Error(`Failed to fetch translation for '${value}'`)
+      const { responseData: { translatedText } }: { responseData: { translatedText: string } } = await json()
+      if (locale === 'ar' && translatedText === value) console.warn(`MeMemory failed to translate (${key}) '${value}'`)
+      return [key, translatedText] as const
+    })
+    const translatedPairs = await Promise.all(translatedPromises)
+    const translatedDict = Object.fromEntries(translatedPairs) as Record<keyof Locales, string>
+    return translatedDict
   },
   ['translations'],
   { revalidate: false }
@@ -30,6 +35,10 @@ export const hasLocale = (locale: string): locale is Locale => locale in diction
 
 export const getDictionary = async (locale: Locale) => {
   if (locale === 'en') return dictionaries['en']()
-  return translateDict(locale)
+  try {
+    return await translateDict(locale)
+  } catch (error) {
+    console.error(`Something went wrong with MeMemory for ${locale} locale, and falling back to en dictionary as a result. Error details:`, error)
+    return dictionaries['en']()
+  }
 }
-export type Locales = Awaited<ReturnType<typeof dictionaries["en"]>>
