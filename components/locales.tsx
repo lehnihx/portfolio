@@ -18,8 +18,15 @@ export function DropdownMenuDemo({ children }: { children: Readonly<React.ReactN
   const router = useRouter()
   const changeDict = (locale: Locale) => {
     router.push(`/${locale}#footer`)
-    const tst = toast("Event has been created", { position: "top-left" })
-    console.log(tst)
+    toast.promise(
+      () => new Promise(resolve => setTimeout(resolve, 2000)),
+      {
+        loading: dict.changing_language,
+        success: dict.language_changed,
+        error: dict.failed_language_change,
+        position: "top-right"
+      }
+    )
   }
   return (
     <DropdownMenu>

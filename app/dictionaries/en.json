@@ -11,5 +11,8 @@
   "email": "Send Email",
   "lenix": "Lenix",
   "rights": "All rights reserved",
-  "not_recommended": "Not recommended"
+  "not_recommended": "Not recommended",
+  "changing_language": "Changing the language...",
+  "language_changed": "Language changed successfully!",
+  "failed_language_change": "Failed to change language."
 }
