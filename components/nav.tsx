@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "./shadcn/button"
+import { Button } from "./ui/button"
 import { Expand, X } from "lucide-react"
 import { useDict } from "@/lib/dict"
 import { useState } from "react"

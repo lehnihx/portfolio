@@ -5,14 +5,14 @@ import Link from "next/link"
 import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/shadcn/button"
-import { Separator } from "@/components/shadcn/separator"
+import { buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/shadcn/tooltip"
+} from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/registry/magicui/dock"
 import { useDict } from "@/lib/dict"
 
