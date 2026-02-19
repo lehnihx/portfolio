@@ -126,11 +126,13 @@
 }
 
 
-h1, p {
+* {
   cursor: default;
   user-select: none;
 }
-
+button, a {
+  cursor: pointer;
+}
 html {
   scrollbar-width: none;
 }
