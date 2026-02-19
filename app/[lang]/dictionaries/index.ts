@@ -7,7 +7,7 @@ const dictionaries = {
   de: null,
   ar: null
 }
- 
+
 type Locale = keyof typeof dictionaries
 export type Locales = Awaited<ReturnType<typeof dictionaries["en"]>>
 
@@ -34,11 +34,11 @@ const translateDict = unstable_cache(
 export const hasLocale = (locale: string): locale is Locale => locale in dictionaries
 
 export const getDictionary = async (locale: Locale) => {
-  if (locale === 'en') return dictionaries['en']()
+  if (locale === 'en') return await dictionaries['en']()
   try {
     return await translateDict(locale)
   } catch (error) {
     console.error(`Something went wrong with MeMemory for ${locale} locale, and falling back to en dictionary as a result. Error details:`, error)
-    return dictionaries['en']()
+    return await dictionaries['en']()
   }
 }
