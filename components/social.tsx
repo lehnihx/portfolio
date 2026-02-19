@@ -67,6 +67,7 @@ export function DockDemo() {
   const DATA = {
     navbar: [
       { href: "#hero", icon: HomeIcon, label: Dict.home },
+      { onClick: () => {}, icon: PencilIcon, label: Dict.locales },
     ],
     contact: {
       social: {
@@ -99,25 +100,49 @@ export function DockDemo() {
       <TooltipProvider>
         <Dock direction="middle">
           {DATA.navbar.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    aria-label={item.label}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <item.icon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
+            <React.Fragment key={item.label}>
+              {item.onClick ? (
+                <DockIcon>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                          onClick={item.onClick}
+                          aria-label={item.label}
+                          className={cn(
+                            buttonVariants({ variant: "ghost", size: "icon" }),
+                            "size-12 rounded-full"
+                          )}
+                        >
+                        <item.icon className="size-4" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{item.label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </DockIcon>
+              ) : (
+                <DockIcon>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link
+                          href={item.href}
+                          aria-label={item.label}
+                          className={cn(
+                            buttonVariants({ variant: "ghost", size: "icon" }),
+                            "size-12 rounded-full"
+                          )}
+                        >
+                        <item.icon className="size-4" />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{item.label}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </DockIcon>
+              )}
+            </React.Fragment>
           ))}
           <Separator orientation="vertical" className="h-full" />
           {Object.entries(DATA.contact.social).map(([name, social]) => (
