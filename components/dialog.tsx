@@ -14,7 +14,7 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
     <AlertDialogTrigger asChild>
       <Button aria-label={social.name} className={cn(
         buttonVariants({ variant: "ghost", size: "icon" }),
-        `size-12 rounded-full bg-accent text-accent-foreground ${additionalClasses || ""}`
+        `size-12 rounded-full bg-background text-accent-foreground ${additionalClasses || ""}`
       )}>
         {children}
       </Button>
@@ -22,7 +22,7 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
     <AlertDialogContent>
       <AlertDialogHeader>
         <AlertDialogTitle>{dict.open_external_link}</AlertDialogTitle>
-        <AlertDialogDescription className="flex flex-col gap-3">
+        <AlertDialogDescription className="flex flex-col gap-3 w-full">
           <span>
             {dict.external_link}
           </span>
