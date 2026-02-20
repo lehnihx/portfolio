@@ -27,18 +27,7 @@ const Referrals = () => {
   const dict = useDict()
 
   return (
-    <InfiniteSlider className='w-full flex items-center justify-center' gap={44}>
-      {referrals.map(({ src, alt, url }) => (
-        <Dialog
-          key={alt}
-          dict={dict}
-          metadata={{ name: alt, url }}
-          additionalClasses='w-[100px] h-[100px]'
-        >
-          <Image src={src} alt={alt} width={100} height={100} className='object-contain' />
-        </Dialog>
-      ))}
-    </InfiniteSlider>
+    
   )
 }
 
