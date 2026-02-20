@@ -30,7 +30,6 @@ import { DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { Dialog } from "./dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
-export type IconsType = Record<string, (props: IconProps) => JSX.Element>
 
 const Icons = {
   calendar: (props: IconProps) => <CalendarIcon {...props} />,
@@ -74,24 +73,23 @@ const Icons = {
       ></path>
     </svg>
   ),
-} satisfies IconsType
+}
 
 export function DockDemo() {
-  const dict = useDict()
+  const Dict = useDict()
   const router = useRouter()
   const changeDict = (locale: Locale) => {
     router.push(`/${locale}#footer`)
     toast.promise(
       () => new Promise(resolve => setTimeout(resolve, 2000)),
       {
-        loading: dict.changing_language,
-        success: dict.language_changed,
-        error: dict.failed_language_change,
+        loading: Dict.changing_language,
+        success: Dict.language_changed,
+        error: Dict.failed_language_change,
         position: "top-right"
       }
     )
   }
-  const Dict = useDict()
 
   const DATA = {
     navbar: [
@@ -164,21 +162,21 @@ export function DockDemo() {
                       <TooltipContent><p>{item.label}</p></TooltipContent>
                       <DropdownMenuContent className="w-full" align="start">
                         <DropdownMenuGroup>
-                          <DropdownMenuLabel>{dict.locales}</DropdownMenuLabel>
+                          <DropdownMenuLabel>{Dict.locales}</DropdownMenuLabel>
                           <DropdownMenuItem onClick={() => changeDict("en")}>
                             English
                             <DropdownMenuShortcut>🇬🇧</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem onClick={() => changeDict("fr")}>
-                            Français ({dict.not_recommended})
+                            Français ({Dict.not_recommended})
                             <DropdownMenuShortcut>🇫🇷</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem onClick={() => changeDict("ar")}>
-                            العربية ({dict.not_recommended})
+                            العربية ({Dict.not_recommended})
                             <DropdownMenuShortcut>🇩🇿</DropdownMenuShortcut>
                           </DropdownMenuItem>
                           <DropdownMenuItem onClick={() => changeDict("de")}>
-                            Deutsche ({dict.not_recommended})
+                            Deutsche ({Dict.not_recommended})
                             <DropdownMenuShortcut>🇩🇪</DropdownMenuShortcut>
                           </DropdownMenuItem>
                         </DropdownMenuGroup>
@@ -194,7 +192,7 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Dialog social={social} dict={dict}>
+                  <Dialog social={social} dict={Dict}>
                     <social.icon className="size-4" />
                   </Dialog>
                 </TooltipTrigger>

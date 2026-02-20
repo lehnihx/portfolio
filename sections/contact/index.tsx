@@ -17,9 +17,9 @@ interface InputDemoProps {
 
 const InputDemo = ({ id, label, placeholder, type }: InputDemoProps) => (
   <Field>
-  <FieldLabel htmlFor={`input-${id}`}>{label}</FieldLabel>
-  <Input id={`input-${id}`} type={type} placeholder={placeholder} required />
-</Field>
+    <FieldLabel htmlFor={`input-${id}`}>{label}</FieldLabel>
+    <Input id={`input-${id}`} type={type} placeholder={placeholder} required />
+  </Field>
 )
 
 const ContactForm = () => (
