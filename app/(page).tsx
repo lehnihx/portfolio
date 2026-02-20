@@ -5,7 +5,7 @@ import { Hero } from "@/sections/hero"
 import { Footer } from "@/sections/footer"
 import { Reviews } from "@/lib/types"
 
-const Home = ({ reviews }: { reviews: Reviews[] }) => (
+const Page = ({ reviews }: { reviews: Reviews[] }) => (
   <main>
     <Nav/>
     <Hero reviews={reviews}/>
@@ -13,4 +13,4 @@ const Home = ({ reviews }: { reviews: Reviews[] }) => (
   </main>
 )
 
-export default Home
+export default Page
