@@ -25,7 +25,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Dock, DockIcon } from "@/registry/magicui/dock"
+import { Dock, DockIcon } from "@/components/ui/dock"
 import { useDict } from "@/lib/dict"
 import { DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "./ui/alert-dialog"
