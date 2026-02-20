@@ -3,6 +3,7 @@
 import { useDict } from "@/lib/dict"
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
+import { Reviews } from "@/lib/types"
 
 const ReviewCard = ({
   img,
@@ -31,52 +32,15 @@ const ReviewCard = ({
           </figcaption>
           <p className="text-xs font-medium dark:text-white/40">{username}</p>
         </div>
+        
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>
   )
 }
 
-const Hero = async () => {
+const Hero = ({ reviews }: { reviews: Reviews[] }) => {
   const Dict = useDict()
-  const reviews = [
-    {
-      name: "Jack",
-      username: "@jack",
-      body: "I've never seen anything like this before. It's amazing. I love it.",
-      img: "https://avatar.vercel.sh/jack",
-    },
-    {
-      name: "Jill",
-      username: "@jill",
-      body: "I don't know what to say. I'm speechless. This is amazing.",
-      img: "https://avatar.vercel.sh/jill",
-    },
-    {
-      name: "John",
-      username: "@john",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/john",
-    },
-    {
-      name: "Jane",
-      username: "@jane",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/jane",
-    },
-    {
-      name: "Jenny",
-      username: "@jenny",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/jenny",
-    },
-    {
-      name: "James",
-      username: "@james",
-      body: "I'm at a loss for words. This is amazing. I love it.",
-      img: "https://avatar.vercel.sh/james",
-    },
-  ]
   
   const firstRow = reviews.slice(0, reviews.length / 2)
   const secondRow = reviews.slice(reviews.length / 2)

@@ -3,11 +3,12 @@
 import { Nav } from "@/components/nav"
 import { Hero } from "@/sections/hero"
 import { Footer } from "@/sections/footer"
+import { Reviews } from "@/lib/types"
 
-const Home = () => (
+const Home = ({ reviews }: { reviews: Reviews[] }) => (
   <main>
     <Nav/>
-    <Hero/>
+    <Hero reviews={reviews}/>
     <Footer/>
   </main>
 )
