@@ -5,15 +5,15 @@ import { AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogT
 import { Locales } from "@/app/dictionaries"
 import Link from "next/link"
 
-const Dialog = ({ social, dict, children, additionalClasses }: {
-  social: {
+const Dialog = ({ metadata, dict, children, additionalClasses }: {
+  metadata: {
     name: string
     url: string
   }, dict: Locales, children: Readonly<React.ReactNode>, additionalClasses?: string
 }) => (
   <AlertDialog>
     <AlertDialogTrigger asChild>
-      <Button aria-label={social.name} className={cn(
+      <Button aria-label={metadata.name} className={cn(
         buttonVariants({ variant: "ghost", size: "icon" }),
         `size-12 rounded-full bg-accent-background text-accent-foreground ${additionalClasses || ""}`
       )}>
@@ -30,7 +30,7 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
           <Input
             id="input-url-disabled"
             type="url"
-            placeholder={social.url}
+            placeholder={metadata.url}
             disabled
             />
         </AlertDialogDescription>
@@ -39,7 +39,7 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
         <AlertDialogCancel>{dict.cancel}</AlertDialogCancel>
         <AlertDialogAction>
           {/* rel="noopener noreferrer" is required for security — without it the new tab can access the page via window.opener. */}
-          <Link href={social.url} target="_blank" rel="noopener noreferrer">{dict.open}</Link>
+          <Link href={metadata.url} target="_blank" rel="noopener noreferrer">{dict.open}</Link>
         </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

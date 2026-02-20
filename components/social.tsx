@@ -192,7 +192,7 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Dialog social={social} dict={Dict}>
+                  <Dialog metadata={social} dict={Dict}>
                     <social.icon className="size-4" />
                   </Dialog>
                 </TooltipTrigger>

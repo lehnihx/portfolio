@@ -38,7 +38,7 @@ const ReviewCard = ({
           </div>
         </div>
         <Dialog
-          social={{ name, url }}
+          metadata={{ name, url }}
           dict={Dict}
           additionalClasses="cursor-pointer hover:bg-background"
         >
