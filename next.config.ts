@@ -2,7 +2,18 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [new URL('https://r2.fivemanage.com/COKMc8Wcmk9K5dp547rEw/**.png')],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "r2.fivemanage.com",
+        pathname: "/COKMc8Wcmk9K5dp547rEw/**.png",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.githubusercontent.com",
+        pathname: "u/**",
+      },
+    ],
   },
 };
 
