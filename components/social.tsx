@@ -11,10 +11,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import React from "react"
+import React, { JSX } from "react"
 import Link from "next/link"
 import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
-import { Input } from "@/components/ui/input"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -28,9 +27,10 @@ import {
 import { Dock, DockIcon } from "@/components/ui/dock"
 import { useDict } from "@/lib/dict"
 import { DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "./ui/alert-dialog"
+import { Dialog } from "./dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
+export type IconsType = Record<string, (props: IconProps) => JSX.Element>
 
 const Icons = {
   calendar: (props: IconProps) => <CalendarIcon {...props} />,
@@ -74,7 +74,8 @@ const Icons = {
       ></path>
     </svg>
   ),
-}
+} satisfies IconsType
+
 export function DockDemo() {
   const dict = useDict()
   const router = useRouter()
@@ -193,36 +194,9 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <button aria-label={social.name} className={cn(
-                        buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full"
-                      )}>
-                        <social.icon className="size-4" />
-                      </button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>{dict.open_external_link}</AlertDialogTitle>
-                        <AlertDialogDescription className="flex flex-col gap-3">
-                          <span>
-                            {dict.external_link}
-                          </span>
-                          <Input
-                            id="input-url-disabled"
-                            type="url"
-                            placeholder={social.url}
-                            disabled
-                          />
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>{dict.cancel}</AlertDialogCancel>
-                        <AlertDialogAction onClick={() => {window.open(social.url, "_blank")}}>{dict.open}</AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                  <Dialog social={social} dict={dict}>
+                    <social.icon className="size-4" />
+                  </Dialog>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="flex items-center">{name} <ArrowUpRight size={16}/></p>
