@@ -8,14 +8,12 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 
-interface InputDemoProps {
+const InputField = ({ id, label, placeholder, type }: {
   id: string
   label: string
   placeholder: string
   type: string
-}
-
-const InputDemo = ({ id, label, placeholder, type }: InputDemoProps) => (
+}) => (
   <Field>
     <FieldLabel htmlFor={`input-${id}`}>{label}</FieldLabel>
     <Input id={`input-${id}`} type={type} placeholder={placeholder} required />
@@ -28,8 +26,8 @@ const ContactForm = () => (
       <FieldSet className="w-full max-w-xs">
         <FieldLabel className="text-3xl">Contact Lenix</FieldLabel>
         <FieldGroup>
-          <InputDemo id="name" label="Name" placeholder="Lenix" type="text" />
-            <InputDemo id="email" label="Email" placeholder="contact@lenix.dev" type="email" />
+          <InputField id="name" label="Name" placeholder="Lenix" type="text" />
+            <InputField id="email" label="Email" placeholder="contact@lenix.dev" type="email" />
           <Field>
             <FieldLabel {...{ htmlFor: "mail-user-message" }}>Mail</FieldLabel>
             <Textarea placeholder="Hello Lenix, I would like to know more about you." required />
@@ -43,4 +41,4 @@ const ContactForm = () => (
   </div>
 )
 
-export default ContactForm
+export { ContactForm }
