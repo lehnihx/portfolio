@@ -1,7 +1,7 @@
 'use client';
 import { cn } from '@/lib/utils';
 import { useMotionValue, animate, motion } from 'motion/react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMeasure from 'react-use-measure';
 
 export type InfiniteSliderProps = {
@@ -11,6 +11,7 @@ export type InfiniteSliderProps = {
   speedOnHover?: number;
   direction?: 'horizontal' | 'vertical';
   reverse?: boolean;
+  copies?: number;
   className?: string;
 };
 
@@ -21,6 +22,7 @@ export function InfiniteSlider({
   speedOnHover,
   direction = 'horizontal',
   reverse = false,
+  copies = 2,
   className,
 }: InfiniteSliderProps) {
   const [currentSpeed, setCurrentSpeed] = useState(speed);
@@ -104,8 +106,11 @@ export function InfiniteSlider({
         ref={ref}
         {...hoverProps}
       >
-        {children}
-        {children}
+        {Array.from({ length: copies }, (_, copyIndex) => (
+          <React.Fragment key={copyIndex}>
+            {children}
+          </React.Fragment>
+        ))}
       </motion.div>
     </div>
   );
