@@ -61,12 +61,12 @@ const Hero = ({ reviews }: { reviews: Reviews[] }) => {
     <section id="hero" className="h-screen text-foreground flex flex-col items-center justify-center text-3xl">
       <h2>{Dict.intro}</h2>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-        <Marquee pauseOnHover className="[--duration:20s]">
+        <Marquee pauseOnHover className="[--duration:30s]">
           {firstRow.map((review, index) => (
             <ReviewCard key={`${review.username}-${index}`} {...review} />
           ))}
         </Marquee>
-        <Marquee reverse pauseOnHover className="[--duration:20s]">
+        <Marquee reverse pauseOnHover className="[--duration:30s]">
           {secondRow.map((review, index) => (
             <ReviewCard key={`${review.username}-${index}`} {...review} />
           ))}

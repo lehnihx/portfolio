@@ -1,7 +1,7 @@
 "use client"
 
 import { useDict } from "@/lib/dict"
-import { DockDemo } from "../components/social"
+import { DockDemo } from "@/components/social"
 
 const Footer = () => {
   const Dict = useDict()
