@@ -13,7 +13,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const reviewsDict = await getReviewsDictionary(lang)
   const usersId = Object.keys(reviewsDict) as ReviewUserId[]
   const hour = 60 * 60
-  debugger
 
   const getDiscordUser = async (id: ReviewUserId): Promise<APIUser> => {
     const response = await fetch(`https://discord.com/api/v10/users/${id}`, {
@@ -28,7 +27,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
     ['discord-user'],
     { revalidate: 24 * hour }
   )
-  
+
   const users = await getDiscordUsers(usersId)
   const reviews: Reviews[] = users.flatMap(({ global_name, username, id, avatar }) => {
     const avatar_url = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`

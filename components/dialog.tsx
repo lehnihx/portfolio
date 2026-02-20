@@ -3,6 +3,7 @@ import { Button, buttonVariants } from "./ui/button"
 import { Input } from "@/components/ui/input"
 import { AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "./ui/alert-dialog"
 import { Locales } from "@/app/dictionaries"
+import Link from "next/link"
 
 const Dialog = ({ social, dict, children, additionalClasses }: {
   social: {
@@ -14,7 +15,7 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
     <AlertDialogTrigger asChild>
       <Button aria-label={social.name} className={cn(
         buttonVariants({ variant: "ghost", size: "icon" }),
-        `size-12 rounded-full bg-background text-accent-foreground ${additionalClasses || ""}`
+        `size-12 rounded-full bg-accent-background text-accent-foreground ${additionalClasses || ""}`
       )}>
         {children}
       </Button>
@@ -36,7 +37,10 @@ const Dialog = ({ social, dict, children, additionalClasses }: {
       </AlertDialogHeader>
       <AlertDialogFooter>
         <AlertDialogCancel>{dict.cancel}</AlertDialogCancel>
-        <AlertDialogAction onClick={() => {window.open(social.url, "_blank")}}>{dict.open}</AlertDialogAction>
+        <AlertDialogAction>
+          {/* rel="noopener noreferrer" is required for security — without it the new tab can access the page via window.opener. */}
+          <Link href={social.url} target="_blank" rel="noopener noreferrer">{dict.open}</Link>
+        </AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>
