@@ -1,8 +1,20 @@
 "use client"
 
+import { Locale } from "@/app/dictionaries"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuShortcut,
+} from "@/components/ui/dropdown-menu"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
 import React from "react"
 import Link from "next/link"
 import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
+import { Input } from "@/components/ui/input"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -15,8 +27,8 @@ import {
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/registry/magicui/dock"
 import { useDict } from "@/lib/dict"
-import { DropdownMenuDemo } from "./locales"
 import { DropdownMenuTrigger } from "./ui/dropdown-menu"
+import { AlertDialogTrigger, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "./ui/alert-dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -64,6 +76,20 @@ const Icons = {
   ),
 }
 export function DockDemo() {
+  const dict = useDict()
+  const router = useRouter()
+  const changeDict = (locale: Locale) => {
+    router.push(`/${locale}#footer`)
+    toast.promise(
+      () => new Promise(resolve => setTimeout(resolve, 2000)),
+      {
+        loading: dict.changing_language,
+        success: dict.language_changed,
+        error: dict.failed_language_change,
+        position: "top-right"
+      }
+    )
+  }
   const Dict = useDict()
 
   const DATA = {
@@ -80,7 +106,7 @@ export function DockDemo() {
         },
         [Dict.linkedin]: {
           name: "LinkedIn",
-          url: "https://www.linkedin.com/in/lenixdev/",
+          url: "https://www.linkedin.com/in/lenixdev",
           icon: Icons.linkedin,
         },
         [Dict.twitter]: {
@@ -126,7 +152,7 @@ export function DockDemo() {
               ) : (
                 <DockIcon>
                   <Tooltip>
-                    <DropdownMenuDemo>
+                    <DropdownMenu>
                       <TooltipTrigger asChild>
                         <DropdownMenuTrigger asChild>
                           <button suppressHydrationWarning aria-label={item.label} className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12 rounded-full")}>
@@ -135,7 +161,28 @@ export function DockDemo() {
                         </DropdownMenuTrigger>
                       </TooltipTrigger>
                       <TooltipContent><p>{item.label}</p></TooltipContent>
-                    </DropdownMenuDemo>
+                      <DropdownMenuContent className="w-full" align="start">
+                        <DropdownMenuGroup>
+                          <DropdownMenuLabel>{dict.locales}</DropdownMenuLabel>
+                          <DropdownMenuItem onClick={() => changeDict("en")}>
+                            English
+                            <DropdownMenuShortcut>🇬🇧</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => changeDict("fr")}>
+                            Français ({dict.not_recommended})
+                            <DropdownMenuShortcut>🇫🇷</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => changeDict("ar")}>
+                            العربية ({dict.not_recommended})
+                            <DropdownMenuShortcut>🇩🇿</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => changeDict("de")}>
+                            Deutsche ({dict.not_recommended})
+                            <DropdownMenuShortcut>🇩🇪</DropdownMenuShortcut>
+                          </DropdownMenuItem>
+                        </DropdownMenuGroup>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </Tooltip>
                 </DockIcon>
               )}
@@ -146,17 +193,36 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link
-                    href={social.url}
-                    aria-label={social.name}
-                    target="_blank"
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full"
-                    )}
-                  >
-                    <social.icon className="size-4" />
-                  </Link>
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <button aria-label={social.name} className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full"
+                      )}>
+                        <social.icon className="size-4" />
+                      </button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>{dict.open_external_link}</AlertDialogTitle>
+                        <AlertDialogDescription className="flex flex-col gap-3">
+                          <span>
+                            {dict.external_link}
+                          </span>
+                          <Input
+                            id="input-url-disabled"
+                            type="url"
+                            placeholder={social.url}
+                            disabled
+                          />
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>{dict.cancel}</AlertDialogCancel>
+                        <AlertDialogAction onClick={() => {window.open(social.url, "_blank")}}>{dict.open}</AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="flex items-center">{name} <ArrowUpRight size={16}/></p>

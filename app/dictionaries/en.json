@@ -14,5 +14,9 @@
   "not_recommended": "Not recommended",
   "changing_language": "Changing the language...",
   "language_changed": "Language changed successfully!",
-  "failed_language_change": "Failed to change language."
+  "failed_language_change": "Failed to change language.",
+  "open_external_link": "Open external link?",
+  "external_link": "You are leaving to visit an external link:",
+  "cancel": "Cancel",
+  "open": "Open"
 }
