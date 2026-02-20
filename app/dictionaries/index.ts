@@ -1,38 +1,75 @@
 import 'server-only'
 import { unstable_cache } from 'next/cache'
+import { ValueOf } from 'next/dist/shared/lib/constants'
+import { ReviewsJSON } from '@/lib/types'
 
-const defaultDictionary = () => import('./en.json').then((module) => module.default)
+const defaultDictionary = await import('./index.json').then((module) => module.default)
 
 export type Locale = typeof localesAllowed[number]
-export type Locales = Awaited<ReturnType<typeof defaultDictionary>>
+export type DefaultLocales = typeof defaultDictionary
+export type Locales = Omit<DefaultLocales, 'reviews'>
 
 export const localesAllowed = ['en', 'fr', 'de', 'ar'] as const
 export const hasLocale = (locale: string): locale is Locale => localesAllowed.includes(locale as Locale)
 
-export const getDictionary = async (locale: Locale) => {
-  const dicts = await defaultDictionary()
-  if (locale === 'en') return dicts
+const getMyMemoryTranslation = async (value: string, locale: Locale) => {
+  const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
+  if (!res.ok) throw new Error(`Failed to fetch translation for '${value}'`)
+  const { responseData: {
+    translatedText
+  } }: { responseData: {
+    translatedText: string
+  } } = await res.json()
+  return translatedText
+}
+
+export const getReviewsDictionary = async (locale: Locale): Promise<ReviewsJSON> => {
+  const { reviews } = defaultDictionary
+  if (locale === 'en') return reviews
+
+  try {
+    return await unstable_cache(
+      async (locale: Locale): Promise<ReviewsJSON> => {
+
+        const translatedPromises = Object.entries(reviews).map(async ([key, { messages }]) => {
+          const messagesPromises = messages.map(async value => await getMyMemoryTranslation(value, locale) as string)
+            
+          const translatedMessages = await Promise.all(messagesPromises)
+          return [key, { messages: translatedMessages }] as const
+        })
+        
+        const translatedEntries = await Promise.all(translatedPromises)
+        return Object.fromEntries(translatedEntries) as ReviewsJSON
+      },
+      ['reviews', locale],
+      { revalidate: false }
+    )(locale)
+  } catch (error) {
+    console.error(`MyMemory failed for ${locale}, falling back to en.`, error)
+    return reviews
+  }
+}
+
+export const getDictionary = async (locale: Locale): Promise<Locales> => {
+  if (locale === 'en') return defaultDictionary
 
   try {
     return await unstable_cache(
       async (locale: Locale) => {
-        const pairs = Object.entries(dicts) as [keyof Locales, string][]
-        const translatedPromises = pairs.map(async ([key, value]) => {
-          const response = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
-          if (!response.ok) throw new Error(`Failed to fetch translation for '${value}'`)
-          const { responseData: { translatedText } }: { responseData: { translatedText: string } } = await response.json()
+        const { reviews: _, ...pairs } = defaultDictionary
+        const translatedPromises = (Object.entries(pairs) as [keyof Locales, ValueOf<Locales>][]).map(async ([key, value]) => {
+          const translatedText = await getMyMemoryTranslation(value, locale)
           if (locale === 'ar' && translatedText === value) console.warn(`MyMemory failed to translate (${key}) '${value}'`)
-          return [key, translatedText] as const
+          return [key, translatedText]
         })
-        const translatedPairs = await Promise.all(translatedPromises)
-        const translatedDict = Object.fromEntries(translatedPairs) as Record<keyof Locales, string>
-        return translatedDict
+        const translatedEntries = await Promise.all(translatedPromises)
+        return Object.fromEntries(translatedEntries) as Locales
       },
       ['translations', locale],
       { revalidate: false }
     )(locale)
   } catch (error) {
-    console.error(`Something went wrong with MeMemory for ${locale} locale, and falling back to en dictionary as a result. Error details:`, error)
-    return dicts
+    console.error(`Something went wrong with MyMemory for ${locale} locale, and falling back to en dictionary as a result. Error details:`, error)
+    return defaultDictionary
   }
 }
