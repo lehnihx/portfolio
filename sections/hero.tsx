@@ -6,7 +6,6 @@ import { Marquee } from "@/components/ui/marquee"
 import { Reviews } from "@/lib/types"
 import { Dialog } from "@/components/dialog"
 import { ArrowUpRight } from "lucide-react"
-import { URL } from "url"
 
 const ReviewCard = ({
   img,
