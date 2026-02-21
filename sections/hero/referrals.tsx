@@ -1,9 +1,10 @@
 "use client"
 
-import { InfiniteSlider } from '@/components/core/infinite-slider'
-import { Dialog } from '@/components/dialog'
+import { Locales } from '@/app/dictionaries';
+import { Dialog } from '@/components/dialog';
 import { useDict } from '@/lib/dict'
 import Image from 'next/image'
+import Marquee from "react-fast-marquee";
 
 const referrals = [
   {
@@ -23,11 +24,26 @@ const referrals = [
   },
 ]
 
+const Referral = ({ name, src, dict, url }: {
+  name: string; src: string; dict: Locales, url: string
+}) => (
+  <Dialog
+    metadata={{ name, url }}
+    dict={dict}
+  >
+    <Image src={src} alt={name} width={100} height={100} className="mx-8"/>
+  </Dialog>
+)
+
 const Referrals = () => {
   const dict = useDict()
 
   return (
-    
+    <Marquee>
+      {referrals.map(({ src, alt, url }) => (
+        <Referral key={alt} {...{ dict, src, url, name: alt }} />
+      ))}
+    </Marquee>
   )
 }
 

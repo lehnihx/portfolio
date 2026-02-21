@@ -15,7 +15,7 @@ const Dialog = ({ metadata, dict, children, additionalClasses }: {
     <AlertDialogTrigger asChild>
       <Button aria-label={metadata.name} className={cn(
         buttonVariants({ variant: "ghost", size: "icon" }),
-        `size-12 rounded-full bg-accent-background text-accent-foreground ${additionalClasses || ""}`
+        `size-full rounded-full bg-accent-background text-accent-foreground ${additionalClasses || ""}`
       )}>
         {children}
       </Button>
