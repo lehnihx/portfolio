@@ -21,9 +21,9 @@ const InputField = ({ id, label, placeholder, type }: {
 )
 
 const ContactForm = () => (
-  <div className="w-full max-w-lg">
+  <div className="w-full max-w-md">
     <form action="">
-      <FieldSet className="w-full max-w-xs">
+      <FieldSet className="w-full">
         <FieldLabel className="text-3xl">Contact Lenix</FieldLabel>
         <FieldGroup>
           <InputField id="name" label="Name" placeholder="Lenix" type="text" />

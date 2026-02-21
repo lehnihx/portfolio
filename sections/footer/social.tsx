@@ -35,7 +35,6 @@ const SocialDock = () => {
   const Dict = useDict()
   const Dialog = useDialog()
   const router = useRouter()
-  const syncedClass = cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-12 rounded-full")
   const changeDict = (locale: Locale) => {
     router.push(`/${locale}#footer`)
     toast.promise(
@@ -189,7 +188,7 @@ const SocialDock = () => {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Button variant={"ghost"} size={"icon"} className="rounded-full">
+                  <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => Dialog(social.url)}>
                     <social.icon/>
                   </Button>
                 </TooltipTrigger>

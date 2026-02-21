@@ -3,7 +3,6 @@
 import { useDialog } from '@/lib/dialog';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';
-import Image from 'next/image'
 import { useEffect, useState } from 'react';
 import Marquee from "react-fast-marquee";
 

@@ -3,6 +3,7 @@ import { Marquee } from "@/components/ui/marquee"
 import { useDialog } from "@/lib/dialog"
 import { ArrowUpRight } from "lucide-react"
 import { Reviews } from "@/lib/types"
+import { Button } from "@/components/ui/button"
 
 const ReviewCard = ({
   img,
@@ -36,7 +37,9 @@ const ReviewCard = ({
             <p className="text-xs font-medium dark:text-white/40">{username}</p>
           </div>
         </div>
-        <ArrowUpRight onClick={() => Dialog(url)} />
+        <Button variant={"ghost"} size={"icon"} className="rounded-full">
+          <ArrowUpRight onClick={() => Dialog(url)} />
+        </Button>
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>
