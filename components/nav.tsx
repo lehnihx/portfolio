@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <>
       <Button {...{
-        className: "bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
+        className: "text-foreground bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
         onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
       }}>
         <Expand/>
@@ -20,7 +20,7 @@ const Nav = () => {
         <header className="fixed w-screen h-screen bg-background z-50">
           <Button {...{
             className: "hover:bg-transparent bg-transparent hover:scale-140 text-foreground absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
-            onClick: () => {setStates(prev => ({ ...prev, nav: !prev.nav }))}
+            onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
           }}>
             <X/>
           </Button>
