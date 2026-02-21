@@ -26,8 +26,8 @@ import {
 } from "@/components/ui/tooltip"
 import { Dock, DockIcon } from "@/components/ui/dock"
 import { useDict } from "@/lib/dict"
-import { DropdownMenuTrigger } from "./ui/dropdown-menu"
-import { Dialog } from "./dialog"
+import { DropdownMenuTrigger } from "../../components/ui/dropdown-menu"
+import { Dialog } from "../../components/dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -192,7 +192,7 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Dialog metadata={social} dict={Dict}>
+                  <Dialog metadata={social} dict={Dict} additionalClasses="size-12">
                     <social.icon className="size-4" />
                   </Dialog>
                 </TooltipTrigger>
