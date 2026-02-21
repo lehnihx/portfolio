@@ -30,7 +30,7 @@ const Referrals = () => {
   useEffect(() => {
     const value = getComputedStyle(document.documentElement).getPropertyValue('--background').trim()
     setGradientColor(value)
-  }, [])
+  }, [systemTheme])
   return (
     <Marquee autoFill pauseOnHover gradient gradientColor={gradientColor}>
       {referrals.map(({ Icon, url }, index) =>
