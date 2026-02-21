@@ -5,6 +5,7 @@ import { DictProvider } from "@/lib/dict"
 import { unstable_cache } from 'next/cache'
 import { Reviews, ReviewUserId } from "@/lib/types"
 import { APIUser } from "discord-api-types/v10"
+import { DialogProvider } from "@/lib/dialog"
 
 const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
@@ -55,7 +56,9 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   })
   return (
     <DictProvider dict={dict}>
-      <Home {...{ reviews }} />
+      <DialogProvider>
+        <Home {...{ reviews }} />
+      </DialogProvider>
     </DictProvider>
   )
 }
