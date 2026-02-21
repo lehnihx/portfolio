@@ -16,7 +16,7 @@ import Link from "next/link"
 import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import {
   Tooltip,
@@ -134,13 +134,11 @@ const SocialDock = () => {
                 <DockIcon>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Link
-                        href={item.href}
-                        aria-label={item.label}
-                        className={syncedClass}
-                      >
-                        <item.icon className="size-4" />
-                      </Link>
+                      <Button variant={"ghost"} size={"icon"} className="rounded-full">
+                        <Link href={item.href}>
+                          <item.icon className="size-4" />
+                        </Link>
+                      </Button>
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>{item.label}</p>
@@ -153,9 +151,9 @@ const SocialDock = () => {
                     <DropdownMenu>
                       <TooltipTrigger asChild>
                         <DropdownMenuTrigger asChild>
-                          <button suppressHydrationWarning aria-label={item.label} className={syncedClass}>
-                            <item.icon className="size-4" />
-                          </button>
+                          <Button variant={"ghost"} size={"icon"} className="rounded-full">
+                            <item.icon />
+                          </Button>
                         </DropdownMenuTrigger>
                       </TooltipTrigger>
                       <TooltipContent><p>{item.label}</p></TooltipContent>
@@ -191,9 +189,9 @@ const SocialDock = () => {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button suppressHydrationWarning aria-label={name} className={syncedClass}>
-                    <social.icon className="size-4" onClick={() => Dialog(social.url)} />
-                  </button>
+                  <Button variant={"ghost"} size={"icon"} className="rounded-full">
+                    <social.icon/>
+                  </Button>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="flex items-center">{name} <ArrowUpRight size={16}/></p>
