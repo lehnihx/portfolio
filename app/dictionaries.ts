@@ -3,7 +3,7 @@ import { unstable_cache } from 'next/cache'
 import { ValueOf } from 'next/dist/shared/lib/constants'
 import { ReviewsJSON } from '@/lib/types'
 
-const defaultDictionary = await import('./index.json').then((module) => module.default)
+const defaultDictionary = await import('@/lib/dictionaries.json').then((module) => module.default)
 
 export type Locale = typeof localesAllowed[number]
 export type DefaultLocales = typeof defaultDictionary
