@@ -14,12 +14,20 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const usersId = Object.keys(reviewsDict) as ReviewUserId[]
   const hour = 60 * 60
 
-  const getDiscordUser = async (id: ReviewUserId): Promise<APIUser> => {
-    const response = await fetch(`https://discord.com/api/v10/users/${id}`, {
-      headers: { Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}` }
-    })
-    if (!response.ok) throw new Error(`Discord API error ${response.status}`)
-    return response.json()
+  const getDiscordUser = async (id: ReviewUserId): Promise<APIUser | null> => {
+    try {
+      const response = await fetch(`https://discord.com/api/v10/users/${id}`, {
+        headers: { Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}` }
+      })
+      if (!response.ok) {
+        console.warn(`Discord API error ${response.status} for user ${id}`)
+        return null
+      }
+      return response.json()
+    } catch (error) {
+      console.warn(`Discord API request failed for user ${id}`, error)
+      return null
+    }
   }
   
   const getDiscordUsers = unstable_cache(
@@ -29,7 +37,9 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   )
 
   const users = await getDiscordUsers(usersId)
-  const reviews: Reviews[] = users.flatMap(({ global_name, username, id, avatar }) => {
+  const reviews: Reviews[] = users.flatMap((user) => {
+    if (!user) return []
+    const { global_name, username, id, avatar } = user
     const avatar_url = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`
     const userReviews = reviewsDict[id as keyof typeof reviewsDict].messages
     const userMessageId = reviewsDict[id as keyof typeof reviewsDict].messageId
