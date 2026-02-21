@@ -27,7 +27,7 @@ import {
 import { Dock, DockIcon } from "@/components/ui/dock"
 import { useDict } from "@/lib/dict"
 import { DropdownMenuTrigger } from "../../components/ui/dropdown-menu"
-import { Dialog } from "../../components/dialog"
+import { useDialog } from "@/lib/dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
@@ -77,6 +77,7 @@ const Icons = {
 
 export function DockDemo() {
   const Dict = useDict()
+  const Dialog = useDialog()
   const router = useRouter()
   const changeDict = (locale: Locale) => {
     router.push(`/${locale}#footer`)
@@ -192,9 +193,7 @@ export function DockDemo() {
             <DockIcon key={name}>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Dialog metadata={social} dict={Dict} additionalClasses="size-12">
-                    <social.icon className="size-4" />
-                  </Dialog>
+                  <social.icon className="size-4" onClick={() => Dialog(social.url)} />
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="flex items-center">{name} <ArrowUpRight size={16}/></p>

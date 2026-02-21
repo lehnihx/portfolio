@@ -1,8 +1,7 @@
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
-import { Dialog } from "@/components/dialog"
+import { useDialog } from "@/lib/dialog"
 import { ArrowUpRight } from "lucide-react"
-import { useDict } from "@/lib/dict"
 import { Reviews } from "@/lib/types"
 
 const ReviewCard = ({
@@ -18,7 +17,7 @@ const ReviewCard = ({
   body: string
   url: string
 }) => {
-  const Dict = useDict()
+  const Dialog = useDialog()
   return (
     <figure
       className={cn(
@@ -37,13 +36,7 @@ const ReviewCard = ({
             <p className="text-xs font-medium dark:text-white/40">{username}</p>
           </div>
         </div>
-        <Dialog
-          metadata={{ name, url }}
-          dict={Dict}
-          additionalClasses="cursor-pointer hover:bg-background"
-        >
-          <ArrowUpRight/>
-        </Dialog>
+        <ArrowUpRight onClick={() => Dialog(url)} />
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
     </figure>

@@ -1,10 +1,9 @@
 "use client"
 
-import { Locales } from '@/app/dictionaries';
-import { Dialog } from '@/components/dialog';
-import { useDict } from '@/lib/dict'
+import { useDialog } from '@/lib/dialog';
 import { useTheme } from 'next-themes';
 import Image from 'next/image'
+import { useEffect, useState } from 'react';
 import Marquee from "react-fast-marquee";
 
 const referrals = [
@@ -28,25 +27,27 @@ const referrals = [
   },
 ]
 
-const Referral = ({ name, src, dict, url }: {
-  name: string; src: string; dict: Locales, url: string
-}) => (
-  <Dialog
-    metadata={{ name, url }}
-    dict={dict}
-    additionalClasses='hover:bg-transparent'
-  >
-    <Image src={src} alt={name} width={100} height={100} className="mx-8"/>
-  </Dialog>
-)
-
 const Referrals = () => {
-  const dict = useDict()
+  const Dialog = useDialog()
   const { systemTheme } = useTheme()
+  const [gradientColor, setGradientColor] = useState('black')
+
+  useEffect(() => {
+    const value = getComputedStyle(document.documentElement).getPropertyValue('--background').trim()
+    setGradientColor(value)
+  }, [])
   return (
-    <Marquee className="border-neutral-500/30 border-y py-3">
-      {referrals.map(({ src, alt, url, darksrc }) => (
-        <Referral key={alt} {...{ dict, src: systemTheme === 'dark' ? src : darksrc || src, url, name: alt }} />
+    <Marquee autoFill pauseOnHover gradient gradientColor={gradientColor}>
+      {referrals.map(({ src, alt, url, darksrc }, index) => (
+        <Image
+          key={`${alt}-${index}`}
+          src={systemTheme === 'dark' ? src : darksrc || src}
+          alt={alt}
+          width={100}
+          height={100}
+          className="mx-10 cursor-pointer! duration-300 hover:scale-105"
+          onClick={() => Dialog(url)}
+        />
       ))}
     </Marquee>
   )
