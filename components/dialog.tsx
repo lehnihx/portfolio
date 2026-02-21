@@ -20,7 +20,7 @@ const Dialog = ({ metadata, dict, children, additionalClasses }: {
         {children}
       </Button>
     </AlertDialogTrigger>
-    <AlertDialogContent>
+    <AlertDialogContent id={`dialog-${metadata.name}`}>
       <AlertDialogHeader>
         <AlertDialogTitle>{dict.open_external_link}</AlertDialogTitle>
         <AlertDialogDescription className="flex flex-col gap-3 w-full">
