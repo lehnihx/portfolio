@@ -37,7 +37,7 @@ const Referrals = () => {
         <Tooltip tooltip={url}>
           <Icon 
             key={index}
-            className={`${systemTheme === 'light' && 'fill-black'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+            className={`${systemTheme === 'light' ? 'text-black' : 'text-white/70'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
             onClick={() => Dialog(url)}
           />
         </Tooltip>
