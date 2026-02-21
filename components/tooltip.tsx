@@ -1,7 +1,7 @@
 import { Tooltip } from '@ark-ui/react/tooltip'
 import { useCallback, useRef } from 'react'
 
-export const FollowingTooltip = ({ tooltip, children }: { tooltip: string; children: React.ReactNode }) => {
+export const FollowingTooltip = ({ tooltip, children }: { tooltip: React.ReactNode; children: React.ReactNode }) => {
   const anchorRect = useRef<DOMRect | null>(null)
   const getAnchorRect = useCallback(() => anchorRect.current, [])
 

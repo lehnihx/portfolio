@@ -4,6 +4,7 @@ import { useDialog } from "@/lib/dialog"
 import { ArrowUpRight } from "lucide-react"
 import { Reviews } from "@/lib/types"
 import { Button } from "@/components/ui/button"
+import HoverProfileCard from "@/components/profile"
 
 const ReviewCard = ({
   img,
@@ -29,7 +30,9 @@ const ReviewCard = ({
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-row items-center gap-2">
-          <img className="rounded-full" width="32" height="32" alt="" src={img} />
+          <HoverProfileCard openDelay={0} profile={img} name={name} username={username} stars={0}>
+            <img className="rounded-full" width="32" height="32" alt="" src={img} />
+          </HoverProfileCard>
           <div className="flex flex-col">
             <figcaption className="text-sm font-medium dark:text-white">
               {name}
