@@ -11,7 +11,7 @@ const Hero = ({ reviews }: { reviews: Reviews[] }) => {
     <section id="hero" className="h-screen text-foreground flex flex-col items-center justify-center text-3xl">
       <h2>{Dict.intro}</h2>
       {/* <Testimonials {...{ reviews }} /> */}
-      {/* <Referrals/> */}
+      <Referrals/>
     </section>
   )
 }

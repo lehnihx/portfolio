@@ -1,5 +1,6 @@
 "use client"
 
+import { Tooltip } from '@/components/tooltip';
 import { useDialog } from '@/lib/dialog';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';
@@ -32,11 +33,14 @@ const Referrals = () => {
   }, [])
   return (
     <Marquee autoFill pauseOnHover gradient gradientColor={gradientColor}>
-      {referrals.map(({ Icon, url }, index) => <Icon 
-          key={index}
-          className={`${systemTheme === 'light' && 'fill-black'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-          onClick={() => Dialog(url)}
-        />
+      {referrals.map(({ Icon, url }, index) =>
+        <Tooltip tooltip={url}>
+          <Icon 
+            key={index}
+            className={`${systemTheme === 'light' && 'fill-black'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+            onClick={() => Dialog(url)}
+          />
+        </Tooltip>
       )}
     </Marquee>
   )
