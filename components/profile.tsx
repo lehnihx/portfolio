@@ -3,10 +3,10 @@
 import { HoverCard } from "radix-ui";
 import type { ReactNode } from "react";
 import { Badge } from "./ui/badge";
-import { Review } from "@/lib/types";
 import Image from "next/image"
 import { Verified } from "lucide-react";
 import { Tooltip } from "./tooltip";
+import { Review } from "@/app/[lang]/page";
 
 const HoverCardDemo = ({ review, children, openDelay }: { review: Review, children: ReactNode, openDelay?: number }) => {
 	if (!review) return
