@@ -8,13 +8,13 @@ export type Review = {
   body: string
   avatar: string
   reviewLink: string
-  banner: string
+  banner: string | undefined
   color: string | null
   locale: string | undefined
   verified: boolean | undefined
   avatar_decoration: string | undefined
   tag: string | null | undefined
-  badge: string | null | undefined
+  badge: string | undefined
 } | undefined
 
 export type ReviewsJSON = DefaultLocales["reviews"]

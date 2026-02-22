@@ -6,8 +6,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "r2.fivemanage.com",
-        pathname: "/COKMc8Wcmk9K5dp547rEw/**.png",
-      }
+        pathname: "/COKMc8Wcmk9K5dp547rEw/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+        pathname: "/**",
+      },
     ],
   },
   webpack(config) {

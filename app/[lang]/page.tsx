@@ -3,7 +3,7 @@ import { getDictionary, getReviewsDictionary, hasLocale } from "../dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/lib/dict"
 import { unstable_cache } from 'next/cache'
-import { Reviews, ReviewUserId } from "@/lib/types"
+import { Review, ReviewUserId } from "@/lib/types"
 import { APIUser } from "discord-api-types/v10"
 import { DialogProvider } from "@/lib/dialog"
 
@@ -30,18 +30,34 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
       return null
     }
   }
-  
+
   const getDiscordUsers = unstable_cache(
-    async (ids: ReviewUserId[]) => await Promise.all(ids.map(async (id) => getDiscordUser(id))),
+    async (ids: ReviewUserId[]) => {
+      const promisesUsers = ids.map(async (id) => {
+        return await getDiscordUser(id)
+      })
+      const users = await Promise.all(promisesUsers)
+      return users
+    },
     ['discord-user'],
     { revalidate: 24 * hour }
   )
 
   const users = await getDiscordUsers(usersId)
-  const reviews: Reviews[] = users.flatMap((user) => {
-    if (!user) return []
-    const { global_name, username, id, avatar } = user
-    const avatar_url = `https://cdn.discordapp.com/avatars/${id}/${avatar}.png`
+  const reviews: Review[] = users.flatMap((user) => {
+    if (!user) return
+    const {
+      username,
+      id,
+      avatar,
+      global_name,
+      banner,
+      accent_color,
+      locale,
+      verified,
+      avatar_decoration_data,
+      primary_guild
+    } = user
     const userReviews = reviewsDict[id as keyof typeof reviewsDict].messages
     const userMessageId = reviewsDict[id as keyof typeof reviewsDict].messageId
     const reviewsArray = Array.isArray(userReviews) ? userReviews : [userReviews]
@@ -50,8 +66,15 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
       name: global_name || username,
       username,
       body: review,
-      img: avatar_url,
-      url: `https://discord.com/channels/${DISCORD_GUILD_ID}/${DISCORD_CHANNEL_ID}/${userMessageId}`
+      avatar: avatar ? `https://cdn.discordapp.com/avatars/${id}/${avatar}.png` : "https://cdn.prod.website-files.com/6257adef93867e50d84d30e2/66e3d80db9971f10a9757c99_Symbol.svg",
+      reviewLink: `https://discord.com/channels/${DISCORD_GUILD_ID}/${DISCORD_CHANNEL_ID}/${userMessageId}`,
+      banner: banner ? `https://cdn.discordapp.com/banners/${id}/${banner}.png` : undefined,
+      color: accent_color ? `#${accent_color.toString(16).padStart(6, '0')}` : null, // from https://github.com/TripplerScripts/tr_pvpmodes/blob/main/server/services/competitive/chat.ts#L16
+      locale,
+      verified,
+      avatar_decoration: avatar_decoration_data?.asset ? `https://cdn.discordapp.com/avatar-decoration-presets/${avatar_decoration_data.asset}.png` : undefined,
+      tag: primary_guild?.tag,
+      badge: primary_guild?.identity_enabled ? `https://cdn.discordapp.com/guild-tag-badges/${primary_guild?.identity_guild_id}/${primary_guild?.badge}` : undefined
     }))
   })
   return (
