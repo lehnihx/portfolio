@@ -42,8 +42,13 @@ const ReviewCard = ({ review }: { review: Review }) => {
           </div>
           <p className="text-xs font-medium dark:text-white/40">{date}</p>
         </div>
-        <Button variant={"ghost"} size={"icon"} className="rounded-full">
-          <ArrowUpRight onClick={() => Dialog(reviewLink)} />
+        <Button
+          variant={"ghost"}
+          size={"icon"}
+          className="rounded-full"
+          onClick={() => Dialog(reviewLink)}
+        >
+          <ArrowUpRight/>
         </Button>
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
