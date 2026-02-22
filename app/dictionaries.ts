@@ -1,7 +1,6 @@
 import 'server-only'
 import { unstable_cache } from 'next/cache'
 import { ValueOf } from 'next/dist/shared/lib/constants'
-import { ReviewsJSON } from '@/lib/types'
 
 const defaultDictionary = await import('@/lib/dictionaries.json').then((module) => module.default)
 
@@ -11,8 +10,8 @@ export type Locales = typeof defaultDictionary
 export const localesAllowed = ['en', 'fr', 'de', 'ar'] as const
 export const hasLocale = (locale: string): locale is Locale => localesAllowed.includes(locale as Locale)
 
-export   const getMyMemoryTranslation = async (value: string, locale: Locale) => {
-  const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
+export const getMyMemoryTranslation = async (value: string, localeFrom: Locale, localeTo: Locale) => {
+  const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=${localeFrom}|${localeTo}`)
   if (!res.ok) throw new Error(`Failed to fetch translation for '${value}'`)
   const { responseData: {
     translatedText
@@ -28,9 +27,8 @@ export const getDictionary = async (locale: Locale): Promise<Locales> => {
   try {
     return await unstable_cache(
       async (locale: Locale) => {
-        const { reviews: _, ...pairs } = defaultDictionary
-        const translatedPromises = (Object.entries(pairs) as [keyof Locales, ValueOf<Locales>][]).map(async ([key, value]) => {
-          const translatedText = await getMyMemoryTranslation(value, locale)
+        const translatedPromises = (Object.entries(defaultDictionary) as [keyof Locales, ValueOf<Locales>][]).map(async ([key, value]) => {
+          const translatedText = await getMyMemoryTranslation(value, "en", locale)
           if (locale === 'ar' && translatedText === value) console.warn(`MyMemory failed to translate (${key}) '${value}'`)
           return [key, translatedText]
         })
