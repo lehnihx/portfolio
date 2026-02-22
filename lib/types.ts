@@ -17,10 +17,6 @@ export type Review = {
   badge: string | null | undefined
 } | undefined
 
-export interface Profile {
-  profile: string
-}
-
 export type ReviewsJSON = DefaultLocales["reviews"]
 
 export type ReviewUserId = keyof ReviewsJSON
