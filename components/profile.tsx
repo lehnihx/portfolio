@@ -27,7 +27,7 @@ const HoverCardDemo = ({ review, children, openDelay }: { review: Review, childr
 						>
 							<div className="absolute ml-5 -bottom-5 overflow-visible size-18">
 								<Image
-									className="h-[80%] w-[80%] absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover"
+									className="outline-2 h-[80%] w-[80%] absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover"
 									src={avatar}
 									alt={name}
 									width={100}
