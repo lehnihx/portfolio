@@ -6,13 +6,12 @@ import { ReviewsJSON } from '@/lib/types'
 const defaultDictionary = await import('@/lib/dictionaries.json').then((module) => module.default)
 
 export type Locale = typeof localesAllowed[number]
-export type DefaultLocales = typeof defaultDictionary
-export type Locales = Omit<DefaultLocales, 'reviews'>
+export type Locales = typeof defaultDictionary
 
 export const localesAllowed = ['en', 'fr', 'de', 'ar'] as const
 export const hasLocale = (locale: string): locale is Locale => localesAllowed.includes(locale as Locale)
 
-const getMyMemoryTranslation = async (value: string, locale: Locale) => {
+export   const getMyMemoryTranslation = async (value: string, locale: Locale) => {
   const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=en|${locale}`)
   if (!res.ok) throw new Error(`Failed to fetch translation for '${value}'`)
   const { responseData: {
@@ -21,33 +20,6 @@ const getMyMemoryTranslation = async (value: string, locale: Locale) => {
     translatedText: string
   } } = await res.json()
   return translatedText
-}
-
-export const getReviewsDictionary = async (locale: Locale): Promise<ReviewsJSON> => {
-  const { reviews } = defaultDictionary
-  if (locale === 'en') return reviews
-
-  try {
-    return await unstable_cache(
-      async (locale: Locale): Promise<ReviewsJSON> => {
-
-        const translatedPromises = Object.entries(reviews).map(async ([key, { messages }]) => {
-          const messagesPromises = messages.map(async value => await getMyMemoryTranslation(value, locale) as string)
-            
-          const translatedMessages = await Promise.all(messagesPromises)
-          return [key, { messages: translatedMessages }] as const
-        })
-        
-        const translatedEntries = await Promise.all(translatedPromises)
-        return Object.fromEntries(translatedEntries) as ReviewsJSON
-      },
-      ['reviews', locale],
-      { revalidate: false }
-    )(locale)
-  } catch (error) {
-    console.error(`MyMemory failed for ${locale}, falling back to en.`, error)
-    return reviews
-  }
 }
 
 export const getDictionary = async (locale: Locale): Promise<Locales> => {
