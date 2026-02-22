@@ -2,9 +2,10 @@ import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
 import { useDialog } from "@/lib/dialog"
 import { ArrowUpRight } from "lucide-react"
-import { Review } from "@/lib/types"
 import { Button } from "@/components/ui/button"
 import HoverProfileCard from "@/components/profile"
+import { Review } from "@/app/[lang]/page"
+import Image from "next/image"
 
 const ReviewCard = ({ review }: { review: Review }) => {
   if (!review) return
@@ -14,6 +15,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
     body,
     avatar,
     reviewLink,
+    date
   } = review
   const Dialog = useDialog()
   return (
@@ -25,12 +27,12 @@ const ReviewCard = ({ review }: { review: Review }) => {
       )}
     >
       <div className="flex items-center justify-between">
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-end gap-2">
           <HoverProfileCard
             openDelay={0}
             review={review}
           >
-            <img className="rounded-full" width="32" height="32" alt="" src={avatar} />
+            <Image className="rounded-full size-10" width={100} height={100} alt={name} src={avatar} />
           </HoverProfileCard>
           <div className="flex flex-col">
             <figcaption className="text-sm font-medium dark:text-white">
@@ -38,6 +40,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
             </figcaption>
             <p className="text-xs font-medium dark:text-white/40">{username}</p>
           </div>
+          <p className="text-xs font-medium dark:text-white/40">{date}</p>
         </div>
         <Button variant={"ghost"} size={"icon"} className="rounded-full">
           <ArrowUpRight onClick={() => Dialog(reviewLink)} />
