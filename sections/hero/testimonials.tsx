@@ -2,23 +2,19 @@ import { cn } from "@/lib/utils"
 import { Marquee } from "@/components/ui/marquee"
 import { useDialog } from "@/lib/dialog"
 import { ArrowUpRight } from "lucide-react"
-import { Reviews } from "@/lib/types"
+import { Review } from "@/lib/types"
 import { Button } from "@/components/ui/button"
 import HoverProfileCard from "@/components/profile"
 
-const ReviewCard = ({
-  img,
-  name,
-  username,
-  body,
-  url
-}: {
-  img: string
-  name: string
-  username: string
-  body: string
-  url: string
-}) => {
+const ReviewCard = ({ review }: { review: Review }) => {
+  if (!review) return
+  const {
+    name,
+    username,
+    body,
+    avatar,
+    reviewLink,
+  } = review
   const Dialog = useDialog()
   return (
     <figure
@@ -30,8 +26,11 @@ const ReviewCard = ({
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-row items-center gap-2">
-          <HoverProfileCard openDelay={0} profile={img} name={name} username={username} stars={0}>
-            <img className="rounded-full" width="32" height="32" alt="" src={img} />
+          <HoverProfileCard
+            openDelay={0}
+            review={review}
+          >
+            <img className="rounded-full" width="32" height="32" alt="" src={avatar} />
           </HoverProfileCard>
           <div className="flex flex-col">
             <figcaption className="text-sm font-medium dark:text-white">
@@ -41,7 +40,7 @@ const ReviewCard = ({
           </div>
         </div>
         <Button variant={"ghost"} size={"icon"} className="rounded-full">
-          <ArrowUpRight onClick={() => Dialog(url)} />
+          <ArrowUpRight onClick={() => Dialog(reviewLink)} />
         </Button>
       </div>
       <blockquote className="mt-2 text-sm">{body}</blockquote>
@@ -49,19 +48,19 @@ const ReviewCard = ({
   )
 }
 
-const Testimonials = ({ reviews }: { reviews: Reviews[] }) => {
+const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const firstRow = reviews.slice(0, reviews.length / 2)
   const secondRow = reviews.slice(reviews.length / 2)
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:40s]">
         {firstRow.map((review, index) => (
-          <ReviewCard key={`${review.username}-${index}`} {...review} />
+          <ReviewCard key={`${review?.username}-${index}`} {...{ review }} />
         ))}
       </Marquee>
       <Marquee reverse pauseOnHover className="[--duration:40s]">
         {secondRow.map((review, index) => (
-          <ReviewCard key={`${review.username}-${index}`} {...review} />
+          <ReviewCard key={`${review?.username}-${index}`} review={review} />
         ))}
       </Marquee>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
