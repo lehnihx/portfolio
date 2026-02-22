@@ -3,7 +3,7 @@
 import { Nav } from "@/components/nav"
 import { Hero } from "@/sections/hero"
 import { Footer } from "@/sections/footer"
-import { Review } from "@/lib/types"
+import { Review } from "./[lang]/page"
 
 const Page = ({ reviews }: { reviews: Review[] }) => (
   <main>

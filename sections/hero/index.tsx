@@ -1,9 +1,9 @@
 "use client"
 
 import { useDict } from "@/lib/dict"
-import { Review } from "@/lib/types"
 import { Testimonials } from "./testimonials"
 import { Referrals } from "./referrals"
+import { Review } from "@/app/[lang]/page"
 
 const Hero = ({ reviews }: { reviews: Review[] }) => {
   const Dict = useDict()
