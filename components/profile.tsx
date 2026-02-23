@@ -2,7 +2,7 @@
 
 import { HoverCard } from "radix-ui";
 import type { ReactNode } from "react";
-import { Badge } from "./ui/badge";
+import { Badge } from "../lib/ui/badge";
 import Image from "next/image"
 import { Verified } from "lucide-react";
 import { Tooltip } from "./tooltip";

@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuShortcut,
-} from "@/components/ui/dropdown-menu"
+} from "@/lib/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import React from "react"
@@ -16,17 +16,17 @@ import Link from "next/link"
 import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Button, buttonVariants } from "@/lib/ui/button"
+import { Separator } from "@/lib/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Dock, DockIcon } from "@/components/ui/dock"
+} from "@/lib/ui/tooltip"
+import { Dock, DockIcon } from "@/lib/ui/dock"
 import { useDict } from "@/lib/dict"
-import { DropdownMenuTrigger } from "../../components/ui/dropdown-menu"
+import { DropdownMenuTrigger } from "../../lib/ui/dropdown-menu"
 import { useDialog } from "@/lib/dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>

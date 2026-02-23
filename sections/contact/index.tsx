@@ -3,10 +3,10 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/lib/ui/field"
+import { Input } from "@/lib/ui/input"
+import { Button } from "@/lib/ui/button"
+import { Textarea } from "@/lib/ui/textarea"
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string

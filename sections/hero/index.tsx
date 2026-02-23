@@ -5,9 +5,9 @@ import { Testimonials } from "./testimonials"
 import { Referrals } from "./referrals"
 import { Review } from "@/app/[lang]/page"
 import { Clock } from "@/components/clock"
-import { Globe } from "@/components/ui/globe"
+import { Globe } from "@/lib/ui/globe"
 import { AnimatedBeamDemo } from "@/components/beam"
-import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
+import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 
 const Hero = ({ reviews }: { reviews: Review[] }) => {
   const Dict = useDict()

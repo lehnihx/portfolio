@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-import { Toaster } from "@/components/ui/sonner"
-import { ScrollProgress } from "@/components/ui/scroll-progress"
+import { Toaster } from "@/lib/ui/sonner"
+import { ScrollProgress } from "@/lib/ui/scroll-progress"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

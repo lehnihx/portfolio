@@ -3,7 +3,7 @@
 import React, { forwardRef, useRef } from "react"
 
 import { cn } from "@/lib/utils"
-import { AnimatedBeam } from "@/components/ui/animated-beam"
+import { AnimatedBeam } from "@/lib/ui/animated-beam"
 import { SiClaude } from "react-icons/si"
 import { Lenix } from "@/lib/icons"
 
