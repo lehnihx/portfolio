@@ -1,15 +1,14 @@
-"use client"
-
 import { useDict } from "@/lib/dict"
-import { SocialDock } from "@/sections/footer/social"
-import { Clock } from "@/components/clock"
+import { SocialDock } from "@/sections/footer/dock"
+import { Clock } from "@/sections/footer/clock"
+import { Copyright } from "lucide-react"
 
-const Footer = () => {
+export const Footer = () => {
   const Dict = useDict()
   return (
     <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-evenly">
       <div className="flex w-full items-center justify-evenly">
-        <p className="text-center text-gray-500 text-xs">© {new Date().getFullYear()} {Dict.lenix}. {Dict.rights}.</p>
+        <Copyright/>
         <Clock />
         <SocialDock/>
       </div>
@@ -23,5 +22,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export { Footer }

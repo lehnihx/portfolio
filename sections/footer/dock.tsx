@@ -1,5 +1,3 @@
-"use client"
-
 import { Locale } from "@/app/dictionaries"
 import {
   DropdownMenu,
@@ -12,8 +10,7 @@ import {
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import React from "react"
-import Link from "next/link"
-import { ArrowUpRight, CalendarIcon, HomeIcon, MailIcon, PencilIcon, RefreshCw } from "lucide-react"
+import { ArrowUpRight, HomeIcon, PencilIcon } from "lucide-react"
 import { Button, buttonVariants } from "@/lib/ui/button"
 import { Separator } from "@/lib/ui/separator"
 import {
@@ -29,9 +26,7 @@ import { useDialog } from "@/components/dialog"
 import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
 
-export type IconProps = React.HTMLAttributes<SVGElement>
-
-const SocialDock = () => {
+export const SocialDock = () => {
   const Dict = useDict()
   const Dialog = useDialog()
   const router = useRouter()
@@ -159,5 +154,3 @@ const SocialDock = () => {
     </div>
   )
 }
-
-export { SocialDock }
