@@ -8,7 +8,6 @@ import AuroraBackgroundDemo from "@/components/aurora-background-demo"
 import { BackgroundRippleEffectDemo } from "@/components/background-ripple-effect-demo"
 import FlipWordsDemo from "@/components/flip-words-demo"
 import SparklesPreview from "@/components/sparkles-demo"
-import { ContactForm } from "@/sections/contact"
 import { About } from "@/sections/about"
 
 export default ({ reviews }: { reviews: Review[] }) => (

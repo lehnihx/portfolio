@@ -22,8 +22,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
     <figure
       className={cn(
         "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-gray-950/10 bg-gray-950/10 hover:bg-gray-950/5",
-        "dark:border-gray-50/10 dark:bg-gray-50/10 dark:hover:bg-gray-50/15"
+        "border-accent-foreground/10 bg-accent-foreground/5 hover:bg-accent-foreground/10",
       )}
     >
       <div className="flex items-center justify-between">
@@ -57,22 +56,14 @@ const ReviewCard = ({ review }: { review: Review }) => {
 }
 
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
-  const firstRow = reviews.slice(0, reviews.length / 2)
-  const secondRow = reviews.slice(reviews.length / 2)
   return (
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:40s]">
-        {firstRow.map((review, index) => (
+      <Marquee pauseOnHover className="[--duration:90s]">
+        {reviews.map((review, index) => (
           <ReviewCard key={`${review?.username}-${index}`} {...{ review }} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:40s]">
-        {secondRow.map((review, index) => (
-          <ReviewCard key={`${review?.username}-${index}`} review={review} />
-        ))}
-      </Marquee>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
-      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-linear-to-l"></div>
     </div>
   )
 }
