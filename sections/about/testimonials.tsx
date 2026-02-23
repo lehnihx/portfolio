@@ -6,6 +6,7 @@ import { Button } from "@/lib/ui/button"
 import HoverProfileCard from "@/components/profile"
 import { Review } from "@/app/[lang]/page"
 import Image from "next/image"
+import SpotlightCard from "@/components/SpotlightCard";
 
 const ReviewCard = ({ review }: { review: Review }) => {
   if (!review) return
@@ -21,8 +22,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
   return (
     <figure
       className={cn(
-        "relative h-full w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
-        "border-accent-foreground/10 bg-accent-foreground/5 hover:bg-accent-foreground/10",
+        "relative h-full w-64 cursor-pointer overflow-hidden",
       )}
     >
       <div className="flex items-center justify-between">
@@ -60,7 +60,9 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:90s]">
         {reviews.map((review, index) => (
-          <ReviewCard key={`${review?.username}-${index}`} {...{ review }} />
+          <SpotlightCard key={`${review?.username}-${index}`} spotlightColor="var(--muted)">
+            <ReviewCard {...{ review }} />
+          </SpotlightCard>
         ))}
       </Marquee>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
