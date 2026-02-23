@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-const RootLayout = async ({
+export default async ({
   children, params
 }: {
   children: Readonly<React.ReactNode>
@@ -33,5 +33,3 @@ const RootLayout = async ({
     </html>
   )
 }
-
-export default RootLayout
