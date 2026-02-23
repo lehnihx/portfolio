@@ -39,4 +39,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Roadmap
 - [x] add locales
 - [ ] improve testimonials automation (db?) (aceternity?) (profile cards?)
-- [ ] make the dialog in a better useage way, insteaf on childrens
+- [x] make the dialog in a better useage way, insteaf on childrens
+
+## Common Errors
+```bash
+⨯ Failed to load next.config.ts, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Failed to transpile "next.config.ts".
+    at ignore-listed frames {
+  [cause]: SyntaxError: Unexpected end of input
+      at ignore-listed frames
+  }
+```
+> npx next dev
