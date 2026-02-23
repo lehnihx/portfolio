@@ -4,6 +4,7 @@ import { Button } from "./ui/button"
 import { Expand, X } from "lucide-react"
 import { useDict } from "@/lib/dict"
 import { useState } from "react"
+
 const Nav = () => {
   const Dict = useDict()
   const [states, setStates] = useState({ nav: false })
