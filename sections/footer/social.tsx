@@ -153,7 +153,7 @@ const SocialDock = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <TooltipProvider>
-        <Dock direction="middle">
+        <Dock direction="middle" className="m-0">
           {Object.entries(Docks).flatMap(([key, section], index) => {
             console.log(Object.keys(Docks)[index])
             return[
