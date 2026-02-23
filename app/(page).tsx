@@ -9,6 +9,7 @@ import { BackgroundRippleEffectDemo } from "@/components/background-ripple-effec
 import FlipWordsDemo from "@/components/flip-words-demo"
 import SparklesPreview from "@/components/sparkles-demo"
 import TimelineJourney from "@/components/timeline-demo"
+import { ContactForm } from "@/sections/contact"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <main>
@@ -19,6 +20,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
     {/* <FlipWordsDemo/> */}
     {/* <SparklesPreview/> */}
     {/* <AuroraBackgroundDemo/> */}
+    <ContactForm/>
     <Footer/>
   </main>
 )
