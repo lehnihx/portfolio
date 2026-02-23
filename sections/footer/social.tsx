@@ -68,7 +68,7 @@ const SocialDock = () => {
 
   const Docks = {
     home: (
-      <DockIcon>
+      <DockIcon key="home">
         <Tooltip>
           <TooltipTrigger asChild>
             <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -96,17 +96,15 @@ const SocialDock = () => {
       </DockIcon>
     )),
     dicts: (
-      <DockIcon>
+      <DockIcon key="dicts">
         <Tooltip>
           <DropdownMenu>
             <TooltipTrigger asChild>
-              <span>
-                <DropdownMenuTrigger asChild>
-                  <Button variant={"ghost"} size={"icon"} className="rounded-full">
-                    <PencilIcon />
-                  </Button>
-                </DropdownMenuTrigger>
-              </span>
+              <DropdownMenuTrigger asChild>
+                <Button variant={"ghost"} size={"icon"} className="rounded-full">
+                  <PencilIcon />
+                </Button>
+              </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent><p>{Dict.locales}</p></TooltipContent>
             <DropdownMenuContent className="w-full" align="start">
@@ -135,15 +133,13 @@ const SocialDock = () => {
       </DockIcon>
     ),
     preferences: (
-      <DockIcon>
+      <DockIcon key="preferences">
         <Tooltip>
           <TooltipTrigger asChild>
-            <span>
-              <AnimatedThemeToggler className={buttonVariants({ variant: "ghost", size: "icon", className: "rounded-full" })} />
-            </span>
+            <AnimatedThemeToggler className={buttonVariants({ variant: "ghost", size: "icon", className: "rounded-full" })} />
           </TooltipTrigger>
           <TooltipContent>
-            <p className="flex items-center">{Dict.theme} <RefreshCw size={16}/></p>
+            <p className="flex items-center">{Dict.theme}</p>
           </TooltipContent>
         </Tooltip>
       </DockIcon>
@@ -154,12 +150,10 @@ const SocialDock = () => {
     <div className="flex flex-col items-center justify-center">
       <TooltipProvider>
         <Dock direction="middle" className="m-0">
-          {Object.entries(Docks).flatMap(([key, section], index) => {
-            console.log(Object.keys(Docks)[index])
-            return[
+          {Object.entries(Docks).flatMap(([key, section], index) => [
             ...(Array.isArray(section) ? section : [section]),
             ...(!["preferences", "dicts"].includes(key) ? [<Separator key={`sep-${key}`} orientation="vertical" className="h-full" />] : [])
-          ]})}
+          ])}
         </Dock>
       </TooltipProvider>
     </div>
