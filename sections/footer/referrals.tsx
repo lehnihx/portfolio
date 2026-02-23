@@ -37,7 +37,7 @@ const Referrals = () => {
     setGradientColor(value)
   }, [systemTheme])
   return (
-    <Marquee autoFill pauseOnHover gradient gradientColor={gradientColor}>
+    <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={gradientColor}>
       {referrals.map(({ key, Icon, url }, index) =>
         <Icon
           key={`${key}-${index}`}

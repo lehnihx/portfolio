@@ -7,7 +7,7 @@ import { Referrals } from "./referrals"
 export const Footer = () => {
   const Dict = useDict()
   return (
-    <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-evenly">
+    <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
       <div className="flex w-full items-center justify-evenly">
         <Copyright/>
         <Clock />
@@ -15,7 +15,7 @@ export const Footer = () => {
       </div>
       <div>
         <div className="w-full flex justify-center text-[30rem]">
-          <span className="pointer-events-none bg-linear-to-b from-background to-background/10 bg-clip-text text-center leading-none font-semibold whitespace-pre-wrap text-transparent">
+          <span className="pointer-events-none bg-linear-to-b from-border to-background/10 bg-clip-text text-center leading-none font-semibold whitespace-pre-wrap text-transparent">
             {Dict.lenix}
           </span>
         </div>
