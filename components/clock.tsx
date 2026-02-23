@@ -1,5 +1,5 @@
 'use client';
-import { SlidingNumber } from '@/components/motion-primitives/sliding-number';
+import { SlidingNumber } from '@/components/ui/sliding-number';
 import { useEffect, useState } from 'react';
 
 export function Clock() {
