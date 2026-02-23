@@ -3,11 +3,13 @@
 import { useDict } from "@/lib/dict"
 import { SocialDock } from "@/sections/footer/social"
 import { ContactForm } from "../contact"
+import { Clock } from "@/components/clock"
 
 const Footer = () => {
   const Dict = useDict()
   return (
     <footer id="footer" className="h-screen flex flex-col items-center justify-evenly">
+      {/* <Clock /> */}
       {/* <ContactForm/> */}
       {/* <SocialDock/> */}
       <p className="text-center text-gray-500 text-xs">© {new Date().getFullYear()} {Dict.lenix}. {Dict.rights}.</p>
