@@ -17,7 +17,7 @@ const Nav = () => {
         <Expand/>
       </Button>
       {states.nav && (
-        <header className="fixed w-screen h-screen bg-background z-50">
+        <header className="fixed w-screen h-screen bg-background z-100">
           <Button {...{
             className: "hover:bg-transparent bg-transparent hover:scale-140 text-foreground absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
             onClick: () => setStates(prev => ({ ...prev, nav: !prev.nav }))
