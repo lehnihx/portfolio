@@ -1,4 +1,4 @@
-import { Testimonials } from "./testimonials"
+import { Testimonials } from "../articles/testimonials"
 import { Globe } from "@/lib/ui/globe"
 import { Review } from "@/app/[lang]/page"
 import TimelineJourney from "@/components/timeline-demo"

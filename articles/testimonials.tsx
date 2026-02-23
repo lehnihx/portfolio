@@ -57,7 +57,7 @@ const ReviewCard = ({ review }: { review: Review }) => {
 
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   return (
-    <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+    <article className="relative flex w-full flex-col items-center justify-center">
       <Marquee pauseOnHover className="[--duration:90s]">
         {reviews.map((review, index) => (
           <SpotlightCard key={`${review?.username}-${index}`} spotlightColor="var(--muted)">
@@ -66,7 +66,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
         ))}
       </Marquee>
       <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
-    </div>
+    </article>
   )
 }
 
