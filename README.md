@@ -41,6 +41,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] improve testimonials automation (db?) (aceternity?) (profile cards?)
 - [x] make the dialog in a better useage way, insteaf on childrens
 - [ ] sync tweets
+- [ ] fix the theme btn
 
 ## Common Errors
 ```bash

@@ -1,7 +1,6 @@
 "use client"
 
 import { Locales } from '@/app/dictionaries';
-import { Tooltip } from '@/components/tooltip';
 import { useDialog } from '@/components/dialog';
 import { useDict } from '@/lib/dict';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
@@ -40,13 +39,11 @@ const Referrals = () => {
   return (
     <Marquee autoFill pauseOnHover gradient gradientColor={gradientColor}>
       {referrals.map(({ key, Icon, url }, index) =>
-        <Tooltip tooltip={Dict[key]}>
-          <Icon 
-            key={index}
-            className={`${systemTheme === 'light' ? 'text-black' : 'text-white/70'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-            onClick={() => Dialog(url)}
-          />
-        </Tooltip>
+        <Icon
+          key={`${key}-${index}`}
+          className={`${systemTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+          onClick={() => Dialog(url)}
+        />
       )}
     </Marquee>
   )
