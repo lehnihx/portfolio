@@ -2,7 +2,7 @@
 
 import { Locales } from '@/app/dictionaries';
 import { Tooltip } from '@/components/tooltip';
-import { useDialog } from '@/lib/dialog';
+import { useDialog } from '@/components/dialog';
 import { useDict } from '@/lib/dict';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation"
 import { DictProvider } from "@/lib/dict"
 import { unstable_cache } from 'next/cache'
 import { APIBaseMessage } from "discord-api-types/v10"
-import { DialogProvider } from "@/lib/dialog"
+import { DialogProvider } from "@/components/dialog"
 
 export interface Review {
   name: string

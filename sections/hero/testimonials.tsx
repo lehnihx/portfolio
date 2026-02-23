@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils"
 import { Marquee } from "@/lib/ui/marquee"
-import { useDialog } from "@/lib/dialog"
+import { useDialog } from "@/components/dialog"
 import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/lib/ui/button"
 import HoverProfileCard from "@/components/profile"

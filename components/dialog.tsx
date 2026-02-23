@@ -1,7 +1,7 @@
 "use client"
 
 import { Input } from "@/lib/ui/input"
-import { AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "./ui/alert-dialog"
+import { AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "../lib/ui/alert-dialog"
 import Link from "next/link"
 import { useDict } from "@/lib/dict"
 import { createContext, useContext, useState } from "react"

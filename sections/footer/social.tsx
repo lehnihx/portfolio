@@ -27,7 +27,7 @@ import {
 import { Dock, DockIcon } from "@/lib/ui/dock"
 import { useDict } from "@/lib/dict"
 import { DropdownMenuTrigger } from "../../lib/ui/dropdown-menu"
-import { useDialog } from "@/lib/dialog"
+import { useDialog } from "@/components/dialog"
 
 export type IconProps = React.HTMLAttributes<SVGElement>
 
