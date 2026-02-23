@@ -21,7 +21,7 @@ import {
 } from "@/lib/ui/tooltip"
 import { Dock, DockIcon } from "@/lib/ui/dock"
 import { useDict } from "@/lib/dict"
-import { DropdownMenuTrigger } from "../../lib/ui/dropdown-menu"
+import { DropdownMenuTrigger } from "../lib/ui/dropdown-menu"
 import { useDialog } from "@/components/dialog"
 import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
@@ -142,7 +142,7 @@ export const SocialDock = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <article className="flex flex-col items-center justify-center">
       <TooltipProvider>
         <Dock direction="middle" className="m-0">
           {Object.entries(Docks).flatMap(([key, section], index) => [
@@ -151,6 +151,6 @@ export const SocialDock = () => {
           ])}
         </Dock>
       </TooltipProvider>
-    </div>
+    </article>
   )
 }

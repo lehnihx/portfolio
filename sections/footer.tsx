@@ -1,25 +1,24 @@
 import { useDict } from "@/lib/dict"
-import { SocialDock } from "@/sections/footer/dock"
-import { Clock } from "@/sections/footer/clock"
-import { Copyright } from "lucide-react"
-import { Referrals } from "./referrals"
+import { SocialDock } from "@/articles/dock"
+import { Referrals } from "../articles/referrals"
+import { Clock } from "@/articles/clock"
 
 export const Footer = () => {
   const Dict = useDict()
   return (
     <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
       <div className="flex w-full items-center justify-evenly">
-        <Copyright/>
+        <p className="text-center text-gray-500 text-xs">© {new Date().getFullYear()} {Dict.lenix}. {Dict.rights}.</p>
         <Clock />
         <SocialDock/>
       </div>
-      <div>
+      <article>
         <div className="w-full flex justify-center text-[30rem]">
           <span className="pointer-events-none bg-linear-to-b from-border to-background/10 bg-clip-text text-center leading-none font-semibold whitespace-pre-wrap text-transparent">
             {Dict.lenix}
           </span>
         </div>
-      </div>
+      </article>
       <Referrals/>
     </footer>
   )
