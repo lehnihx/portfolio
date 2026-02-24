@@ -1,5 +1,4 @@
 import { Timeline } from "@/components/ui/timeline";
-import { LinkPreview } from "./ui/link-preview";
 
 export default function TimelineJourney() {
   const data = [

@@ -1,4 +1,3 @@
-import 'server-only'
 import { unstable_cache } from 'next/cache'
 import { ValueOf } from 'next/dist/shared/lib/constants'
 
