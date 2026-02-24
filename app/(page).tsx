@@ -9,7 +9,6 @@ import Ask from "@/components/ask"
 import TimelineJourney from "@/articles/timeline"
 import { Location } from "@/articles/location"
 import { Lenix } from "@/articles/lenix"
-import { LazyProvider } from "@/hooks/useLazy"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <>
@@ -21,31 +20,19 @@ export default ({ reviews }: { reviews: Review[] }) => (
         <Intro/>
       </section>
       <section className="flex flex-col items-center justify-between">
-        <LazyProvider>
-          <TimelineJourney/>
-        </LazyProvider>
-        <LazyProvider>
-          <Testimonials {...{ reviews }} />
-        </LazyProvider>
-        <LazyProvider>
-          <Location/>
-        </LazyProvider>
+        <TimelineJourney/>
+        <Testimonials {...{ reviews }} />
+        <Location/>
       </section>
       <section className="w-screen flex flex-col items-center justify-center">
-        <LazyProvider>
-          <Ask/>
-          <ContactForm/>
-        </LazyProvider>
+        <Ask/>
+        <ContactForm/>
       </section>
     </main>
       <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
-        <LazyProvider>
-          <Preferences/>
-        </LazyProvider>
-        <LazyProvider>
-          <Lenix/>
-          <Referrals/>
-        </LazyProvider>
+        <Preferences/>
+        <Lenix/>
+        <Referrals/>
       </footer>
   </>
 )

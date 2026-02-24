@@ -76,29 +76,24 @@ const UserProfile = ({
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
   return (
-    <article className="relative w-full flex flex-col items-center justify-center overflow-hidden py-20">
-      <Marquee pauseOnHover className="[--duration:90s] overflow-hidden">
+    <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
+      <Marquee pauseOnHover className="[--duration:90s]">
         {reviews.map((review, index) => (
           <React.Fragment key={`${review?.username}-${index}`} >
             {review && (() => {
             const { name, username, date, reviewLink, body } = review
               return (
-                <figure className={cn("relative w-64 cursor-pointer bg-accent p-6 rounded-md")}>
+                <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
                   <div className="flex items-center justify-between">
                     <div className="flex flex-row items-end gap-2">
                       <UserProfile {...review}/>
                       <div className="flex flex-col">
-                        <figcaption className="text-sm font-medium text-foreground">
-                          {name}
-                        </figcaption>
+                        <figcaption className="text-sm font-medium text-foreground">{name}</figcaption>
                         <p className="text-xs font-medium text-foreground/40">{username}</p>
                       </div>
                       <p className="text-xs font-medium text-foreground/40">{date}</p>
                     </div>
-                    <Button
-                      variant={"ghost"}
-                      size={"icon"}
-                      className="rounded-full"
+                    <Button variant={"ghost"} size={"icon"} className="rounded-full"
                       onClick={() => dialog(reviewLink)}
                     >
                       <ArrowUpRight/>
@@ -111,17 +106,11 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
           </React.Fragment>
         ))}
       </Marquee>
-      <ProgressiveBlur
+      <ProgressiveBlur direction='left' blurIntensity={0.5} blurLayers={5}
         className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
-        direction='left'
-        blurIntensity={0.5}
-        blurLayers={5}
       />
-      <ProgressiveBlur
+      <ProgressiveBlur direction='right' blurIntensity={0.5} blurLayers={5}
         className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
-        direction='right'
-        blurIntensity={0.5}
-        blurLayers={5}
       />
     </article>
   )
