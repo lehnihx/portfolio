@@ -1,3 +1,4 @@
+"use client"
 import { useDict } from "@/hooks/useDict"
 import { Clock } from "lucide-react"
 import { SocialDock } from "./dock"

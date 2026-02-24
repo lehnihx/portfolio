@@ -1,3 +1,4 @@
+"use client"
 import { TypingAnimation } from "@/components/ui/typing-animation"
 import { useDict } from "@/hooks/useDict"
 

@@ -1,3 +1,4 @@
+"use client"
 import { Input } from "@/lib/ui/input"
 import { AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogCancel, AlertDialogAction, AlertDialog } from "../lib/ui/alert-dialog"
 import Link from "next/link"

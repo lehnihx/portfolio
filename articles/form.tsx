@@ -1,3 +1,4 @@
+"use client"
 import { useDict } from "@/hooks/useDict"
 import { Button } from "@/lib/ui/button"
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/lib/ui/field"
