@@ -19,21 +19,23 @@ const InputField = ({ id, label, placeholder, type }: {
 export const ContactForm = () => {
   const Dict = useDict()
   return (
-    <form action="">
-      <FieldSet className="w-full">
-        <FieldLabel className="text-3xl">{Dict.contact} {Dict.lenix}</FieldLabel>
-        <FieldGroup className="flex items-center justify-center">
-          <InputField id="name" label={Dict.name} placeholder={Dict.lenix} type="text" />
-          <InputField id="email" label={Dict.email} placeholder="contact@lenix.dev" type="email" />
-          <Field className="min-w-md">
-            <FieldLabel htmlFor="mail-user-message">{Dict.mail}</FieldLabel>
-            <Textarea className="max-h-[calc(100vh/3)]" placeholder={Dict.mail_placeholder} required />
-          </Field>
-          <Field >
-            <Button variant="outline" type="submit">{Dict.send}</Button>
-          </Field>
-        </FieldGroup>
-      </FieldSet>
-    </form>
+    <article className="h-screen">
+      <form action="">
+        <FieldSet className="w-full">
+          <FieldLabel className="text-3xl">{Dict.contact} {Dict.lenix}</FieldLabel>
+          <FieldGroup className="flex items-center justify-center">
+            <InputField id="name" label={Dict.name} placeholder={Dict.lenix} type="text" />
+            <InputField id="email" label={Dict.email} placeholder="contact@lenix.dev" type="email" />
+            <Field className="min-w-md">
+              <FieldLabel htmlFor="mail-user-message">{Dict.mail}</FieldLabel>
+              <Textarea className="max-h-[calc(100vh/3)]" placeholder={Dict.mail_placeholder} required />
+            </Field>
+            <Field >
+              <Button variant="outline" type="submit">{Dict.send}</Button>
+            </Field>
+          </FieldGroup>
+        </FieldSet>
+      </form>
+    </article>
   )
 }
