@@ -7,6 +7,7 @@ import HoverProfileCard from "@/components/profile"
 import { Review } from "@/app/[lang]/page"
 import Image from "next/image"
 import SpotlightCard from "@/components/SpotlightCard";
+import { ProgressiveBlur } from "@/components/ui/progressive-blur"
 
 const ReviewCard = ({ review }: { review: Review }) => {
   if (!review) return
@@ -65,7 +66,18 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
           </SpotlightCard>
         ))}
       </Marquee>
-      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-linear-to-r"></div>
+      <ProgressiveBlur
+        className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
+        direction='left'
+        blurIntensity={0.5}
+        blurLayers={5}
+      />
+      <ProgressiveBlur
+        className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
+        direction='right'
+        blurIntensity={0.5}
+        blurLayers={5}
+      />
     </article>
   )
 }
