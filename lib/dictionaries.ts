@@ -11,7 +11,7 @@ export const hasLocale = (locale: string): locale is Locale => localesAllowed.in
 
 export const getMyMemoryTranslation = async (value: string, localeFrom: Locale, localeTo: Locale) => {
   const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(value)}&langpair=${localeFrom}|${localeTo}`)
-  if (!res.ok) throw new Error(`Failed to fetch translation for '${value}'`)
+  if (!res.ok) throw new Error(`${res.status}: Failed to fetch translation for '${value}'`)
   const { responseData: {
     translatedText
   } }: { responseData: {

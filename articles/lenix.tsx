@@ -9,7 +9,7 @@ export const Lenix = () => {
   return (
     <article>
       <div className="h-screen w-full bg-background flex flex-col items-center justify-center overflow-hidden rounded-md">
-        <p className="w-full text-[39.5vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground to-foreground/10 bg-clip-text text-transparent">
+        <p className="w-full text-[39.5vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground/50 to-background bg-clip-text text-transparent">
           {dict.lenix}
         </p>
         <div className="w-full h-40 relative">

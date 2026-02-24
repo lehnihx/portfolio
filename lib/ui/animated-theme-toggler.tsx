@@ -14,12 +14,12 @@ export const AnimatedThemeToggler = ({
   duration = 400,
   ...props
 }: AnimatedThemeTogglerProps) => {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
 
-  const isDark = mounted && theme === 'dark'
+  const isDark = mounted && resolvedTheme === 'dark'
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   const toggleTheme = useCallback(async () => {
