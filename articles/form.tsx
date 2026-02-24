@@ -1,4 +1,4 @@
-import { useDict } from "@/lib/dict"
+import { useDict } from "@/hooks/useDict"
 import { Button } from "@/lib/ui/button"
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/lib/ui/field"
 import { Input } from "@/lib/ui/input"
@@ -17,21 +17,21 @@ const InputField = ({ id, label, placeholder, type }: {
 )
 
 export const ContactForm = () => {
-  const Dict = useDict()
+  const dict = useDict()
   return (
     <article className="h-screen">
       <form action="">
         <FieldSet className="w-full">
-          <FieldLabel className="text-3xl">{Dict.contact} {Dict.lenix}</FieldLabel>
+          <FieldLabel className="text-3xl">{dict.contact} {dict.lenix}</FieldLabel>
           <FieldGroup className="flex items-center justify-center">
-            <InputField id="name" label={Dict.name} placeholder={Dict.lenix} type="text" />
-            <InputField id="email" label={Dict.email} placeholder="contact@lenix.dev" type="email" />
+            <InputField id="name" label={dict.name} placeholder={dict.lenix} type="text" />
+            <InputField id="email" label={dict.email} placeholder="contact@lenix.dev" type="email" />
             <Field className="min-w-md">
-              <FieldLabel htmlFor="mail-user-message">{Dict.mail}</FieldLabel>
-              <Textarea className="max-h-[calc(100vh/3)]" placeholder={Dict.mail_placeholder} required />
+              <FieldLabel htmlFor="mail-user-message">{dict.mail}</FieldLabel>
+              <Textarea className="max-h-[calc(100vh/3)]" placeholder={dict.mail_placeholder} required />
             </Field>
             <Field >
-              <Button variant="outline" type="submit">{Dict.send}</Button>
+              <Button variant="outline" type="submit">{dict.send}</Button>
             </Field>
           </FieldGroup>
         </FieldSet>

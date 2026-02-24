@@ -1,4 +1,3 @@
-"use client";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
 
 export function BackgroundRippleEffectDemo() {

@@ -1,4 +1,5 @@
-import { Locale } from "@/app/dictionaries"
+"use client"
+import { Locale } from "@/lib/dictionaries"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,24 +21,24 @@ import {
   TooltipTrigger,
 } from "@/lib/ui/tooltip"
 import { Dock, DockIcon } from "@/lib/ui/dock"
-import { useDict } from "@/lib/dict"
+import { useDict } from "@/hooks/useDict"
 import { DropdownMenuTrigger } from "../lib/ui/dropdown-menu"
-import { useDialog } from "@/components/dialog"
+import { useDialog } from "@/hooks/useDialog"
 import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
 
 export const SocialDock = () => {
-  const Dict = useDict()
-  const Dialog = useDialog()
+  const dict = useDict()
+  const dialog = useDialog()
   const router = useRouter()
   const changeDict = (locale: Locale) => {
     router.push(`/${locale}#footer`)
     toast.promise(
       () => new Promise(resolve => setTimeout(resolve, 2000)),
       {
-        loading: Dict.changing_language,
-        success: Dict.language_changed,
-        error: Dict.failed_language_change,
+        loading: dict.changing_language,
+        success: dict.language_changed,
+        error: dict.failed_language_change,
         position: "top-right"
       }
     )
@@ -45,17 +46,17 @@ export const SocialDock = () => {
 
   const socials = [
     {
-      name: Dict.github,
+      name: dict.github,
       url: "https://github.com/lenixdev",
       Icon: SiGithub,
     },
     {
-      name: Dict.linkedin,
+      name: dict.linkedin,
       url: "https://www.linkedin.com/in/lenixdev",
       Icon: SiLinkedin,
     },
     {
-      name: Dict.twitter,
+      name: dict.twitter,
       url: "https://x.com/lenixdev",
       Icon: SiX,
     },
@@ -71,7 +72,7 @@ export const SocialDock = () => {
             </Button>
           </TooltipTrigger>
           <TooltipContent>
-            <p>{Dict.home}</p>
+            <p>{dict.home}</p>
           </TooltipContent>
         </Tooltip>
       </DockIcon>
@@ -80,7 +81,7 @@ export const SocialDock = () => {
       <DockIcon key={name}>
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => Dialog(url)}>
+            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => dialog(url)}>
               <Icon/>
             </Button>
           </TooltipTrigger>
@@ -101,24 +102,24 @@ export const SocialDock = () => {
                 </Button>
               </DropdownMenuTrigger>
             </TooltipTrigger>
-            <TooltipContent><p>{Dict.locales}</p></TooltipContent>
+            <TooltipContent><p>{dict.locales}</p></TooltipContent>
             <DropdownMenuContent className="w-full" align="start">
               <DropdownMenuGroup>
-                <DropdownMenuLabel>{Dict.locales}</DropdownMenuLabel>
+                <DropdownMenuLabel>{dict.locales}</DropdownMenuLabel>
                 <DropdownMenuItem onClick={() => changeDict("en")}>
                   English
                   <DropdownMenuShortcut>🇬🇧</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => changeDict("fr")}>
-                  Français ({Dict.not_recommended})
+                  Français ({dict.not_recommended})
                   <DropdownMenuShortcut>🇫🇷</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => changeDict("ar")}>
-                  العربية ({Dict.not_recommended})
+                  العربية ({dict.not_recommended})
                   <DropdownMenuShortcut>🇩🇿</DropdownMenuShortcut>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => changeDict("de")}>
-                  Deutsche ({Dict.not_recommended})
+                  Deutsche ({dict.not_recommended})
                   <DropdownMenuShortcut>🇩🇪</DropdownMenuShortcut>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
@@ -136,7 +137,7 @@ export const SocialDock = () => {
             </div>
           </TooltipTrigger>
           <TooltipContent>
-            <p className="flex items-center">{Dict.theme}</p>
+            <p className="flex items-center">{dict.theme}</p>
           </TooltipContent>
         </Tooltip>
       </DockIcon>

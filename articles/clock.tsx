@@ -1,3 +1,4 @@
+"use client"
 import { SlidingNumber } from '@/lib/ui/sliding-number';
 import { useEffect, useState } from 'react';
 

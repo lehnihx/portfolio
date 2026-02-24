@@ -1,5 +1,3 @@
-"use client";
-
 import { motion } from "motion/react";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 

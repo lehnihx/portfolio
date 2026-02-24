@@ -1,8 +1,7 @@
 "use client"
-
-import { Locales } from '@/app/dictionaries';
-import { useDialog } from '@/components/dialog';
-import { useDict } from '@/lib/dict';
+import { Locales } from '@/lib/dictionaries';
+import { useDialog } from '@/hooks/useDialog';
+import { useDict } from '@/hooks/useDict';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
@@ -27,8 +26,8 @@ const referrals = [
 ] as const
 
 const Referrals = () => {
-  const Dialog = useDialog()
-  const Dict = useDict()
+  const dialog = useDialog()
+  const dict = useDict()
   const { systemTheme } = useTheme()
   const [gradientColor, setGradientColor] = useState('black')
 
@@ -42,7 +41,7 @@ const Referrals = () => {
         <Icon
           key={`${key}-${index}`}
           className={`${systemTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-          onClick={() => Dialog(url)}
+          onClick={() => dialog(url)}
         />
       )}
     </Marquee>

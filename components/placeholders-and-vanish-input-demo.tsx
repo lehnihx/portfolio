@@ -1,8 +1,6 @@
-"use client";
-
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 
-export default function PlaceholdersAndVanishInputDemo() {
+export default function () {
   const placeholders = [
     "What's the first rule of Fight Club?",
     "Who is Tyler Durden?",
