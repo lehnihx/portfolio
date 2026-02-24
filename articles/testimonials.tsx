@@ -76,7 +76,7 @@ const UserProfile = ({
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
   return (
-    <article className="relative flex w-full h-screen flex-col items-center justify-center">
+    <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
       <Marquee pauseOnHover className="[--duration:90s]">
         {reviews.map((review, index) => (
           <React.Fragment key={`${review?.username}-${index}`} >
