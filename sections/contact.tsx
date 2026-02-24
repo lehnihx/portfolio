@@ -8,6 +8,7 @@ import { Input } from "@/lib/ui/input"
 import { Button } from "@/lib/ui/button"
 import { Textarea } from "@/lib/ui/textarea"
 import { useDict } from "@/lib/dict"
+import PlaceholdersAndVanishInputDemo from "@/components/placeholders-and-vanish-input-demo"
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string
@@ -25,6 +26,7 @@ export const ContactForm = () => {
   const Dict = useDict()
   return (
     <section className="h-screen w-screen flex items-center justify-center">
+      <PlaceholdersAndVanishInputDemo/>
       <form action="">
         <FieldSet className="w-full">
           <FieldLabel className="text-3xl">{Dict.contact} {Dict.lenix}</FieldLabel>
