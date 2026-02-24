@@ -1,5 +1,7 @@
 "use client"
 
+import AuroraBackgroundDemo from "@/components/aurora-background-demo"
+import { MorphingDialogBasicOne } from "@/components/card"
 import { TextEffectWithExit } from "@/components/textEffectWithExit"
 import { TypingAnimation } from "@/components/ui/typing-animation"
 import { useDict } from "@/lib/dict"
@@ -20,7 +22,6 @@ const Hero = () => {
       {/* <TextEffectWithExit>{Dict.intro}</TextEffectWithExit> */}
       {/* <BackgroundRippleEffectDemo/> */}
       {/* <FlipWordsDemo/> */}
-      {/* <SparklesPreview/> */}
       {/* <AuroraBackgroundDemo/> */}
     </section>
   )
