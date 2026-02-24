@@ -3,7 +3,7 @@ import { Marquee } from "@/lib/ui/marquee"
 import { useDialog } from "@/components/dialog"
 import { ArrowUpRight } from "lucide-react"
 import { Button } from "@/lib/ui/button"
-import HoverProfileCard from "@/components/profile"
+import { ProfileCard } from "@/components/profile"
 import { Review } from "@/app/[lang]/page"
 import Image from "next/image"
 import SpotlightCard from "@/components/SpotlightCard";
@@ -28,12 +28,12 @@ const ReviewCard = ({ review }: { review: Review }) => {
     >
       <div className="flex items-center justify-between">
         <div className="flex flex-row items-end gap-2">
-          <HoverProfileCard
+          <ProfileCard
             openDelay={0}
             review={review}
           >
             <Image className="rounded-full size-10" width={100} height={100} alt={name} src={avatar} />
-          </HoverProfileCard>
+          </ProfileCard>
           <div className="flex flex-col">
             <figcaption className="text-sm font-medium dark:text-white">
               {name}

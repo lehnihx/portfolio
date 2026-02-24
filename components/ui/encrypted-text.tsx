@@ -132,6 +132,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
       className={cn(className)}
       aria-label={text}
       role="text"
+      suppressHydrationWarning={true}
     >
       {text.split("").map((char, index) => {
         const isRevealed = index < revealCount;
@@ -146,6 +147,7 @@ export const EncryptedText: React.FC<EncryptedTextProps> = ({
           <span
             key={index}
             className={cn(isRevealed ? revealedClassName : encryptedClassName)}
+            suppressHydrationWarning={true}
           >
             {displayChar}
           </span>

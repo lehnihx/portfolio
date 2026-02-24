@@ -5,10 +5,10 @@ import type { ReactNode } from "react";
 import { Badge } from "../lib/ui/badge";
 import Image from "next/image"
 import { Verified } from "lucide-react";
-import { Tooltip } from "./tooltip";
 import { Review } from "@/app/[lang]/page";
+import { Tooltip } from "./ui/tooltip-card";
 
-const HoverCardDemo = ({ review, children, openDelay }: { review: Review, children: ReactNode, openDelay?: number }) => {
+export const ProfileCard = ({ review, children, openDelay }: { review: Review, children: ReactNode, openDelay?: number }) => {
 	if (!review) return
 	const { name, username, avatar, banner, color, locale, verified, avatar_decoration, tag, badge } = review
 	return (
@@ -53,7 +53,7 @@ const HoverCardDemo = ({ review, children, openDelay }: { review: Review, childr
 							<div className="flex ">
 								<div className="m-0 text-[15px] font-medium text-mauve12">
 									{name}
-									{verified && <Tooltip tooltip="This user has verified his email">
+									{verified && <Tooltip content="This user has verified his email">
 										<Badge variant="outline">
 											<Verified/>
 										</Badge>
@@ -74,5 +74,3 @@ const HoverCardDemo = ({ review, children, openDelay }: { review: Review, childr
 		</HoverCard.Root>
 	)
 }
-
-export default HoverCardDemo;

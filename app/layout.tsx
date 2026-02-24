@@ -3,7 +3,7 @@ import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/lib/ui/sonner"
 import { ScrollProgress } from "@/lib/ui/scroll-progress"
-import { LoadingScreen } from "@/components/loading"
+import { LoadingScreen } from "@/articles/loading"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

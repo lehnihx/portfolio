@@ -145,7 +145,7 @@ export const SocialDock = () => {
     <article className="flex flex-col items-center justify-center flex-1/3">
       <TooltipProvider>
         <Dock direction="middle" className="m-0">
-          {Object.entries(Docks).flatMap(([key, section], index) => [
+          {Object.entries(Docks).flatMap(([key, section]) => [
             ...(Array.isArray(section) ? section : [section]),
             ...(!["preferences", "dicts"].includes(key) ? [<Separator key={`sep-${key}`} orientation="vertical" className="h-full" />] : [])
           ])}
