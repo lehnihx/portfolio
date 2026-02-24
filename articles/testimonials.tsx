@@ -30,7 +30,7 @@ const UserProfile = ({
     </HoverCard.Trigger>
     <HoverCard.Portal>
       <HoverCard.Content style={{ backgroundColor: color ? `${color}` : undefined }} sideOffset={5}
-        className="w-75 rounded-md bg-background shadow-[hsl(206_22%_7%/35%)_0px_10px_38px_-10px,hsl(206_22%_7%/20%)_0px_10px_20px_-15px] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
+        className="w-75 rounded-md bg-border shadow-[hsl(206_22%_7%/35%)_0px_10px_38px_-10px,hsl(206_22%_7%/20%)_0px_10px_20px_-15px] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
       >
       <div className="flex flex-col gap-1.75">
       <div style={{ backgroundImage: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -41,8 +41,8 @@ const UserProfile = ({
             className="outline-2 h-[80%] w-[80%] absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full object-cover"
           />
           {avatar_decoration && (
-            <Image alt={`${name} decoration`} width={100} height={100}
-              className="pointer-events-none absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 object-contain"										src={avatar_decoration}
+            <Image alt={`${name} decoration`} width={100} height={100} src={avatar_decoration}
+              className="pointer-events-none absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 object-contain"
             />
           )}
         </div>
@@ -67,7 +67,7 @@ const UserProfile = ({
           </div>
         </div>
       </div>
-      <HoverCard.Arrow className="fill-white" />
+      <HoverCard.Arrow className="fill-foreground" />
       </HoverCard.Content>
     </HoverCard.Portal>
   </HoverCard.Root>
@@ -85,19 +85,19 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
               return (
                 <figure
                   className={cn(
-                    "relative h-full w-64 cursor-pointer overflow-hidden",
+                    "relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md",
                   )}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex flex-row items-end gap-2">
                       <UserProfile {...review}/>
                       <div className="flex flex-col">
-                        <figcaption className="text-sm font-medium dark:text-white">
+                        <figcaption className="text-sm font-medium text-foreground">
                           {name}
                         </figcaption>
-                        <p className="text-xs font-medium dark:text-white/40">{username}</p>
+                        <p className="text-xs font-medium text-foreground/40">{username}</p>
                       </div>
-                      <p className="text-xs font-medium dark:text-white/40">{date}</p>
+                      <p className="text-xs font-medium text-foreground/40">{date}</p>
                     </div>
                     <Button
                       variant={"ghost"}
