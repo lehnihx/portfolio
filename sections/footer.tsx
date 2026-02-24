@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
       <div className="flex w-full items-center justify-evenly">
-        <p className="text-center text-gray-500 text-xs">© {new Date().getFullYear()} {Dict.lenix}. {Dict.rights}.</p>
+        <p className="text-center flex-1/3 text-gray-500 text-xs">© {new Date().getFullYear()} {Dict.lenix}. {Dict.rights}.</p>
         <Clock />
         <SocialDock/>
       </div>

@@ -16,7 +16,7 @@ export function Clock() {
   }, []);
 
   return (
-    <article className='flex items-center gap-0.5 font-mono'>
+    <article className='flex items-center justify-center gap-0.5 font-mono flex-1/3'>
       <SlidingNumber value={hours} padStart={true} />
       <span className='text-zinc-500'>:</span>
       <SlidingNumber value={minutes} padStart={true} />

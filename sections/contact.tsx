@@ -7,6 +7,7 @@ import {
 import { Input } from "@/lib/ui/input"
 import { Button } from "@/lib/ui/button"
 import { Textarea } from "@/lib/ui/textarea"
+import { useDict } from "@/lib/dict"
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string
@@ -20,23 +21,26 @@ const InputField = ({ id, label, placeholder, type }: {
   </Field>
 )
 
-export const ContactForm = () => (
-  <div className="w-full flex items-center justify-center">
-    <form action="">
-      <FieldSet className="w-full">
-        <FieldLabel className="text-3xl">Contact Lenix</FieldLabel>
-        <FieldGroup className="flex items-center justify-center">
-          <InputField id="name" label="Name" placeholder="Lenix" type="text" />
-          <InputField id="email" label="Email" placeholder="contact@lenix.dev" type="email" />
-          <Field className="min-w-md">
-            <FieldLabel htmlFor="mail-user-message">Mail</FieldLabel>
-            <Textarea placeholder="Hello Lenix, I would like to know more about you." required />
-          </Field>
-          <Field >
-            <Button variant="outline" type="submit">Send</Button>
-          </Field>
-        </FieldGroup>
-      </FieldSet>
-    </form>
-  </div>
-)
+export const ContactForm = () => {
+  const Dict = useDict()
+  return (
+    <section className="h-screen w-screen flex items-center justify-center">
+      <form action="">
+        <FieldSet className="w-full">
+          <FieldLabel className="text-3xl">{Dict.contact} {Dict.lenix}</FieldLabel>
+          <FieldGroup className="flex items-center justify-center">
+            <InputField id="name" label={Dict.name} placeholder={Dict.lenix} type="text" />
+            <InputField id="email" label={Dict.email} placeholder="contact@lenix.dev" type="email" />
+            <Field className="min-w-md">
+              <FieldLabel htmlFor="mail-user-message">{Dict.mail}</FieldLabel>
+              <Textarea className="max-h-[calc(100vh/3)]" placeholder={Dict.mail_placeholder} required />
+            </Field>
+            <Field >
+              <Button variant="outline" type="submit">{Dict.send}</Button>
+            </Field>
+          </FieldGroup>
+        </FieldSet>
+      </form>
+    </section>
+  )
+}
