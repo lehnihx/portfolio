@@ -14,22 +14,22 @@ const InputField = ({ id, label, placeholder, type }: {
   placeholder: string
   type: string
 }) => (
-  <Field>
+  <Field className="min-w-md">
     <FieldLabel htmlFor={`input-${id}`}>{label}</FieldLabel>
     <Input id={`input-${id}`} type={type} placeholder={placeholder} required />
   </Field>
 )
 
 export const ContactForm = () => (
-  <div className="w-full max-w-md">
+  <div className="w-full flex items-center justify-center">
     <form action="">
       <FieldSet className="w-full">
         <FieldLabel className="text-3xl">Contact Lenix</FieldLabel>
-        <FieldGroup>
+        <FieldGroup className="flex items-center justify-center">
           <InputField id="name" label="Name" placeholder="Lenix" type="text" />
           <InputField id="email" label="Email" placeholder="contact@lenix.dev" type="email" />
-          <Field>
-            <FieldLabel {...{ htmlFor: "mail-user-message" }}>Mail</FieldLabel>
+          <Field className="min-w-md">
+            <FieldLabel htmlFor="mail-user-message">Mail</FieldLabel>
             <Textarea placeholder="Hello Lenix, I would like to know more about you." required />
           </Field>
           <Field >
