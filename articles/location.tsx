@@ -1,14 +1,14 @@
 "use client"
-import { useIsInView } from "@/hooks/useIsInView";
-import { Globe } from "@/lib/ui/globe";
+import { useIsInView } from "@/hooks/useIsInView"
+import { Globe } from "@/lib/ui/globe"
 
 export const Location = () => {
   const { ref, height, visible } = useIsInView()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height ?? 600 }} className="w-full">
       {visible && <Globe config={{
-        width: 800,
-        height: 800,
+        width: 600,
+        height: 600,
         onRender: () => {},
         devicePixelRatio: 2,
         phi: 3,
@@ -20,10 +20,7 @@ export const Location = () => {
         baseColor: [1, 1, 1],
         markerColor: [0, 0, 0],
         glowColor: [1, 1, 1],
-        markers: [{
-          location: [36, 3],
-          size: 0.15
-        }],
+        markers: [{ location: [36, 3], size: 0.15 }],
       }}/>}
     </div>
   )

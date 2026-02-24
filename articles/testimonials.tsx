@@ -78,7 +78,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const { ref, height, visible } = useIsInView()
   const dialog = useDialog()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height }} className="w-full">
       {visible && (
         <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
           <Marquee pauseOnHover className="[--duration:90s]">
