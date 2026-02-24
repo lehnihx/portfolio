@@ -131,7 +131,9 @@ export const SocialDock = () => {
       <DockIcon key="preferences">
         <Tooltip>
           <TooltipTrigger asChild>
-            <AnimatedThemeToggler className={buttonVariants({ variant: "ghost", size: "icon", className: "rounded-full" })} />
+            <div>
+              <AnimatedThemeToggler className={buttonVariants({ variant: "ghost", size: "icon", className: "rounded-full" })} />
+            </div>
           </TooltipTrigger>
           <TooltipContent>
             <p className="flex items-center">{Dict.theme}</p>

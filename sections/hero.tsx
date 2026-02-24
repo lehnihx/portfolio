@@ -23,8 +23,8 @@ const Hero = () => {
       />
       {/* <h2>{Dict.intro}</h2> */}
       {/* <TextEffectWithExit>{Dict.intro}</TextEffectWithExit> */}
-      <FlipWordsDemo/>
-      <BackgroundRippleEffectDemo/>
+      {/* <FlipWordsDemo/>
+      <BackgroundRippleEffectDemo/> */}
       {/* <AnimatedBeamDemo/> */}
       {/* <AuroraBackgroundDemo/> */}
     </section>

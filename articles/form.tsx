@@ -1,10 +1,8 @@
-
 import { useDict } from "@/lib/dict"
 import { Button } from "@/lib/ui/button"
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/lib/ui/field"
 import { Input } from "@/lib/ui/input"
 import { Textarea } from "@/lib/ui/textarea"
-
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string

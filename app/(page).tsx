@@ -2,10 +2,10 @@
 
 import { Header } from "@/sections/header"
 import { Hero } from "@/sections/hero"
-import { Footer } from "@/sections/footer"
 import { Review } from "./[lang]/page"
 import { About } from "@/sections/about"
-import { ContactForm } from "@/sections/contact"
+import { Contact } from "@/sections/contact"
+import { Footer } from "@/sections/footer"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <>
@@ -13,7 +13,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
     <main>
       <Hero/>
       <About reviews={reviews}/>
-      <ContactForm/>
+      <Contact/>
     </main>
     <Footer/>
   </>
