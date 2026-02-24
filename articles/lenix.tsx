@@ -9,12 +9,12 @@ export const Lenix = () => {
   return (
     <article>
       <div className="h-screen w-full bg-background flex flex-col items-center justify-center overflow-hidden rounded-md">
-        <p className="w-full text-[39.5vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground/50 to-background bg-clip-text text-transparent">
+        <p className="w-full text-[39.5vw] portrait:text-[37vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground/50 to-background bg-clip-text text-transparent">
           {dict.lenix}
         </p>
         <div className="w-full h-40 relative">
-          <div className="absolute inset-x-40 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-1.25 w-3/4 blur-sm" />
-          <div className="absolute inset-x-40 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-px w-3/4" />
+          <div className="absolute inset-x-40 portrait:inset-x-12.5 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-1.25 w-3/4 blur-sm" />
+          <div className="absolute inset-x-40 portrait:inset-x-12.5 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-px w-3/4" />
 
           <SparklesCore
             background="transparent"

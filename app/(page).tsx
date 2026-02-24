@@ -24,15 +24,15 @@ export default ({ reviews }: { reviews: Review[] }) => (
         <Testimonials {...{ reviews }} />
         <Location/>
       </section>
-      <section className="w-screen flex flex-col items-center justify-center">
+      <section className="flex flex-col items-center justify-center">
         <Ask/>
         <ContactForm/>
       </section>
     </main>
-      <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
-        <Preferences/>
-        <Lenix/>
-        <Referrals/>
-      </footer>
+    <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
+      <Preferences/>
+      <Lenix/>
+      <Referrals/>
+    </footer>
   </>
 )

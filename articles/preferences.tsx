@@ -6,10 +6,10 @@ import { Clock } from "./clock"
 export const Preferences = () => {
   const dict = useDict()
   return (
-    <div className="flex w-full items-center justify-evenly">
+    <article className="flex w-full items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
       <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {dict.lenix}. {dict.rights}.</p>
       <Clock />
       <SocialDock/>
-    </div>
+    </article>
   )
 }
