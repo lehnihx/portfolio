@@ -76,18 +76,14 @@ const UserProfile = ({
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
   return (
-    <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:90s]">
+    <article className="relative w-full flex flex-col items-center justify-center overflow-hidden py-20">
+      <Marquee pauseOnHover className="[--duration:90s] overflow-hidden">
         {reviews.map((review, index) => (
           <React.Fragment key={`${review?.username}-${index}`} >
             {review && (() => {
             const { name, username, date, reviewLink, body } = review
               return (
-                <figure
-                  className={cn(
-                    "relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md",
-                  )}
-                >
+                <figure className={cn("relative w-64 cursor-pointer bg-accent p-6 rounded-md")}>
                   <div className="flex items-center justify-between">
                     <div className="flex flex-row items-end gap-2">
                       <UserProfile {...review}/>
