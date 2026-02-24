@@ -2,7 +2,7 @@
 import { useInView } from 'motion/react'
 import { useRef, useState, useEffect } from 'react'
 
-export const useIsInView = (margin: `${number}%` = '33%') => {
+export const useIsInView = (margin: `${number}px` = '200px') => {
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState<number | undefined>(undefined)
   const isInView = useInView(ref, { margin })

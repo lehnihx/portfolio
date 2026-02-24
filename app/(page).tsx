@@ -29,7 +29,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
         <ContactForm/>
       </section>
     </main>
-    <footer id="footer" className="relative h-screen w-screen flex flex-col items-center justify-between">
+    <footer id="footer" className="relative h-screen w-screen flex flex-col justify-between">
       <Preferences/>
       <Lenix/>
       <Referrals/>

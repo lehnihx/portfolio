@@ -24,7 +24,7 @@ export const Lenix = () => {
                 background="transparent"
                 minSize={0.4}
                 maxSize={1}
-                particleDensity={2200}
+                particleDensity={300}
                 className="w-full h-full"
                 particleColor={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
               />
