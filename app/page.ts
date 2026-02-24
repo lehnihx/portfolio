@@ -1,6 +1,6 @@
 import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { hasLocale } from './dictionaries'
+import { hasLocale } from '../lib/dictionaries'
 
 export default async () => {
   const headersList = await headers()
