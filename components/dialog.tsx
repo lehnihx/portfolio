@@ -34,7 +34,6 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
           <AlertDialogFooter>
             <AlertDialogCancel onClick={() => setUrl(null)}>{dict.cancel}</AlertDialogCancel>
             <AlertDialogAction>
-              {/* rel="noopener noreferrer" is required for security — without it the new tab can access the page via window.opener. */}
               <Link href={url || ""} target="_blank" rel="noopener noreferrer">{dict.open}</Link>
             </AlertDialogAction>
           </AlertDialogFooter>
