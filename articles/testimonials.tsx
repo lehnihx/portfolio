@@ -11,6 +11,7 @@ import React from "react"
 import { HoverCard } from "radix-ui"
 import { Tooltip } from "@/lib/ui/tooltip-card"
 import { Badge } from "@/lib/ui/badge"
+import { useIsInView } from "@/hooks/useIsInView"
 
 const UserProfile = ({
   name,
@@ -74,45 +75,50 @@ const UserProfile = ({
 )
 
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
+  const { ref, height, visible } = useIsInView()
   const dialog = useDialog()
   return (
-    <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:90s]">
-        {reviews.map((review, index) => (
-          <React.Fragment key={`${review?.username}-${index}`} >
-            {review && (() => {
-            const { name, username, date, reviewLink, body } = review
-              return (
-                <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-row items-end gap-2">
-                      <UserProfile {...review}/>
-                      <div className="flex flex-col">
-                        <figcaption className="text-sm font-medium text-foreground">{name}</figcaption>
-                        <p className="text-xs font-medium text-foreground/40">{username}</p>
+    <div ref={ref} style={{ minHeight: height }}>
+      {visible && (
+        <article className="relative flex w-full h-screen flex-col items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:90s]">
+            {reviews.map((review, index) => (
+              <React.Fragment key={`${review?.username}-${index}`} >
+                {review && (() => {
+                const { name, username, date, reviewLink, body } = review
+                  return (
+                    <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-row items-end gap-2">
+                          <UserProfile {...review}/>
+                          <div className="flex flex-col">
+                            <figcaption className="text-sm font-medium text-foreground">{name}</figcaption>
+                            <p className="text-xs font-medium text-foreground/40">{username}</p>
+                          </div>
+                          <p className="text-xs font-medium text-foreground/40">{date}</p>
+                        </div>
+                        <Button variant={"ghost"} size={"icon"} className="rounded-full"
+                          onClick={() => dialog(reviewLink)}
+                        >
+                          <ArrowUpRight/>
+                        </Button>
                       </div>
-                      <p className="text-xs font-medium text-foreground/40">{date}</p>
-                    </div>
-                    <Button variant={"ghost"} size={"icon"} className="rounded-full"
-                      onClick={() => dialog(reviewLink)}
-                    >
-                      <ArrowUpRight/>
-                    </Button>
-                  </div>
-                  <blockquote className="mt-2 text-sm">{body}</blockquote>
-                </figure>
-              )
-            })()}
-          </React.Fragment>
-        ))}
-      </Marquee>
-      <ProgressiveBlur direction='left' blurIntensity={0.5} blurLayers={5}
-        className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
-      />
-      <ProgressiveBlur direction='right' blurIntensity={0.5} blurLayers={5}
-        className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
-      />
-    </article>
+                      <blockquote className="mt-2 text-sm">{body}</blockquote>
+                    </figure>
+                  )
+                })()}
+              </React.Fragment>
+            ))}
+          </Marquee>
+          <ProgressiveBlur direction='left' blurIntensity={0.5} blurLayers={5}
+            className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
+          />
+          <ProgressiveBlur direction='right' blurIntensity={0.5} blurLayers={5}
+            className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
+          />
+        </article>
+      )}
+    </div>
   )
 }
 

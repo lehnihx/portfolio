@@ -5,6 +5,7 @@ import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 import Marquee from "react-fast-marquee";
+import { useIsInView } from '@/hooks/useIsInView';
 
 const referrals = [
   {
@@ -25,6 +26,7 @@ const referrals = [
 ] as const
 
 export const Referrals = () => {
+  const { ref, height, visible } = useIsInView()
   const dialog = useDialog()
   const { systemTheme } = useTheme()
   const [gradientColor, setGradientColor] = useState('black')
@@ -34,16 +36,20 @@ export const Referrals = () => {
     setGradientColor(value)
   }, [systemTheme])
   return (
-    <article className='h-30 w-screen'>
-      <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={gradientColor}>
-        {referrals.map(({ key, Icon, url }, index) =>
-          <Icon
-            key={`${key}-${index}`}
-            className={`${systemTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-            onClick={() => dialog(url)}
-          />
-        )}
-      </Marquee>
-  </article>
+    <div ref={ref} style={{ minHeight: height }}>
+      {visible && (
+        <article className='h-30 w-screen'>
+          <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={gradientColor}>
+            {referrals.map(({ key, Icon, url }, index) =>
+              <Icon
+                key={`${key}-${index}`}
+                className={`${systemTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+                onClick={() => dialog(url)}
+              />
+            )}
+          </Marquee>
+      </article>
+      )}
+    </div>
   )
 }
