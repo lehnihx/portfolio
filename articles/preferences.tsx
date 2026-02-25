@@ -6,7 +6,7 @@ import { useIsInView } from "@/hooks/useIsInView"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 
-export const Preferences = () => {
+export const Accessibility = () => {
   const { ref, height, visible } = useIsInView()
   const dict = useDict()
   

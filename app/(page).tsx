@@ -2,13 +2,12 @@ import { ContactForm } from "@/articles/form"
 import { Review } from "./[lang]/page"
 import { Intro } from "@/articles/intro"
 import { Nav } from "@/articles/nav"
-import { Preferences } from "@/articles/preferences"
+import { Accessibility } from "@/articles/preferences"
 import { Referrals } from "@/articles/referrals"
 import { Testimonials } from "@/articles/testimonials"
 import { Ask } from "@/articles/ask"
 import TimelineJourney from "@/articles/timeline"
 import { Location } from "@/articles/location"
-import { Lenix } from "@/articles/lenix"
 import { Quotes } from "@/articles/quote"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
@@ -25,7 +24,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
         {/* <BeamToClaude/> */}
         <BackgroundRippleEffect />
         <Intro/>
-        <Quotes/>
+        {/* <Quotes/> */}
       </section>
       <section className="flex flex-col items-center justify-between">
         <h2></h2>
@@ -41,8 +40,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
     </main>
     <footer id="footer" className="relative flex flex-col justify-between">
       <h2></h2>
-      <Preferences/>
-      <Lenix/>
+      <Accessibility/>
       <Referrals/>
     </footer>
   </>
