@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { TextEffect } from '@/components/ui/text-effect';
 
-export function TextEffectWithExit({ children }: { children: string }) {
+export function Quote({ children }: { children: string }) {
   const [trigger, setTrigger] = useState(true);
 
   useEffect(() => {
