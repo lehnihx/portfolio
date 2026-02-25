@@ -40,8 +40,8 @@ export default function TimelineJourney() {
     },
   ];
   return (
-    <div className="relative w-full overflow-clip">
-      <Timeline data={data} />
+    <div className="relative overflow-clip">
+      <Timeline data={data} header={{ title: "Timeline", description: "My journey in the world of programming" }} />
     </div>
   );
 }
