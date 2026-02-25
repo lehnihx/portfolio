@@ -12,11 +12,11 @@ export function Quotes() {
     if (newRandomNumber === lastNumber) return randomNewNumber(lastNumber)
     return newRandomNumber
   }
-  const [quoteIndex, setQuoteIndex] = useState(randomNewNumber(randomNewNumber(null)))
-  const [triggers, setTriggers] = useState(0)
+  const [quoteIndex, setQuoteIndex] = useState(randomNewNumber(null))
+  const [completedTriggers, setCompletedTriggers] = useState(0)
   const triggerCompleted = () => {
-    if (triggers %2 === 1) setQuoteIndex(randomNewNumber(quoteIndex))
-    setTriggers(triggers + 1)
+    if (completedTriggers %2 === 1) setQuoteIndex(randomNewNumber(quoteIndex))
+    setCompletedTriggers(completedTriggers + 1)
   }
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export function Quotes() {
       },
       visible: {
         opacity: 1,
-        y: 0,
+        y: 30,
         filter: 'blur(0px) brightness(100%)',
         transition: {
           duration: 1,
@@ -64,7 +64,7 @@ export function Quotes() {
 
   return (
     <TextEffect
-      className='inline-flex'
+      className='inline-flex text-ring italic font-light text-lg'
       per='char'
       variants={blurSlideVariants}
       trigger={trigger}
