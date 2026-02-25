@@ -7,6 +7,7 @@ import { CACHE_REVALIDATION } from "./utils"
 
 export default async (lang: Lang) => {
   const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = process.env
+
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
   const fetchData = async () => {
     const response = await fetch(`https://discord.com/api/v10/channels/1246910653940367500/messages`, { headers: { Authorization: `Bot ${DISCORD_BOT_TOKEN}` }})
