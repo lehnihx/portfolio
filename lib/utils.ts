@@ -4,3 +4,5 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const ANIMATION = { initial: { opacity: 0, y: 0 }, whileInView: { opacity: 1, y: 0 }, transition: { duration: 1 } }

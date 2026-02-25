@@ -3,6 +3,8 @@ import { SparklesCore } from "@/components/ui/sparkles"
 import { useDict } from "@/hooks/useDict"
 import { useTheme } from "next-themes"
 import { useIsInView } from "@/hooks/useIsInView"
+import { motion } from "motion/react"
+import { ANIMATION } from "@/lib/utils"
 
 export const Lenix = () => {
   const { ref, height, visible } = useIsInView()
@@ -11,7 +13,7 @@ export const Lenix = () => {
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
-        <article>
+        <motion.article {...ANIMATION}>
           <div className="h-screen w-full bg-background flex flex-col items-center justify-center overflow-hidden rounded-md">
             <p className="w-full text-[39.5vw] portrait:text-[37vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground/50 to-background bg-clip-text text-transparent">
               {dict.lenix}
@@ -32,7 +34,7 @@ export const Lenix = () => {
               <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
           </div>
-        </article>
+        </motion.article>
       )}
     </div>
   )

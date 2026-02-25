@@ -4,6 +4,8 @@ import { Button } from "@/lib/ui/button"
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/lib/ui/field"
 import { Input } from "@/lib/ui/input"
 import { Textarea } from "@/lib/ui/textarea"
+import { ANIMATION } from "@/lib/utils"
+import { motion } from "motion/react"
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string
@@ -20,7 +22,7 @@ const InputField = ({ id, label, placeholder, type }: {
 export const ContactForm = () => {
   const dict = useDict()
   return (
-    <article className="h-screen w-full px-8 landscape:max-w-1/2 portrait:min-w-full">
+    <motion.article {...ANIMATION} className="h-screen w-full px-8 landscape:max-w-1/2 portrait:min-w-full">
       <form action="">
         <FieldSet>
           <FieldLabel className="text-3xl">{dict.contact} {dict.lenix}</FieldLabel>
@@ -37,6 +39,6 @@ export const ContactForm = () => {
           </FieldGroup>
         </FieldSet>
       </form>
-    </article>
+    </motion.article>
   )
 }

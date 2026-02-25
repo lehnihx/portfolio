@@ -1,5 +1,7 @@
 "use client"
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
+import { ANIMATION } from "@/lib/utils";
+import { motion } from "motion/react";
 
 export default function () {
   const placeholders = [
@@ -18,7 +20,7 @@ export default function () {
     console.log("submitted");
   };
   return (
-    <div className="h-screen flex flex-col justify-center items-center px-4">
+    <motion.div {...ANIMATION} className="h-screen flex flex-col justify-center items-center px-4">
       <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-foreground">
         Ask Lenix Anything
       </h2>
@@ -27,6 +29,6 @@ export default function () {
         onChange={handleChange}
         onSubmit={onSubmit}
       />
-    </div>
+    </motion.div>
   );
 }
