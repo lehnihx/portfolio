@@ -16,20 +16,25 @@ export default ({ reviews }: { reviews: Review[] }) => (
       <Nav/>
     </header>
     <main>
+      <h1></h1>
       <section id="hero" className="h-screen text-foreground flex flex-col items-center justify-center text-3xl">
+        <h2></h2>
         <Intro/>
       </section>
       <section className="flex flex-col items-center justify-between">
+        <h2></h2>
         <TimelineJourney/>
         <Testimonials {...{ reviews }} />
-        <Location/>
+        {/* <Location/> */}
       </section>
       <section className="flex flex-col items-center justify-center">
+        <h2></h2>
         <Ask/>
         <ContactForm/>
       </section>
     </main>
     <footer id="footer" className="relative h-screen w-screen flex flex-col justify-between">
+      <h2></h2>
       <Preferences/>
       <Lenix/>
       <Referrals/>
