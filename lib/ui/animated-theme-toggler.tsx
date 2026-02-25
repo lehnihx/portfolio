@@ -25,6 +25,11 @@ export const AnimatedThemeToggler = ({
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current) return
 
+    if (!document.startViewTransition) {
+      setTheme(isDark ? "light" : "dark")
+      return
+    }
+
     await document.startViewTransition(() => {
       flushSync(() => {
         setTheme(isDark ? 'light' : 'dark')
