@@ -18,5 +18,5 @@ export const useIsInView = () => {
     if (ref.current) setHeight(ref.current.offsetHeight)
   }, [isInView])
 
-  return { ref, height, visible: isInView || hasBeenInView }
+  return { ref, height, visible: isInView }
 }

@@ -20,7 +20,7 @@ export default function () {
     console.log("submitted");
   };
   return (
-    <motion.div {...ANIMATION} className="h-screen flex flex-col justify-center items-center px-4">
+    <motion.article {...ANIMATION} className="my-16 flex flex-col justify-center items-center px-4">
       <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-foreground">
         Ask Lenix Anything
       </h2>
@@ -29,6 +29,6 @@ export default function () {
         onChange={handleChange}
         onSubmit={onSubmit}
       />
-    </motion.div>
+    </motion.article>
   );
 }
