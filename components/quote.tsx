@@ -1,8 +1,23 @@
+"use client"
 import { useState, useEffect } from 'react';
-import { TextEffect } from '@/components/ui/text-effect';
+import { useDict } from '@/hooks/useDict';
+import dynamic from 'next/dynamic';
+const TextEffect = dynamic(() => import('@/components/ui/text-effect').then(m => ({ default: m.TextEffect })), { ssr: false })
 
-export function Quote({ children }: { children: string }) {
+export function Quotes() {
   const [trigger, setTrigger] = useState(true);
+  const { quotes } = useDict()
+  const randomNewNumber = (lastNumber: number | null) => {
+    const newRandomNumber = Math.floor(Math.random() * quotes.length)
+    if (newRandomNumber === lastNumber) return randomNewNumber(lastNumber)
+    return newRandomNumber
+  }
+  const [quoteIndex, setQuoteIndex] = useState(randomNewNumber(randomNewNumber(null)))
+  const [triggers, setTriggers] = useState(0)
+  const triggerCompleted = () => {
+    if (triggers %2 === 1) setQuoteIndex(randomNewNumber(quoteIndex))
+    setTriggers(triggers + 1)
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,7 +48,7 @@ export function Quote({ children }: { children: string }) {
         y: 0,
         filter: 'blur(0px) brightness(100%)',
         transition: {
-          duration: 3,
+          duration: 1,
         },
       },
       exit: {
@@ -41,7 +56,7 @@ export function Quote({ children }: { children: string }) {
         y: -30,
         filter: 'blur(10px) brightness(0%)',
         transition: {
-          duration: 3,
+          duration: 1,
         },
       },
     },
@@ -53,9 +68,10 @@ export function Quote({ children }: { children: string }) {
       per='char'
       variants={blurSlideVariants}
       trigger={trigger}
-      speedSegment={0.1}
+      speedSegment={0.2}
+      onAnimationComplete={() => triggerCompleted()}
     >
-      {children}
+      {'"' + quotes[quoteIndex] + '"'}
     </TextEffect>
   );
 }

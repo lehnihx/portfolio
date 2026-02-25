@@ -1,5 +1,4 @@
 'use client';
-import { cn } from '@/lib/utils';
 import {
   AnimatePresence,
   motion
@@ -10,7 +9,7 @@ import type {
   Variant,
   Variants,
 } from 'motion/react'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export type PresetType = 'blur' | 'fade-in-blur' | 'scale' | 'fade' | 'slide';
 
@@ -277,7 +276,7 @@ export function TextEffect({
           onAnimationStart={onAnimationStart}
           style={style}
         >
-          {per !== 'line' ? <span className='sr-only'>{children}</span> : null}
+          {per !== 'line' ? <span suppressHydrationWarning className='sr-only'>{children}</span> : null}
           {segments.map((segment, index) => (
             <AnimationComponent
               key={`${per}-${index}-${segment}`}
