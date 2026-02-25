@@ -10,7 +10,7 @@ export const Nav = () => {
   return (
     <>
       <Button {...{
-        className: "text-foreground bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
+        className: "z-10 text-foreground bg-transparent hover:bg-transparent hover:scale-140 absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2",
         onClick: () => setState(prev => !prev)
       }}>
         <Route/>

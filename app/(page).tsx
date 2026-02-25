@@ -19,7 +19,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
     </header>
     <main>
       <h1></h1>
-      <section id="hero" className="h-screen text-foreground flex flex-col items-center justify-center text-3xl">
+      <section id="hero" className="relative h-screen text-foreground flex flex-col items-center justify-center text-3xl">
         <h2></h2>
         <BackgroundRippleEffect />
         <Intro/>

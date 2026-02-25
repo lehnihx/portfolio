@@ -64,7 +64,7 @@ export function Quotes() {
 
   return (
     <TextEffect
-      className='inline-flex text-ring italic font-light text-lg'
+      className='absolute bottom-1/4 inline-flex text-ring italic font-light text-lg z-10'
       per='char'
       variants={blurSlideVariants}
       trigger={trigger}

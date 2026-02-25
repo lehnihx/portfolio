@@ -12,7 +12,7 @@ export const Intro = () => {
         typeSpeed={50}
         loop
         deleteSpeed={50}
-        className="text-4xl font-bold"
+        className="text-4xl font-bold z-10 "
       />
     </>
   )
