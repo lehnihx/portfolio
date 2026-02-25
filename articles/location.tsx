@@ -1,11 +1,13 @@
 "use client"
 import { useIsInView } from "@/hooks/useIsInView"
 import { Globe } from "@/lib/ui/globe"
+import { ANIMATION } from "@/lib/utils"
+import { motion } from "motion/react"
 
 export const Location = () => {
   const { ref, height, visible } = useIsInView()
   return (
-    <div ref={ref} style={{ minHeight: height ?? 600 }} className="w-full">
+    <motion.div {...ANIMATION} ref={ref} style={{ minHeight: height }} className="w-full">
       {visible && <Globe config={{
         width: 600,
         height: 600,
@@ -22,6 +24,6 @@ export const Location = () => {
         glowColor: [1, 1, 1],
         markers: [{ location: [36, 3], size: 0.15 }],
       }}/>}
-    </div>
+    </motion.div>
   )
 }
