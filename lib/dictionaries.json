@@ -15,6 +15,7 @@
   "mail": "Mail",
   "send": "Send",
   "name": "Name",
+  "ask": "Ask Lenix Anything",
   "mail_placeholder": "Hello Lenix, I would like to know more about you.",
   "rights": "All rights reserved",
   "not_recommended": "Not recommended",
@@ -27,5 +28,16 @@
   "open": "Open",
   "fiverr": "Join the growing freelance community",
   "qoder": "Tackle the real-world software development challenges.",
-  "grey": "Open a foreign bank account from your phone for free"
+  "grey": "Open a foreign bank account from your phone for free",
+  "quotes": [
+    "College is one path, but not the only one ;)",
+    "Show, don't tell",
+    "Your portfolio speaks louder than your diploma",
+    "The best teacher is doing",
+    "Certifications prove you passed a test, projects prove you can build",
+    "It's not about where you start, it's where you finish",
+    "Skills pay the bills, not degrees",
+    "Backend engineering is easy only at the beginning",
+    "Focus on what you can do, not what paper says you can do"
+  ]
 }
