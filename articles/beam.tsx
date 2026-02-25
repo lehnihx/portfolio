@@ -1,6 +1,7 @@
+"use client"
 import React, { forwardRef, useRef } from "react"
 import { cn } from "@/lib/utils"
-import { AnimatedBeam } from "@/components/ui/animated-beam"
+import { AnimatedBeam } from "@/lib/ui/animated-beam"
 import { SiClaude } from "react-icons/si"
 import { Lenix } from "@/lib/icons"
 
@@ -23,7 +24,7 @@ const Circle = forwardRef<
 
 Circle.displayName = "Circle"
 
-export function AnimatedBeamDemo() {
+export function BeamToClaude() {
   const containerRef = useRef<HTMLDivElement>(null)
   const div1Ref = useRef<HTMLDivElement>(null)
   const div2Ref = useRef<HTMLDivElement>(null)
@@ -35,8 +36,8 @@ export function AnimatedBeamDemo() {
     >
       <div className="flex size-full flex-col items-stretch justify-between gap-10">
         <div className="flex flex-row justify-between">
-          <Circle ref={div1Ref}>
-            <Lenix className="text-black" />
+          <Circle ref={div1Ref} className="p-0">
+            <Lenix className="text-black size-full" />
           </Circle>
           <Circle ref={div2Ref}>
             <SiClaude size={50} className="text-[#D97757]"/>
@@ -45,6 +46,8 @@ export function AnimatedBeamDemo() {
       </div>
 
       <AnimatedBeam
+        gradientStartColor="var(--foreground)"
+        gradientStopColor="var(--foreground)"
         duration={3}
         containerRef={containerRef}
         fromRef={div1Ref}
