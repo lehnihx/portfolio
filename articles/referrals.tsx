@@ -28,22 +28,17 @@ const referrals = [
 export const Referrals = () => {
   const { ref, height, visible } = useIsInView()
   const dialog = useDialog()
-  const { systemTheme } = useTheme()
-  const [gradientColor, setGradientColor] = useState('black')
+  const { resolvedTheme } = useTheme()
 
-  useEffect(() => {
-    const value = getComputedStyle(document.documentElement).getPropertyValue('--background').trim()
-    setGradientColor(value)
-  }, [systemTheme])
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
-        <article className='h-30 w-screen'>
-          <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={gradientColor}>
+        <article>
+          <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={resolvedTheme === 'light' ? 'white' : 'black'}>
             {referrals.map(({ key, Icon, url }, index) =>
               <Icon
                 key={`${key}-${index}`}
-                className={`${systemTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+                className={`${resolvedTheme === 'light' ? 'text-foreground hover:text-foreground/75' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
                 onClick={() => dialog(url)}
               />
             )}
