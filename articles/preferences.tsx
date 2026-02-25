@@ -13,7 +13,7 @@ export const Preferences = () => {
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
-        <motion.article {...ANIMATION} className="flex w-full items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
+        <motion.article {...ANIMATION} className="my-16 flex items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
           <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {dict.lenix}. {dict.rights}.</p>
           <Clock />
           <SocialDock/>
