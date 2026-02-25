@@ -1,5 +1,5 @@
 "use client"
-import { SparklesCore } from "@/components/ui/sparkles"
+import { SparklesCore } from "@/lib/ui/sparkles"
 import { useDict } from "@/hooks/useDict"
 import { useTheme } from "next-themes"
 import { useIsInView } from "@/hooks/useIsInView"

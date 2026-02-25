@@ -1,5 +1,5 @@
 "use client"
-import { TypingAnimation } from "@/components/ui/typing-animation"
+import { TypingAnimation } from "@/lib/ui/typing-animation"
 import { useDict } from "@/hooks/useDict"
 
 export const Intro = () => {

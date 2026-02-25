@@ -1,5 +1,5 @@
 "use client"
-import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input"
+import { PlaceholdersAndVanishInput } from "@/lib/ui/placeholders-and-vanish-input"
 import { useDict } from "@/hooks/useDict"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
