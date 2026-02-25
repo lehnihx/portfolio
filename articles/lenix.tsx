@@ -11,11 +11,11 @@ export const Lenix = () => {
   const dict = useDict()
   const { resolvedTheme } = useTheme()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height ?? 600 }}>
       {visible && (
         <motion.article {...ANIMATION}>
-          <div className="h-screen w-full bg-background flex flex-col items-center justify-center overflow-hidden rounded-md">
-            <p className="w-full text-[39.5vw] portrait:text-[37vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-foreground/50 to-background bg-clip-text text-transparent">
+          <div className="bg-background flex flex-col items-center justify-center overflow-hidden rounded-md">
+            <p className="w-full text-[39.5vw] portrait:text-[37vw] font-bold leading-none whitespace-nowrap bg-linear-to-b from-background to-foreground/50 bg-clip-text text-transparent">
               {dict.lenix}
             </p>
             <div className="w-full h-40 relative">
@@ -30,7 +30,6 @@ export const Lenix = () => {
                 className="w-full h-full"
                 particleColor={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
               />
-
               <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
             </div>
           </div>
