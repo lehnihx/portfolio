@@ -2,10 +2,10 @@ import "server-only"
 import { Review } from "@/app/[lang]/page"
 import { APIBaseMessage } from "discord-api-types/v10"
 import { unstable_cache } from "next/cache"
-import { getMyMemoryTranslation, Locale } from "./dictionaries"
+import { getMyMemoryTranslation, Lang } from "./dictionaries"
+import { CACHE_REVALIDATION } from "./utils"
 
-export default async (lang: Locale) => {
-  const hour = 60 * 60
+export default async (lang: Lang) => {
   const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = process.env
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
   const fetchData = async () => {
@@ -26,7 +26,7 @@ export default async (lang: Locale) => {
     })
     return await Promise.all(mappedMessages)
   }
-  const hitedCache = await unstable_cache(fetchData, ['discord-reviews'], { revalidate: 24 * hour })()
+  const hitedCache = await unstable_cache(fetchData, ['discord-reviews'], { revalidate: CACHE_REVALIDATION })()
   const reviews = hitedCache.map(({ id, content, channel_id, date, author: {
     username, id: userId, avatar, global_name, banner, accent_color, locale, verified, avatar_decoration_data, primary_guild
   }}): Review => ({

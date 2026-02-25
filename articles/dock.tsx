@@ -1,5 +1,5 @@
 "use client"
-import { Locale } from "@/lib/dictionaries"
+import { Lang } from "@/lib/dictionaries"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,7 +31,7 @@ export const SocialDock = () => {
   const dict = useDict()
   const dialog = useDialog()
   const router = useRouter()
-  const changeDict = (locale: Locale) => {
+  const changeDict = (locale: Lang) => {
     router.push(`/${locale}#footer`)
     toast.promise(
       () => new Promise(resolve => setTimeout(resolve, 2000)),

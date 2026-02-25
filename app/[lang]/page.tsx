@@ -1,5 +1,5 @@
 import Home from "@/app/(page)"
-import { getDictionary, hasLocale } from "../../lib/dictionaries"
+import { Dictionary, hasLang } from "../../lib/dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/hooks/useDict"
 import { DialogProvider } from "@/hooks/useDialog"
@@ -23,9 +23,9 @@ export interface Review {
 
 export default async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
-  if (!hasLocale(lang)) notFound()
+  if (!hasLang(lang)) notFound()
 
-  const dict = await getDictionary(lang)
+  const dict = await Dictionary(lang)
   const reviews = await getReviews(lang)
 
   return (

@@ -1,5 +1,5 @@
 "use client"
-import { Locales } from '@/lib/dictionaries';
+import { Dict } from '@/lib/dictionaries';
 import { useDialog } from '@/hooks/useDialog';
 import { Fiverr, Grey, Qoder } from '@/lib/icons';
 import { useTheme } from 'next-themes';
@@ -9,17 +9,17 @@ import { useIsInView } from '@/hooks/useIsInView';
 
 const referrals = [
   {
-    key: 'fiverr' satisfies keyof Locales,
+    key: 'fiverr' satisfies keyof Dict,
     Icon: Fiverr,
     url: 'https://www.fiverr.com/pe/YRNR08z',
   },
   {
-    key: 'qoder' satisfies keyof Locales,
+    key: 'qoder' satisfies keyof Dict,
     Icon: Qoder,
     url: 'https://qoder.com/referral?referral_code=oyPcpnNF4QB2Rw2tjdglEkanB6w5RpTb',
   },
   {
-    key: 'grey' satisfies keyof Locales,
+    key: 'grey' satisfies keyof Dict,
     Icon: Grey,
     url: 'https://greyapp.page.link/jixhVD5wH6mdykEY7',
   },
