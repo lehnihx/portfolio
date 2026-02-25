@@ -11,7 +11,6 @@ import React from "react"
 import { HoverCard } from "radix-ui"
 import { Tooltip } from "@/lib/ui/tooltip-card"
 import { Badge } from "@/lib/ui/badge"
-import { useIsInView } from "@/hooks/useIsInView"
 import { motion } from "motion/react"
 
 const UserProfile = ({

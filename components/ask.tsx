@@ -5,11 +5,11 @@ import { motion } from "motion/react";
 
 export default function () {
   const placeholders = [
-    "What's the first rule of Fight Club?",
-    "Who is Tyler Durden?",
-    "Where is Andrew Laeddis Hiding?",
-    "Write a Javascript method to reverse a string",
-    "How to assemble your own PC?",
+    "Are you willing to collaborate?",
+    "How tall you are?",
+    "Where do you live?",
+    "What is your real name?",
+    "How did you learn software engineering this fast?",
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
