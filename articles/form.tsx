@@ -13,7 +13,7 @@ const InputField = ({ id, label, placeholder, type }: {
   placeholder: string
   type: string
 }) => (
-  <Field className="">
+  <Field>
     <FieldLabel htmlFor={`input-${id}`}>{label}</FieldLabel>
     <Input id={`input-${id}`} type={type} placeholder={placeholder} required />
   </Field>
@@ -22,7 +22,7 @@ const InputField = ({ id, label, placeholder, type }: {
 export const ContactForm = () => {
   const dict = useDict()
   return (
-    <motion.article {...ANIMATION} className="h-screen w-full px-8 landscape:max-w-1/2 portrait:min-w-full">
+    <motion.article {...ANIMATION} className="w-full my-16 px-8 landscape:max-w-1/2 portrait:min-w-full">
       <form action="">
         <FieldSet>
           <FieldLabel className="text-3xl">{dict.contact} {dict.lenix}</FieldLabel>
