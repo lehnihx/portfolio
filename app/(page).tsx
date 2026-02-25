@@ -5,10 +5,12 @@ import { Nav } from "@/articles/nav"
 import { Preferences } from "@/articles/preferences"
 import { Referrals } from "@/articles/referrals"
 import { Testimonials } from "@/articles/testimonials"
-import Ask from "@/components/ask"
+import { Ask } from "@/articles/ask"
 import TimelineJourney from "@/articles/timeline"
 import { Location } from "@/articles/location"
 import { Lenix } from "@/articles/lenix"
+import { Quotes } from "@/components/quote"
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <>
@@ -19,12 +21,14 @@ export default ({ reviews }: { reviews: Review[] }) => (
       <h1></h1>
       <section id="hero" className="h-screen text-foreground flex flex-col items-center justify-center text-3xl">
         <h2></h2>
+        <BackgroundRippleEffect />
         <Intro/>
+        <Quotes/>
       </section>
       <section className="flex flex-col items-center justify-between">
         <h2></h2>
         <TimelineJourney/>
-        <Location/>
+        {/* <Location/> */}
       </section>
       <section className="flex flex-col items-center justify-center">
         <h2></h2>
