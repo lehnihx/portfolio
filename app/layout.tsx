@@ -17,9 +17,8 @@ const geistMono = Geist_Mono({
 })
 
 export default async ({ children }: { children: Readonly<React.ReactNode> }) => {
-  const { get } = await headers()
-  const { split } = get('x-pathname') ?? ''
-  const lang = split('/')[1] ?? 'en'
+  const heads = await headers()
+  const lang = (heads.get('x-pathname') ?? '').split('/')[1] ?? 'en'
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
