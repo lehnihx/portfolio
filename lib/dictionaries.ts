@@ -30,7 +30,6 @@ export const Dictionary = async (lang: Lang): Promise<Dict> => {
         const translateUtterance = async (utterance: string) => {
           const translatedUtterance = await getMyMemoryTranslation(utterance, "en", lang)
           if (lang === 'ar' && translatedUtterance === utterance) console.warn(`MyMemory failed to translate '${utterance}'`)
-          console.log(translatedUtterance)
           return translatedUtterance
         }
 

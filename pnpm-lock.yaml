@@ -11,6 +11,9 @@ importers:
       '@ark-ui/react':
         specifier: ^5.31.0
         version: 5.31.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@octokit/openapi-types':
+        specifier: ^27.0.0
+        version: 27.0.0
       '@radix-ui/react-hover-card':
         specifier: ^1.1.15
         version: 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -38,6 +41,9 @@ importers:
       discord-api-types:
         specifier: ^0.38.40
         version: 0.38.40
+      lenix:
+        specifier: 1.1.1
+        version: 1.1.1
       lucide-react:
         specifier: ^0.574.0
         version: 0.574.0(react@19.2.3)
@@ -1089,6 +1095,9 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
+
+  '@octokit/openapi-types@27.0.0':
+    resolution: {integrity: sha512-whrdktVs1h6gtR+09+QsNk2+FO+49j6ga1c55YZudfEG+oKJVvJLQi3zkOm5JjiUXAagWK2tI2kTGKJ2Ys7MGA==}
 
   '@open-draft/deferred-promise@2.2.0':
     resolution: {integrity: sha512-CecwLWx3rhxVQF6V4bAgPS5t+So2sTbPgAzafKkVizyi7tlwpcFpdFqq+wqF2OwNBmqFuu6tOyouTuxgpMfzmA==}
@@ -3743,6 +3752,10 @@ packages:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
 
+  lenix@1.1.1:
+    resolution: {integrity: sha512-VyPtfBHf6DqcrrQBqcpz3PJbgBjsuCgTBA+j9pETPX5/qnYbGgJLl9gYrCuu+/iXUn+9AowZAN4uKQGizyLLag==}
+    hasBin: true
+
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -6069,6 +6082,8 @@ snapshots:
       fastq: 1.20.1
 
   '@nolyfill/is-core-module@1.0.39': {}
+
+  '@octokit/openapi-types@27.0.0': {}
 
   '@open-draft/deferred-promise@2.2.0': {}
 
@@ -9271,6 +9286,10 @@ snapshots:
   language-tags@1.0.9:
     dependencies:
       language-subtag-registry: 0.3.23
+
+  lenix@1.1.1:
+    dependencies:
+      '@types/node': 20.19.33
 
   levn@0.4.1:
     dependencies:
