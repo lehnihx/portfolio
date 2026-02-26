@@ -13,7 +13,7 @@ import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
 import Services from "@/articles/services"
 import { insights } from "@/lib/insights"
-import { Skeleton } from "@/components/ui/skeleton"
+import CountUp from "@/components/CountUp"
 
 export default async ({ reviews }: { reviews: Review[] }) => (
    <>
@@ -24,9 +24,12 @@ export default async ({ reviews }: { reviews: Review[] }) => (
       <h1></h1>
       <section id="hero" className="relative h-screen text-foreground flex flex-col items-center justify-center text-3xl">
         <h2></h2>
-        {(async () => await insights() ?? <Skeleton/>)()}
         <BackgroundRippleEffect />
         <Intro/>
+        {(async () => {
+          const loc = await insights()
+          return <CountUp from={0} to={loc || 0} separator="," direction="up" duration={3} className="count-up-text"/>
+        })()}
         {/* <BeamToClaude/> */}
         {/* <Services/> */}
         {/* <Quotes/> */}
