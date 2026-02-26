@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "cobe": "^0.6.5",
     "discord-api-types": "^0.38.40",
-    "lenix": "1.1.1",
+    "lenix": "latest",
     "lucide-react": "^0.574.0",
     "motion": "^12.34.2",
     "next": "16.1.6",
