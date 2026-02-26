@@ -1,15 +1,22 @@
 import { FlipWords } from "@/components/ui/flip-words";
 
-export default function FlipWordsDemo() {
-  const words = ["better", "cute", "beautiful", "modern"];
+export default function Services() {
+  const words = [
+    "Rockstar Filmer",
+    "Trailer & Journey Producer",
+    "Scenarios Video Editor",
+    "Tailored Script Programmer",
+    "FiveM Servers Consultant",
+    "Problem Solver",
+    "End-to-end FiveM Server Builder",
+    "Full Stack Web Developer",
+  ];
 
   return (
-    <div className="h-[40rem] flex justify-center items-center px-4">
-      <div className="text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-        Build
-        <FlipWords words={words} /> <br />
-        websites with Aceternity UI
+    <article className="flex justify-center items-center">
+      <div className="transition duration-500 ease-in-out text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+        I'm also a<FlipWords words={words} />
       </div>
-    </div>
+    </article>
   );
 }

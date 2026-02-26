@@ -1,6 +1,6 @@
 "use client";
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion, LayoutGroup } from "motion/react";
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const FlipWords = ({
@@ -14,6 +14,8 @@ export const FlipWords = ({
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
+  const measureRef = useRef<HTMLSpanElement>(null);
+  const [containerWidth, setContainerWidth] = useState(0);
 
   // thanks for the fix Julian - https://github.com/Julian-AT
   const startAnimation = useCallback(() => {
@@ -23,76 +25,103 @@ export const FlipWords = ({
   }, [currentWord, words]);
 
   useEffect(() => {
-    if (!isAnimating)
-      setTimeout(() => {
-        startAnimation();
-      }, duration);
+    if (isAnimating) return;
+    const timeout = window.setTimeout(() => {
+      startAnimation();
+    }, duration);
+
+    return () => window.clearTimeout(timeout);
   }, [isAnimating, duration, startAnimation]);
 
+  useLayoutEffect(() => {
+    if (!measureRef.current) return;
+    setContainerWidth(measureRef.current.offsetWidth);
+  }, [currentWord]);
+
   return (
-    <AnimatePresence
-      onExitComplete={() => {
-        setIsAnimating(false);
-      }}
-    >
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 10,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 100,
-          damping: 10,
-        }}
-        exit={{
-          opacity: 0,
-          y: -40,
-          x: 40,
-          filter: "blur(8px)",
-          scale: 2,
-          position: "absolute",
-        }}
+    <span className="relative inline-flex align-baseline">
+      <span
+        ref={measureRef}
+        aria-hidden
         className={cn(
-          "z-10 inline-block relative text-left text-neutral-900 dark:text-neutral-100 px-2",
+          "absolute invisible pointer-events-none whitespace-nowrap px-2 text-left text-neutral-900 dark:text-neutral-100",
           className
         )}
-        key={currentWord}
       >
-        {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
-        {currentWord.split(" ").map((word, wordIndex) => (
-          <motion.span
-            key={word + wordIndex}
-            initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            transition={{
-              delay: wordIndex * 0.3,
-              duration: 0.3,
+        {currentWord}
+      </span>
+
+      <motion.span
+        animate={{ width: containerWidth }}
+        transition={{ type: "spring", stiffness: 260, damping: 28 }}
+        className="relative inline-block align-baseline"
+      >
+        <AnimatePresence
+          mode="wait"
+          onExitComplete={() => {
+            setIsAnimating(false);
+          }}
+        >
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 10,
             }}
-            className="inline-block whitespace-nowrap"
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 100,
+              damping: 10,
+            }}
+            exit={{
+              opacity: 0,
+              y: -40,
+              x: 40,
+              filter: "blur(8px)",
+              scale: 2,
+              position: "absolute",
+            }}
+            className={cn(
+              "z-10 inline-block relative whitespace-nowrap text-left text-neutral-900 dark:text-neutral-100 px-2",
+              className
+            )}
+            key={currentWord}
           >
-            {word.split("").map((letter, letterIndex) => (
+            {/* edit suggested by Sajal: https://x.com/DewanganSajal */}
+            {currentWord.split(" ").map((word, wordIndex) => (
               <motion.span
-                key={word + letterIndex}
+                key={word + wordIndex}
                 initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{
-                  delay: wordIndex * 0.3 + letterIndex * 0.05,
-                  duration: 0.2,
+                  delay: wordIndex * 0.3,
+                  duration: 0.3,
                 }}
-                className="inline-block"
+                className="inline-block whitespace-nowrap"
               >
-                {letter}
+                {word.split("").map((letter, letterIndex) => (
+                  <motion.span
+                    key={word + letterIndex}
+                    initial={{ opacity: 0, y: 10, filter: "blur(8px)" }}
+                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    transition={{
+                      delay: wordIndex * 0.3 + letterIndex * 0.05,
+                      duration: 0.2,
+                    }}
+                    className="inline-block"
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+                <span className="inline-block">&nbsp;</span>
               </motion.span>
             ))}
-            <span className="inline-block">&nbsp;</span>
-          </motion.span>
-        ))}
-      </motion.div>
-    </AnimatePresence>
+          </motion.div>
+        </AnimatePresence>
+      </motion.span>
+    </span>
   );
 };

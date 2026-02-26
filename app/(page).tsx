@@ -11,6 +11,7 @@ import { Location } from "@/articles/location"
 import { Quotes } from "@/articles/quote"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
+import Services from "@/components/flip-words-demo"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <>
@@ -24,6 +25,7 @@ export default ({ reviews }: { reviews: Review[] }) => (
         {/* <BeamToClaude/> */}
         <BackgroundRippleEffect />
         <Intro/>
+        {/* <Services/> */}
         {/* <Quotes/> */}
       </section>
       <section className="flex flex-col items-center justify-between">
