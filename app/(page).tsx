@@ -12,9 +12,11 @@ import { Quotes } from "@/articles/quote"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
 import Services from "@/articles/services"
+import { insights } from "@/lib/insights"
+import { Skeleton } from "@/components/ui/skeleton"
 
-export default ({ reviews }: { reviews: Review[] }) => (
-  <>
+export default async ({ reviews }: { reviews: Review[] }) => (
+   <>
     <header>
       <Nav/>
     </header>
@@ -22,9 +24,10 @@ export default ({ reviews }: { reviews: Review[] }) => (
       <h1></h1>
       <section id="hero" className="relative h-screen text-foreground flex flex-col items-center justify-center text-3xl">
         <h2></h2>
-        {/* <BeamToClaude/> */}
+        {(async () => await insights() ?? <Skeleton/>)()}
         <BackgroundRippleEffect />
         <Intro/>
+        {/* <BeamToClaude/> */}
         {/* <Services/> */}
         {/* <Quotes/> */}
       </section>

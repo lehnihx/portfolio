@@ -1,8 +1,10 @@
 import 'server-only'
 import { Repository, RepositoryLanguageStats, Organization } from '@/lib/types'
 import { wait } from 'lenix'
+import { unstable_cache } from 'next/cache'
+import { CACHE_REVALIDATION } from './utils'
 
-export const stats = async () => {
+export const insights = unstable_cache(async () => {
   const { GITHUB_TOKEN } = process.env
   const fetchGithub = async <T,>(path: string) => {
     try {
@@ -66,4 +68,4 @@ export const stats = async () => {
     return (linesOfCodes)?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
   }
   return [await personalLinesLinesOfCodes(), await organizationLinesOfCodes()].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
-}
+}, ['insights-loc'], { revalidate: CACHE_REVALIDATION})
