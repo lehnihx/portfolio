@@ -1,10 +1,8 @@
-import type { components } from '@octokit/openapi-types'
+import 'server-only'
+import { Repository, RepositoryLanguageStats, Organization } from '@/lib/types'
 import { wait } from 'lenix'
 
-type Repository = components["schemas"]["repository"]
-type Organization = components["schemas"]["organization-simple"]
-
-export const Test = async () => {
+export const stats = async () => {
   const { GITHUB_TOKEN } = process.env
   const fetchGithub = async <T,>(path: string) => {
     try {
@@ -26,14 +24,6 @@ export const Test = async () => {
       console.error('Network error:', error)
     }
   }
-  interface RepositoryLanguageStats {
-    language: string
-    files: number,
-    lines: number,
-    blanks: number,
-    comments: number,
-    linesOfCode: number
-  }
 
   const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | undefined) => {
     let remainingCount = repositories?.length ?? 0
@@ -48,7 +38,7 @@ export const Test = async () => {
     }, Promise.resolve([] as { [key: NonNullable<typeof repositories>[number]["name"]]: T }[]))
   }
 
-  const personalLines = async () => {
+  const personalLinesLinesOfCodes = async () => {
     const repositories = await fetchGithub<Repository[]>('users/lenixdev/repos')
     const personalRepositoriesLanguages = await (async <T,>() => repositoriesLanguages<T>('lenixdev', repositories))<Array<RepositoryLanguageStats>>()
   
@@ -57,11 +47,12 @@ export const Test = async () => {
       return acc + languages.reduce((acc, language) => acc + language.lines, 0)
     }, 0)
   }
-  const organizationLines = async () => {
+  
+  const organizationLinesOfCodes = async () => {
     const organizations = await fetchGithub<Organization[]>('users/lenixdev/orgs')
     const organizationNames = organizations?.map(organization => organization.login)
 
-    return (await organizationNames?.reduce(async (acc, organizationName) => {
+    const linesOfCodes = await organizationNames?.reduce(async (acc, organizationName) => {
       if (!organizationName) return acc
       const previousOrganization = await acc
       const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${organizationName}/repos`)
@@ -71,9 +62,8 @@ export const Test = async () => {
         const languages = Object.values(repo)[0]
         return acc + languages.reduce((acc, language) => acc + language.lines, 0)
       }, 0)]
-    }, Promise.resolve([] as (number | undefined)[])))?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
+    }, Promise.resolve([] as (number | undefined)[]))
+    return (linesOfCodes)?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
   }
-  // console.log(await personalLines())
-  // console.log(await organizationLines())
-  return <div>Test</div>
+  return [await personalLinesLinesOfCodes(), await organizationLinesOfCodes()].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 }
