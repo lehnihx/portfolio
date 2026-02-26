@@ -11,7 +11,7 @@ import { Location } from "@/articles/location"
 import { Quotes } from "@/articles/quote"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
-import Services from "@/components/flip-words-demo"
+import Services from "@/articles/services"
 
 export default ({ reviews }: { reviews: Review[] }) => (
   <>

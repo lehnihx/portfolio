@@ -42,6 +42,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] make the dialog in a better useage way, insteaf on childrens
 - [ ] sync tweets
 - [x] fix the theme btn
+- [ ] add loading screen
 
 ## Common Errors
 ```bash
