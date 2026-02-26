@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/lib/ui/sonner"
 import { ScrollProgress } from "@/lib/ui/scroll-progress"
 import { LoadingScreen } from "@/articles/loading"
+import { headers } from "next/headers"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,13 +16,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-export default async ({
-  children, params
-}: {
-  children: Readonly<React.ReactNode>
-  params: Promise<{ lang: string }>
-}) => {
-  const { lang } = await params
+export default async ({ children }: { children: Readonly<React.ReactNode> }) => {
+  const { get } = await headers()
+  const { split } = get('x-pathname') ?? ''
+  const lang = split('/')[1] ?? 'en'
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
