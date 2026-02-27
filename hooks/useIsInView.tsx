@@ -1,16 +1,19 @@
 'use client'
 import { useInView } from 'motion/react'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const margin = (typeof window !== 'undefined'
+  ? `${Math.round(window.innerHeight * 0.33)}px`
+  : '300px') as `${number}px`
 
 export const useIsInView = () => {
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState<number | undefined>(undefined)
-  const margin = useRef<`${number}px`>(
-    typeof window !== 'undefined'
-      ? `${Math.round(window.innerHeight * 0.33)}px`
-      : '300px'
-  )
-  const isInView = useInView(ref, { margin: margin.current })
+  const isInView = useInView(ref, { margin })
+
+  useEffect(() => {
+    if (ref.current) setHeight(ref.current.offsetHeight)
+  }, [isInView])
 
   return { ref, height, visible: isInView }
 }
