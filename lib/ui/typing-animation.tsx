@@ -29,7 +29,7 @@ export function TypingAnimation({
   duration = 100,
   typeSpeed,
   deleteSpeed,
-  delay = 0,
+  delay = 1500,
   pauseDelay = 1000,
   loop = false,
   as: Component = "span",
