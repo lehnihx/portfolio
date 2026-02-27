@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ['192.168.100.42'],
+  allowedDevOrigins: ['192.168.100.42', '172.20.10.5'],
   images: {
     remotePatterns: [
       {
@@ -30,6 +30,14 @@ const nextConfig: NextConfig = {
         as: '*.js',
       },
     },
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/en',
+      },
+    ]
   },
 };
 
