@@ -12,7 +12,7 @@ import { Quotes } from "@/articles/quote"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
 import Services from "@/articles/services"
-import { insights } from "@/lib/insights"
+import { cachedInsights } from "@/lib/insights"
 import CountUp from "@/components/CountUp"
 
 export default async ({ reviews }: { reviews: Review[] }) => (
@@ -27,7 +27,7 @@ export default async ({ reviews }: { reviews: Review[] }) => (
         <BackgroundRippleEffect />
         <Intro/>
         {(async () => {
-          const loc = await insights()
+          const loc = await cachedInsights()
           return <CountUp from={0} to={loc || 0} separator="," direction="up" duration={3} className="count-up-text"/>
         })()}
         {/* <BeamToClaude/> */}
