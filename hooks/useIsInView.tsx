@@ -5,16 +5,16 @@ import { useRef, useState, useEffect } from 'react'
 export const useIsInView = () => {
   const ref = useRef<HTMLDivElement>(null)
   const [height, setHeight] = useState<number | undefined>(undefined)
-  const [margin, setMargin] = useState<`${number}px`>('300px')
+  const [margin, setMargin] = useState<`${number}px`>(() =>
+    typeof window !== 'undefined'
+      ? `${Math.round(window.innerHeight * 0.33)}px`
+      : '300px'
+  )
   const isInView = useInView(ref, { margin })
-  const [hasBeenInView, setHasBeenInView] = useState(false)
+  const hasBeenInView = useRef(false)
 
   useEffect(() => {
-    setMargin(`${Math.round(window.innerHeight * 0.33)}px`)
-  }, [])
-
-  useEffect(() => {
-    if (isInView && !hasBeenInView) setHasBeenInView(true)
+    if (isInView && !hasBeenInView.current) hasBeenInView.current = true
     if (ref.current) setHeight(ref.current.offsetHeight)
   }, [isInView])
 
