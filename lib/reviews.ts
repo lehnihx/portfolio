@@ -7,7 +7,7 @@ import { fetchMyMemory } from "@/api/mymemory"
 import { Lang } from "./dictionaries"
 import { fetchDiscord } from "@/api/discord"
 
-export default async (lang: Lang) => {
+const reviews = async (lang: Lang) => {
   const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = process.env
   if (!DISCORD_BOT_TOKEN) throw new Error('DISCORD_BOT_TOKEN environment variable is not defined')
 
@@ -50,3 +50,5 @@ export default async (lang: Lang) => {
   }))
   return reviews
 }
+
+export default reviews
