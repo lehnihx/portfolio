@@ -13,7 +13,7 @@ import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import { BeamToClaude } from "@/articles/beam"
 import Services from "@/articles/services"
 import { cachedInsights } from "@/lib/insights"
-import CountUp from "@/components/CountUp"
+import CountUp from "@/lib/ui/CountUp"
 
 export default async ({ reviews }: { reviews: Review[] }) => (
    <>
