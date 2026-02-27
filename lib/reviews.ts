@@ -2,22 +2,25 @@ import "server-only"
 import { Review } from "@/app/[lang]/page"
 import { APIBaseMessage } from "discord-api-types/v10"
 import { unstable_cache } from "next/cache"
-import { getMyMemoryTranslation, Lang } from "./dictionaries"
 import { CACHE_REVALIDATION } from "./utils"
+import { fetchMyMemory } from "@/api/mymemory"
+import { Lang } from "./dictionaries"
+import { fetchDiscord } from "@/api/discord"
 
 export default async (lang: Lang) => {
   const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = process.env
+  if (!DISCORD_BOT_TOKEN) throw new Error('DISCORD_BOT_TOKEN environment variable is not defined')
 
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
   const fetchData = async () => {
-    const response = await fetch(`https://discord.com/api/v10/channels/1246910653940367500/messages`, { headers: { Authorization: `Bot ${DISCORD_BOT_TOKEN}` }})
-    const messages: APIBaseMessage[] = await response.json()
+    const messages = await fetchDiscord<APIBaseMessage[]>('channels/1246910653940367500/messages', DISCORD_BOT_TOKEN)
+    if (!messages) return []
     const mappedMessages = messages.map(async ({ channel_id, id, content, author, timestamp, reactions }) => {
       const message = filterMessage(content)
       const date = new Date(timestamp)
       const { year, month } = { year: date.getFullYear(), month: date.getMonth() + 1 }
       return {
-        content: await getMyMemoryTranslation(message, "ar", lang),
+        content: await fetchMyMemory(message, "ar", lang),
         id,
         channel_id,
         date: `${year}-${month}`,

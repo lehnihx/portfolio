@@ -1,7 +1,7 @@
 import { unstable_cache } from 'next/cache'
 import { ValueOf } from 'next/dist/shared/lib/constants'
 import { CACHE_REVALIDATION } from './utils'
-import { getMyMemoryTranslation } from '@/api/mymemory'
+import { fetchMyMemory } from '@/api/mymemory'
 
 const defaultDictionary = await import('@/lib/dictionaries.json').then((module) => module.default)
 
@@ -16,7 +16,7 @@ export const Dictionary = async (lang: Lang): Promise<Dict> => {
   
   const getDictionary = async (lang: Lang) => {
     const translateUtterance = async (utterance: string) => {
-      const translatedUtterance = await getMyMemoryTranslation(utterance, "en", lang)
+      const translatedUtterance = await fetchMyMemory(utterance, "en", lang)
       if (lang === 'ar' && translatedUtterance === utterance) console.warn(`MyMemory failed to translate '${utterance}'`)
       return translatedUtterance
     }

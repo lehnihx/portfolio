@@ -4,6 +4,7 @@ import { wait } from 'lenix'
 import { unstable_cache } from 'next/cache'
 import { CACHE_REVALIDATION } from './utils'
 import { fetchGithub } from '@/api/github'
+import { fetchCodeTabs } from '@/api/codetabs'
 
 const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | undefined) => {
   let remainingCount = repositories?.length ?? 0
@@ -11,19 +12,19 @@ const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | u
     const previouRepository = await acc
     console.log(`${repository.name} was fetched from ${owner}, ${--remainingCount} more remaining`)
     await wait(5000)
-    const response = await fetch(`https://api.codetabs.com/v1/loc?github=${owner}/${repository.name}`)
-    if (!response.ok) console.log(response.statusText)
-    const data = await response.json() as T
+    const data = await fetchCodeTabs<T>(owner, repository.name)
+    if (!data) return []
     return [...previouRepository, { [repository.name]: data} ]
   }, Promise.resolve([] as { [key: NonNullable<typeof repositories>[number]["name"]]: T }[]))
 }
 
 const personalLinesLinesOfCodes = async (token: string) => {
   const repositories = await fetchGithub<Repository[]>('users/lenixdev/repos', token)
-  const personalRepositoriesLanguages = await (async <T,>() => repositoriesLanguages<T>('lenixdev', repositories))<Array<RepositoryLanguageStats>>()
+  const personalRepositoriesLanguages = await (async <T,>() => repositoriesLanguages<T | undefined>('lenixdev', repositories))<Array<RepositoryLanguageStats>>()
 
   return personalRepositoriesLanguages?.reduce((acc, repository) => {
     const languages = Object.values(repository)[0]
+    if (!languages) return 0
     return acc + languages.reduce((acc, language) => acc + language.lines, 0)
   }, 0)
 }
