@@ -41,6 +41,9 @@ importers:
       discord-api-types:
         specifier: ^0.38.40
         version: 0.38.40
+      ldrs:
+        specifier: ^1.1.9
+        version: 1.1.9
       lenix:
         specifier: latest
         version: 1.1.2
@@ -3751,6 +3754,9 @@ packages:
   language-tags@1.0.9:
     resolution: {integrity: sha512-MbjN408fEndfiQXbFQ1vnd+1NoLDsnQW41410oQBXiyXDMYH5z505juWa4KUE1LqxRC7DgOgZDbKLxHIwm27hA==}
     engines: {node: '>=0.10'}
+
+  ldrs@1.1.9:
+    resolution: {integrity: sha512-JKVdzboxeZrKecA8ovi5iIDgs59wUrtJ+LDrHCgZecNrR0AJi2cJ3ZANJ+UCNS/sHRol73/jlypNCAMCXS+Ung==}
 
   lenix@1.1.2:
     resolution: {integrity: sha512-7wUSn2NKX28HI8hffcsZzRkFICgSAlMXLxS5ttGvJLT3H8Pc4smT4NCksVMf4zhakcm6FeyBFFxM67xTXRWp9g==}
@@ -9286,6 +9292,8 @@ snapshots:
   language-tags@1.0.9:
     dependencies:
       language-subtag-registry: 0.3.23
+
+  ldrs@1.1.9: {}
 
   lenix@1.1.2: {}
 

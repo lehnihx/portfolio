@@ -1,6 +1,6 @@
 import Link from 'next/link'
  
-export default function Forbidden() {
+const Forbidden = () => {
   return (
     <div>
       <h2>Forbidden</h2>
@@ -9,3 +9,5 @@ export default function Forbidden() {
     </div>
   )
 }
+
+export default Forbidden

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 })
 
-export default async ({ children }: { children: Readonly<React.ReactNode> }) => {
+const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => {
   const heads = await headers()
   const lang = (heads.get('x-pathname') ?? '').split('/')[1] ?? 'en'
   return (
@@ -33,3 +33,5 @@ export default async ({ children }: { children: Readonly<React.ReactNode> }) => 
     </html>
   )
 }
+
+export default Layout

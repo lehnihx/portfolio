@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Unauthorized() {
+const Unauthorized = () => {
   return (
     <main>
       <h1>401 - Unauthorized</h1>
@@ -9,3 +9,4 @@ export default function Unauthorized() {
     </main>
   )
 }
+export default Unauthorized

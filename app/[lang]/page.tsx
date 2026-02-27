@@ -21,7 +21,7 @@ export interface Review {
   date: string
 }
 
-export default async ({ params }: PageProps<'/[lang]'>) => {
+const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
   
   if (!hasLang(lang)) notFound()
@@ -37,3 +37,5 @@ export default async ({ params }: PageProps<'/[lang]'>) => {
     </DictProvider>
   )
 }
+
+export default Page

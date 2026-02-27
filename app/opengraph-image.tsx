@@ -12,7 +12,7 @@ export const size = {
 export const contentType = 'image/png'
  
 // Image generation
-export default async function Image() {
+const Image = async () => {
   // Font loading, process.cwd() is Next.js project directory
   const interSemiBold = await readFile(
     join(process.cwd(), 'assets/Inter-SemiBold.ttf')
@@ -51,3 +51,5 @@ export default async function Image() {
     }
   )
 }
+
+export default Image

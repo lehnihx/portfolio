@@ -10,7 +10,6 @@ import {
 } from "@/lib/ui/dropdown-menu"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
-import React from "react"
 import { ArrowUpRight, HomeIcon, PencilIcon } from "lucide-react"
 import { Button, buttonVariants } from "@/lib/ui/button"
 import { Separator } from "@/lib/ui/separator"
@@ -26,6 +25,7 @@ import { DropdownMenuTrigger } from "../lib/ui/dropdown-menu"
 import { useDialog } from "@/hooks/useDialog"
 import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
+import { animate } from "motion/react"
 
 export const SocialDock = () => {
   const dict = useDict()
@@ -67,7 +67,11 @@ export const SocialDock = () => {
       <DockIcon key="home">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}>
+            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => animate(window.scrollY, document.getElementById('hero')!.offsetTop, {
+              duration: 2,
+              ease: 'easeInOut',
+              onUpdate: v => window.scrollTo(0, v)
+            })}>
               <HomeIcon className="size-4" />
             </Button>
           </TooltipTrigger>

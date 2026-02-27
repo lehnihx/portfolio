@@ -8,7 +8,7 @@ export const Intro = () => {
   const dict = useDict()
   const { resolvedTheme } = useTheme()
   return (
-    <article className="h-screen w-full relative">
+    <article className="h-screen w-full relative flex items-center justify-center">
       <div className="absolute bottom-1/4 flex items-center gap-5 flex-col z-10">
         <TypingAnimation
           words={[dict.introA, dict.introB]}

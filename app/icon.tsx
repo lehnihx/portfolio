@@ -9,7 +9,7 @@ export const size = {
 export const contentType = 'image/png'
  
 // Image generation
-export default function Icon() {
+const Icon = () => {
   return new ImageResponse(
     (
       // ImageResponse JSX element
@@ -23,3 +23,5 @@ export default function Icon() {
     }
   )
 }
+
+export default Icon

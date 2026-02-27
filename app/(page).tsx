@@ -15,7 +15,7 @@ import Services from "@/articles/services"
 import { cachedInsights } from "@/lib/insights"
 import CountUp from "@/lib/ui/CountUp"
 
-export default async ({ reviews }: { reviews: Review[] }) => (
+const Page = async ({ reviews }: { reviews: Review[] }) => (
    <>
     <header>
       <Nav/>
@@ -53,3 +53,5 @@ export default async ({ reviews }: { reviews: Review[] }) => (
     </footer>
   </>
 )
+
+export default Page

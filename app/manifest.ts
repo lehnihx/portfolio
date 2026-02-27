@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
  
-export default function sitemap(): MetadataRoute.Sitemap {
+const sitemap = (): MetadataRoute.Sitemap => {
   return [
     {
       url: 'https://lenix.dev',
@@ -16,3 +16,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 }
+
+export default sitemap
