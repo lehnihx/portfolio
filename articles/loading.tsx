@@ -9,10 +9,11 @@ export const LoadingScreen = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (document.readyState === 'complete') {
       setLoaded(true)
-    } else {
-      window.addEventListener('load', () => setLoaded(true))
-      return () => window.removeEventListener('load', () => setLoaded(true))
+      return
     }
+    const handler = () => setLoaded(true)
+    window.addEventListener('load', handler)
+    return () => window.removeEventListener('load', handler)
   }, [])
 
   return (
