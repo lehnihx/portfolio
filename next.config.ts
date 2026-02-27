@@ -1,4 +1,4 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.100.42', '172.20.10.5'],
@@ -39,6 +39,6 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig

@@ -1,4 +1,4 @@
-import { FlipWords } from "@/lib/ui/flip-words";
+import { FlipWords } from "@/lib/ui/flip-words"
 
 export default function Services() {
   const words = [
@@ -10,7 +10,7 @@ export default function Services() {
     "Problem Solver",
     "End-to-end FiveM Server Builder",
     "Full Stack Web Developer",
-  ];
+  ]
 
   return (
     <article className="flex justify-center items-center">
@@ -18,5 +18,5 @@ export default function Services() {
         I&apos;m also a<FlipWords words={words} />
       </div>
     </article>
-  );
+  )
 }

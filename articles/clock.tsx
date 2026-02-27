@@ -1,20 +1,20 @@
 "use client"
-import { SlidingNumber } from '@/lib/ui/sliding-number';
-import { useEffect, useState } from 'react';
+import { SlidingNumber } from '@/lib/ui/sliding-number'
+import { useEffect, useState } from 'react'
 
 export function Clock() {
-  const [hours, setHours] = useState(new Date().getHours());
-  const [minutes, setMinutes] = useState(new Date().getMinutes());
-  const [seconds, setSeconds] = useState(new Date().getSeconds());
+  const [hours, setHours] = useState(new Date().getHours())
+  const [minutes, setMinutes] = useState(new Date().getMinutes())
+  const [seconds, setSeconds] = useState(new Date().getSeconds())
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHours(new Date().getHours());
-      setMinutes(new Date().getMinutes());
-      setSeconds(new Date().getSeconds());
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+      setHours(new Date().getHours())
+      setMinutes(new Date().getMinutes())
+      setSeconds(new Date().getSeconds())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <article className='flex items-center justify-center gap-0.5 font-mono flex-1/3'>
@@ -24,5 +24,5 @@ export function Clock() {
       <span className='text-zinc-500'>:</span>
       <SlidingNumber value={seconds} padStart={true} />
     </article>
-  );
+  )
 }
