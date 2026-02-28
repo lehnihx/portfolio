@@ -43,7 +43,7 @@ const Page = async ({ reviews }: { reviews: Review[] }) => (
         <h2></h2>
         <Ask/>
         <ContactForm/>
-        <Testimonials {...{ reviews }} />
+        {/* <Testimonials {...{ reviews }} /> */}
       </section>
     </main>
     <footer id="footer" className="relative flex flex-col justify-between">
