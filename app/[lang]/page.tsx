@@ -1,9 +1,17 @@
-import Home from "@/app/page"
 import { Dictionary, hasLang } from "../../lib/dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/hooks/useDict"
 import { DialogProvider } from "@/hooks/useDialog"
-import getReviews from "@/lib/reviews"
+import { Ask } from "@/articles/ask"
+import { ContactForm } from "@/articles/form"
+import { Intro } from "@/articles/intro"
+import { Nav } from "@/articles/nav"
+import { Referrals } from "@/articles/referrals"
+import TimelineJourney from "@/articles/timeline"
+import { cachedInsights } from "@/lib/insights"
+import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
+import CountUp from "@/lib/ui/CountUp"
+import { Accessibility } from "lucide-react"
 
 export interface Review {
   name: string
@@ -27,12 +35,44 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   if (!hasLang(lang)) notFound()
 
   const dict = await Dictionary(lang)
-  const reviews = await getReviews(lang)
 
   return (
     <DictProvider dict={dict}>
       <DialogProvider>
-        <Home {...{ reviews }} />
+        <header>
+          <Nav/>
+        </header>
+        <main>
+          <h1></h1>
+          <section id="hero" className="relative h-screen text-foreground flex flex-col items-center justify-center text-3xl">
+            <h2></h2>
+            <BackgroundRippleEffect />
+            <Intro/>
+            {(async () => {
+              const loc = await cachedInsights()
+              return <CountUp from={0} to={loc || 0} separator="," direction="up" duration={3} className="count-up-text"/>
+            })()}
+            {/* <BeamToClaude/> */}
+            {/* <Services/> */}
+            {/* <Quotes/> */}
+          </section>
+          <section className="flex flex-col items-center justify-between">
+            <h2></h2>
+            <TimelineJourney/>
+            {/* <Location/> */}
+          </section>
+          <section className="flex flex-col items-center justify-center">
+            <h2></h2>
+            <Ask/>
+            <ContactForm/>
+            {/* <Testimonials reviews={await getReviews(lang)} /> */}
+          </section>
+        </main>
+        <footer id="footer" className="relative flex flex-col justify-between">
+          <h2></h2>
+          <Accessibility/>
+          <Referrals/>
+        </footer>
       </DialogProvider>
     </DictProvider>
   )
