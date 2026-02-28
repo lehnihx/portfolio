@@ -10,7 +10,6 @@ import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
 import { cachedInsights } from "@/lib/insights"
 import { BackgroundRippleEffect } from "@/components/background-ripple-effect"
-import CountUp from "@/components/CountUp"
 import { Accessibility } from "@/articles/accessibility"
 import { NumberTicker } from "@/components/number-ticker"
 
