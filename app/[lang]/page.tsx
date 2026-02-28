@@ -48,21 +48,15 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <BackgroundRippleEffect />
             <Intro/>
             {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()}
-
-            {/* <BeamToClaude/> */}
-            {/* <Services/> */}
-            {/* <Quotes/> */}
           </section>
           <section className="flex flex-col items-center justify-between">
-            <h2></h2>
+            <h2>About Lenix</h2>
             <TimelineJourney/>
-            {/* <Location/> */}
           </section>
           <section className="flex flex-col items-center justify-center">
-            <h2></h2>
+            <h2>Get In Touch</h2>
             <Ask/>
             <ContactForm/>
-            {/* <Testimonials reviews={await getReviews(lang)} /> */}
           </section>
         </main>
         <footer id="footer" className="relative flex flex-col justify-between">

@@ -6,7 +6,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { LoadingProvider } from "@/articles/loading"
 import { headers } from "next/headers"
 import { ClickProvider } from "@/articles/click"
-
+import Ribbons from "@/stock/Ribbons"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
