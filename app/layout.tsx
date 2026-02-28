@@ -3,8 +3,9 @@ import "./globals.css"
 import { ThemeProvider } from "next-themes"
 import { Toaster } from "@/components/sonner"
 import { ScrollProgress } from "@/components/scroll-progress"
-import { LoadingScreen } from "@/articles/loading"
+import { LoadingProvider } from "@/articles/loading"
 import { headers } from "next/headers"
+import { ClickProvider } from "@/articles/click"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,9 +27,11 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LoadingScreen>
-            {children}
-          </LoadingScreen>
+          <LoadingProvider>
+            <ClickProvider>
+              {children}
+            </ClickProvider>
+          </LoadingProvider>
         </ThemeProvider>
         <Toaster />
         <ScrollProgress />

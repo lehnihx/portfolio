@@ -1,7 +1,7 @@
-import { LoadingScreen } from "@/articles/loading"
+import { LoadingProvider } from "@/articles/loading"
 
 const Loading = () => {
-  return <LoadingScreen/>
+  return <LoadingProvider/>
 }
 
 export default Loading

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Squircle } from 'ldrs/react'
 import 'ldrs/react/Squircle.css'
 
-export const LoadingScreen = ({ children }: { children?: React.ReactNode }) => {
+export const LoadingProvider = ({ children }: { children?: React.ReactNode }) => {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
