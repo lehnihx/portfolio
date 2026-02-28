@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuShortcut,
 } from "@/lib/ui/dropdown-menu"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { ArrowUpRight, HomeIcon, PencilIcon } from "lucide-react"
 import { Button, buttonVariants } from "@/lib/ui/button"
@@ -32,8 +32,11 @@ export const Preferences = () => {
   const dict = useDict()
   const dialog = useDialog()
   const router = useRouter()
+  const { lang } = useParams<{ lang: Lang }>()
   
   const changeDict = (locale: Lang | "") => {
+    if (lang === locale || lang === 'en' && locale === "") { toast.warning(dict.already_in_lang); return }
+
     router.push(`/${locale}`)
     toast.promise(
       () => wait(2000),
@@ -41,17 +44,18 @@ export const Preferences = () => {
         loading: dict.changing_language,
         success: dict.language_changed,
         error: dict.failed_language_change,
-        position: "top-right",
-        finally: () => scrollToById("footer").then(() => { }),
+        finally: () => scrollToById("footer"),
       },
     )
   }
 
-  const scrollToById = (id: string) => animate(window.scrollY, document.getElementById(id)!.offsetTop, {
-    duration: 2,
-    ease: 'easeInOut',
-    onUpdate: v => window.scrollTo(0, v)
-  })
+  const scrollToById = (id: string) => {
+    animate(window.scrollY, document.getElementById(id)?.offsetTop || 0, {
+      duration: 2,
+      ease: 'easeInOut',
+      onUpdate: v => window.scrollTo(0, v)
+    })
+  }
 
   const socials = [
     {

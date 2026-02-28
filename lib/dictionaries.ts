@@ -33,7 +33,7 @@ export const Dictionary = async (lang: Lang): Promise<Dict> => {
     return Object.fromEntries(translationEntries) as Dict
   }
   try {
-    return await unstable_cache(getDictionary,['translations', lang], { revalidate: CACHE_REVALIDATION })(lang)
+    return await unstable_cache(getDictionary, ['translations', lang], { revalidate: CACHE_REVALIDATION })(lang)
   } catch (error) {
     console.error(`Something went wrong with MyMemory for ${lang} lang, and falling back to the 'en' dictionary as a result. Error details:`, error)
     return defaultDictionary

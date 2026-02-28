@@ -22,6 +22,7 @@
   "changing_language": "Changing the language...",
   "language_changed": "Language changed successfully!",
   "failed_language_change": "Failed to change language.",
+  "already_in_lang": "You are already in the selected language",
   "open_external_link": "Open external link?",
   "external_link": "You are leaving to visit an external link:",
   "cancel": "Cancel",
