@@ -1,6 +1,6 @@
 "use client"
 import { useDict } from "@/hooks/useDict"
-import { SocialDock } from "./dock"
+import { Accessibility } from "./accessibility"
 import { Clock } from "./clock"
 import { useIsInView } from "@/hooks/useIsInView"
 import { ANIMATION } from "@/lib/utils"
@@ -16,7 +16,7 @@ export const Accessibility = () => {
         <motion.article {...ANIMATION} className="my-16 flex items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
           <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {dict.lenix}. {dict.rights}.</p>
           <Clock />
-          <SocialDock/>
+          <Accessibility/>
         </motion.article>
       )}
     </div>

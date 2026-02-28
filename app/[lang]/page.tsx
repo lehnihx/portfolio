@@ -11,7 +11,7 @@ import TimelineJourney from "@/articles/timeline"
 import { cachedInsights } from "@/lib/insights"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import CountUp from "@/lib/ui/CountUp"
-import { Accessibility } from "lucide-react"
+import { Accessibility } from "@/articles/accessibility"
 
 export interface Review {
   name: string
