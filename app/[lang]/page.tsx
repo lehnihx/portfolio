@@ -1,4 +1,4 @@
-import Home from "@/app/(page)"
+import Home from "@/app/page"
 import { Dictionary, hasLang } from "../../lib/dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/hooks/useDict"

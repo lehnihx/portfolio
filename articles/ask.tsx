@@ -6,13 +6,6 @@ import { motion } from "motion/react"
 
 export const Ask = () => {
   const dict = useDict()
-  const placeholders = [
-    "Are you willing to collaborate?",
-    "How tall you are?",
-    "Where do you live?",
-    "What is your real name?",
-    "How did you become a software engineering this fast?",
-  ]
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value)
@@ -27,7 +20,7 @@ export const Ask = () => {
         {dict.ask}
       </h2>
       <PlaceholdersAndVanishInput
-        placeholders={placeholders}
+        placeholders={dict.questions}
         onChange={handleChange}
         onSubmit={onSubmit}
       />

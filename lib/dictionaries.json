@@ -39,5 +39,12 @@
     "Skills pay the bills, not degrees",
     "Backend engineering is easy only at the beginning",
     "Focus on what you can do, not what paper says you can do"
+  ],
+  "questions": [
+    "Are you willing to collaborate?",
+    "How tall you are?",
+    "Where do you live?",
+    "What is your real name?",
+    "How did you become a software engineering this fast?"
   ]
 }
