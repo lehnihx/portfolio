@@ -1,9 +1,10 @@
 "use client"
+import { ShinyButton } from "@/stock/ui/shiny-button"
 import { useDict } from "@/hooks/useDict"
-import { Button } from "@/lib/ui/button"
-import { Field, FieldGroup, FieldLabel, FieldSet } from "@/lib/ui/field"
-import { Input } from "@/lib/ui/input"
-import { Textarea } from "@/lib/ui/textarea"
+import { Button } from "@/components/button"
+import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/field"
+import { Input } from "@/components/input"
+import { Textarea } from "@/components/textarea"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 
@@ -34,7 +35,7 @@ export const ContactForm = () => {
               <Textarea placeholder={dict.mail_placeholder} required />
             </Field>
             <Field >
-              <Button variant="outline" type="submit">{dict.send}</Button>
+              <ShinyButton  {...{ type: "submit" }}>{dict.send}</ShinyButton>
             </Field>
           </FieldGroup>
         </FieldSet>
