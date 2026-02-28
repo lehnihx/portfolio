@@ -14,7 +14,7 @@ export const AnimatedThemeToggler = ({
   duration = 400,
   ...props
 }: AnimatedThemeTogglerProps) => {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { resolvedTheme, theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
@@ -24,15 +24,16 @@ export const AnimatedThemeToggler = ({
 
   const toggleTheme = useCallback(async () => {
     if (!buttonRef.current) return
+    const next = theme === "system" ? (isDark ? "light" : "dark") : "system"
 
     if (!document.startViewTransition) {
-      setTheme(isDark ? "light" : "dark")
+      setTheme(next)
       return
     }
 
     await document.startViewTransition(() => {
       flushSync(() => {
-        setTheme(isDark ? 'light' : 'dark')
+        setTheme(next)
       })
     }).ready
 
@@ -48,7 +49,7 @@ export const AnimatedThemeToggler = ({
       { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${maxRadius}px at ${x}px ${y}px)`] },
       { duration, easing: "ease-in-out", pseudoElement: "::view-transition-new(root)" }
     )
-  }, [isDark, duration, setTheme])
+  }, [theme, isDark, duration, setTheme])
 
   return (
     <button

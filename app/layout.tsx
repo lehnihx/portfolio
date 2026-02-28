@@ -22,8 +22,8 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <LoadingScreen>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="">
+            <LoadingScreen>
             {children}
           </LoadingScreen>
         </ThemeProvider>
