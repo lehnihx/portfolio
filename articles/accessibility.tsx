@@ -26,23 +26,32 @@ import { useDialog } from "@/hooks/useDialog"
 import { AnimatedThemeToggler } from "@/lib/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
 import { animate } from "motion/react"
+import { wait } from "lenix"
 
-export const SocialDock = () => {
+export const Accessibility = () => {
   const dict = useDict()
   const dialog = useDialog()
   const router = useRouter()
-  const changeDict = (locale: Lang) => {
-    router.push(`/${locale}#footer`)
+  
+  const changeDict = (locale: Lang | "") => {
+    router.push(`/${locale}`)
     toast.promise(
-      () => new Promise(resolve => setTimeout(resolve, 2000)),
+      () => wait(2000),
       {
         loading: dict.changing_language,
         success: dict.language_changed,
         error: dict.failed_language_change,
-        position: "top-right"
-      }
+        position: "top-right",
+        finally: () => scrollToById("footer").then(() => { }),
+      },
     )
   }
+
+  const scrollToById = (id: string) => animate(window.scrollY, document.getElementById(id)!.offsetTop, {
+    duration: 2,
+    ease: 'easeInOut',
+    onUpdate: v => window.scrollTo(0, v)
+  })
 
   const socials = [
     {
@@ -67,11 +76,7 @@ export const SocialDock = () => {
       <DockIcon key="home">
         <Tooltip>
           <TooltipTrigger asChild>
-            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => animate(window.scrollY, document.getElementById('hero')!.offsetTop, {
-              duration: 2,
-              ease: 'easeInOut',
-              onUpdate: v => window.scrollTo(0, v)
-            })}>
+            <Button variant={"ghost"} size={"icon"} className="rounded-full" onClick={() => scrollToById("hero")}>
               <HomeIcon className="size-4" />
             </Button>
           </TooltipTrigger>
@@ -110,7 +115,7 @@ export const SocialDock = () => {
             <DropdownMenuContent className="w-full" align="start">
               <DropdownMenuGroup>
                 <DropdownMenuLabel>{dict.locales}</DropdownMenuLabel>
-                <DropdownMenuItem onClick={() => changeDict("en")}>
+                <DropdownMenuItem onClick={() => changeDict("")}>
                   English
                   <DropdownMenuShortcut>🇬🇧</DropdownMenuShortcut>
                 </DropdownMenuItem>

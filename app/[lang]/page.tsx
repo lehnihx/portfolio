@@ -11,7 +11,7 @@ import TimelineJourney from "@/articles/timeline"
 import { cachedInsights } from "@/lib/insights"
 import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
 import CountUp from "@/lib/ui/CountUp"
-import { Accessibility } from "@/articles/accessibility"
+import { Preferences } from "@/articles/preferences"
 
 export interface Review {
   name: string
@@ -31,7 +31,6 @@ export interface Review {
 
 const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
-  
   if (!hasLang(lang)) notFound()
 
   const dict = await Dictionary(lang)
@@ -70,7 +69,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
         </main>
         <footer id="footer" className="relative flex flex-col justify-between">
           <h2></h2>
-          <Accessibility/>
+          <Preferences/>
           <Referrals/>
         </footer>
       </DialogProvider>

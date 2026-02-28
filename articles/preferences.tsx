@@ -1,12 +1,12 @@
 "use client"
 import { useDict } from "@/hooks/useDict"
-import { Accessibility } from "./accessibility"
 import { Clock } from "./clock"
 import { useIsInView } from "@/hooks/useIsInView"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
+import { Accessibility } from "./Accessibility"
 
-export const Accessibility = () => {
+export const Preferences = () => {
   const { ref, height, visible } = useIsInView()
   const dict = useDict()
   
