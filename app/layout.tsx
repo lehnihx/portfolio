@@ -21,9 +21,12 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
   const lang = (heads.get('x-pathname') ?? '').split('/')[1] ?? 'en'
   return (
     <html lang={lang} dir={lang === "ar" ? "rtl" : "ltr"} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `localStorage.removeItem('theme')` }} />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange storageKey="">
-            <LoadingScreen>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LoadingScreen>
             {children}
           </LoadingScreen>
         </ThemeProvider>
