@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useDict } from '@/hooks/useDict'
 import dynamic from 'next/dynamic'
 
-const TextEffect = dynamic(() => import('@/components/text-effect').then(m => ({ default: m.TextEffect })), { ssr: false })
+const TextEffect = dynamic(() => import('@/components/ui/text-effect').then(m => ({ default: m.TextEffect })), { ssr: false })
 
 const randomNewNumber = (lastNumber: number | null, length: number): number => {
   const n = Math.floor(Math.random() * length)

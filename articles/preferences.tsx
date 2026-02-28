@@ -7,23 +7,23 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuShortcut,
-} from "@/components/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { useParams, useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { ArrowUpRight, HomeIcon, PencilIcon } from "lucide-react"
-import { Button, buttonVariants } from "@/components/button"
-import { Separator } from "@/components/separator"
+import { Button, buttonVariants } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/tooltip"
-import { Dock, DockIcon } from "@/components/dock"
+} from "@/components/ui/tooltip"
+import { Dock, DockIcon } from "@/components/ui/dock"
 import { useDict } from "@/hooks/useDict"
-import { DropdownMenuTrigger } from "../components/dropdown-menu"
+import { DropdownMenuTrigger } from "../components/ui/dropdown-menu"
 import { useDialog } from "@/hooks/useDialog"
-import { AnimatedThemeToggler } from "@/components/animated-theme-toggler"
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler"
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si"
 import { animate } from "motion/react"
 import { wait } from "lenix"

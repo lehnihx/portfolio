@@ -1,4 +1,4 @@
-import { Timeline } from "@/components/timeline"
+import { Timeline } from "@/components/ui/timeline"
 
 export default function TimelineJourney() {
   const data = [

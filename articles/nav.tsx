@@ -1,6 +1,6 @@
 "use client"
 import { useDict } from "@/hooks/useDict"
-import { Button } from "@/components/button"
+import { Button } from "@/components/ui/button"
 import { Route } from "lucide-react"
 import { useState } from "react"
 

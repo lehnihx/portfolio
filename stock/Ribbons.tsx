@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect, useRef } from 'react';
 import { Renderer, Transform, Vec3, Color, Polyline } from 'ogl';
 
@@ -17,14 +18,14 @@ interface RibbonsProps {
 }
 
 const Ribbons: React.FC<RibbonsProps> = ({
-  colors = ['#ff9346', '#7cff67', '#ffee51', '#5227FF'],
-  baseSpring = 0.03,
+  colors = ['#fff'],
+  baseSpring = 0.09,
   baseFriction = 0.9,
-  baseThickness = 30,
-  offsetFactor = 0.05,
-  maxAge = 500,
+  baseThickness = 4,
+  offsetFactor = 0.01,
+  maxAge = 410,
   pointCount = 50,
-  speedMultiplier = 0.6,
+  speedMultiplier = 0.4,
   enableFade = false,
   enableShaderEffect = false,
   effectAmplitude = 2,

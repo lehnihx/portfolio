@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/stock/ui/stateful-button";
 
 export default function StatefulButtonDemo() {
-  // dummy API call
   const handleClick = () => {
     return new Promise((resolve) => {
       setTimeout(resolve, 4000);

@@ -1,6 +1,6 @@
 "use client"
 import { useIsInView } from "@/hooks/useIsInView"
-import { Globe } from "@/components/globe"
+import { Globe } from "@/components/ui/globe"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 

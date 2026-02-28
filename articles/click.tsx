@@ -1,5 +1,5 @@
 "use client"
-import ClickSpark from "@/stock/ClickSpark"
+import ClickSpark from "@/components/ui/ClickSpark"
 import { useTheme } from "next-themes"
 
 export const ClickProvider = ({ children }: { children: Readonly<React.ReactNode> }) => {

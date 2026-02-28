@@ -1,4 +1,4 @@
-import { DottedMap } from "@/registry/magicui/dotted-map"
+import { DottedMap } from "./ui/dotted-map"
 
 const markers = [
   {
@@ -78,7 +78,7 @@ const markers = [
   }, // Johannesburg
 ]
 
-export function Component() {
+export function DottedMapElement() {
   return (
     <div className="relative h-[500px] w-full overflow-hidden rounded-lg border">
       <div className="to-background absolute inset-0 bg-radial from-transparent to-70%" />

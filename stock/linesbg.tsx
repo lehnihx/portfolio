@@ -1,4 +1,3 @@
-import React from "react";
 import { BackgroundLines } from "@/stock/ui/background-lines";
 
 export function BackgroundLinesDemo() {
@@ -14,4 +13,3 @@ export function BackgroundLinesDemo() {
     </BackgroundLines>
   );
 }
-pnpm dlx shadcn@latest add @aceternity/lamp-demo

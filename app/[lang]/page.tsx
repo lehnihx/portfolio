@@ -9,9 +9,9 @@ import { Nav } from "@/articles/nav"
 import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
 import { cachedInsights } from "@/lib/insights"
-import { BackgroundRippleEffect } from "@/components/background-ripple-effect"
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 import { Accessibility } from "@/articles/accessibility"
-import { NumberTicker } from "@/components/number-ticker"
+import { NumberTicker } from "@/components/ui/number-ticker"
 
 export interface Review {
   name: string

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { BlurFade } from "@/registry/magicui/blur-fade"
+import { BlurFade } from "@/stock/ui/blur-fade"
 
 const images = Array.from({ length: 9 }, (_, i) => {
   const isLandscape = i % 2 === 0
