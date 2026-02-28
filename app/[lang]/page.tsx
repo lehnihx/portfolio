@@ -9,9 +9,10 @@ import { Nav } from "@/articles/nav"
 import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
 import { cachedInsights } from "@/lib/insights"
-import { BackgroundRippleEffect } from "@/lib/ui/background-ripple-effect"
-import CountUp from "@/lib/ui/CountUp"
+import { BackgroundRippleEffect } from "@/components/background-ripple-effect"
+import CountUp from "@/components/CountUp"
 import { Accessibility } from "@/articles/accessibility"
+import { NumberTicker } from "@/components/number-ticker"
 
 export interface Review {
   name: string
@@ -47,10 +48,8 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <h2></h2>
             <BackgroundRippleEffect />
             <Intro/>
-            {(async () => {
-              const loc = await cachedInsights()
-              return <CountUp from={0} to={loc || 0} separator="," direction="up" duration={3} className="count-up-text"/>
-            })()}
+            {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()}
+
             {/* <BeamToClaude/> */}
             {/* <Services/> */}
             {/* <Quotes/> */}

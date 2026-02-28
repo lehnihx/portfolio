@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "next-themes"
-import { Toaster } from "@/lib/ui/sonner"
-import { ScrollProgress } from "@/lib/ui/scroll-progress"
+import { Toaster } from "@/components/sonner"
+import { ScrollProgress } from "@/components/scroll-progress"
 import { LoadingScreen } from "@/articles/loading"
 import { headers } from "next/headers"
 

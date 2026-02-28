@@ -1,7 +1,7 @@
 "use client"
-import { TypingAnimation } from "@/lib/ui/typing-animation"
+import { TypingAnimation } from "@/components/typing-animation"
 import { useDict } from "@/hooks/useDict"
-import { SparklesCore } from "@/lib/ui/sparkles"
+import { SparklesCore } from "@/components/sparkles"
 import { useTheme } from "next-themes"
 
 export const Intro = () => {

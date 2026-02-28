@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import { AuroraBackground } from "@/stock/ui/aurora-background";
 
 export default function AuroraBackgroundDemo() {
   return (

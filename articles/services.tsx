@@ -1,4 +1,4 @@
-import { FlipWords } from "@/lib/ui/flip-words"
+import { FlipWords } from "@/components/flip-words"
 
 export default function Services() {
   const words = [
