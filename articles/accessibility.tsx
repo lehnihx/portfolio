@@ -12,13 +12,11 @@ export const Accessibility = () => {
 
   return (
     <div ref={ref} style={{ minHeight: height }}>
-      {visible && (
-        <motion.article {...ANIMATION} className="my-16 flex items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
-          <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {dict.lenix}. {dict.rights}.</p>
-          <Clock />
-          <Preferences/>
-        </motion.article>
-      )}
+      {visible && <motion.div {...ANIMATION} className="my-16 flex items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
+        <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {dict.lenix}. {dict.rights}.</p>
+        <Clock />
+        <Preferences/>
+      </motion.div>}
     </div>
   )
 }

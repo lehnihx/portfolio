@@ -15,7 +15,7 @@ export const Ask = () => {
     console.log("submitted")
   }
   return (
-    <motion.article {...ANIMATION} className="my-16 flex flex-col justify-center items-center px-4">
+    <motion.div {...ANIMATION} className="my-16 flex flex-col justify-center items-center px-4">
       <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-foreground">
         {dict.ask}
       </h2>
@@ -24,6 +24,6 @@ export const Ask = () => {
         onChange={handleChange}
         onSubmit={onSubmit}
       />
-    </motion.article>
+    </motion.div>
   )
 }

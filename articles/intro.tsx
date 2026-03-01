@@ -8,7 +8,7 @@ export const Intro = () => {
   const dict = useDict()
   const { resolvedTheme } = useTheme()
   return (
-    <article className="h-screen w-full relative flex items-center justify-center">
+    <div className="h-full w-full relative flex items-center justify-center">
       <div className="absolute bottom-1/4 flex items-center gap-5 flex-col z-10">
         <TypingAnimation
           words={[dict.introA, dict.introB]}
@@ -16,7 +16,7 @@ export const Intro = () => {
           typeSpeed={50}
           loop
           deleteSpeed={50}
-          className="text-4xl font-bold"
+          className="text-[clamp(2rem,4vw,4rem)] font-bold"
         />
         <div className="w-full h-40 relative">
           <div className="absolute inset-x-40 portrait:inset-x-12.5 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-1.25 w-3/4 blur-sm" />
@@ -33,6 +33,6 @@ export const Intro = () => {
           <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
         </div>
       </div>
-    </article>
+    </div>
   )
 }
