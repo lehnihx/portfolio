@@ -7,17 +7,19 @@ export const LayoutTextFlip = ({
   text = "Build Amazing",
   words = ["Landing Pages", "Component Blocks", "Page Sections", "3D Shaders"],
   duration = 3000,
+  transition = 0.5,
 }: {
   text: string;
   words: string[];
   duration?: number;
+  transition?: number
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }, duration);
+    }, duration + transition * 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -26,7 +28,8 @@ export const LayoutTextFlip = ({
     <>
       <motion.span
         layoutId="subtext"
-        className="text-2xl font-bold tracking-tight drop-shadow-lg md:text-4xl"
+        style={{ fontSize: "var(--font-size-fluid-xl)" }}
+        className="tracking-tight drop-shadow-lg md:text-4xl"
       >
         {text}
       </motion.span>
@@ -45,7 +48,7 @@ export const LayoutTextFlip = ({
             }}
             exit={{ y: 50, filter: "blur(10px)", opacity: 0 }}
             transition={{
-              duration: 0.5,
+              duration: transition,
             }}
             className={cn("inline-block whitespace-nowrap")}
           >

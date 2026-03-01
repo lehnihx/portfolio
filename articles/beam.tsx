@@ -31,11 +31,11 @@ export function BeamToClaude() {
 
   return (
     <div
-      className="relative flex flex-1/4 w-full max-w-[500px] items-center justify-center overflow-hidden p-10"
+      className="relative mx-auto flex-1/3 flex w-full max-w-4xl items-center justify-center overflow-hidden px-14"
       ref={containerRef}
     >
-      <div className="flex size-full flex-col items-stretch justify-between gap-10">
-        <div className="flex flex-row justify-between">
+      <div className="flex w-full flex-col items-center justify-center gap-10">
+        <div className="flex w-full flex-row items-center justify-between">
           <Circle ref={div1Ref} className="p-0">
             <Lenix className="text-black size-full" />
           </Circle>
@@ -46,6 +46,7 @@ export function BeamToClaude() {
       </div>
 
       <AnimatedBeam
+        className="top-0 left-0"
         gradientStartColor="var(--foreground)"
         gradientStopColor="var(--foreground)"
         duration={3}

@@ -155,19 +155,21 @@ export function TypingAnimation({
   }
 
   return (
-    <MotionComponent
-      ref={elementRef}
-      className={cn("leading-[5rem] tracking-[-0.02em]", className)}
-      {...props}
-    >
-      {displayedText}
-      {shouldShowCursor && (
-        <span
-          className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+    <div style={{ fontSize: "var(--font-size-fluid-2xl)" }}>
+      <MotionComponent
+        ref={elementRef}
+        className={cn("leading-[5rem] tracking-[-0.02em]", className)}
+        {...props}
         >
-          {getCursorChar()}
-        </span>
-      )}
-    </MotionComponent>
+        {displayedText}
+        {shouldShowCursor && (
+          <span
+            className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+            >
+            {getCursorChar()}
+          </span>
+        )}
+      </MotionComponent>
+    </div>
   )
 }
