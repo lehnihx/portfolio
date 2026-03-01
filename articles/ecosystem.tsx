@@ -1,11 +1,11 @@
 "use client"
-import { IconCloud } from "@/stock/ui/icon-cloud"
+import { IconCloud } from "@/components/ui/icon-cloud"
 import { IconBrandCSharp } from "@tabler/icons-react"
 import { useTheme } from "next-themes"
 import { SiClaude, SiCplusplus, SiCss3, SiDavinciresolve, SiDotnet, SiEslint, SiFigma, SiFivem, SiGit, SiGithub, SiGnubash, SiHtml5, SiJavascript, SiLemonsqueezy, SiLua, SiMariadb, SiMysql, SiNextdotjs, SiNgrok, SiNpm, SiPhp, SiPnpm, SiPostgresql, SiReact, SiReplit, SiRust, SiTailwindcss, SiTypescript, SiUml, SiVercel, SiVite, SiZsh } from "react-icons/si"
 
 
-export function IconCloudDemo() {
+export function Ecosystem() {
   const { resolvedTheme } = useTheme()
   const color = resolvedTheme === 'dark' ? '#ffffff' : '#000000'
   return (

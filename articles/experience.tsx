@@ -2,7 +2,7 @@
 import { FlipWords } from "@/components/ui/flip-words"
 import { useDict } from "@/hooks/useDict"
 import { ANIMATION } from "@/lib/utils"
-import { LayoutTextFlip } from "@/stock/ui/layout-text-flip"
+import { LayoutTextFlip } from "@/components/ui/layout-text-flip"
 import { motion } from "motion/react"
 
 export default function Experience() {
