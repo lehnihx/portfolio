@@ -25,23 +25,16 @@ const referrals = [
 ] as const
 
 export const Referrals = () => {
-  const { ref, height, visible } = useIsInView()
   const dialog = useDialog()
   const { resolvedTheme } = useTheme()
 
   return (
-    <div ref={ref} style={{ minHeight: height }}>
-      {visible && (
-        <article>
-          <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={'var(--background)'}>
-            {referrals.map(({ key, Icon, url }, index) =>
-              <Icon key={`${key}-${index}`} onClick={() => dialog(url)}
-                className={`${resolvedTheme === 'light' ? 'text-foreground/33 hover:text-foreground' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-              />
-            )}
-          </Marquee>
-        </article>
+    <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={'var(--background)'}>
+      {referrals.map(({ key, Icon, url }, index) =>
+        <Icon key={`${key}-${index}`} onClick={() => dialog(url)}
+          className={`${resolvedTheme === 'light' ? 'text-foreground/33 hover:text-foreground' : 'text-foreground/70 hover:text-foreground'} size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
+        />
       )}
-    </div>
+    </Marquee>
   )
 }

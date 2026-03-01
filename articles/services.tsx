@@ -13,10 +13,8 @@ export default function Services() {
   ]
 
   return (
-    <article className="flex justify-center items-center">
-      <div className="transition duration-500 ease-in-out text-4xl mx-auto font-normal text-neutral-600 dark:text-neutral-400">
-        I&apos;m also a<FlipWords words={words} />
-      </div>
-    </article>
+    <div className="transition duration-500 ease-in-out text-[clamp(2rem,4vw,4rem)] mx-auto font-normal text-neutral-600 dark:text-neutral-400">
+      Lenix is sure you do not know that he can <FlipWords words={words} />
+    </div>
   )
 }

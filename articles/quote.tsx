@@ -40,15 +40,17 @@ export function Quotes() {
   }
 
   return (
-    <TextEffect
-      className='absolute bottom-1/4 inline-flex text-ring italic font-light text-lg z-10'
-      per='char'
-      variants={blurSlideVariants}
-      trigger={trigger}
-      speedSegment={0.2}
-      onAnimationComplete={triggerCompleted}
-    >
-      {'"' + quotes[quoteIndex] + '"'}
-    </TextEffect>
+    <div className='relative max-w-screen flex items-center justify-center'>
+      <TextEffect
+        className='absolute inline-flex text-ring italic font-light text-lg'
+        per='char'
+        variants={blurSlideVariants}
+        trigger={trigger}
+        speedSegment={0.2}
+        onAnimationComplete={triggerCompleted}
+      >
+        {'"' + quotes[quoteIndex] + '"'}
+      </TextEffect>
+    </div>
   )
 }

@@ -39,9 +39,5 @@ export default function TimelineJourney() {
       ),
     },
   ]
-  return (
-    <div className="relative overflow-clip mb-16">
-      <Timeline data={data} header={{ title: "Timeline", description: "My journey in the world of programming" }} />
-    </div>
-  )
+  return <Timeline data={data} header={{ title: "Timeline", description: "My journey in the world of programming" }} />
 }
