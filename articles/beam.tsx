@@ -31,7 +31,7 @@ export function BeamToClaude() {
 
   return (
     <div
-      className="relative mx-auto flex-1/3 flex w-full max-w-4xl items-center justify-center overflow-hidden px-14"
+      className="relative mx-auto flex-1/2 flex w-full max-w-4xl items-center justify-center overflow-hidden px-14"
       ref={containerRef}
     >
       <div className="flex w-full flex-col items-center justify-center gap-10">

@@ -8,9 +8,20 @@ import RotatingText from "@/stock/RotatingText"
 export default function Experience() {
   const { services, experiences, did_u_know, used_to_provide, service } = useDict()
   return (
-    <motion.div {...ANIMATION} className="relative flex-1/3 text-center sm:mx-0 sm:mb-0">
-      <span style={{ fontSize: 'var(--font-size-fluid-lg)' }} className="flex">
-        {did_u_know}&nbsp;<strong><RotatingText texts={experiences}/></strong>&nbsp;{used_to_provide}<strong><FlipWords words={services} /></strong>{service}
+    <motion.div {...ANIMATION} className="relative w-full max-w-full overflow-y-hidden text-center p-6">
+      <span className="inline leading-relaxed" style={{ fontSize: "var(--font-size-fluid-base)" }}>
+        {did_u_know}{" "}
+        <strong>
+          <RotatingText
+            texts={experiences}
+            mainClassName="inline-flex flex-wrap whitespace-normal align-baseline"
+          />
+        </strong>
+        {" "}{used_to_provide}{" "}
+        <strong>
+          <FlipWords words={services} className="px-0" />
+        </strong>
+        {" "}{service}
       </span>
     </motion.div>
   )
