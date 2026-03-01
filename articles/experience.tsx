@@ -3,7 +3,7 @@ import { FlipWords } from "@/components/ui/flip-words"
 import { useDict } from "@/hooks/useDict"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
-import RotatingText from "@/stock/RotatingText"
+import RotatingText from "@/components/ui/RotatingText"
 
 export default function Experience() {
   const { services, experiences, did_u_know, used_to_provide, service } = useDict()
