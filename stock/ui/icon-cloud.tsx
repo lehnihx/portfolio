@@ -1,5 +1,6 @@
 "use client"
 
+import { StringifyOptions } from "querystring"
 import React, { useEffect, useRef, useState } from "react"
 import { renderToString } from "react-dom/server"
 
@@ -15,13 +16,14 @@ interface Icon {
 interface IconCloudProps {
   icons?: React.ReactNode[]
   images?: string[]
+  color: string
 }
 
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3)
 }
 
-export function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloud({ icons, images, color }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
   const [rotation, setRotation] = useState({ x: 0, y: 0 })
@@ -51,9 +53,11 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
     const newIconCanvases = items.map((item, index) => {
       const offscreen = document.createElement("canvas")
-      offscreen.width = 40
-      offscreen.height = 40
+      const dpr = window.devicePixelRatio || 1
+      offscreen.width = 40 * dpr
+      offscreen.height = 40 * dpr
       const offCtx = offscreen.getContext("2d")
+      offCtx?.scale(dpr, dpr)
 
       if (offCtx) {
         if (images) {
@@ -77,13 +81,14 @@ export function IconCloud({ icons, images }: IconCloudProps) {
           }
         } else {
           // Handle SVG icons
-          offCtx.scale(0.4, 0.4)
-          const svgString = renderToString(item as React.ReactElement)
+          const svgString = renderToString(
+            React.cloneElement(item as React.ReactElement<{ color?: string; fill?: string }>, { color, fill: color })
+          )    
           const img = new Image()
           img.src = "data:image/svg+xml;base64," + btoa(svgString)
           img.onload = () => {
             offCtx.clearRect(0, 0, offscreen.width, offscreen.height)
-            offCtx.drawImage(img, 0, 0)
+            offCtx.drawImage(img, 0, 0, 40, 40)
             imagesLoadedRef.current[index] = true
           }
         }
