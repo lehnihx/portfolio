@@ -1,32 +1,51 @@
+"use client"
 import { IconCloud } from "@/stock/ui/icon-cloud"
+import { IconBrandCSharp } from "@tabler/icons-react"
+import { useTheme } from "next-themes"
+import { SiClaude, SiCplusplus, SiCss3, SiDavinciresolve, SiDotnet, SiEslint, SiFigma, SiFivem, SiGit, SiGithub, SiGnubash, SiHtml5, SiJavascript, SiLemonsqueezy, SiLua, SiMariadb, SiMysql, SiNextdotjs, SiNgrok, SiNpm, SiPhp, SiPnpm, SiPostgresql, SiReact, SiReplit, SiRust, SiTailwindcss, SiTypescript, SiUml, SiVercel, SiVite, SiZsh } from "react-icons/si"
 
-const slugs = [
-  "typescript",
-  "javascript",
-  "java",
-  "react",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "nextdotjs",
-  "prisma",
-  "postgresql",
-  "vercel",
-  "git",
-  "github",
-  "gitlab",
-  "visualstudiocode",
-  "figma",
-]
 
 export function IconCloudDemo() {
-  const images = slugs.map(
-    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
-  )
-
+  const { resolvedTheme } = useTheme()
+  const color = resolvedTheme === 'dark' ? '#ffffff' : '#000000'
   return (
     <div className="relative flex size-full items-center justify-center overflow-hidden">
-      <IconCloud images={images} />
+      <IconCloud color={color} icons={
+        [
+          <SiDotnet/>,
+          <SiCplusplus/>,
+          <SiTypescript/>,
+          <SiTailwindcss/>,
+          <SiNpm/>,
+          <SiMysql/>,
+          <SiLua/>,
+          <SiReact/>,
+          <SiNextdotjs/>,
+          <SiFigma/>,
+          <SiGithub/>,
+          <SiGit/>,
+          <SiUml/>,
+          <SiPostgresql/>,
+          <SiRust/>,
+          <IconBrandCSharp/>,
+          <SiClaude/>,
+          <SiCss3/>,
+          <SiDavinciresolve/>,
+          <SiEslint/>,
+          <SiFivem/>,
+          <SiGnubash/>,
+          <SiHtml5/>,
+          <SiMariadb/>,
+          <SiNgrok/>,
+          <SiNpm/>,
+          <SiPhp/>,
+          <SiPnpm/>,
+          <SiReplit/>,
+          <SiVercel/>,
+          <SiVite/>,
+          <SiZsh/>,
+        ]
+      } />
     </div>
   )
 }
