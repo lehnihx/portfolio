@@ -12,6 +12,18 @@ import { cachedInsights } from "@/lib/insights"
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 import { Accessibility } from "@/articles/accessibility"
 import { NumberTicker } from "@/components/ui/number-ticker"
+import { BeamToClaude } from "@/articles/beam"
+import Experience from "@/articles/experience"
+import { BackgroundDottedMap } from "@/articles/map"
+import { Quotes } from "@/articles/quote"
+import { Ecosystem } from "@/articles/ecosystem"
+import RotatingText from "@/stock/RotatingText"
+import { Particles } from "@/stock/particles"
+import { Meteors } from "@/stock/meteors"
+import { BackgroundLinesDemo } from "@/stock/linesbg"
+import AuroraBackgroundDemo from "@/stock/aurora-background-demo"
+import { Location } from "@/articles/location"
+import { PointerHighlight } from "@/stock/ui/pointer-highlight"
 
 export interface Review {
   name: string
@@ -43,26 +55,61 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
         </header>
         <main>
           <h1></h1>
-          <section id="hero" className="relative h-screen text-foreground flex flex-col items-center justify-center text-3xl">
+          <section id="hero" className="relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
             <h2></h2>
-            <BackgroundRippleEffect />
-            <Intro/>
-            {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()}
+            <article className="h-screen w-full">
+              <BackgroundRippleEffect />
+              <Intro/>
+            </article>
+            {/* <Particles/> */}
+            {/* <AuroraBackgroundDemo/> */}
+            {/* <BackgroundLinesDemo/> */}
+            {/* <Meteors/> */}
+            {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
-          <section className="flex flex-col items-center justify-between">
-            <h2>About Lenix</h2>
-            <TimelineJourney/>
+          <section className="flex flex-col items-center justify-evenly">
+            <article className="h-screen w-full flex flex-col items-center justify-between gap-10">
+              <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }} className="font-bold whitespace-nowrap flex">
+                <span>Get to know more&nbsp;</span>
+                <PointerHighlight pointerClassName="text-accent">about Lenix</PointerHighlight>
+              </h2>
+              <Experience />
+              <h2 style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }} className="font-bold whitespace-nowrap flex">
+                <span>Lenix's&nbsp;</span>
+                <PointerHighlight duration={2} pointerClassName="text-accent">Ecosystem</PointerHighlight>
+              </h2>
+              <Ecosystem/>
+              <Quotes/>
+              <BeamToClaude />
+            </article>
           </section>
-          <section className="flex flex-col items-center justify-center">
-            <h2>Get In Touch</h2>
-            <Ask/>
-            <ContactForm/>
+          {/* <section className="flex flex-col items-center justify-between">
+            <h2></h2>
+            <article className="relative overflow-clip mb-16">
+              <TimelineJourney/>
+            </article>
+          </section> */}
+          <section className="flex flex-col items-center justify-evenly">
+            <h2></h2>
+            <article>
+              <Ask/>
+            </article>
+            <article>
+              <ContactForm/>
+            </article>
           </section>
         </main>
-        <footer id="footer" className="relative flex flex-col justify-between">
+        <footer id="footer" className="min-h-screen relative flex flex-col justify-evenly">
           <h2></h2>
-          <Accessibility/>
-          <Referrals/>
+          <article>
+            <Accessibility/>
+          </article>
+          <article>
+            <Location/>
+          </article>
+          <article>
+            <Referrals/>
+          </article>
         </footer>
       </DialogProvider>
     </DictProvider>

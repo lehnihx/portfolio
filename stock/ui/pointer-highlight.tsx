@@ -8,11 +8,13 @@ export function PointerHighlight({
   rectangleClassName,
   pointerClassName,
   containerClassName,
+  duration = 1,
 }: {
   children: React.ReactNode;
   rectangleClassName?: string;
   pointerClassName?: string;
   containerClassName?: string;
+  duration?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -68,7 +70,7 @@ export function PointerHighlight({
               height: dimensions.height,
             }}
             transition={{
-              duration: 1,
+              duration,
               ease: "easeInOut",
             }}
           />
@@ -85,7 +87,7 @@ export function PointerHighlight({
             }}
             transition={{
               opacity: { duration: 0.1, ease: "easeInOut" },
-              duration: 1,
+              duration,
               ease: "easeInOut",
             }}
           >

@@ -55,12 +55,19 @@
     "How did you become a software engineering this fast?"
   ],
   "services": [
-    "Rockstar Filmer",
-    "Trailer & Journey Producer",
-    "Scenarios Video Editor",
-    "Tailored Scripts Programmer",
-    "FiveM Servers Consultant",
-    "Problem Solver",
-    "End-to-end FiveM Server Builder"
-  ]
+    "Rockstar Filming",
+    "Trailer & Journey Production",
+    "Scenarios Video Editing",
+    "Tailored Scripts Programming",
+    "FiveM Servers Consultation",
+    "Problem Solving",
+    "End-to-end FiveM Server Building"
+  ],
+  "experiences": [
+    "Web Developer",
+    "FiveM Scripter"
+  ],
+  "did_u_know": "Did you know that Lenix is",
+  "used_to_provide": "and he used to provide",
+  "service": "service"
 }
