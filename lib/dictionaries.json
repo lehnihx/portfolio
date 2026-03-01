@@ -2,8 +2,14 @@
   "about": "About",
   "projects": "Projects",
   "contact": "Contact",
-  "introA": "Hi, I'm Lenix",
-  "introB": "And I'm a Junior Full Stack (Backend-Focused) Developer",
+  "intro": [
+    "Hi, I'm Lenix, and I'm a Junior Software Developer",
+    "Full Stack Is Just Where I Started",
+    "Going From Pixels To Silicon",
+    "I Build The Tools Others Build With",
+    "The Stack Was Never The Destination",
+    "I Write Code That Writes Code"
+  ],
   "home": "Home",
   "locales": "Select The Language",
   "theme": "Toggle The Theme",
@@ -47,5 +53,15 @@
     "Where do you live?",
     "What is your real name?",
     "How did you become a software engineering this fast?"
+  ],
+  "services": [
+    "Rockstar Filmer",
+    "Trailer & Journey Producer",
+    "Scenarios Video Editor",
+    "Tailored Scripts Programmer",
+    "FiveM Servers Consultant",
+    "Problem Solver",
+    "End-to-end FiveM Server Builder",
+    "Web Developer"
   ]
 }

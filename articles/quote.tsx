@@ -42,12 +42,13 @@ export function Quotes() {
   return (
     <div className='relative max-w-screen flex items-center justify-center'>
       <TextEffect
-        className='absolute inline-flex text-ring italic font-light text-lg'
+        className='absolute inline-flex text-ring italic font-light'
         per='char'
         variants={blurSlideVariants}
         trigger={trigger}
         speedSegment={0.2}
         onAnimationComplete={triggerCompleted}
+        style={{ fontSize: 'var(--font-size-fluid-lg)' }}
       >
         {'"' + quotes[quoteIndex] + '"'}
       </TextEffect>
