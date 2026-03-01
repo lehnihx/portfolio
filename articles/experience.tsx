@@ -1,7 +1,7 @@
-"use client";
-import { ANIMATION } from "@/lib/utils";
-import { LayoutTextFlip } from "@/stock/ui/layout-text-flip";
-import { motion } from "motion/react";
+"use client"
+import { ANIMATION } from "@/lib/utils"
+import { LayoutTextFlip } from "@/stock/ui/layout-text-flip"
+import { motion } from "motion/react"
 
 export default function Experience() {
   return (
@@ -12,5 +12,5 @@ export default function Experience() {
         duration={6000}
       />
     </motion.div>
-  );
+  )
 }

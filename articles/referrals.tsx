@@ -4,7 +4,6 @@ import { useDialog } from '@/hooks/useDialog'
 import { Fiverr, Grey, Qoder } from '@/lib/icons'
 import { useTheme } from 'next-themes'
 import Marquee from "react-fast-marquee"
-import { useIsInView } from '@/hooks/useIsInView'
 
 const referrals = [
   {
