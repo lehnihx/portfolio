@@ -5,14 +5,14 @@ import { SparklesCore } from "@/components/ui/sparkles"
 import { useTheme } from "next-themes"
 
 export const Intro = () => {
-  const dict = useDict()
+  const { intro } = useDict()
   const { resolvedTheme } = useTheme()
   return (
     <div className="h-full w-full relative flex items-center justify-center">
       <div className="absolute bottom-1/4 flex items-center gap-5 flex-col z-10">
         <TypingAnimation
           as="div"
-          words={dict.intro}
+          words={intro}
           cursorStyle="line"
           typeSpeed={50}
           loop

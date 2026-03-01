@@ -20,21 +20,21 @@ const InputField = ({ id, label, placeholder, type }: {
 )
 
 export const ContactForm = () => {
-  const dict = useDict()
+  const { contact, lenix, name, email, mail, mail_placeholder, send } = useDict()
   return (
     <motion.div {...ANIMATION} className="w-full my-16 px-8 landscape:max-w-1/2 portrait:min-w-full">
       <form action="">
         <FieldSet>
-          <FieldLabel className="text-3xl">{dict.contact} {dict.lenix}</FieldLabel>
+          <FieldLabel className="text-3xl">{contact} {lenix}</FieldLabel>
           <FieldGroup className="flex items-center justify-center">
-            <InputField id="name" label={dict.name} placeholder={dict.lenix} type="text" />
-            <InputField id="email" label={dict.email} placeholder="contact@lenix.dev" type="email" />
+            <InputField id="name" label={name} placeholder={lenix} type="text" />
+            <InputField id="email" label={email} placeholder="contact@lenix.dev" type="email" />
             <Field>
-              <FieldLabel htmlFor="mail-user-message">{dict.mail}</FieldLabel>
-              <Textarea placeholder={dict.mail_placeholder} required />
+              <FieldLabel htmlFor="mail-user-message">{mail}</FieldLabel>
+              <Textarea placeholder={mail_placeholder} required />
             </Field>
             <Field >
-              <ShinyButton  {...{ type: "submit" }}>{dict.send}</ShinyButton>
+              <ShinyButton  {...{ type: "submit" }}>{send}</ShinyButton>
             </Field>
           </FieldGroup>
         </FieldSet>

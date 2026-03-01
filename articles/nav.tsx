@@ -5,7 +5,7 @@ import { Route } from "lucide-react"
 import { useState } from "react"
 
 export const Nav = () => {
-  const dict = useDict()
+  const { home, about, projects, contact } = useDict()
   const [state, setState] = useState(false)
   return (
     <>
@@ -24,10 +24,10 @@ export const Nav = () => {
             <Route/>
           </Button>
           <nav className="h-screen flex flex-col items-center justify-center text-background text-7xl [&>a]:cursor-default!">
-            <a href="#">{dict.home}</a>
-            <a href="#about">{dict.about}</a>
-            <a href="#projects">{dict.projects}</a>
-            <a href="#contact">{dict.contact}</a>
+            <a href="#">{home}</a>
+            <a href="#about">{about}</a>
+            <a href="#projects">{projects}</a>
+            <a href="#contact">{contact}</a>
           </nav>
         </div>
       )}

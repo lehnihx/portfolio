@@ -9,7 +9,7 @@ const DialogContext = createContext<( url: string ) => void>(() => {})
 const useDialog = () => useContext(DialogContext)
 
 const DialogProvider = ({ children }: { children: React.ReactNode }) => {
-  const dict = useDict()
+  const { open_external_link, external_link, cancel, open } = useDict()
   const [url, setUrl] = useState<string | null>()
   return (
     <DialogContext.Provider value={setUrl}>
@@ -17,10 +17,10 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
       <AlertDialog open={!!url} onOpenChange={(open) => open && setUrl(null)}>
         <AlertDialogContent id="global-dialog">
           <AlertDialogHeader>
-            <AlertDialogTitle>{dict.open_external_link}</AlertDialogTitle>
+            <AlertDialogTitle>{open_external_link}</AlertDialogTitle>
             <AlertDialogDescription className="flex flex-col gap-3 w-full">
               <span>
-                {dict.external_link}
+                {external_link}
               </span>
               <Input
                 id="input-url-disabled"
@@ -31,9 +31,9 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel onClick={() => setUrl(null)}>{dict.cancel}</AlertDialogCancel>
+            <AlertDialogCancel onClick={() => setUrl(null)}>{cancel}</AlertDialogCancel>
             <AlertDialogAction>
-              <Link href={url || ""} target="_blank" rel="noopener noreferrer">{dict.open}</Link>
+              <Link href={url || ""} target="_blank" rel="noopener noreferrer">{open}</Link>
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>

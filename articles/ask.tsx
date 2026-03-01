@@ -5,7 +5,7 @@ import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 
 export const Ask = () => {
-  const dict = useDict()
+  const { ask, questions } = useDict()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value)
@@ -17,10 +17,10 @@ export const Ask = () => {
   return (
     <motion.div {...ANIMATION} className="my-16 flex flex-col justify-center items-center px-4">
       <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-foreground">
-        {dict.ask}
+        {ask}
       </h2>
       <PlaceholdersAndVanishInput
-        placeholders={dict.questions}
+        placeholders={questions}
         onChange={handleChange}
         onSubmit={onSubmit}
       />
