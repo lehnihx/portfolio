@@ -1,4 +1,4 @@
-import { BackgroundLines } from "@/stock/ui/background-lines";
+import { BackgroundLines } from "@/components/ui/background-lines";
 
 export function BackgroundLinesDemo() {
   return (
