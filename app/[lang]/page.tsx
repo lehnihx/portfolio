@@ -8,22 +8,16 @@ import { Intro } from "@/articles/intro"
 import { Nav } from "@/articles/nav"
 import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
-import { cachedInsights } from "@/lib/insights"
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 import { Accessibility } from "@/articles/accessibility"
-import { NumberTicker } from "@/components/ui/number-ticker"
 import { BeamToClaude } from "@/articles/beam"
 import Experience from "@/articles/experience"
-import { BackgroundDottedMap } from "@/articles/map"
 import { Quotes } from "@/articles/quote"
 import { Ecosystem } from "@/articles/ecosystem"
-import RotatingText from "@/stock/RotatingText"
-import { Particles } from "@/stock/particles"
-import { Meteors } from "@/stock/meteors"
-import { BackgroundLinesDemo } from "@/stock/linesbg"
-import AuroraBackgroundDemo from "@/stock/aurora-background-demo"
 import { Location } from "@/articles/location"
-import { PointerHighlight } from "@/stock/ui/pointer-highlight"
+import { AboutMeHeader } from "@/components/about-me-header"
+import { EcosystemHeader } from "@/components/ecosystem-header"
+import { BackgroundLines } from "@/components/ui/background-lines"
 
 export interface Review {
   name: string
@@ -63,32 +57,31 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             </article>
             {/* <Particles/> */}
             {/* <AuroraBackgroundDemo/> */}
-            {/* <BackgroundLinesDemo/> */}
             {/* <Meteors/> */}
             {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
-          <section className="flex flex-col items-center justify-evenly">
-            <article className="h-screen w-full flex flex-col items-center justify-between gap-10">
-              <h2 style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }} className="font-bold whitespace-nowrap flex">
-                <span>Get to know more&nbsp;</span>
-                <PointerHighlight pointerClassName="text-accent">about Lenix</PointerHighlight>
-              </h2>
+          <section className="min-h-screen flex flex-col items-center justify-evenly">
+            <article className="h-screen w-full flex flex-col items-center justify-evenly">
+              <AboutMeHeader/>
               <Experience />
-              <h2 style={{ fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }} className="font-bold whitespace-nowrap flex">
-                <span>Lenix's&nbsp;</span>
-                <PointerHighlight duration={2} pointerClassName="text-accent">Ecosystem</PointerHighlight>
-              </h2>
-              <Ecosystem/>
+            </article>
+            <article className="w-full">
+              <BackgroundLines>
+                <EcosystemHeader/>
+                <Ecosystem/>
+              </BackgroundLines>
+            </article>
+            <article className="flex flex-col items-center justify-between gap-10 w-screen">
               <Quotes/>
               <BeamToClaude />
             </article>
           </section>
-          {/* <section className="flex flex-col items-center justify-between">
+          <section className="flex flex-col items-center justify-between">
             <h2></h2>
             <article className="relative overflow-clip mb-16">
               <TimelineJourney/>
             </article>
-          </section> */}
+          </section>
           <section className="flex flex-col items-center justify-evenly">
             <h2></h2>
             <article>

@@ -5,8 +5,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { LoadingProvider } from "@/articles/loading"
 import { headers } from "next/headers"
-import { ClickProvider } from "@/articles/click"
-import Ribbons from "@/stock/Ribbons"
+import { ClickProvider } from "@/components/ui/click"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
