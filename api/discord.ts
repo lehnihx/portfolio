@@ -1,3 +1,4 @@
+import "server-only"
 export const fetchDiscord = async <T>(path: string, token: string) => {
   try {
     const response = await fetch(`https://discord.com/api/v10/${path}`, {

@@ -1,3 +1,4 @@
+import "server-only"
 export const fetchCodeTabs = async <T>(owner: string, repositoryName: string) => {
   try {
     const response = await fetch(`https://api.codetabs.com/v1/loc?github=${owner}/${repositoryName}`)

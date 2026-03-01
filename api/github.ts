@@ -1,3 +1,4 @@
+import "server-only"
 export const fetchGithub = async <T,>(path: string, token: string) => {
   try {
     const resp = await fetch(`https://api.github.com/${path}`, {
