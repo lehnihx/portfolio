@@ -11,12 +11,12 @@ export const Accessibility = () => {
   const { lenix, rights } = useDict()
 
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <article ref={ref} style={{ minHeight: height }}>
       {visible && <motion.div {...ANIMATION} className="my-16 flex items-center justify-evenly portrait:flex-col-reverse portrait:gap-5">
         <p className="text-center flex-1/3 text-ring text-xs">© {new Date().getFullYear()} {lenix}. {rights}.</p>
         <Clock />
         <Preferences/>
       </motion.div>}
-    </div>
+    </article>
   )
 }

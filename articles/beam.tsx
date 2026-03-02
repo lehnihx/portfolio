@@ -30,7 +30,7 @@ export function BeamToClaude() {
   const div2Ref = useRef<HTMLDivElement>(null)
 
   return (
-    <div
+    <article
       className="relative mx-auto flex-1/2 flex w-full max-w-4xl items-center justify-center overflow-hidden px-14"
       ref={containerRef}
     >
@@ -52,6 +52,6 @@ export function BeamToClaude() {
         fromRef={div1Ref}
         toRef={div2Ref}
       />
-    </div>
+    </article>
   )
 }

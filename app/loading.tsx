@@ -1,7 +1,5 @@
-import { LoadingProvider } from "@/articles/loading"
+import { LoadingProvider } from "@/components/loading"
 
-const Loading = () => {
-  return <LoadingProvider/>
-}
+const Loading = () => <LoadingProvider/>
 
 export default Loading

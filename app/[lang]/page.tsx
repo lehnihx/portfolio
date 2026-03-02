@@ -51,62 +51,44 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
         </header>
         <main>
           <h1></h1>
-          <section id="hero" className="relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
-            <h2></h2>
-            <article className="h-screen w-full">
-              <BackgroundRippleEffect />
-              <Intro/>
-            </article>
+          <section id="hero" className="h-screen w-full relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
+            <BackgroundRippleEffect />
+            <Intro/>
             {/* <AuroraBackgroundDemo/> */}
             {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
           <section className="min-h-screen flex flex-col items-center justify-evenly">
-            <article className="relative overflow-hidden h-screen w-full flex items-center">
+            <div className="relative overflow-hidden h-screen w-full flex items-center">
               <Particles className="absolute inset-0 -z-10"/>
               <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
                 <AboutMeHeader/>
                 <Experience />
               </div>
-            </article>
-            <article className="w-full">
+            </div>
+            <div className="w-full">
               <BackgroundLines>
                 <EcosystemHeader/>
                 <Ecosystem/>
               </BackgroundLines>
-            </article>
-            <article className="flex flex-col items-center justify-between gap-10 w-screen">
+            </div>
+            <div className="flex flex-col items-center justify-between gap-10 w-screen">
               <Quotes/>
               <BeamToClaude />
-            </article>
+            </div>
           </section>
-          <section className="flex flex-col items-center justify-between">
-            <h2></h2>
-            <article className="relative overflow-clip mb-16">
-              <Meteors/>
-              <TimelineJourney/>
-            </article>
+          <section className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
+            <Meteors/>
+            <TimelineJourney/>
           </section>
-          <section className="flex flex-col items-center justify-evenly">
-            <h2></h2>
-            <article>
-              <Ask/>
-            </article>
-            <article className="w-screen flex items-cnter justify-center">
-              <ContactForm/>
-            </article>
+          <section className="w-screen flex flex-col items-center justify-evenly">
+            <Ask/>
+            <ContactForm/>
           </section>
         </main>
         <footer id="footer" className="min-h-screen relative flex flex-col justify-evenly">
-          <h2></h2>
-          <article>
-            <Accessibility/>
-          </article>
-          <article>
-            <Location/>
-          </article>
-          <article>
-            <Referrals/>
-          </article>
+          <Accessibility/>
+          <Location/>
+          <Referrals/>
         </footer>
       </DialogProvider>
     </DictProvider>

@@ -4,7 +4,7 @@ import { Globe } from "@/components/ui/globe"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { useTheme } from "next-themes"
-import { BackgroundDottedMap } from "./map"
+import { BackgroundDottedMap } from "../components/ui/map"
 
 export const Location = () => {
   const { ref, height, visible } = useIsInView()
@@ -13,7 +13,7 @@ export const Location = () => {
   ? [1, [1, 1, 1], [1, 1, 1], [0, 0, 0]]
   : [0, [1, 1, 1], [0, 0, 0], [1, 1, 1]]
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <article ref={ref} style={{ minHeight: height }}>
       {visible && <motion.div {...ANIMATION} className="w-full">
         <BackgroundDottedMap>
           <Globe config={{
@@ -34,6 +34,6 @@ export const Location = () => {
           }}/>
         </BackgroundDottedMap>
       </motion.div>}
-    </div>
+    </article>
   )
 }

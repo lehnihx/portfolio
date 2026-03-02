@@ -35,7 +35,7 @@ export const Timeline = ({ data, header }: { data: TimelineEntry[], header: { ti
   const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
   return (
-    <div className="w-full bg-background font-sans md:px-10" ref={containerRef}>
+    <article className="w-full bg-background font-sans md:px-10" ref={containerRef}>
       <motion.div {...ANIMATION} className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
         <EncryptedText text={header.title} className="text-4xl"/>
         <p className="text-foreground text-sm md:text-base max-w-sm">{header.description}</p>
@@ -75,6 +75,6 @@ export const Timeline = ({ data, header }: { data: TimelineEntry[], header: { ti
           />
         </motion.div>
       </div>
-    </div>
+    </article>
   );
 };

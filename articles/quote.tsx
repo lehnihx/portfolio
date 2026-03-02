@@ -42,7 +42,7 @@ export function Quotes() {
   }
 
   return (
-    <div ref={ref} style={{ minHeight: height }} className='w-full flex-1/2 flex justify-center'>
+    <article ref={ref} style={{ minHeight: height }} className='w-full flex-1/2 flex justify-center'>
       {visible && (
         <TextEffect
           className='inline-flex text-ring italic font-light'
@@ -56,6 +56,6 @@ export function Quotes() {
           {'"' + quotes[quoteIndex] + '"'}
         </TextEffect>
       )}
-    </div>
+    </article>
   )
 }

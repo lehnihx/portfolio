@@ -72,8 +72,8 @@ export function Ecosystem() {
     SiZsh,
   ].map((Icon, index) => <Icon key={`ecosystem-icon-${index}`} />)
   return (
-    <div className="relative flex size-full items-center justify-center overflow-hidden">
+    <article className="relative flex size-full items-center justify-center overflow-hidden">
       <IconCloud color={color} icons={icons} />
-    </div>
+    </article>
   )
 }

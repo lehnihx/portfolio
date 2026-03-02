@@ -8,7 +8,7 @@ export const Intro = () => {
   const { intro } = useDict()
   const { resolvedTheme } = useTheme()
   return (
-    <div className="h-full w-full relative flex items-center justify-center">
+    <article className="h-full w-full relative flex items-center justify-center">
       <div className="absolute bottom-1/4 flex items-center gap-5 flex-col z-10">
         <TypingAnimation
           as="div"
@@ -34,6 +34,6 @@ export const Intro = () => {
           <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
         </div>
       </div>
-    </div>
+    </article>
   )
 }
