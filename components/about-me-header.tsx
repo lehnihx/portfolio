@@ -1,6 +1,6 @@
 "use client"
-import { useDict } from "@/hooks/useDict";
-import { PointerHighlight } from "./ui/pointer-highlight";
+import { useDict } from "@/hooks/useDict"
+import { PointerHighlight } from "./ui/pointer-highlight"
 
 export const AboutMeHeader = () => {
   const { get_to_know_more, about_lenix } = useDict()

@@ -1,6 +1,6 @@
 "use client"
-import { useDict } from "@/hooks/useDict";
-import { PointerHighlight } from "./ui/pointer-highlight";
+import { useDict } from "@/hooks/useDict"
+import { PointerHighlight } from "./ui/pointer-highlight"
 
 export const EcosystemHeader = () => {
   const { lenixs, ecosystem } = useDict()
