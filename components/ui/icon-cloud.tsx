@@ -288,7 +288,7 @@ export function IconCloud({ icons, images, color }: IconCloudProps) {
           ctx.arc(0, 0, 20, 0, Math.PI * 2)
           ctx.fillStyle = "#4444ff"
           ctx.fill()
-          ctx.fillStyle = "white"
+          ctx.fillStyle = color
           ctx.textAlign = "center"
           ctx.textBaseline = "middle"
           ctx.font = "16px Arial"

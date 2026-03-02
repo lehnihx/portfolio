@@ -2,7 +2,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 
 interface ClickSparkProps {
-  sparkColor?: string;
+  sparkColor: string;
   sparkSize?: number;
   sparkRadius?: number;
   sparkCount?: number;
@@ -20,7 +20,7 @@ interface Spark {
 }
 
 const ClickSpark: React.FC<ClickSparkProps> = ({
-  sparkColor = '#fff',
+  sparkColor,
   sparkSize = 10,
   sparkRadius = 15,
   sparkCount = 8,

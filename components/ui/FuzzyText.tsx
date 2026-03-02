@@ -3,10 +3,10 @@ import React, { useEffect, useRef, useState } from 'react';
 
 interface FuzzyTextProps {
   children: React.ReactNode;
-  fontSize?: number | string;
+  fontSize: number | string;
   fontWeight?: string | number;
   fontFamily?: string;
-  color?: string;
+  color: string;
   enableHover?: boolean;
   baseIntensity?: number;
   hoverIntensity?: number;
@@ -25,10 +25,10 @@ interface FuzzyTextProps {
 
 const FuzzyText: React.FC<FuzzyTextProps> = ({
   children,
-  fontSize = 'clamp(2rem, 8vw, 8rem)',
+  fontSize,
   fontWeight = 900,
   fontFamily = 'inherit',
-  color = '#fff',
+  color,
   enableHover = true,
   baseIntensity = 0.18,
   hoverIntensity = 0.5,

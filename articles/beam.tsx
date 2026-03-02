@@ -47,8 +47,6 @@ export function BeamToClaude() {
 
       <AnimatedBeam
         className="top-0 left-0"
-        gradientStartColor="var(--foreground)"
-        gradientStopColor="var(--foreground)"
         duration={3}
         containerRef={containerRef}
         fromRef={div1Ref}

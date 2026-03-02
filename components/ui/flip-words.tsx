@@ -44,7 +44,7 @@ export const FlipWords = ({
         ref={measureRef}
         aria-hidden
         className={cn(
-          "absolute invisible pointer-events-none whitespace-nowrap px-2 text-left text-neutral-900 dark:text-neutral-100",
+          "absolute invisible pointer-events-none whitespace-nowrap px-2 text-left text-foreground",
           className
         )}
       >
@@ -85,7 +85,7 @@ export const FlipWords = ({
               position: "absolute",
             }}
             className={cn(
-              "z-10 inline-block relative whitespace-nowrap text-left text-neutral-900 dark:text-neutral-100 px-2",
+              "z-10 inline-block relative whitespace-nowrap text-left text-foreground px-2",
               className
             )}
             key={currentWord}
