@@ -18,6 +18,8 @@ import { Location } from "@/articles/location"
 import { AboutMeHeader } from "@/components/about-me-header"
 import { EcosystemHeader } from "@/components/ecosystem-header"
 import { BackgroundLines } from "@/components/ui/background-lines"
+import { Particles } from "@/stock/particles"
+import { Meteors } from "@/stock/meteors"
 
 export interface Review {
   name: string
@@ -55,15 +57,16 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
               <BackgroundRippleEffect />
               <Intro/>
             </article>
-            {/* <Particles/> */}
             {/* <AuroraBackgroundDemo/> */}
-            {/* <Meteors/> */}
             {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
           <section className="min-h-screen flex flex-col items-center justify-evenly">
-            <article className="h-screen w-full flex flex-col items-center justify-evenly">
-              <AboutMeHeader/>
-              <Experience />
+            <article className="relative overflow-hidden h-screen w-full flex items-center">
+              <Particles className="absolute inset-0 -z-10"/>
+              <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
+                <AboutMeHeader/>
+                <Experience />
+              </div>
             </article>
             <article className="w-full">
               <BackgroundLines>
@@ -79,6 +82,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section className="flex flex-col items-center justify-between">
             <h2></h2>
             <article className="relative overflow-clip mb-16">
+              <Meteors/>
               <TimelineJourney/>
             </article>
           </section>
@@ -87,7 +91,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <article>
               <Ask/>
             </article>
-            <article>
+            <article className="w-screen flex items-cnter justify-center">
               <ContactForm/>
             </article>
           </section>

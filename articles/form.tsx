@@ -22,7 +22,7 @@ const InputField = ({ id, label, placeholder, type }: {
 export const ContactForm = () => {
   const { contact, lenix, name, email, mail, mail_placeholder, send } = useDict()
   return (
-    <motion.div {...ANIMATION} className="w-full my-16 px-8 landscape:max-w-1/2 portrait:min-w-full">
+    <motion.div {...ANIMATION} className="w-full my-16 px-8 landscape:max-w-1/2 portrait:min-w-full md:px-4">
       <form action="">
         <FieldSet>
           <FieldLabel className="text-3xl">{contact} {lenix}</FieldLabel>

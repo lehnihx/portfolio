@@ -37,7 +37,6 @@ export function Ecosystem() {
           <SiHtml5/>,
           <SiMariadb/>,
           <SiNgrok/>,
-          <SiNpm/>,
           <SiPhp/>,
           <SiPnpm/>,
           <SiReplit/>,
