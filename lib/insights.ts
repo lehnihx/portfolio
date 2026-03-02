@@ -10,12 +10,14 @@ const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | u
   let remainingCount = repositories?.length ?? 0
   return repositories?.reduce(async (acc, repository) => {
     const previouRepository = await acc
-    console.log(`${repository.name} was fetched from ${owner}, ${--remainingCount} more remaining`)
     await wait(5000)
+    console.log(`${repository.name} was fetched from ${owner}, ${--remainingCount} more remaining`)
     const data = await fetchCodeTabs<T>(owner, repository.name)
     if (!data) return []
     return [...previouRepository, { [repository.name]: data} ]
-  }, Promise.resolve([] as { [key: NonNullable<typeof repositories>[number]["name"]]: T }[]))
+  }, Promise.resolve([] as Array<{
+    [key: NonNullable<typeof repositories>[number]["name"]]: T
+  }>))
 }
 
 const personalLinesLinesOfCodes = async (token: string) => {
