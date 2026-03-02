@@ -8,6 +8,7 @@ import React, {
 } from "react"
 
 import { cn } from "@/lib/utils"
+import { useTheme } from "next-themes"
 
 interface MousePosition {
   x: number
@@ -84,7 +85,7 @@ export const Particles: React.FC<ParticlesProps> = ({
   ease = 50,
   size = 0.4,
   refresh = false,
-  color = "#000",
+  color,
   vx = 0,
   vy = 0,
   ...props
@@ -99,6 +100,8 @@ export const Particles: React.FC<ParticlesProps> = ({
   const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1
   const rafID = useRef<number | null>(null)
   const resizeTimeout = useRef<NodeJS.Timeout | null>(null)
+  const { resolvedTheme } = useTheme()
+  color = resolvedTheme === "dark" ? "#fff" : "#000"
 
   useEffect(() => {
     if (canvasRef.current) {

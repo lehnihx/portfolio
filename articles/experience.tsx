@@ -8,7 +8,7 @@ import RotatingText from "@/components/ui/RotatingText"
 export default function Experience() {
   const { services, experiences, did_u_know, used_to_provide, service } = useDict()
   return (
-    <motion.div {...ANIMATION} className="relative w-full max-w-full overflow-y-hidden text-center p-6">
+    <motion.div {...ANIMATION} className="relative w-full max-w-full overflow-hidden text-center p-6">
       <span className="inline leading-relaxed" style={{ fontSize: "var(--font-size-fluid-base)" }}>
         {did_u_know}{" "}
         <strong>

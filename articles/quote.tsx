@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useDict } from '@/hooks/useDict'
 import dynamic from 'next/dynamic'
+import { useIsInView } from '@/hooks/useIsInView'
 
 const TextEffect = dynamic(() => import('@/components/ui/text-effect').then(m => ({ default: m.TextEffect })), { ssr: false })
 
@@ -28,6 +29,7 @@ export function Quotes() {
   const [trigger, setTrigger] = useState(true)
   const [quoteIndex, setQuoteIndex] = useState(() => randomNewNumber(null, quotes.length))
   const [completedTriggers, setCompletedTriggers] = useState(0)
+  const { ref, height, visible } = useIsInView()
 
   useEffect(() => {
     const interval = setInterval(() => setTrigger(prev => !prev), 5000)
@@ -40,18 +42,20 @@ export function Quotes() {
   }
 
   return (
-    <div className='w-full flex-1/2 flex justify-center'>
-      <TextEffect
-        className='inline-flex text-ring italic font-light'
-        per='char'
-        variants={blurSlideVariants}
-        trigger={trigger}
-        speedSegment={0.2}
-        onAnimationComplete={triggerCompleted}
-        style={{ fontSize: 'var(--font-size-fluid-sm)' }}
-      >
-        {'"' + quotes[quoteIndex] + '"'}
-      </TextEffect>
+    <div ref={ref} style={{ minHeight: height }} className='w-full flex-1/2 flex justify-center'>
+      {visible && (
+        <TextEffect
+          className='inline-flex text-ring italic font-light'
+          per='char'
+          variants={blurSlideVariants}
+          trigger={trigger}
+          speedSegment={0.2}
+          onAnimationComplete={triggerCompleted}
+          style={{ fontSize: 'var(--font-size-fluid-sm)' }}
+        >
+          {'"' + quotes[quoteIndex] + '"'}
+        </TextEffect>
+      )}
     </div>
   )
 }
