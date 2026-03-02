@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface FuzzyTextProps {
   children: React.ReactNode;
@@ -45,6 +45,13 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
   className = ''
 }) => {
   const canvasRef = useRef<HTMLCanvasElement & { cleanupFuzzyText?: () => void }>(null);
+  const [viewportTick, setViewportTick] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => setViewportTick((prev) => prev + 1);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     let animationFrameId: number;
@@ -62,8 +69,22 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       const computedFontFamily =
         fontFamily === 'inherit' ? window.getComputedStyle(canvas).fontFamily || 'sans-serif' : fontFamily;
 
-      const fontSizeStr = typeof fontSize === 'number' ? `${fontSize}px` : fontSize;
-      const fontString = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      const resolveFontSize = (): number => {
+        if (typeof fontSize === 'number') return fontSize;
+        const temp = document.createElement('span');
+        temp.style.fontSize = fontSize;
+        temp.style.position = 'absolute';
+        temp.style.visibility = 'hidden';
+        temp.textContent = 'M';
+        document.body.appendChild(temp);
+        const computedSize = window.getComputedStyle(temp).fontSize;
+        document.body.removeChild(temp);
+        return Number.parseFloat(computedSize);
+      };
+
+      const numericFontSize = resolveFontSize();
+      const resolvedFontSize = `${numericFontSize}px`;
+      const fontString = `${fontWeight} ${resolvedFontSize} ${computedFontFamily}`;
 
       try {
         await document.fonts.load(fontString);
@@ -72,25 +93,13 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       }
       if (isCancelled) return;
 
-      let numericFontSize: number;
-      if (typeof fontSize === 'number') {
-        numericFontSize = fontSize;
-      } else {
-        const temp = document.createElement('span');
-        temp.style.fontSize = fontSize;
-        document.body.appendChild(temp);
-        const computedSize = window.getComputedStyle(temp).fontSize;
-        numericFontSize = parseFloat(computedSize);
-        document.body.removeChild(temp);
-      }
-
       const text = React.Children.toArray(children).join('');
 
       const offscreen = document.createElement('canvas');
       const offCtx = offscreen.getContext('2d');
       if (!offCtx) return;
 
-      offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.font = `${fontWeight} ${resolvedFontSize} ${computedFontFamily}`;
       offCtx.textBaseline = 'alphabetic';
 
       let totalWidth = 0;
@@ -119,7 +128,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
       offscreen.height = tightHeight;
 
       const xOffset = extraWidthBuffer / 2;
-      offCtx.font = `${fontWeight} ${fontSizeStr} ${computedFontFamily}`;
+      offCtx.font = `${fontWeight} ${resolvedFontSize} ${computedFontFamily}`;
       offCtx.textBaseline = 'alphabetic';
 
       if (gradient && Array.isArray(gradient) && gradient.length >= 2) {
@@ -324,7 +333,8 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
     glitchInterval,
     glitchDuration,
     gradient,
-    letterSpacing
+    letterSpacing,
+    viewportTick
   ]);
 
   return <canvas ref={canvasRef} className={className} />;
