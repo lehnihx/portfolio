@@ -18,8 +18,8 @@ import { Location } from "@/articles/location"
 import { AboutMeHeader } from "@/components/about-me-header"
 import { EcosystemHeader } from "@/components/ecosystem-header"
 import { BackgroundLines } from "@/components/ui/background-lines"
-import { Particles } from "@/stock/particles"
-import { Meteors } from "@/stock/meteors"
+import { Particles } from "@/components/ui/particles"
+import { Meteors } from "@/components/ui/meteors"
 
 export interface Review {
   name: string

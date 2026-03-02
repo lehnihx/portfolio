@@ -46,6 +46,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [ ] try to improve the loading screen
 - [ ] implement asking
 - [ ] implement mailing
+- [ ] implement timeline
+- [ ] implement referrals
+- [ ] implement nav
 
 ## Common Errors
 ```bash
