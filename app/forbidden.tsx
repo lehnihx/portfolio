@@ -1,13 +1,5 @@
-import Link from 'next/link'
+import { Error } from '@/articles/error'
  
-const Forbidden = () => {
-  return (
-    <div>
-      <h2>Forbidden</h2>
-      <p>You are not authorized to access this resource.</p>
-      <Link href="/">Return Home</Link>
-    </div>
-  )
-}
+const Forbidden = () => <Error>403</Error>
 
 export default Forbidden

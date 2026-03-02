@@ -1,12 +1,5 @@
-import Link from "next/link"
+import { Error } from "@/articles/error"
 
-const Unauthorized = () => {
-  return (
-    <main>
-      <h1>401 - Unauthorized</h1>
-      <p>Please log in to access this page.</p>
-      <Link href="/" />
-    </main>
-  )
-}
+const Unauthorized = () => <Error>401</Error>
+
 export default Unauthorized

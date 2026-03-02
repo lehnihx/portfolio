@@ -3,7 +3,7 @@ import FuzzyText from "@/components/ui/FuzzyText"
 import Noise from "@/components/ui/Noise"
 import { useTheme } from "next-themes"
 
-export const Error = () => {
+export const Error = ({ children }: { children: string }) => {
   const { resolvedTheme } = useTheme()
   return (
     <article className='h-screen bg-background flex items-center justify-center'>
@@ -15,7 +15,7 @@ export const Error = () => {
         fontSize={100}
         color={resolvedTheme === "dark" ? "white" : "black"}
       >
-        404
+        {children}
       </FuzzyText>
     </article>
   )
