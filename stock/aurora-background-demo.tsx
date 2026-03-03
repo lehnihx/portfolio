@@ -1,3 +1,4 @@
+"use client"
 import { motion } from "motion/react";
 import { AuroraBackground } from "@/stock/ui/aurora-background";
 
