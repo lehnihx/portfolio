@@ -20,6 +20,8 @@ import { EcosystemHeader } from "@/components/ecosystem-header"
 import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
+import AuroraBackgroundDemo from "@/stock/aurora-background-demo"
+import AskFileUpload from "@/stock/file-upload-demo"
 
 export interface Review {
   name: string
@@ -54,7 +56,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section id="hero" className="h-screen w-full relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
             <BackgroundRippleEffect />
             <Intro/>
-            {/* <AuroraBackgroundDemo/> */}
             {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
           <section className="min-h-screen flex flex-col items-center justify-evenly">
@@ -81,8 +82,12 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <TimelineJourney/>
           </section>
           <section className="w-screen flex flex-col items-center justify-evenly">
+            {/* <AuroraBackgroundDemo/> */}
             <Ask/>
             <ContactForm/>
+          </section>
+          <section>
+            
           </section>
         </main>
         <footer id="footer" className="min-h-screen relative flex flex-col justify-evenly">
