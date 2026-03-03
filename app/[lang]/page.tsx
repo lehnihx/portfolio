@@ -82,12 +82,8 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <TimelineJourney/>
           </section>
           <section className="w-screen flex flex-col items-center justify-evenly">
-            {/* <AuroraBackgroundDemo/> */}
             <Ask/>
             <ContactForm/>
-          </section>
-          <section>
-            
           </section>
         </main>
         <footer id="footer" className="min-h-screen relative flex flex-col justify-evenly">

@@ -30,7 +30,7 @@ export default function AskFileUpload() {
         <DialogTrigger asChild>
           <Button variant="outline" className="h-full rounded-full"><Upload/></Button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-sm max-w-sm  ">
+        <DialogContent className="w-[calc(100vw-1rem)] max-w-lg max-h-[calc(100dvh-1rem)] overflow-x-hidden overflow-y-auto p-4 sm:p-6">
             <DialogTitle>Send a file to Lenix</DialogTitle>
             <FileUpload onChange={handleFileUpload} />
           <DialogFooter>
