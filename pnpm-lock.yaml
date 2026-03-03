@@ -51,8 +51,8 @@ importers:
         specifier: ^1.1.9
         version: 1.1.9
       lenix:
-        specifier: latest
-        version: 1.1.2
+        specifier: 1.2.1
+        version: 1.2.1
       lucide-react:
         specifier: ^0.574.0
         version: 0.574.0(react@19.2.3)
@@ -3862,8 +3862,8 @@ packages:
   ldrs@1.1.9:
     resolution: {integrity: sha512-JKVdzboxeZrKecA8ovi5iIDgs59wUrtJ+LDrHCgZecNrR0AJi2cJ3ZANJ+UCNS/sHRol73/jlypNCAMCXS+Ung==}
 
-  lenix@1.1.2:
-    resolution: {integrity: sha512-7wUSn2NKX28HI8hffcsZzRkFICgSAlMXLxS5ttGvJLT3H8Pc4smT4NCksVMf4zhakcm6FeyBFFxM67xTXRWp9g==}
+  lenix@1.2.1:
+    resolution: {integrity: sha512-IlgiBqkPvdvglT+J2YZ3k8DFCcWd121I1NRFo9+vHj57n9wtooNrKSETAGmLLXVxww1pgVW/YP6kmWvwzb3v0A==}
     hasBin: true
 
   levn@0.4.1:
@@ -9584,7 +9584,7 @@ snapshots:
 
   ldrs@1.1.9: {}
 
-  lenix@1.1.2: {}
+  lenix@1.2.1: {}
 
   levn@0.4.1:
     dependencies:
