@@ -56,8 +56,7 @@ export const FileUpload = ({
     <div className="w-full" {...getRootProps()}>
       <motion.div
         onClick={handleClick}
-        whileHover="animate"
-        className="group/file relative block w-full cursor-pointer overflow-hidden rounded-lg p-10"
+        className="group/file relative block w-full overflow-hidden rounded-lg p-10"
       >
         <input
           ref={fileInputRef}
@@ -76,7 +75,9 @@ export const FileUpload = ({
           <p className="relative z-20 mt-2 font-sans text-base font-normal text-neutral-400 dark:text-neutral-400">
             Drag or drop your files here or click to upload
           </p>
-          <div className="relative mx-auto mt-10 w-full max-w-xl">
+          <motion.div
+            whileHover="animate"
+            className="relative mx-auto mt-10 w-full max-w-xl">
             {files.length > 0 &&
               files.map((file, idx) => (
                 <motion.div
@@ -137,7 +138,7 @@ export const FileUpload = ({
                   damping: 20,
                 }}
                 className={cn(
-                  "relative z-40 mx-auto mt-4 flex h-32 w-full max-w-[8rem] items-center justify-center rounded-md bg-white group-hover/file:shadow-2xl dark:bg-neutral-900",
+                  "relative z-40 cursor-pointer! mx-auto mt-4 flex h-32 w-full max-w-[8rem] items-center justify-center rounded-md bg-white group-hover/file:shadow-2xl dark:bg-neutral-900",
                   "shadow-[0px_10px_50px_rgba(0,0,0,0.1)]",
                 )}
               >
@@ -162,7 +163,7 @@ export const FileUpload = ({
                 className="absolute inset-0 z-30 mx-auto mt-4 flex h-32 w-full max-w-[8rem] items-center justify-center rounded-md border border-dashed border-sky-400 bg-transparent opacity-0"
               ></motion.div>
             )}
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </div>
