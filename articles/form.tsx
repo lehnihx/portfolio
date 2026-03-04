@@ -1,5 +1,5 @@
 "use client"
-import { ShinyButton } from "@/stock/ui/shiny-button"
+import { ShinyButton } from "@/components/ui/shiny-button"
 import { useDict } from "@/hooks/useDict"
 import { Field, FieldGroup, FieldLabel, FieldSet } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
