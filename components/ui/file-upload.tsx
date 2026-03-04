@@ -4,6 +4,7 @@ import React, { useRef, useState } from "react";
 import { motion } from "motion/react";
 import { IconUpload } from "@tabler/icons-react";
 import { useDropzone } from "react-dropzone";
+import { useDict } from "@/hooks/useDict";
 
 const mainVariant = {
   initial: {
@@ -51,6 +52,7 @@ export const FileUpload = ({
       console.log(error);
     },
   });
+  const { upload_file, drag_drop, drop_it } = useDict();
 
   return (
     <div className="w-full" {...getRootProps()}>
@@ -70,10 +72,10 @@ export const FileUpload = ({
         </div>
         <div className="flex flex-col items-center justify-center">
           <p className="relative z-20 text-center font-sans text-base font-bold text-neutral-700 dark:text-neutral-300 sm:text-lg">
-            Upload file
+            {upload_file}
           </p>
           <p className="relative z-20 mt-2 px-2 text-center font-sans text-sm font-normal text-neutral-400 dark:text-neutral-400 sm:text-base">
-            Drag or drop your files here or click to upload
+            {drag_drop}
           </p>
           <motion.div
             whileHover="animate"
@@ -149,7 +151,7 @@ export const FileUpload = ({
                     animate={{ opacity: 1 }}
                     className="flex flex-col items-center text-neutral-600"
                   >
-                    Drop it
+                    {drop_it}
                     <IconUpload className="h-4 w-4 text-neutral-600 dark:text-neutral-400" />
                   </motion.p>
                 ) : (

@@ -73,5 +73,9 @@
   "get_to_know_more": "Get to know more",
   "about_lenix": "about Lenix",
   "lenixs": "Lenix's",
-  "ecosystem": "Ecosystem"
+  "ecosystem": "Ecosystem",
+  "send_file": "Send a file to Lenix",
+  "upload_file": "Upload file",
+  "drag_drop": "Drag or drop your files here or click to upload",
+  "drop_it": "Drop it"
 }

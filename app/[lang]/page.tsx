@@ -20,8 +20,6 @@ import { EcosystemHeader } from "@/components/ecosystem-header"
 import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
-import AuroraBackgroundDemo from "@/stock/aurora-background-demo"
-import AskFileUpload from "@/stock/file-upload-demo"
 
 export interface Review {
   name: string
