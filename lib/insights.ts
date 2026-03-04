@@ -74,7 +74,8 @@ const personalCommits = async (token: string) => {
 const insights = async () => {
   const { GITHUB_TOKEN } = process.env
   if (!GITHUB_TOKEN) throw new Error('GITHUB_TOKEN environment variable is not set')
-  const commits = await personalCommits(GITHUB_TOKEN)
+  const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
+  const commits = validPersonalCommits ? [...validPersonalCommits] : []
   return {
     // loc: await loc(GITHUB_TOKEN),
     commits
