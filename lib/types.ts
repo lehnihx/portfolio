@@ -14,3 +14,4 @@ export interface RepositoryLanguageStats {
 
 export type Repository = components["schemas"]["repository"]
 export type Organization = components["schemas"]["organization-simple"]
+export type Commit = components["schemas"]["commit"]
