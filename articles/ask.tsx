@@ -20,11 +20,11 @@ export const Ask = () => {
     console.log("submitted")
   }
   const { send_file, cancel, send } = useDict()
-  const [files, setFiles] = useState<File[]>([]);
+  const [files, setFiles] = useState<File[]>([])
   const handleFileUpload = (files: File[]) => {
-    setFiles(files);
-    console.log(files);
-  };
+    setFiles(files)
+    console.log(files)
+  }
   return (
     <motion.article {...ANIMATION} className="my-16 flex flex-col justify-center items-center px-4">
       <h2 className="mb-10 sm:mb-20 text-xl text-center sm:text-5xl text-foreground">

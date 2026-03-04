@@ -20,6 +20,8 @@ import { EcosystemHeader } from "@/components/ecosystem-header"
 import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
+import { Testimonials } from "@/articles/testimonials"
+import reviews from "@/lib/reviews"
 
 export interface Review {
   name: string
@@ -41,10 +43,8 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
   if (!hasLang(lang)) notFound()
 
-  const dict = await Dictionary(lang)
-
   return (
-    <DictProvider dict={dict}>
+    <DictProvider dict={await Dictionary(lang)}>
       <DialogProvider>
         <header>
           <Nav/>
@@ -56,24 +56,24 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Intro/>
             {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
-          <section className="min-h-screen flex flex-col items-center justify-evenly">
-            <div className="relative overflow-hidden h-screen w-full flex items-center">
-              <Particles className="absolute inset-0 -z-10"/>
-              <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
-                <AboutMeHeader/>
-                <Experience />
-              </div>
+          <section className="relative overflow-hidden h-screen w-full flex items-center">
+            <Particles className="absolute inset-0 -z-10"/>
+            <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
+              <AboutMeHeader/>
+              <Experience />
+              <h2>What Lenix&apos;s clients and customers think of him</h2>
+              <Testimonials reviews={await reviews(lang)}/>
             </div>
-            <div className="w-full">
-              <BackgroundLines>
-                <EcosystemHeader/>
-                <Ecosystem/>
-              </BackgroundLines>
-            </div>
-            <div className="flex flex-col items-center justify-between gap-10 w-screen">
-              <Quotes/>
-              <BeamToClaude />
-            </div>
+          </section>
+          <section className="w-full">
+            <BackgroundLines>
+              <EcosystemHeader/>
+              <Ecosystem/>
+            </BackgroundLines>
+          </section>
+          <section className="flex flex-col items-center justify-between gap-10 w-screen">
+            <Quotes/>
+            <BeamToClaude />
           </section>
           <section className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
             <Meteors/>
