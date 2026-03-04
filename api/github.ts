@@ -1,21 +1,19 @@
+import { safeRequest } from "lenix"
 import "server-only"
-export const fetchGithub = async <T,>(path: string, token: string) => {
-  try {
-    const resp = await fetch(`https://api.github.com/${path}`, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/vnd.github+json',
-        'Authorization': `Bearer ${token}`,
-        'X-GitHub-Api-Version': '2022-11-28'
-      }
-    })
 
-    if (!resp.ok) {
-      console.error(`Error ${resp.status}`, await resp.text(), `resets in ${new Date(Number(resp.headers.get('x-ratelimit-reset')) * 1000)}`)
-      return
+export const fetchGithub = async <T,>(path: string, token: string) => {
+  const response = await safeRequest('api.github.com', `${path}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/vnd.github+json',
+      'Authorization': `Bearer ${token}`,
+      'X-GitHub-Api-Version': '2022-11-28'
     }
-    return await resp.json() as T
-  } catch (error) {
-    console.error('Network error:', error)
+  })
+
+  if (!response.ok) {
+    console.error(`Error ${response.status}`, await response.text(), `resets in ${new Date(Number(response.headers.get('x-ratelimit-reset')) * 1000)}`)
+    return
   }
+  return await response.json() as T
 }
