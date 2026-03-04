@@ -22,6 +22,7 @@ import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
 import reviews from "@/lib/reviews"
+import { Stats } from "@/articles/stats"
 
 export interface Review {
   name: string
@@ -61,7 +62,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
               <AboutMeHeader/>
               <Experience />
-              <h2>What Lenix&apos;s clients and customers think of him</h2>
               <Testimonials reviews={await reviews(lang)}/>
             </div>
           </section>

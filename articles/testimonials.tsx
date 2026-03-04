@@ -78,6 +78,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
   return (
     <motion.article {...ANIMATION} className="w-full my-16 relative flex flex-col items-center justify-center overflow-hidden">
+      <h2>What Lenix&apos;s clients and customers think of him</h2>
       <Marquee reverse pauseOnHover className="[--duration:90s]">
         {reviews.map((review, index) => (
           <React.Fragment key={`${review?.username}-${index}`} >
