@@ -6,6 +6,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress"
 import { LoadingProvider } from "@/components/loading"
 import { headers } from "next/headers"
 import { ClickProvider } from "@/components/ui/click"
+import { SlowScroll } from "@/components/scroll"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,7 +29,9 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LoadingProvider>
             <ClickProvider>
-              {children}
+              <SlowScroll>
+                {children}
+              </SlowScroll>
             </ClickProvider>
           </LoadingProvider>
         </ThemeProvider>
