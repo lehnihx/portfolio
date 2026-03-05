@@ -53,7 +53,7 @@ const organizationLinesOfCodes = async (token: string) => {
   return (linesOfCodes)?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 }
 
-const loc = async (token: string) => [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
+const totalLinesOfCodes = async (token: string) => [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 
 const personalCommits = async (token: string) => {
   const repositories = await personalRepositories(token)
@@ -104,13 +104,10 @@ const insights = async () => {
   const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
   const validOrganizationCommits = await organizationsCommits(GITHUB_TOKEN)
   const commits = validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
-  console.log(commits.length)
-  return {
-    // loc: await loc(GITHUB_TOKEN),
-    commits
-  }
+  const loc = await totalLinesOfCodes(GITHUB_TOKEN)
+  return { loc, commits }
 }
 
 export type Insights = Awaited<ReturnType<typeof insights>>
 
-export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: false })
+export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: CACHE_REVALIDATION })
