@@ -24,8 +24,8 @@ const initialState: ZoomAndHighlightState = {
   refAreaRight: undefined,
   top: 'dataMax+1',
   bottom: 'dataMin-1',
-  top2: 'dataMax+20',
-  bottom2: 'dataMin-20',
+  top2: 'dataMax+1',
+  bottom2: 'dataMin-1',
   animation: true,
 }
 
@@ -58,11 +58,14 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
     (insights.commits ?? []).filter((d): d is string => d !== undefined),
     date => date
   )
-  const commitsData = Object.entries(grouped).map(([, commits], index) => ({
+  const commitsData = Object.entries(grouped)
+  .sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
+  .map(([date, commits], index) => ({
     name: index + 1,
+    day: date,
     commits: commits?.length ?? 0
   }))
-  
+
   const zoom = useCallback(() => {
     setZoomGraph((prev: ZoomAndHighlightState): ZoomAndHighlightState => {
       let { refAreaLeft, refAreaRight } = prev
@@ -78,8 +81,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
       if (refAreaLeft && refAreaRight && refAreaLeft > refAreaRight)
         [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft]
 
-      // const [bottom, top] = getAxisYDomain(refAreaLeft, refAreaRight, 'cost', 1)
-      const [bottom2, top2] = getAxisYDomain(commitsData, refAreaLeft, refAreaRight, 'commits', 50)
+      const [bottom2, top2] = getAxisYDomain(commitsData, refAreaLeft, refAreaRight, 'commits', 1)
 
       return {
         ...prev,
@@ -132,10 +134,10 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
         <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width="auto" stroke="var(--muted-foreground)" />
         <YAxis orientation="right" allowDataOverflow domain={[bottom2, top2]} type="number" yAxisId="2" width="auto" stroke="var(--muted-foreground)"/>
         <Tooltip
+          labelFormatter={(label) => commitsData[label - 1]?.day ?? label}
           cursor={{ stroke: 'var(--border)' }}
           contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }}
         />
-        {/* <Line yAxisId="1" type="natural" dataKey="cost" stroke="var(--chart-1)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/> */}
         <Line yAxisId="2" type="natural" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/>
 
         {refAreaLeft && refAreaRight && (
