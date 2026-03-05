@@ -7,23 +7,22 @@ import { fetchGithub } from '@/api/github'
 import { fetchCodeTabs } from '@/api/codetabs'
 
 const accumulationInitializer = [] as NonNullable<Commit["commit"]["author"]>["date"][]
-
+const commitsAuthors = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
 const repositoriesLanguages = <T>(owner: string, repositories: Repository[] | undefined) => {
   let remainingCount = repositories?.length ?? 0
   return repositories?.reduce(async (acc, repository) => {
-    const prevRepo = await acc
+    const prevAcc = await acc
     await wait(5000)
     console.log(`${repository.name} was fetched from ${owner}, ${--remainingCount} more remaining`)
     const data = await fetchCodeTabs<T>(owner, repository.name)
     if (!data) return []
-    return [...prevRepo, { [repository.name]: data} ]
+    return [...prevAcc, { [repository.name]: data} ]
   }, Promise.resolve([] as Array<{
     [key: NonNullable<typeof repositories>[number]["name"]]: T
   }>))
 }
-
 
 const personalLinesLinesOfCodes = async (token: string) => {
   const repository = await personalRepositories(token)
@@ -68,10 +67,10 @@ const personalCommits = async (token: string) => {
     }
     const commits = await fetchRepositoryCommits(1)
     return [...prevDates, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
-      const prevDate = await acc
-      if (!author?.date || author?.name === 'Lenix') return prevDate
+      const prevAcc = await acc
+      if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
       const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
-      return [...prevDate, date]
+      return [...prevAcc, date]
     }, Promise.resolve(accumulationInitializer))]
   }, Promise.resolve(accumulationInitializer))
 }
@@ -84,16 +83,16 @@ const organizationsCommits = async (token: string) => {
     return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { name }) => {
       const prevAcc = await acc
       const fetchRepositoryCommits = async (pageIndex: number): Promise<Commit[]> => {
-      const page = await fetchGithub<Commit[]>(`repos/${login}/${name}/commits?per_page=100&page=${pageIndex}`, token)
-      if (!page?.length || page.length < 100) return page ?? []
-      return [...page, ...await fetchRepositoryCommits(pageIndex + 1)]
-    }
+        const page = await fetchGithub<Commit[]>(`repos/${login}/${name}/commits?per_page=100&page=${pageIndex}`, token)
+        if (!page?.length || page.length < 100) return page ?? []
+        return [...page, ...await fetchRepositoryCommits(pageIndex + 1)]
+      }
       const commits = await fetchRepositoryCommits(1)
       return [...prevAcc, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
-        const prevDate = await acc
-        if (!author?.date || author?.name === 'Lenix') return prevDate
+        const prevAcc = await acc
+        if (!author?.date || !commitsAuthors.includes(author.name ?? '')) { console.log(author?.name); return prevAcc}
         const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
-        return [...prevDate, date]
+        return [...prevAcc, date]
       }, Promise.resolve(accumulationInitializer))]
     }, Promise.resolve(accumulationInitializer))]
   }, Promise.resolve(accumulationInitializer))
@@ -114,4 +113,4 @@ const insights = async () => {
 
 export type Insights = Awaited<ReturnType<typeof insights>>
 
-export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: 1 })
+export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: false })
