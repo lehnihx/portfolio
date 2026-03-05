@@ -1,4 +1,5 @@
 "use client"
+import { NumberTicker } from "@/components/ui/number-ticker"
 import { Insights } from "@/lib/insights"
 import { useState, useCallback } from "react"
 import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, MouseHandlerDataParam, ReferenceArea, Legend } from "recharts"
@@ -124,7 +125,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   )
 
   return (
-    <div style={{ userSelect: 'none', width: '100%' }}>
+    <div style={{ userSelect: 'none', width: '50%' }}>
       <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={zoomOut}>
         Zoom Out
       </button>
@@ -152,7 +153,8 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
 }
 
 export const Stats = ({ insights }: { insights: Insights }) => (
-  <>
+  <div className="w-full flex flex-col items-center justify-center gap-4">
+    {(async () => <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground"/>)()}
     <HighlightAndZoomLineChart insights={insights} />
-  </>
+  </div>
 )

@@ -23,6 +23,7 @@ import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
 import reviews from "@/lib/reviews"
 import { Stats } from "@/articles/stats"
+import { cachedInsights } from "@/lib/insights"
 
 export interface Review {
   name: string
@@ -55,12 +56,12 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section id="hero" className="h-screen w-full relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
             <BackgroundRippleEffect />
             <Intro/>
-            {/* {(async () => <NumberTicker value={await cachedInsights() || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-black dark:text-white"/>)()} */}
           </section>
-          <section className="relative overflow-hidden h-screen w-full flex items-center">
+          <section className="relative overflow-hidden min-h-screen w-full flex items-center">
             <Particles className="absolute inset-0 -z-10"/>
             <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
               <AboutMeHeader/>
+              <Stats insights={await cachedInsights()}/>
               <Experience />
               <Testimonials reviews={await reviews(lang)}/>
             </div>
