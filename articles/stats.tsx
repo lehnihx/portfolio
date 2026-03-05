@@ -1,8 +1,9 @@
 "use client"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { Insights } from "@/lib/insights"
+import { Languages } from "@/lib/types"
 import { useState, useCallback } from "react"
-import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, MouseHandlerDataParam, ReferenceArea, Legend } from "recharts"
+import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, MouseHandlerDataParam, ReferenceArea, Legend, BarChart, ResponsiveContainer, Bar } from "recharts"
 
 type Commits = { name: number, commits: number }
 
@@ -152,9 +153,22 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   )
 }
 
+const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => (
+  <ResponsiveContainer width="100%" height={1000}>
+    <BarChart data={languages} layout="vertical">
+      <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+      <XAxis type="number" tickFormatter={v => `${(v / 1000).toFixed(0)}k`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
+      <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
+      <Tooltip formatter={(v: number | undefined) => v ? `${(v / 1000).toFixed(0)}kb` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
+      <Bar dataKey="bytes" fill="var(--chart-1)" radius={[0, 4, 4, 0]} />
+    </BarChart>
+  </ResponsiveContainer>
+)
+
 export const Stats = ({ insights }: { insights: Insights }) => (
   <div className="w-full flex flex-col items-center justify-center gap-4">
-    {(async () => <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground"/>)()}
-    <HighlightAndZoomLineChart insights={insights} />
+    {/* {(async () => <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground"/>)()}
+    <HighlightAndZoomLineChart insights={insights} /> */}
+    <LanguagesChart languages={insights.langsBytes}/>
   </div>
 )
