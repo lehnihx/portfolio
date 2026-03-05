@@ -1,5 +1,5 @@
 import 'server-only'
-import { Repository, RepositoryLanguageStats, Organization, Commit } from '@/lib/types'
+import { Repository, RepositoryLanguageStats, Organization, Commit, Language, Languages } from '@/lib/types'
 import { wait } from 'lenix'
 import { unstable_cache } from 'next/cache'
 import { CACHE_REVALIDATION } from './utils'
@@ -90,12 +90,36 @@ const organizationsCommits = async (token: string) => {
       const commits = await fetchRepositoryCommits(1)
       return [...prevAcc, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
         const prevAcc = await acc
-        if (!author?.date || !commitsAuthors.includes(author.name ?? '')) { console.log(author?.name); return prevAcc}
+        if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
         const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
         return [...prevAcc, date]
       }, Promise.resolve(accumulationInitializer))]
     }, Promise.resolve(accumulationInitializer))]
   }, Promise.resolve(accumulationInitializer))
+}
+
+const personalRepositoriesLanguagesBytes = async (token: string) => {
+  const repositories = await personalRepositories(token)
+  return repositories?.reduce(async (acc, repository) => {
+    const prevAcc = await acc
+    const langs = await fetchGithub<Language>(`repos/LenixDev/${repository.name}/languages`, token)
+    if (!langs) return prevAcc
+    return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
+  }, Promise.resolve([] as Languages))
+}
+
+const organizationsRepositoriesLanguagesBytes = async (token: string) => {
+  const organizations = await fetchGithub<Organization[]>('users/lenixdev/orgs', token)
+  return organizations?.reduce(async (acc, { login }) => {
+    const prevAcc = await acc
+    const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token)
+    return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { name }) => {
+      const prevAcc = await acc
+      const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
+      if (!langs) return prevAcc
+      return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
+    }, Promise.resolve([] as Languages))]
+  }, Promise.resolve([] as Languages))
 }
 
 const insights = async () => {
@@ -104,8 +128,16 @@ const insights = async () => {
   const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
   const validOrganizationCommits = await organizationsCommits(GITHUB_TOKEN)
   const commits = validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
-  const loc = await totalLinesOfCodes(GITHUB_TOKEN)
-  return { loc, commits }
+  // const loc = await totalLinesOfCodes(GITHUB_TOKEN)
+  const validPersonalLangsBytes = await personalRepositoriesLanguagesBytes(GITHUB_TOKEN)
+  const validOrganizationLangsBytes = await organizationsRepositoriesLanguagesBytes(GITHUB_TOKEN)
+  const langsBytes = (() => {
+    const combined = [...(validPersonalLangsBytes ?? []), ...(validOrganizationLangsBytes ?? [])]
+    const merged = new Map<string, number>()
+    for (const { name, bytes } of combined) merged.set(name, (merged.get(name) ?? 0) + bytes)
+    return Array.from(merged, ([name, bytes]) => ({ name, bytes }))
+  })()
+  return { /* loc,  */commits, langsBytes }
 }
 
 export type Insights = Awaited<ReturnType<typeof insights>>
