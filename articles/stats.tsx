@@ -143,7 +143,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
         <Line yAxisId="2" type="natural" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/>
 
         {refAreaLeft && refAreaRight && (
-          <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--foreground)" fill="var(--muted)"/>
+          <ReferenceArea yAxisId="2" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)" fillOpacity={0.25}/>
         )}
         <Legend verticalAlign="bottom" />
       </LineChart>
