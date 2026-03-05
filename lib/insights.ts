@@ -10,7 +10,7 @@ const accumulationInitializer = [] as NonNullable<Commit["commit"]["author"]>["d
 
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
-const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | undefined) => {
+const repositoriesLanguages = <T>(owner: string, repositories: Repository[] | undefined) => {
   let remainingCount = repositories?.length ?? 0
   return repositories?.reduce(async (acc, repository) => {
     const prevRepo = await acc
@@ -24,9 +24,10 @@ const repositoriesLanguages = <T,>(owner: string, repositories: Repository[] | u
   }>))
 }
 
+
 const personalLinesLinesOfCodes = async (token: string) => {
-  const repositories = await personalRepositories(token)
-  const personalRepositoriesLanguages = await (async <T,>() => repositoriesLanguages<T | undefined>('lenixdev', repositories))<Array<RepositoryLanguageStats>>()
+  const repository = await personalRepositories(token)
+  const personalRepositoriesLanguages = await repositoriesLanguages<Array<RepositoryLanguageStats>>('lenixdev', repository)
 
   return personalRepositoriesLanguages?.reduce((acc, repository) => {
     const languages = Object.values(repository)[0]
@@ -43,7 +44,7 @@ const organizationLinesOfCodes = async (token: string) => {
     if (!organizationName) return acc
     const previousOrganization = await acc
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${organizationName}/repos`, token)
-    const organizationsRepositoriesLanguages = await (async <T,>() => repositoriesLanguages<T>(organizationName, organizationRepositories))<Array<RepositoryLanguageStats>>()
+    const organizationsRepositoriesLanguages = await repositoriesLanguages<Array<RepositoryLanguageStats>>(organizationName, organizationRepositories)
 
     return [...previousOrganization, organizationsRepositoriesLanguages?.reduce((acc, repo) => {
       const languages = Object.values(repo)[0]
@@ -68,7 +69,7 @@ const personalCommits = async (token: string) => {
     const commits = await fetchRepositoryCommits(1)
     return [...prevDates, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
       const prevDate = await acc
-      if (!author?.date) return prevDate
+      if (!author?.date || author?.name === 'Lenix') return prevDate
       const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
       return [...prevDate, date]
     }, Promise.resolve(accumulationInitializer))]
@@ -90,7 +91,7 @@ const organizationsCommits = async (token: string) => {
       const commits = await fetchRepositoryCommits(1)
       return [...prevAcc, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
         const prevDate = await acc
-        if (!author?.date) return prevDate
+        if (!author?.date || author?.name === 'Lenix') return prevDate
         const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
         return [...prevDate, date]
       }, Promise.resolve(accumulationInitializer))]
