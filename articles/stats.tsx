@@ -1,7 +1,7 @@
 "use client"
 import { Insights } from "@/lib/insights"
 import { useState, useCallback } from "react"
-import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, MouseHandlerDataParam, ReferenceArea, ResponsiveContainer } from "recharts"
+import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, MouseHandlerDataParam, ReferenceArea, Legend } from "recharts"
 
 type Commits = { name: number, commits: number }
 
@@ -33,6 +33,7 @@ const getAxisYDomain = (
   commitsData: {
     name: number
     commits: number
+    average: number
   }[] | undefined,
   from: string | number | undefined,
   to: string | number | undefined,
@@ -54,16 +55,18 @@ const getAxisYDomain = (
 
 const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   const [zoomGraph, setZoomGraph] = useState<ZoomAndHighlightState>(initialState)
+  const { refAreaLeft, refAreaRight, left, right, top, bottom, top2, bottom2 } = zoomGraph
   const grouped = Object.groupBy(
     (insights.commits ?? []).filter((d): d is string => d !== undefined),
     date => date
   )
-  const commitsData = Object.entries(grouped)
-  .sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
-  .map(([date, commits], index) => ({
+  const sorted = Object.entries(grouped).sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
+
+  const commitsData = sorted.map(([date, commits], index) => ({
     name: index + 1,
     day: date,
-    commits: commits?.length ?? 0
+    commits: commits?.length ?? 0,
+    average: Math.round(sorted.slice(0, index + 1).reduce((acc, [, c]) => acc + (c?.length ?? 0), 0) / (index + 1))
   }))
 
   const zoom = useCallback(() => {
@@ -120,15 +123,14 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
     [setZoomGraph],
   )
 
-  const { refAreaLeft, refAreaRight, left, right, top, bottom, top2, bottom2 } = zoomGraph
-
   return (
     <div style={{ userSelect: 'none', width: '100%' }}>
       <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={zoomOut}>
         Zoom Out
       </button>
 
-      <LineChart style={{ width: '100%', maxWidth: '700px', maxHeight: '70vh', aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
+      <LineChart className="w-full h-full" style={{ aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
+        <Line yAxisId="2" type="natural" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
         <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
         <XAxis allowDataOverflow dataKey="name" domain={[left, right]} type="number" stroke="var(--muted-foreground)" />
         <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width="auto" stroke="var(--muted-foreground)" />
@@ -141,8 +143,9 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
         <Line yAxisId="2" type="natural" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/>
 
         {refAreaLeft && refAreaRight && (
-          <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)"/>
+          <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--foreground)" fill="var(--muted)"/>
         )}
+        <Legend verticalAlign="bottom" />
       </LineChart>
     </div>
   )
@@ -151,43 +154,5 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
 export const Stats = ({ insights }: { insights: Insights }) => (
   <>
     <HighlightAndZoomLineChart insights={insights} />
-    <Demo />
   </>
-)
-
-
-const data = [
-  { name: "Product A", uv: 4000, pv: 2400 },
-  { name: "Product B", uv: 3000, pv: 1398 },
-  { name: "Product C", uv: -1000, pv: 9800 },
-  { name: "Product D", uv: 500, pv: 3908 },
-  { name: "Product E", uv: -2000, pv: 4800 },
-  { name: "Product F", uv: -250, pv: 3800 },
-  { name: "Product G", uv: 3490, pv: 4300 },
-]
-
-const offset = (() => {
-  const max = Math.max(...data.map(i => i.uv))
-  const min = Math.min(...data.map(i => i.uv))
-  if (max <= 0) return 0
-  if (min >= 0) return 1
-  return max / (max - min)
-})()
-
-const Demo = () => (
-  <ResponsiveContainer width="100%" height={300}>
-    <AreaChart data={data}>
-      <defs>
-        <linearGradient id="uv-gradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset={offset} stopColor="#0d9488" stopOpacity={1} />
-          <stop offset={offset} stopColor="#ef4444" stopOpacity={1} />
-        </linearGradient>
-      </defs>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" tickFormatter={v => v.replace("Product ", "")} axisLine={false} tickLine={false} />
-      <YAxis axisLine={false} tickLine={false} tickFormatter={v => `$${(v / 1000).toFixed(0)}k`} />
-      <Tooltip />
-      <Area type="monotone" dataKey="uv" fill="url(#uv-gradient)" fillOpacity={0.2} stroke="#6b7280" isAnimationActive={false} />
-    </AreaChart>
-  </ResponsiveContainer>
 )
