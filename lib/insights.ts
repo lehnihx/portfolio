@@ -102,6 +102,7 @@ const personalRepositoriesLanguagesBytes = async (token: string) => {
   const repositories = await personalRepositories(token)
   return repositories?.reduce(async (acc, repository) => {
     const prevAcc = await acc
+    if (repository.fork) return prevAcc
     const langs = await fetchGithub<Language>(`repos/LenixDev/${repository.name}/languages`, token)
     if (!langs) return prevAcc
     return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
@@ -113,8 +114,9 @@ const organizationsRepositoriesLanguagesBytes = async (token: string) => {
   return organizations?.reduce(async (acc, { login }) => {
     const prevAcc = await acc
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token)
-    return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { name }) => {
+    return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { fork, name }) => {
       const prevAcc = await acc
+      if (fork) return prevAcc
       const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
       if (!langs) return prevAcc
       return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
@@ -135,7 +137,7 @@ const insights = async () => {
     const combined = [...(validPersonalLangsBytes ?? []), ...(validOrganizationLangsBytes ?? [])]
     const merged = new Map<string, number>()
     for (const { name, bytes } of combined) merged.set(name, (merged.get(name) ?? 0) + bytes)
-    return Array.from(merged, ([name, bytes]) => ({ name, bytes }))
+    return Array.from(merged, ([name, bytes]) => ({ name, bytes })).sort((a, b) => b.bytes - a.bytes)
   })()
   return { /* loc,  */commits, langsBytes }
 }
