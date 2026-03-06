@@ -130,6 +130,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
       <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={zoomOut}>
         Zoom Out
       </button>
+      <h2>Total Amounts of commits {insights.commits.length}</h2>
 
       <LineChart className="w-full h-full" style={{ aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
         <Line yAxisId="2" type="natural" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
@@ -154,21 +155,22 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
 }
 
 const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => (
-  <ResponsiveContainer width="100%" height={1000}>
+  <ResponsiveContainer width="50%" height={500}>
     <BarChart data={languages} layout="vertical">
       <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-      <XAxis type="number" tickFormatter={v => `${(v / 1000).toFixed(0)}k`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
+      <XAxis type="number" tickFormatter={v => `${v}bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
       <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
-      <Tooltip formatter={(v: number | undefined) => v ? `${(v / 1000).toFixed(0)}kb` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
-      <Bar dataKey="bytes" fill="var(--chart-1)" radius={[0, 4, 4, 0]} />
+      <Tooltip formatter={(v: number | undefined) => v ? `${v} bytes` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
+      <Bar dataKey="bytes" fill="var(--foreground)" radius={[0, 4, 4, 0]} />
     </BarChart>
   </ResponsiveContainer>
 )
 
 export const Stats = ({ insights }: { insights: Insights }) => (
   <div className="w-full flex flex-col items-center justify-center gap-4">
-    {/* {(async () => <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground"/>)()}
-    <HighlightAndZoomLineChart insights={insights} /> */}
+    <h2>Amount of Lines of Code Lenix has Written so Far</h2>
+    <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground"/>
+    <HighlightAndZoomLineChart insights={insights} />
     <LanguagesChart languages={insights.langsBytes}/>
   </div>
 )
