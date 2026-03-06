@@ -30,7 +30,6 @@ const personalLinesLinesOfCodes = async (token: string) => {
 
   return personalRepositoriesLanguages?.reduce((acc, repository) => {
     const languages = Object.values(repository)[0]
-    if (!languages) return 0
     return acc + languages.reduce((acc, language) => acc + language.lines, 0)
   }, 0)
 }
@@ -45,8 +44,8 @@ const organizationLinesOfCodes = async (token: string) => {
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${organizationName}/repos`, token)
     const organizationsRepositoriesLanguages = await repositoriesLanguages<Array<RepositoryLanguageStats>>(organizationName, organizationRepositories)
 
-    return [...previousOrganization, organizationsRepositoriesLanguages?.reduce((acc, repo) => {
-      const languages = Object.values(repo)[0]
+    return [...previousOrganization, organizationsRepositoriesLanguages?.reduce((acc, repository) => {
+      const languages = Object.values(repository)[0]
       return acc + languages.reduce((acc, language) => acc + language.lines, 0)
     }, 0)]
   }, Promise.resolve([] as (number | undefined)[]))
@@ -55,18 +54,19 @@ const organizationLinesOfCodes = async (token: string) => {
 
 const totalLinesOfCodes = async (token: string) => [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 
+const fetchRepositoryCommits = async (pageIndex: number, repositoryName: string, token: string): Promise<Commit[]> => {
+  const page = await fetchGithub<Commit[]>(`repos/LenixDev/${repositoryName}/commits?per_page=100&page=${pageIndex}`, token)
+  if (!page?.length || page.length < 100) return page ?? []
+  return [...page, ...await fetchRepositoryCommits(pageIndex + 1, repositoryName, token)]
+}
+
 const personalCommits = async (token: string) => {
   const repositories = await personalRepositories(token)
 
-  return repositories?.reduce(async (acc, repository) => {
-    const prevDates = await acc
-    const fetchRepositoryCommits = async (pageIndex: number): Promise<Commit[]> => {
-      const page = await fetchGithub<Commit[]>(`repos/LenixDev/${repository.name}/commits?per_page=100&page=${pageIndex}`, token)
-      if (!page?.length || page.length < 100) return page ?? []
-      return [...page, ...await fetchRepositoryCommits(pageIndex + 1)]
-    }
-    const commits = await fetchRepositoryCommits(1)
-    return [...prevDates, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
+  return repositories?.reduce(async (acc, { name }) => {
+    const prevAcc = await acc
+    const commits = await fetchRepositoryCommits(1, name, token) ?? []
+    return [...prevAcc, ...await commits.reduce(async (acc, { commit: { author } }) => {
       const prevAcc = await acc
       if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
       const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
@@ -82,13 +82,8 @@ const organizationsCommits = async (token: string) => {
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token)
     return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { name }) => {
       const prevAcc = await acc
-      const fetchRepositoryCommits = async (pageIndex: number): Promise<Commit[]> => {
-        const page = await fetchGithub<Commit[]>(`repos/${login}/${name}/commits?per_page=100&page=${pageIndex}`, token)
-        if (!page?.length || page.length < 100) return page ?? []
-        return [...page, ...await fetchRepositoryCommits(pageIndex + 1)]
-      }
-      const commits = await fetchRepositoryCommits(1)
-      return [...prevAcc, ...await (commits ?? []).reduce(async (acc, { commit: { author } }) => {
+      const commits = await fetchRepositoryCommits(1, name, token) ?? []
+      return [...prevAcc, ...await (commits ).reduce(async (acc, { commit: { author } }) => {
         const prevAcc = await acc
         if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
         const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
@@ -98,15 +93,16 @@ const organizationsCommits = async (token: string) => {
   }, Promise.resolve(accumulationInitializer))
 }
 
+const languagesBytes = async (repositories: Repository[], login: string, token: string) => repositories.reduce((acc, { fork, name }) => fork ? acc : acc.then(async prevAcc => {
+  const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
+  if (!langs) return prevAcc
+  return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
+}), Promise.resolve([] as Languages))
+
 const personalRepositoriesLanguagesBytes = async (token: string) => {
   const repositories = await personalRepositories(token)
-  return repositories?.reduce(async (acc, repository) => {
-    const prevAcc = await acc
-    if (repository.fork) return prevAcc
-    const langs = await fetchGithub<Language>(`repos/LenixDev/${repository.name}/languages`, token)
-    if (!langs) return prevAcc
-    return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
-  }, Promise.resolve([] as Languages))
+  if (!repositories) return []
+  return languagesBytes(repositories, 'lenixdev', token)
 }
 
 const organizationsRepositoriesLanguagesBytes = async (token: string) => {
@@ -114,13 +110,8 @@ const organizationsRepositoriesLanguagesBytes = async (token: string) => {
   return organizations?.reduce(async (acc, { login }) => {
     const prevAcc = await acc
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token)
-    return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { fork, name }) => {
-      const prevAcc = await acc
-      if (fork) return prevAcc
-      const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
-      if (!langs) return prevAcc
-      return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
-    }, Promise.resolve([] as Languages))]
+    const languages = await languagesBytes(organizationRepositories || [], login, token)
+    return [...prevAcc, ...languages]
   }, Promise.resolve([] as Languages))
 }
 
