@@ -132,24 +132,26 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
       </button>
       <h2>Total Amounts of commits {insights.commits.length}</h2>
 
-      <LineChart className="w-full h-full" style={{ aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
-        <Line yAxisId="2" type="natural" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
-        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-        <XAxis allowDataOverflow dataKey="name" domain={[left, right]} type="number" stroke="var(--muted-foreground)" />
-        <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width="auto" stroke="var(--muted-foreground)" />
-        <YAxis orientation="right" allowDataOverflow domain={[bottom2, top2]} type="number" yAxisId="2" width="auto" stroke="var(--muted-foreground)"/>
-        <Tooltip
-          labelFormatter={(label) => commitsData[label - 1]?.day ?? label}
-          cursor={{ stroke: 'var(--border)' }}
-          contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }}
-        />
-        <Line yAxisId="2" type="natural" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/>
+      <ResponsiveContainer width="50%" style={{ aspectRatio: 1.618 }}>
+        <LineChart className="w-full h-full" style={{ aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
+          <Line yAxisId="2" type="natural" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+          <XAxis allowDataOverflow dataKey="name" domain={[left, right]} type="number" stroke="var(--muted-foreground)" />
+          <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width="auto" stroke="var(--muted-foreground)" />
+          <YAxis orientation="right" allowDataOverflow domain={[bottom2, top2]} type="number" yAxisId="2" width="auto" stroke="var(--muted-foreground)"/>
+          <Tooltip
+            labelFormatter={(label) => commitsData[label - 1]?.day ?? label}
+            cursor={{ stroke: 'var(--border)' }}
+            contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }}
+          />
+          <Line yAxisId="2" type="natural" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }}/>
 
-        {refAreaLeft && refAreaRight && (
-          <ReferenceArea yAxisId="2" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)" fillOpacity={0.25}/>
-        )}
-        <Legend verticalAlign="bottom" />
-      </LineChart>
+          {refAreaLeft && refAreaRight && (
+            <ReferenceArea yAxisId="2" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)" fillOpacity={0.25}/>
+          )}
+          <Legend verticalAlign="bottom" />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   )
 }
