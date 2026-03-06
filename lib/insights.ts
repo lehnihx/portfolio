@@ -8,6 +8,8 @@ import { fetchCodeTabs } from '@/api/codetabs'
 
 const accumulationInitializer = [] as NonNullable<Commit["commit"]["author"]>["date"][]
 const commitsAuthors = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
+const excludedLangs = ['HTML', 'MDX', 'CSS', 'JavaScript']
+
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
 const repositoriesLanguages = <T>(owner: string, repositories: Repository[] | undefined) => {
@@ -88,11 +90,15 @@ const organizationsCommits = async (token: string) => {
   }, Promise.resolve(accumulationInitializer))
 }
 
-const languagesBytes = async (repositories: Repository[], login: string, token: string) => repositories.reduce((acc, { fork, name }) => fork ? acc : acc.then(async prevAcc => {
-  const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
-  if (!langs) return prevAcc
-  return [...prevAcc, ...Object.entries(langs).map(([name, bytes]) => ({ name, bytes }))]
-}), Promise.resolve([] as Languages))
+const languagesBytes = async (repositories: Repository[], login: string, token: string) =>
+  repositories.reduce((acc, { fork, name }) =>
+    fork ? acc : acc.then(async prevAcc => {
+      const langs = await fetchGithub<Language>(`repos/${login}/${name}/languages`, token)
+      if (!langs) return prevAcc
+      return [...prevAcc, ...Object.entries(langs)
+        .filter(([name]) => !excludedLangs.includes(name))
+        .map(([name, bytes]) => ({ name, bytes }))]
+    }), Promise.resolve([] as Languages))
 
 const personalRepositoriesLanguagesBytes = async (token: string) => {
   const repositories = await personalRepositories(token)

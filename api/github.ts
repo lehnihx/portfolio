@@ -12,7 +12,7 @@ export const fetchGithub = async <T,>(path: string, token: string) => {
   })
 
   if (!response.ok) {
-    console.error(`Error ${response.status}`, await response.text(), `resets in ${new Date(Number(response.headers.get('x-ratelimit-reset')) * 1000)}`)
+    console.error(`Error ${response.status}`, await response.text(), `\n resets in ${new Date(Number(response.headers.get('x-ratelimit-reset')) * 1000)}`)
     return
   }
   return await response.json() as T
