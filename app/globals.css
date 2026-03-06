@@ -169,6 +169,7 @@ button, a {
   cursor: pointer;
 }
 html {
+  scroll-behavior: smooth;
   scrollbar-width: none;
 }
 html::-webkit-scrollbar {

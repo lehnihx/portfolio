@@ -45,9 +45,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] add loading screen
 - [ ] try to improve the loading screen
 - [ ] implement asking
-- [ ] implement mailing
+- [x] implement mailing
 - [ ] implement timeline
-- [ ] implement referrals
+- [x] implement referrals
 - [ ] implement nav
 - [ ] implement file upload
 
