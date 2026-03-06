@@ -59,7 +59,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <BackgroundRippleEffect />
             <Intro/>
           </section>
-          <section className="relative overflow-hidden min-h-screen w-full flex items-center">
+          <section id="about" className="relative overflow-hidden min-h-screen w-full flex items-center">
             <Particles className="absolute inset-0 -z-10"/>
             <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
               <AboutMeHeader/>
@@ -78,11 +78,11 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Quotes/>
             <BeamToClaude />
           </section>
-          <section className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
+          <section id="timeline" className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
             <Meteors/>
             <TimelineJourney/>
           </section>
-          <section className="w-screen flex flex-col items-center justify-evenly">
+          <section id="contact" className="w-screen flex flex-col items-center justify-evenly">
             <Ask/>
             <ContactForm/>
           </section>

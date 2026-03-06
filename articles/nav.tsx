@@ -3,9 +3,10 @@ import { useDict } from "@/hooks/useDict"
 import { Button } from "@/components/ui/button"
 import { Route } from "lucide-react"
 import { useState } from "react"
+import Link from "next/link"
 
 export const Nav = () => {
-  const { home, about, projects, contact } = useDict()
+  const { home, about, timeline, contact } = useDict()
   const [state, setState] = useState(false)
   return (
     <>
@@ -24,10 +25,10 @@ export const Nav = () => {
             <Route/>
           </Button>
           <nav className="h-screen flex flex-col items-center justify-center text-background text-7xl [&>a]:cursor-default!">
-            <a href="#">{home}</a>
-            <a href="#about">{about}</a>
-            <a href="#projects">{projects}</a>
-            <a href="#contact">{contact}</a>
+            <Link href="#">{home}</Link>
+            <Link href="#about">{about}</Link>
+            <Link href="#timeline">{timeline}</Link>
+            <Link href="#contact">{contact}</Link>
           </nav>
         </div>
       )}
