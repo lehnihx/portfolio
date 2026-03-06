@@ -12,7 +12,7 @@ export const Error = ({ children }: { children: string }) => {
         baseIntensity={0.2}
         hoverIntensity={0.5}
         enableHover
-        fontSize="clamp(2.5rem, 6vw, 5rem)"
+        fontSize="clamp(1.5rem, 6vw, 5rem)"
         color={resolvedTheme === "dark" ? "white" : "black"}
       >
         {children}
