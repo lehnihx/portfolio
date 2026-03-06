@@ -2,7 +2,6 @@ import { Dictionary, hasLang } from "../../lib/dictionaries"
 import { notFound } from "next/navigation"
 import { DictProvider } from "@/hooks/useDict"
 import { DialogProvider } from "@/hooks/useDialog"
-import { Ask } from "@/articles/ask"
 import { ContactForm } from "@/articles/form"
 import { Intro } from "@/articles/intro"
 import { Nav } from "@/articles/nav"
@@ -83,7 +82,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <TimelineJourney/>
           </section>
           <section id="contact" className="w-screen flex flex-col items-center justify-evenly">
-            <Ask/>
             <ContactForm/>
           </section>
         </main>
