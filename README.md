@@ -44,7 +44,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] fix the theme btn
 - [x] add loading screen
 - [ ] try to improve the loading screen
-- [ ] implement asking
+- [x] implement asking
 - [x] implement mailing
 - [ ] implement timeline
 - [x] implement referrals
