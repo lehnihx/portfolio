@@ -60,9 +60,7 @@ const fetchRepositoryCommits = async (pageIndex: number, repositoryName: string,
   return [...page, ...await fetchRepositoryCommits(pageIndex + 1, repositoryName, token)]
 }
 
-const personalCommits = async (token: string) => {
-  const repositories = await personalRepositories(token)
-
+const repositoriesDates = async (repositories: Repository[], token: string) => {
   return repositories?.reduce(async (acc, { name }) => {
     const prevAcc = await acc
     const commits = await fetchRepositoryCommits(1, name, token) ?? []
@@ -75,21 +73,18 @@ const personalCommits = async (token: string) => {
   }, Promise.resolve(accumulationInitializer))
 }
 
+const personalCommits = async (token: string) => {
+  const repositories = await personalRepositories(token) ?? []
+  return await repositoriesDates(repositories, token)
+}
+
 const organizationsCommits = async (token: string) => {
   const organizations = await fetchGithub<Organization[]>('users/lenixdev/orgs', token)
   return organizations?.reduce(async (acc, { login }) => {
     const prevAcc = await acc
-    const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token)
-    return [...prevAcc, ...await(organizationRepositories ?? [])?.reduce(async (acc, { name }) => {
-      const prevAcc = await acc
-      const commits = await fetchRepositoryCommits(1, name, token) ?? []
-      return [...prevAcc, ...await (commits ).reduce(async (acc, { commit: { author } }) => {
-        const prevAcc = await acc
-        if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
-        const date = new Date(author.date).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
-        return [...prevAcc, date]
-      }, Promise.resolve(accumulationInitializer))]
-    }, Promise.resolve(accumulationInitializer))]
+    const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token) ?? []
+    const organizationRepositoriesDates = await repositoriesDates(organizationRepositories, token)
+    return [...prevAcc, ...organizationRepositoriesDates]
   }, Promise.resolve(accumulationInitializer))
 }
 
