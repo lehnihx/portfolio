@@ -42,3 +42,6 @@ next-env.d.ts
 
 # lockfiles
 *-lock.json
+
+# AI Assistant context file
+context.txt

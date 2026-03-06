@@ -1,6 +1,7 @@
+import * as fs from 'fs'
+import path from 'path'
 import { createGroq } from '@ai-sdk/groq'
 import { streamText, convertToModelMessages, UIMessage } from 'ai'
-import { getPortfolioContext } from '@/lib/cache'
 
 const assert = (condition: boolean, message?: string) => {
   if (!condition) throw new Error(message)
@@ -30,7 +31,7 @@ const SYSTEM_PROMPT = `You are Lenix's personal assistant on his portfolio websi
 
 export async function POST(req: Request) {
   const { messages }: { messages: UIMessage[] } = await req.json()
-  const portfolioContext = await getPortfolioContext()
+  const portfolioContext = fs.readFileSync(path.join(process.cwd(), 'script/context.txt'), 'utf-8')
 
   const result = streamText({
     model: groq('llama-3.3-70b-versatile'),
