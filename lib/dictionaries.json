@@ -77,5 +77,8 @@
   "send_file": "Send a file to Lenix",
   "upload_file": "Upload file",
   "drag_drop": "Drag or drop your files here or click to upload",
-  "drop_it": "Drop it"
+  "drop_it": "Drop it",
+  "failed_message": "Failed to send message",
+  "success_message": "Message sent!",
+  "failed_response": "Failed to get a response"
 }

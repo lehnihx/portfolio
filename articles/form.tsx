@@ -22,7 +22,7 @@ const InputField = ({ id, label, placeholder, type }: {
 
 export const ContactForm = () => {
   const { contact, lenix, name, email, mail, mail_placeholder, send } = useDict()
-
+  const { failed_message, success_message } = useDict()
   const handleClick = async () => {
     const form = document.getElementById("contact-form") as HTMLFormElement
     if (!form.checkValidity()) return form.reportValidity()
@@ -33,10 +33,10 @@ export const ContactForm = () => {
       headers: { "Content-Type": "application/json" },
     })
     if (!res.ok) {
-      toast.error("Failed to send message")
+      toast.error(failed_message)
       throw new Error("Failed")
     }
-    toast.success("Message sent!")
+    toast.success(success_message)
   }
 
   return (

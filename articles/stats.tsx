@@ -59,7 +59,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   const [zoomGraph, setZoomGraph] = useState<ZoomAndHighlightState>(initialState)
   const { refAreaLeft, refAreaRight, left, right, top, bottom, top2, bottom2 } = zoomGraph
   const grouped = Object.groupBy(
-    (insights.commits ?? []).filter((d): d is string => d !== undefined),
+    (insights.commits ?? []).filter((date): date is string => date !== undefined),
     date => date
   )
   const sorted = Object.entries(grouped).sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
