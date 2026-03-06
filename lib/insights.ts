@@ -8,7 +8,7 @@ import { fetchCodeTabs } from '@/api/codetabs'
 
 const accumulationInitializer = [] as NonNullable<Commit["commit"]["author"]>["date"][]
 const commitsAuthors = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
-const excludedLangs = ['HTML', 'MDX', 'CSS', 'JavaScript']
+const excludedLangs = ['HTML', 'CSS', 'JavaScript', 'MDX', 'Shell', 'Batchfile']
 
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
@@ -122,7 +122,7 @@ const insights = async () => {
   const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
   const validOrganizationCommits = await organizationsCommits(GITHUB_TOKEN)
   const commits = validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
-  // const loc = await totalLinesOfCodes(GITHUB_TOKEN)
+  const loc = await totalLinesOfCodes(GITHUB_TOKEN)
   const validPersonalLangsBytes = await personalRepositoriesLanguagesBytes(GITHUB_TOKEN)
   const validOrganizationLangsBytes = await organizationsRepositoriesLanguagesBytes(GITHUB_TOKEN)
   const langsBytes = (() => {
@@ -131,7 +131,7 @@ const insights = async () => {
     for (const { name, bytes } of combined) merged.set(name, (merged.get(name) ?? 0) + bytes)
     return Array.from(merged, ([name, bytes]) => ({ name, bytes })).sort((a, b) => b.bytes - a.bytes)
   })()
-  return { /* loc,  */commits, langsBytes }
+  return { loc, commits, langsBytes }
 }
 
 export type Insights = Awaited<ReturnType<typeof insights>>
