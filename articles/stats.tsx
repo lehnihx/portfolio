@@ -75,16 +75,14 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
     setZoomGraph((prev: ZoomAndHighlightState): ZoomAndHighlightState => {
       let { refAreaLeft, refAreaRight } = prev
 
-      if (refAreaLeft === refAreaRight || refAreaRight === '') {
-        return {
-          ...prev,
-          refAreaLeft: undefined,
-          refAreaRight: undefined,
-        }
+      if (refAreaLeft === refAreaRight || refAreaRight === '') return {
+        ...prev,
+        refAreaLeft: undefined,
+        refAreaRight: undefined,
       }
+      
 
-      if (refAreaLeft && refAreaRight && refAreaLeft > refAreaRight)
-        [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft]
+      if (refAreaLeft && refAreaRight && refAreaLeft > refAreaRight) [refAreaLeft, refAreaRight] = [refAreaRight, refAreaLeft]
 
       const [bottom2, top2] = getAxisYDomain(commitsData, refAreaLeft, refAreaRight, 'commits', 1)
 
@@ -116,9 +114,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   const onMouseMove = useCallback(
     (e: MouseHandlerDataParam) => {
       setZoomGraph(prev => {
-        if (prev.refAreaLeft) {
-          return { ...prev, refAreaRight: e.activeLabel }
-        }
+        if (prev.refAreaLeft) return { ...prev, refAreaRight: e.activeLabel }        
         return prev
       })
     },
@@ -132,7 +128,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
       </button>
       <h2>Total Amounts of commits {insights.commits.length}</h2>
 
-      <ResponsiveContainer width="50%" style={{ aspectRatio: 1.618 }}>
+      <ResponsiveContainer width="50%" height={500}>
         <LineChart className="w-full h-full" style={{ aspectRatio: 1.618 }} responsive data={commitsData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={zoom} >
           <Line yAxisId="2" type="natural" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
           <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />

@@ -28,8 +28,9 @@ const secondaryVariant = {
 };
 
 export const FileUpload = ({
-  onChange,
+  name, onChange,
 }: {
+  name: string
   onChange?: (files: File[]) => void;
 }) => {
   const [files, setFiles] = useState<File[]>([]);
@@ -64,6 +65,7 @@ export const FileUpload = ({
           ref={fileInputRef}
           id="file-upload-handle"
           type="file"
+          name={name}
           onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
           className="hidden"
         />

@@ -7,6 +7,7 @@ import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { Button } from "@/components/ui/stateful-button"
 import { toast } from "sonner"
+import { FileUpload } from "@/components/ui/file-upload"
 
 const InputField = ({ id, label, placeholder, type }: {
   id: string
@@ -26,17 +27,16 @@ export const ContactForm = () => {
   const handleClick = async () => {
     const form = document.getElementById("contact-form") as HTMLFormElement
     if (!form.checkValidity()) return form.reportValidity()
-    const data = Object.fromEntries(new FormData(form))
     const res = await fetch("/api/contact", {
       method: "POST",
-      body: JSON.stringify(data),
-      headers: { "Content-Type": "application/json" },
+      body: new FormData(form),
     })
     if (!res.ok) {
       toast.error(failed_message)
       throw new Error("Failed")
     }
     toast.success(success_message)
+    form.reset()
   }
 
   return (
@@ -50,6 +50,7 @@ export const ContactForm = () => {
             <Field>
               <FieldLabel htmlFor="mail-user-message">{mail}</FieldLabel>
               <Textarea name="message" placeholder={mail_placeholder} required />
+              <FileUpload name="file" />
             </Field>
             <Field>
               <Button onClick={handleClick}>{send}</Button>
