@@ -56,16 +56,16 @@ const organizationLinesOfCodes = async (token: string) => {
 
 const totalLinesOfCodes = async (token: string) => [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 
-const fetchRepositoryCommits = async (pageIndex: number, repositoryName: string, token: string): Promise<Commit[]> => {
-  const page = await fetchGithub<Commit[]>(`repos/LenixDev/${repositoryName}/commits?per_page=100&page=${pageIndex}`, token)
+const fetchRepositoryCommits = async (pageIndex: number, owner: string, repositoryName: string, token: string): Promise<Commit[]> => {
+  const page = await fetchGithub<Commit[]>(`repos/${owner}/${repositoryName}/commits?per_page=100&page=${pageIndex}`, token)
   if (!page?.length || page.length < 100) return page ?? []
-  return [...page, ...await fetchRepositoryCommits(pageIndex + 1, repositoryName, token)]
+  return [...page, ...await fetchRepositoryCommits(pageIndex + 1, owner, repositoryName, token)]
 }
 
-const repositoriesDates = async (repositories: Repository[], token: string) => {
+const repositoriesDates = async (repositories: Repository[], owner: string, token: string) => {
   return repositories?.reduce(async (acc, { name }) => {
     const prevAcc = await acc
-    const commits = await fetchRepositoryCommits(1, name, token) ?? []
+    const commits = await fetchRepositoryCommits(1, owner, name, token) ?? []
     return [...prevAcc, ...await commits.reduce(async (acc, { commit: { author } }) => {
       const prevAcc = await acc
       if (!author?.date || !commitsAuthors.includes(author.name ?? '')) return prevAcc
@@ -77,7 +77,7 @@ const repositoriesDates = async (repositories: Repository[], token: string) => {
 
 const personalCommits = async (token: string) => {
   const repositories = await personalRepositories(token) ?? []
-  return await repositoriesDates(repositories, token)
+  return await repositoriesDates(repositories, 'lenixdev', token)
 }
 
 const organizationsCommits = async (token: string) => {
@@ -85,7 +85,7 @@ const organizationsCommits = async (token: string) => {
   return organizations?.reduce(async (acc, { login }) => {
     const prevAcc = await acc
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${login}/repos`, token) ?? []
-    const organizationRepositoriesDates = await repositoriesDates(organizationRepositories, token)
+    const organizationRepositoriesDates = await repositoriesDates(organizationRepositories, login, token)
     return [...prevAcc, ...organizationRepositoriesDates]
   }, Promise.resolve(accumulationInitializer))
 }
