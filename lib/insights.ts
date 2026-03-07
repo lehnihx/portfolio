@@ -12,27 +12,29 @@ const excludedLangs = ['HTML', 'CSS', 'JavaScript', 'MDX', 'Shell', 'Batchfile']
 
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
-const repositoriesLanguages = <T>(owner: string, repositories: Repository[] | undefined) => {
+const repositoriesLanguages = <T extends RepositoryLanguageStats[]>(owner: string, repositories: Repository[] | undefined) => {
   let remainingCount = repositories?.length ?? 0
   return repositories?.reduce(async (acc, repository) => {
     const prevAcc = await acc
     await wait(5000)
     console.log(`${repository.name} was fetched from ${owner}, ${--remainingCount} more remaining`)
     const data = await fetchCodeTabs<T>(owner, repository.name)
-    if (!data) return []
-    return [...prevAcc, { [repository.name]: data} ]
+    if (!Array.isArray(data) || !data.length) return prevAcc
+    return [...prevAcc, { [repository.name]: data }]
   }, Promise.resolve([] as Array<{
     [key: NonNullable<typeof repositories>[number]["name"]]: T
   }>))
 }
 
+const sumLines = (languages: RepositoryLanguageStats[]) =>
+  languages.reduce((acc, language) => acc + language.lines, 0)
+
 const personalLinesLinesOfCodes = async (token: string) => {
   const repository = await personalRepositories(token)
-  const personalRepositoriesLanguages = await repositoriesLanguages<Array<RepositoryLanguageStats>>('lenixdev', repository)
-
+  const personalRepositoriesLanguages = await repositoriesLanguages('lenixdev', repository)
   return personalRepositoriesLanguages?.reduce((acc, repository) => {
     const languages = Object.values(repository)[0]
-    return acc + languages.reduce((acc, language) => acc + language.lines, 0)
+    return acc + sumLines(languages)
   }, 0)
 }
 
@@ -44,17 +46,19 @@ const organizationLinesOfCodes = async (token: string) => {
     if (!organizationName) return acc
     const previousOrganization = await acc
     const organizationRepositories = await fetchGithub<Repository[]>(`orgs/${organizationName}/repos`, token)
-    const organizationsRepositoriesLanguages = await repositoriesLanguages<Array<RepositoryLanguageStats>>(organizationName, organizationRepositories)
+    const organizationsRepositoriesLanguages = await repositoriesLanguages(organizationName, organizationRepositories)
 
     return [...previousOrganization, organizationsRepositoriesLanguages?.reduce((acc, repository) => {
       const languages = Object.values(repository)[0]
-      return acc + languages.reduce((acc, language) => acc + language.lines, 0)
+      return acc + sumLines(languages)
     }, 0)]
   }, Promise.resolve([] as (number | undefined)[]))
-  return (linesOfCodes)?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
+  return linesOfCodes?.reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 }
 
-const totalLinesOfCodes = async (token: string) => [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)].reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
+const totalLinesOfCodes = async (token: string) =>
+  [await personalLinesLinesOfCodes(token), await organizationLinesOfCodes(token)]
+    .reduce((acc, n) => (acc ?? 0) + (n ?? 0), 0)
 
 const fetchRepositoryCommits = async (pageIndex: number, owner: string, repositoryName: string, token: string): Promise<Commit[]> => {
   const page = await fetchGithub<Commit[]>(`repos/${owner}/${repositoryName}/commits?per_page=100&page=${pageIndex}`, token)
@@ -77,7 +81,7 @@ const repositoriesDates = async (repositories: Repository[], owner: string, toke
 
 const personalCommits = async (token: string) => {
   const repositories = await personalRepositories(token) ?? []
-  return await repositoriesDates(repositories, 'lenixdev', token)
+  return repositoriesDates(repositories, 'lenixdev', token)
 }
 
 const organizationsCommits = async (token: string) => {
@@ -131,6 +135,7 @@ const insights = async () => {
     for (const { name, bytes } of combined) merged.set(name, (merged.get(name) ?? 0) + bytes)
     return Array.from(merged, ([name, bytes]) => ({ name, bytes })).sort((a, b) => b.bytes - a.bytes)
   })()
+  console.log(commits.length)
   return { loc, commits, langsBytes }
 }
 
