@@ -48,14 +48,19 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
 
   const commitsData = useMemo(() => {
     const valid = (insights.commits ?? []).filter((d): d is string => d !== undefined)
-    const grouped = Object.groupBy(valid, d => d)
-    const sorted = Object.entries(grouped).sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
-    return sorted.map(([date, commits], index) => ({
+    const grouped = valid.reduce((acc, d) => {
+      acc.set(d, (acc.get(d) ?? 0) + 1)
+      return acc
+    }, new Map<string, number>())
+
+    const sorted = [...grouped.entries()].sort(([a], [b]) => new Date(a).getTime() - new Date(b).getTime())
+
+    return sorted.map(([date, count], index) => ({
       name: index + 1,
       day: date,
-      commits: commits?.length ?? 0,
+      commits: count,
       average: Math.round(
-        sorted.slice(0, index + 1).reduce((acc, [, c]) => acc + (c?.length ?? 0), 0) / (index + 1)
+        sorted.slice(0, index + 1).reduce((acc, [, c]) => acc + c, 0) / (index + 1)
       ),
     }))
   }, [insights.commits])
