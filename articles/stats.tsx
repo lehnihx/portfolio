@@ -106,7 +106,7 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
       </button>
       <h2>Total commits: {insights.commits.length}</h2>
 
-      <ResponsiveContainer width="100%" aspect={1.618}>
+      <ResponsiveContainer width="100%" height={400}>
         <LineChart
           data={commitsData}
           onMouseDown={handleMouseDown}
