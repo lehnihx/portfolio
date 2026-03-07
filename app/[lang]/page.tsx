@@ -9,7 +9,6 @@ import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
 import { Accessibility } from "@/articles/accessibility"
-import { BeamToClaude } from "@/articles/beam"
 import Experience from "@/articles/experience"
 import { Quotes } from "@/articles/quote"
 import { Ecosystem } from "@/articles/ecosystem"
@@ -75,7 +74,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           </section>
           <section className="flex flex-col items-center justify-between gap-10 w-screen">
             <Quotes/>
-            <BeamToClaude />
           </section>
           <section id="timeline" className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
             <Meteors/>
