@@ -8,8 +8,9 @@ export const Intro = () => {
   const { intro } = useDict()
   const { resolvedTheme } = useTheme()
   return (
-    <article className="h-full w-full relative flex items-center justify-center">
-      <div className="absolute bottom-1/4 flex items-center gap-5 flex-col z-10">
+    <article className="w-full h-full flex flex-col items-center justify-center gap-8 md:gap-12 px-4">
+      {/* Text Section */}
+      <div className="flex flex-col items-center justify-center w-full">
         <TypingAnimation
           as="div"
           words={intro}
@@ -17,22 +18,28 @@ export const Intro = () => {
           typeSpeed={50}
           loop
           deleteSpeed={50}
-          className="w-full max-w-4xl mx-auto px-4 text-center text-fluid-sm leading-none font-bold"
+          className="w-full max-w-4xl text-center text-fluid-2xl md:text-fluid-3xl leading-tight font-bold text-foreground"
         />
-        <div className="w-full h-40 relative">
-          <div className="absolute inset-x-40 portrait:inset-x-12.5 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-1.25 w-3/4 blur-sm" />
-          <div className="absolute inset-x-40 portrait:inset-x-12.5 top-0 bg-linear-to-r from-transparent via-foreground to-transparent h-px w-3/4" />
+      </div>
 
-          <SparklesCore
-            background="transparent"
-            minSize={0.4}
-            maxSize={1}
-            particleDensity={300}
-            className="w-full h-full"
-            particleColor={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
-          />
-          <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
-        </div>
+      {/* Sparkles Section */}
+      <div className="relative w-full max-w-2xl h-40 md:h-56">
+        {/* Glow lines */}
+        <div className="absolute inset-x-0 md:inset-x-20 top-0 h-1 bg-gradient-to-r from-transparent via-foreground to-transparent blur-sm" />
+        <div className="absolute inset-x-0 md:inset-x-20 top-0 h-px bg-gradient-to-r from-transparent via-foreground to-transparent" />
+
+        {/* Sparkles animation */}
+        <SparklesCore
+          background="transparent"
+          minSize={0.4}
+          maxSize={1}
+          particleDensity={300}
+          className="w-full h-full"
+          particleColor={resolvedTheme === "dark" ? "#ffffff" : "#000000"}
+        />
+
+        {/* Radial fade mask */}
+        <div className="absolute inset-0 w-full h-full bg-background mask-[radial-gradient(ellipse_80%_60%_at_center,transparent_30%,white)]" />
       </div>
     </article>
   )

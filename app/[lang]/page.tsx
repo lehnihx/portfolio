@@ -52,40 +52,45 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
         <header>
           <Nav/>
         </header>
-        <main>
-          <h1></h1>
-          <section id="hero" className="h-screen w-full relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">
+        <main className="w-full">
+          <section id="hero" className="min-h-screen w-full relative text-foreground flex flex-col items-center justify-center">
             <BackgroundRippleEffect />
             <Intro/>
           </section>
-          <section id="about" className="relative overflow-hidden min-h-screen w-full flex items-center">
+
+          <section id="about" className="relative overflow-hidden min-h-screen w-full px-6 md:px-12 py-16 md:py-24 flex items-center">
             <Particles className="absolute inset-0 -z-10"/>
-            <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
+            <div className="relative z-10 w-full flex flex-col items-center justify-center gap-16">
               <AboutMeHeader/>
               <Stats insights={insights}/>
               <Experience />
               <Testimonials reviews={reviews}/>
             </div>
           </section>
-          <section className="w-full">
+
+          <section className="w-full px-6 md:px-12 py-16 md:py-24">
             <BackgroundLines>
               <EcosystemHeader/>
               <Ecosystem/>
             </BackgroundLines>
           </section>
-          <section className="flex flex-col items-center justify-between gap-10 w-screen">
+
+          <section className="w-full px-6 md:px-12 py-16 md:py-24 flex flex-col items-center justify-center gap-10">
             <Quotes/>
             <BeamToClaude />
           </section>
-          <section id="timeline" className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
+
+          <section id="timeline" className="w-full relative overflow-hidden px-6 md:px-12 py-16 md:py-24 flex flex-col items-center justify-center">
             <Meteors/>
             <TimelineJourney/>
           </section>
-          <section id="contact" className="w-screen flex flex-col items-center justify-evenly">
+
+          <section id="contact" className="w-full px-6 md:px-12 py-16 md:py-24 flex flex-col items-center justify-center">
             <ContactForm/>
           </section>
         </main>
-        <footer id="footer" className="min-h-screen relative flex flex-col justify-evenly">
+
+        <footer id="footer" className="w-full min-h-screen relative px-6 md:px-12 py-16 md:py-24 flex flex-col justify-center gap-16">
           <Accessibility/>
           <Location/>
           <Referrals/>
