@@ -4,7 +4,6 @@ import { DictProvider } from "@/hooks/useDict"
 import { DialogProvider } from "@/hooks/useDialog"
 import { ContactForm } from "@/articles/form"
 import { Intro } from "@/articles/intro"
-import { Nav } from "@/articles/nav"
 import { Referrals } from "@/articles/referrals"
 import TimelineJourney from "@/articles/timeline"
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect"
@@ -48,9 +47,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   return (
     <DictProvider dict={await Dictionary(lang)}>
       <DialogProvider>
-        <header>
-          <Nav/>
-        </header>
         <main>
           <h1></h1>
           <section id="hero" className="h-screen w-full relative min-h-screen text-foreground flex flex-col items-center justify-evenly text-3xl">

@@ -1,7 +1,4 @@
 {
-  "about": "About",
-  "timeline": "Timeline",
-  "contact": "Contact",
   "intro": [
     "Hi, I'm Lenix, and I'm a Junior Software Developer",
     "Full Stack Is Just Where I Started",
@@ -10,7 +7,6 @@
     "The Stack Was Never The Destination",
     "I Write Code That Writes Code"
   ],
-  "home": "Home",
   "locales": "Select The Language",
   "theme": "Toggle The Theme",
   "github": "GitHub",

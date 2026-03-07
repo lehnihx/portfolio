@@ -21,10 +21,6 @@ export default function TimelineJourney() {
             Its specialization lies in back-end systems, custom frameworks, and practical tools that prioritize efficiency, scalability, and quality. Our coding philosophy is simple: every line of code should be clean, maintainable, and valuable.
             Trippler Scripts is committed to innovation, collaboration, and supporting the FiveM ecosystem. It provides solutions that help server owners run smoother, faster, and with confidence.
           </p>
-          <p className="mb-8 text-xs font-normal text-foreground md:text-sm">
-            Lorem ipsum is for people who are too lazy to write copy. But we are
-            not. Here are some more example of beautiful designs I built.
-          </p>
         </div>
       ),
     },
