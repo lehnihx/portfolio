@@ -131,11 +131,8 @@ const AnimationComponent: React.FC<{
         {segment}
       </motion.span>
     ) : (
-      <motion.span className='inline-block whitespace-pre' dir="auto">
-        {(typeof Intl !== 'undefined' && Intl.Segmenter
-          ? Array.from(new Intl.Segmenter(undefined, { granularity: 'grapheme' }).segment(segment), s => s.segment)
-          : Array.from(segment)
-        ).map((char, charIndex) => (
+      <motion.span className='inline-block whitespace-pre'>
+        {segment.split('').map((char, charIndex) => (
           <motion.span
             key={`char-${charIndex}`}
             aria-hidden='true'
