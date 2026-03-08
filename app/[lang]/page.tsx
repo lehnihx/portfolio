@@ -18,8 +18,10 @@ import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
 import cachedReviews from "@/lib/reviews"
-import { Commits, LanguagesChart, LOC } from "@/articles/stats"
 import { cachedInsights } from "@/lib/insights"
+import { Commits } from "@/articles/commits"
+import { LanguagesChart } from "@/articles/languages"
+import { LOC } from "@/articles/loc"
 
 export interface Review {
   name: string
