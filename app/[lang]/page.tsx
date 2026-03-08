@@ -74,7 +74,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Meteors/>
             <LOC insights={insights}/>
           </section>
-          <section className="h-screen w-full flex justify-center">
+          <section className="h-screen w-full flex items-center justify-center">
             <LanguagesChart languages={insights.langsBytes}/>
           </section>
           <section className="min-h-screen w-full flex justify-center">

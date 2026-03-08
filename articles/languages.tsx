@@ -11,12 +11,12 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
   const { ref, visible, height } = useIsInView()
   const { languages: lang } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }} className="w-full">
+    <div ref={ref} style={{ minHeight: height }} className="h-full w-1/2 portrait:w-full">
       {visible && (
-        <motion.div {...ANIMATION} className="portrait:w-full landscape:w-1/2 mx-10 flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="flex h-full flex-col items-center justify-evenly w-full">
           <Header left={lang[0]} center={lang[1]} right={lang[2]} />
-          <ResponsiveContainer width="100%" height={"50%"}>
-            <BarChart data={languages} layout="vertical">
+          <ResponsiveContainer width="90%" height="50%">
+            <BarChart data={languages ?? []} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis type="number" tickFormatter={v => `${v} bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
               <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
