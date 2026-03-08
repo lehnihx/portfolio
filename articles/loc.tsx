@@ -11,13 +11,13 @@ export const LOC = ({ insights }: Insights) => {
   const { ref, visible, height } = useIsInView()
   const { loc } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }} className="w-full h-full flex flex-col items-center justify-center">
+    <div ref={ref} style={{ minHeight: height }} className="h-full">
       {visible && (
-        <motion.div {...ANIMATION} className="flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="flex h-full flex-col items-center justify-evenly">
           <Header left={loc[0]} center={loc[1]} right={loc[2]} />
           <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
         </motion.div>
       )}
     </div>
   )
-}
+} 

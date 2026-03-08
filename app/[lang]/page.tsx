@@ -70,7 +70,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section className="min-h-screen w-full flex justify-center">
             <Testimonials reviews={reviews}/>
           </section>
-          <section className="relative min-h-screen w-full flex overflow-clip">
+          <section className="relative min-h-screen w-full flex items-center justify-center overflow-clip">
             <Meteors/>
             <LOC insights={insights}/>
           </section>
