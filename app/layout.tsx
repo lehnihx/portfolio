@@ -8,6 +8,7 @@ import { headers } from "next/headers"
 import { ClickProvider } from "@/components/ui/click"
 import { SlowScroll } from "@/components/scroll"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
               <SlowScroll>
                 {children}
                 <SpeedInsights/>
+                <Analytics/>
               </SlowScroll>
             </ClickProvider>
           </LoadingProvider>
