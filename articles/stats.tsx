@@ -110,9 +110,9 @@ export const Commits = ({ insights }: Insights) => {
   const { ref, visible, height } = useIsInView()
   const { commits } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height }} className="w-1/2 portrait:w-full">
       {visible && (
-        <motion.div {...ANIMATION} className="w-1/2 portrait:w-full h-full mx-10 flex flex-col items-center justify-around">
+        <motion.div {...ANIMATION} className="h-full mx-10 flex flex-col items-center justify-around">
           <Header left={commits[0]} center={commits[1]} right={commits[2]} />
           <NumberTicker value={insights.commits.length || NaN} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
           <div style={{ userSelect: 'none', width: '100%' }}>
@@ -154,9 +154,9 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
   const { ref, visible, height } = useIsInView()
   const { languages: lang } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height }} className="portrait:w-full landscape:w-1/2">
       {visible && (
-        <motion.div {...ANIMATION} className="portrait:w-full landscape:w-1/2 mx-10 flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="mx-10 flex flex-col items-center justify-evenly">
           <Header left={lang[0]} center={lang[1]} right={lang[2]} />
           <ResponsiveContainer width="100%" height={"50%"}>
             <BarChart data={languages} layout="vertical">
@@ -177,9 +177,9 @@ export const LOC = ({ insights }: Insights) => {
   const { ref, visible, height } = useIsInView()
   const { loc } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }}>
+    <div ref={ref} style={{ minHeight: height }} className="w-full h-full">
       {visible && (
-        <motion.div {...ANIMATION} className="w-full h-full flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="flex flex-col items-center justify-evenly">
           <Header left={loc[0]} center={loc[1]} right={loc[2]} />
           <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
         </motion.div>
