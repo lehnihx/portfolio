@@ -1,3 +1,4 @@
+"use client"
 import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { useDict } from "@/hooks/useDict"

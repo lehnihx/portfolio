@@ -3,11 +3,11 @@ import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
-import { Insights, Languages } from "@/lib/types"
+import { Insights } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { useState, useCallback, useMemo } from "react"
-import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, ReferenceArea, Legend, BarChart, ResponsiveContainer, Bar } from "recharts"
+import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, ReferenceArea, Legend, ResponsiveContainer } from "recharts"
 
 type ZoomState = {
   left: string | number
