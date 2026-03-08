@@ -29,7 +29,7 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
         <script dangerouslySetInnerHTML={{ __html: `localStorage.removeItem('theme')` }} />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           <LoadingProvider>
             <ClickProvider>
               <SlowScroll>

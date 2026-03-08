@@ -101,7 +101,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
                         </div>
                         <p className="text-xs font-medium text-foreground/40">{date}</p>
                       </div>
-                      <Button variant={"ghost"} size={"icon"} className="rounded-full"
+                      <Button variant={"secondary"} size={"icon"} className="rounded-full"
                         onClick={() => dialog(reviewLink)}
                       >
                         <ArrowUpRight/>
