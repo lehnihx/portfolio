@@ -68,11 +68,11 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section className="min-h-screen w-full flex justify-center">
             <Testimonials reviews={reviews}/>
           </section>
-          <section className="min-h-screen w-full flex overflow-clip">
+          <section className="relative min-h-screen w-full flex overflow-clip">
+            <Meteors/>
             <LOC insights={insights}/>
           </section>
           <section className="h-screen w-full flex justify-center">
-            <Meteors/>
             <LanguagesChart languages={insights.langsBytes}/>
           </section>
           <section className="min-h-screen w-full flex justify-center">

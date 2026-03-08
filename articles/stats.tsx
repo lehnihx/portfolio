@@ -1,7 +1,10 @@
 "use client"
 import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
+import { useIsInView } from "@/hooks/useIsInView"
 import { Insights, Languages } from "@/lib/types"
+import { ANIMATION } from "@/lib/utils"
+import { motion } from "motion/react"
 import { useState, useCallback, useMemo } from "react"
 import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, ReferenceArea, Legend, BarChart, ResponsiveContainer, Bar } from "recharts"
 
@@ -103,62 +106,80 @@ export const Commits = ({ insights }: Insights) => {
   }, [commitsData])
 
   const { left, right, top, bottom, refAreaLeft, refAreaRight } = zoom
-
+  const { ref, visible, height } = useIsInView()
   return (
-    <div className="w-full flex flex-col items-center justify-evenly">
-      <Header left="The" center="amount of commits" right="Lenix has made during the time"/>
-      <div style={{ userSelect: 'none', width: '50%' }}>
-        <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={handleZoomOut}>
-          Zoom Out
-        </button>
-        <h2>Total commits: {insights.commits.length}</h2>
+    <div ref={ref} style={{ minHeight: height }}>
+      {visible && (
+        <motion.div {...ANIMATION} className="w-1/2 portrait:w-full mx-10 flex flex-col items-center justify-evenly">
+          <Header left="The" center="amount of commits" right="Lenix has made during the time"/>
+          <div style={{ userSelect: 'none', width: '100%' }}>
+            <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={handleZoomOut}>
+              Zoom Out
+            </button>
+            <h2>Total commits: {insights.commits.length}</h2>
 
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart
-            data={commitsData}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-          >
-            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-            <XAxis allowDataOverflow dataKey="name" domain={[left, right]} type="number" stroke="var(--muted-foreground)" />
-            <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width={40} stroke="var(--muted-foreground)" />
-            <Tooltip
-              labelFormatter={label => commitsData[Number(label) - 1]?.day ?? label}
-              cursor={{ stroke: 'var(--border)' }}
-              contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }}
-            />
-            <Legend verticalAlign="bottom" />
-            <Line yAxisId="1" type="monotone" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }} />
-            <Line yAxisId="1" type="monotone" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
-            {refAreaLeft != null && refAreaRight != null && (
-              <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)" fillOpacity={0.25} />
-            )}
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
+            <ResponsiveContainer width="100%" height={400}>
+              <LineChart
+                data={commitsData}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                <XAxis allowDataOverflow dataKey="name" domain={[left, right]} type="number" stroke="var(--muted-foreground)" />
+                <YAxis allowDataOverflow domain={[bottom, top]} type="number" yAxisId="1" width={40} stroke="var(--muted-foreground)" />
+                <Tooltip
+                  labelFormatter={label => commitsData[Number(label) - 1]?.day ?? label}
+                  cursor={{ stroke: 'var(--border)' }}
+                  contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }}
+                />
+                <Legend verticalAlign="bottom" />
+                <Line yAxisId="1" type="monotone" dataKey="commits" stroke="var(--chart-2)" animationDuration={300} dot={{ fill: 'var(--background)' }} activeDot={{ stroke: 'var(--background)' }} />
+                <Line yAxisId="1" type="monotone" dataKey="average" stroke="var(--chart-1)" strokeDasharray="3 3" dot={false} animationDuration={300} />
+                {refAreaLeft != null && refAreaRight != null && (
+                  <ReferenceArea yAxisId="1" x1={refAreaLeft} x2={refAreaRight} strokeOpacity={0.3} stroke="var(--border)" fill="var(--muted)" fillOpacity={0.25} />
+                )}
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        </motion.div>
+      )}
     </div>
   )
 }
 
-export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => (
-  <div className="w-full flex flex-col items-center justify-evenly">
-    <Header left="What" center="computer languages" right="Lenix has used the most"/>
-    <ResponsiveContainer width="50%" height={"50%"}>
-      <BarChart data={languages} layout="vertical">
-        <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-        <XAxis type="number" tickFormatter={v => `${v}bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
-        <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
-        <Tooltip formatter={(v: number | undefined) => v ? `${v} bytes` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
-        <Bar dataKey="bytes" fill="var(--foreground)" radius={[0, 4, 4, 0]} />
-      </BarChart>
-    </ResponsiveContainer>
-  </div>
-)
+export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => {
+  const { ref, visible, height } = useIsInView()
+  return (
+    <div ref={ref} style={{ minHeight: height }}>
+      {visible && (
+        <motion.div {...ANIMATION} className="portrait:w-full landscape:w-1/2 mx-10 flex flex-col items-center justify-evenly">
+          <Header left="What" center="computer languages" right="Lenix has used the most" />
+          <ResponsiveContainer width="100%" height={"50%"}>
+            <BarChart data={languages} layout="vertical">
+              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+              <XAxis type="number" tickFormatter={v => `${v} bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
+              <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
+              <Tooltip formatter={(v: number | undefined) => v ? `${v} bytes` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
+              <Bar dataKey="bytes" fill="var(--foreground)" radius={[0, 4, 4, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </motion.div>
+      )}
+    </div>
+  )
+}
 
-export const LOC = ({ insights }: Insights) => (
-  <div className="w-full flex flex-col items-center justify-evenly">
-    <Header left="Amount of the" center="lines of code" right="Lenix has written so far"/>
-    <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
-  </div>
-)
+export const LOC = ({ insights }: Insights) => {
+  const { ref, visible, height } = useIsInView()
+  return (
+    <div ref={ref} style={{ minHeight: height }}>
+      {visible && (
+        <motion.div {...ANIMATION} className="w-full h-full flex flex-col items-center justify-evenly">
+          <Header left="Amount of the" center="lines of code" right="Lenix has written so far" />
+          <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
+        </motion.div>
+      )}
+    </div>
+  )
+}

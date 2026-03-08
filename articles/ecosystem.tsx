@@ -34,10 +34,14 @@ import {
   SiVite,
   SiZsh
 } from "react-icons/si"
+import { motion } from "motion/react"
+import { ANIMATION } from "@/lib/utils"
+import { useIsInView } from "@/hooks/useIsInView"
 
 export function Ecosystem() {
   const { resolvedTheme } = useTheme()
   const color = resolvedTheme === 'dark' ? '#ffffff' : '#000000'
+  const { ref, visible , height } = useIsInView()
   const icons = [
     SiDotnet,
     SiCplusplus,
@@ -72,8 +76,12 @@ export function Ecosystem() {
     SiZsh,
   ].map((Icon, index) => <Icon key={`ecosystem-icon-${index}`} />)
   return (
-    <article className="relative flex h-1/2 items-center justify-center overflow-hidden">
-      <IconCloud color={color} icons={icons} />
-    </article>
+    <div ref={ref} style={{ minHeight: height }} >
+      {visible && (
+        <motion.article {...ANIMATION} className="relative flex h-1/2 items-center justify-center overflow-hidden">
+          <IconCloud color={color} icons={icons} />
+        </motion.article>
+      )}
+    </div>
   )
 }

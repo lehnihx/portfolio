@@ -33,7 +33,7 @@ export const ContactForm = () => {
   }
 
   return (
-    <motion.article {...ANIMATION} className="w-full flex items-center justify-center my-16 px-8 landscape:max-w-1/2 portrait:min-w-full md:px-4">
+    <motion.article {...ANIMATION} className="w-full flex items-center justify-center my-16 px-8 landscape:max-w-2/3 portrait:min-w-full md:px-4">
       <form id="contact-form" className="w-full max-w-[560px]" onSubmit={e => e.preventDefault()}>
         <FieldSet>
           <FieldLabel className="text-3xl">{contact} {lenix}</FieldLabel>
