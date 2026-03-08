@@ -139,6 +139,4 @@ const insights = async () => {
   return { loc, commits, langsBytes }
 }
 
-export type Insights = Awaited<ReturnType<typeof insights>>
-
 export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: CACHE_REVALIDATION })
