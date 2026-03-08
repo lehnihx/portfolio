@@ -3,9 +3,8 @@ import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
 import { Languages } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
-import { BarChart } from "lucide-react"
 import { motion } from "motion/react"
-import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Bar, Tooltip } from "recharts"
+import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Bar, Tooltip, BarChart } from "recharts"
 
 export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => {
   const { ref, visible, height } = useIsInView()
