@@ -45,13 +45,13 @@ export function Quotes() {
     <article ref={ref} style={{ minHeight: height }} className='w-full flex-1/2 flex justify-center'>
       {visible && (
         <TextEffect
-          className='inline-flex text-ring italic font-light'
+          className='text-ring italic font-light text-center'
+          style={{ fontSize: 'var(--font-size-fluid-sm)', wordBreak: 'break-word', whiteSpace: 'normal' }}
           per='char'
           variants={blurSlideVariants}
           trigger={trigger}
           speedSegment={0.2}
           onAnimationComplete={triggerCompleted}
-          style={{ fontSize: 'var(--font-size-fluid-sm)' }}
         >
           {'"' + quotes[quoteIndex] + '"'}
         </TextEffect>
