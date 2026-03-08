@@ -1,3 +1,4 @@
+"use client"
 import { Header } from "@/components/header"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
