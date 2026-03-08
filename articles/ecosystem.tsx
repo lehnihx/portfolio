@@ -78,7 +78,7 @@ export function Ecosystem() {
   return (
     <div ref={ref} style={{ minHeight: height }} >
       {visible && (
-        <motion.article {...ANIMATION} className="relative flex h-1/2 items-center justify-center overflow-hidden">
+        <motion.article {...ANIMATION} className="relative flex h-full items-center justify-center overflow-hidden">
           <IconCloud color={color} icons={icons} />
         </motion.article>
       )}

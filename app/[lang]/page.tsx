@@ -81,7 +81,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Commits insights={insights}/>
           </section>
           <section className="w-full">
-            <BackgroundLines className="flex flex-col justify-evenly">
+            <BackgroundLines className="flex flex-col items-center justify-evenly">
               <Header left={dict.lenixs} center={dict.ecosystem} />
               <Ecosystem/>
             </BackgroundLines>
