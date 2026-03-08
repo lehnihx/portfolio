@@ -151,7 +151,7 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
 
 export const LOC = ({ insights }: Insights) => (
   <div className="w-full flex flex-col items-center justify-center gap-4">
-    <h2>Lines of code written so far</h2>
+    <h2 className="mb-4 text-2xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl">Amount of the lines of code Lenix has written so far</h2>
     <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
   </div>
 )

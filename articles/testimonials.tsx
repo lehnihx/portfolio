@@ -12,6 +12,7 @@ import { HoverCard } from "radix-ui"
 import { Tooltip } from "@/components/ui/tooltip-card"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "motion/react"
+import { Header } from "@/components/header"
 
 const UserProfile = ({
   name,
@@ -79,50 +80,53 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const [translated, setTranslated] = useState({ reviewId: 0, translated: false })
 
   return (
-    <motion.article {...ANIMATION} className="w-full my-16 relative flex flex-col items-center justify-center overflow-hidden">
-      <h2>What Lenix&apos;s clients and customers think of him</h2>
-      <Marquee reverse pauseOnHover className="[--duration:90s]">
-        {reviews.map((review, index) => (
-          <React.Fragment key={`${review?.username}-${index}`} >
-            {review && (() => {
-            const { name, username, date, reviewLink, body, translation } = review
-              return (
-                <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
-                  <div className="flex items-center justify-between">
-                    <div className="flex flex-row items-end gap-2">
-                      <UserProfile {...review}/>
-                      <div className="flex flex-col">
-                        <figcaption className="text-sm font-medium text-foreground">{name}</figcaption>
-                        <p className="text-xs font-medium text-foreground/40">{username}</p>
+    <motion.article {...ANIMATION} className="w-full my-16 flex flex-col items-center justify-evenly overflow-hidden">
+      <h2 className="mb-4 text-3xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl"></h2>
+      <Header left="What Lenix&apos;s" center="clients and customers" right="say about him" />
+      <div className="w-full relative overflow-hidden">
+        <Marquee reverse pauseOnHover className="[--duration:90s]">
+          {reviews.map((review, index) => (
+            <React.Fragment key={`${review?.username}-${index}`} >
+              {review && (() => {
+              const { name, username, date, reviewLink, body, translation } = review
+                return (
+                  <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex flex-row items-end gap-2">
+                        <UserProfile {...review}/>
+                        <div className="flex flex-col">
+                          <figcaption className="text-sm font-medium text-foreground">{name}</figcaption>
+                          <p className="text-xs font-medium text-foreground/40">{username}</p>
+                        </div>
+                        <p className="text-xs font-medium text-foreground/40">{date}</p>
                       </div>
-                      <p className="text-xs font-medium text-foreground/40">{date}</p>
+                      <Button variant={"ghost"} size={"icon"} className="rounded-full"
+                        onClick={() => dialog(reviewLink)}
+                      >
+                        <ArrowUpRight/>
+                      </Button>
                     </div>
-                    <Button variant={"ghost"} size={"icon"} className="rounded-full"
-                      onClick={() => dialog(reviewLink)}
+                    <blockquote className="mt-2 text-sm">{translated.reviewId === index && translated.translated ? translation : body}</blockquote>
+                    <button
+                      type="button"
+                      onClick={() => setTranslated(prev => ({ reviewId: index, translated: !prev.translated }))}
+                      className="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      <ArrowUpRight/>
-                    </Button>
-                  </div>
-                  <blockquote className="mt-2 text-sm">{translated.reviewId === index && translated.translated ? translation : body}</blockquote>
-                  <button
-                    type="button"
-                    onClick={() => setTranslated(prev => ({ reviewId: index, translated: !prev.translated }))}
-                    className="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {translated.reviewId === index && translated.translated ? "Original" : "Translate"}
-                  </button>
-                </figure>
-              )
-            })()}
-          </React.Fragment>
-        ))}
-      </Marquee>
-      <ProgressiveBlur direction='left' blurIntensity={0.5} blurLayers={5}
-        className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
-      />
-      <ProgressiveBlur direction='right' blurIntensity={0.5} blurLayers={5}
-        className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
-      />
+                      {translated.reviewId === index && translated.translated ? "Original" : "Translate"}
+                    </button>
+                  </figure>
+                )
+              })()}
+            </React.Fragment>
+          ))}
+        </Marquee>
+        <ProgressiveBlur direction='left' blurIntensity={0.5} blurLayers={5}
+          className='pointer-events-none absolute top-0 left-0 h-full w-1/5'
+        />
+        <ProgressiveBlur direction='right' blurIntensity={0.5} blurLayers={5}
+          className='pointer-events-none absolute top-0 right-0 h-full w-1/5'
+        />
+      </div>
     </motion.article>
   )
 }

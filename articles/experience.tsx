@@ -9,7 +9,7 @@ export default function Experience() {
   const { services, experiences, did_u_know, used_to_provide, service } = useDict()
   return (
     <motion.article {...ANIMATION} className="relative w-full max-w-full overflow-hidden text-center p-6">
-      <span className="inline leading-relaxed" style={{ fontSize: "var(--font-size-fluid-base)" }}>
+      <span className="inline leading-relaxed" style={{ fontSize: "var(--font-size-fluid-xl)", fontWeight: "lighter" }}>
         {did_u_know}{" "}
         <strong>
           <RotatingText

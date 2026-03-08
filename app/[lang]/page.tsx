@@ -12,8 +12,7 @@ import Experience from "@/articles/experience"
 import { Quotes } from "@/articles/quote"
 import { Ecosystem } from "@/articles/ecosystem"
 import { Location } from "@/articles/location"
-import { AboutMeHeader } from "@/components/about-me-header"
-import { EcosystemHeader } from "@/components/ecosystem-header"
+import { Header } from "@/components/header"
 import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
@@ -44,9 +43,10 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   if (!hasLang(lang)) notFound()
   const reviews = await cachedReviews(lang)
   const insights = await cachedInsights()
+  const dict = await Dictionary(lang)
 
   return (
-    <DictProvider dict={await Dictionary(lang)}>
+    <DictProvider dict={dict}>
       <DialogProvider>
         <main>
           <h1></h1>
@@ -57,12 +57,15 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           <section id="about" className="relative overflow-hidden min-h-screen w-full flex items-center">
             <Particles className="absolute inset-0 -z-10"/>
             <div className="relative w-full flex flex-col items-center justify-evenly">
-              <AboutMeHeader/>
+              <Header left={dict.get_to_know_more} center={dict.about_lenix} />
               <Experience />
-              <Testimonials reviews={reviews}/>
             </div>
           </section>
-          <section className="min-h-screen w-full flex">
+          <section className="min-h-screen w-full flex justify-center">
+            <Testimonials reviews={reviews}/>
+          </section>
+          <section className="min-h-screen w-full flex overflow-clip">
+            <Meteors/>
             <LOC insights={insights}/>
           </section>
           <section className="h-screen w-full flex justify-center">
@@ -72,16 +75,15 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Commits insights={insights}/>
           </section>
           <section className="w-full">
-            <BackgroundLines>
-              <EcosystemHeader/>
+            <BackgroundLines className="flex flex-col justify-evenly">
+              <Header left={dict.lenixs} center={dict.ecosystem} />
               <Ecosystem/>
             </BackgroundLines>
           </section>
           <section className="flex flex-col items-center justify-between gap-10 w-screen">
             <Quotes/>
           </section>
-          <section id="timeline" className="flex relative overflow-clip mb-16 flex-col items-center justify-between">
-            <Meteors/>
+          <section id="timeline" className="flex relative mb-16 flex-col items-center justify-between">
             <TimelineJourney/>
           </section>
           <section id="contact" className="w-screen flex flex-col items-center justify-evenly">

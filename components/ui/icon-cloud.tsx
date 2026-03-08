@@ -1,6 +1,5 @@
 "use client"
 
-import { StringifyOptions } from "querystring"
 import React, { useEffect, useRef, useState } from "react"
 import { renderToString } from "react-dom/server"
 
@@ -26,7 +25,7 @@ function easeOutCubic(t: number): number {
 export function IconCloud({ icons, images, color }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [iconPositions, setIconPositions] = useState<Icon[]>([])
-  const [rotation, setRotation] = useState({ x: 0, y: 0 })
+  const rotation = { x: 0, y: 0 }
   const [isDragging, setIsDragging] = useState(false)
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 })
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
