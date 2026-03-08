@@ -86,5 +86,21 @@
     "say about him"
   ],
   "original": "Original",
-  "translate": "Translate"
+  "translate": "Translate",
+  "loc": [
+    "Amount of the",
+    "lines of code",
+    "Lenix has written so far"
+  ],
+  "languages": [
+    "What",
+    "computer languages",
+    "Lenix has used the most"
+  ],
+  "commits": [
+    "The",
+    "amount of commits",
+    "Lenix has made during the time",
+    "Zoom out"
+  ]
 }

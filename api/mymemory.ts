@@ -6,9 +6,9 @@ export const fetchMyMemory = async (value: string, localeFrom: Lang, localeTo: L
     if (!res.ok) throw new Error(`${res.status}: Failed to fetch translation for '${value}'`)
     const {
       responseData: { translatedText }
-    }: {
+    } = await res.json() as {
       responseData: { translatedText: string }
-    } = await res.json()
+    }
     return translatedText
   } catch(error) {
     console.error(error)

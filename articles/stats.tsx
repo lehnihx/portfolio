@@ -1,6 +1,7 @@
 "use client"
 import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
+import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
 import { Insights, Languages } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
@@ -107,15 +108,16 @@ export const Commits = ({ insights }: Insights) => {
 
   const { left, right, top, bottom, refAreaLeft, refAreaRight } = zoom
   const { ref, visible, height } = useIsInView()
+  const { commits } = useDict()
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
         <motion.div {...ANIMATION} className="w-1/2 portrait:w-full h-full mx-10 flex flex-col items-center justify-around">
-          <Header left="The" center="amount of commits" right="Lenix has made during the time"/>
+          <Header left={commits[0]} center={commits[1]} right={commits[2]} />
           <NumberTicker value={insights.commits.length || NaN} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
           <div style={{ userSelect: 'none', width: '100%' }}>
             <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={handleZoomOut}>
-              Zoom Out
+              {commits[3]}
             </button>
 
             <ResponsiveContainer width="100%" height={400}>
@@ -150,11 +152,12 @@ export const Commits = ({ insights }: Insights) => {
 
 export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => {
   const { ref, visible, height } = useIsInView()
+  const { languages: lang } = useDict()
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
         <motion.div {...ANIMATION} className="portrait:w-full landscape:w-1/2 mx-10 flex flex-col items-center justify-evenly">
-          <Header left="What" center="computer languages" right="Lenix has used the most" />
+          <Header left={lang[0]} center={lang[1]} right={lang[2]} />
           <ResponsiveContainer width="100%" height={"50%"}>
             <BarChart data={languages} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
@@ -172,11 +175,12 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
 
 export const LOC = ({ insights }: Insights) => {
   const { ref, visible, height } = useIsInView()
+  const { loc } = useDict()
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
         <motion.div {...ANIMATION} className="w-full h-full flex flex-col items-center justify-evenly">
-          <Header left="Amount of the" center="lines of code" right="Lenix has written so far" />
+          <Header left={loc[0]} center={loc[1]} right={loc[2]} />
           <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
         </motion.div>
       )}
