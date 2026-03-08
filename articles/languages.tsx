@@ -11,9 +11,9 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
   const { ref, visible, height } = useIsInView()
   const { languages: lang } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }} className="portrait:w-full landscape:w-1/2">
+    <div ref={ref} style={{ minHeight: height }} className="w-full">
       {visible && (
-        <motion.div {...ANIMATION} className="mx-10 flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="portrait:w-full landscape:w-1/2 mx-10 flex flex-col items-center justify-evenly">
           <Header left={lang[0]} center={lang[1]} right={lang[2]} />
           <ResponsiveContainer width="100%" height={"50%"}>
             <BarChart data={languages} layout="vertical">

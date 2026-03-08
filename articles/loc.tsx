@@ -11,7 +11,7 @@ export const LOC = ({ insights }: Insights) => {
   const { ref, visible, height } = useIsInView()
   const { loc } = useDict()
   return (
-    <div ref={ref} style={{ minHeight: height }} className="w-full h-full">
+    <div ref={ref} style={{ minHeight: height }} className="w-full h-full flex flex-col items-center justify-center">
       {visible && (
         <motion.div {...ANIMATION} className="flex flex-col items-center justify-evenly">
           <Header left={loc[0]} center={loc[1]} right={loc[2]} />
