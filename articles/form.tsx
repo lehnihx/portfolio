@@ -11,7 +11,7 @@ import { useRef, useState } from "react"
 import { Paperclip, X } from "lucide-react"
 
 export const ContactForm = () => {
-  const { contact, lenix, name, email, mail, mail_placeholder, send } = useDict()
+  const { contact, attach_file, lenix, name, email, mail, mail_placeholder, send } = useDict()
   const { failed_message, success_message } = useDict()
   const fileRef = useRef<HTMLInputElement>(null)
   const [file, setFile] = useState<File | null>(null)
@@ -77,7 +77,7 @@ export const ContactForm = () => {
                   className="flex items-center gap-2 text-sm text-muted-foreground border border-dashed border-border rounded-md px-3 py-2 w-fit hover:text-foreground transition-colors"
                 >
                   <Paperclip className="size-3.5" />
-                  Attach a file (optional)
+                  {attach_file}
                 </button>
               )}
             </Field>

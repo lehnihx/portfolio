@@ -78,5 +78,13 @@
   "drop_it": "Drop it",
   "failed_message": "Failed to send message",
   "success_message": "Message sent!",
-  "failed_response": "Failed to get a response"
+  "failed_response": "Failed to get a response",
+  "attach_file": "Attach a file (optional)",
+  "testimonials": [
+    "What Lenix's",
+    "clients and customers",
+    "say about him"
+  ],
+  "original": "Original",
+  "translate": "Translate"
 }

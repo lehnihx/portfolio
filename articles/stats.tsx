@@ -110,13 +110,13 @@ export const Commits = ({ insights }: Insights) => {
   return (
     <div ref={ref} style={{ minHeight: height }}>
       {visible && (
-        <motion.div {...ANIMATION} className="w-1/2 portrait:w-full mx-10 flex flex-col items-center justify-evenly">
+        <motion.div {...ANIMATION} className="w-1/2 portrait:w-full h-full mx-10 flex flex-col items-center justify-around">
           <Header left="The" center="amount of commits" right="Lenix has made during the time"/>
+          <NumberTicker value={insights.commits.length || NaN} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
           <div style={{ userSelect: 'none', width: '100%' }}>
             <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={handleZoomOut}>
               Zoom Out
             </button>
-            <h2>Total commits: {insights.commits.length}</h2>
 
             <ResponsiveContainer width="100%" height={400}>
               <LineChart

@@ -13,6 +13,7 @@ import { Tooltip } from "@/components/ui/tooltip-card"
 import { Badge } from "@/components/ui/badge"
 import { motion } from "motion/react"
 import { Header } from "@/components/header"
+import { useDict } from "@/hooks/useDict"
 
 const UserProfile = ({
   name,
@@ -78,11 +79,11 @@ const UserProfile = ({
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
   const [translated, setTranslated] = useState({ reviewId: 0, translated: false })
-
+  const { testimonials, original, translate } = useDict()
   return (
     <motion.article {...ANIMATION} className="w-full my-16 flex flex-col items-center justify-evenly overflow-hidden">
       <h2 className="mb-4 text-3xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl"></h2>
-      <Header left="What Lenix&apos;s" center="clients and customers" right="say about him" />
+      <Header left={testimonials[0]} center={testimonials[1]} right={testimonials[2]} />
       <div className="w-full relative overflow-hidden">
         <Marquee reverse pauseOnHover className="[--duration:90s]">
           {reviews.map((review, index) => (
@@ -112,7 +113,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
                       onClick={() => setTranslated(prev => ({ reviewId: index, translated: !prev.translated }))}
                       className="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
                     >
-                      {translated.reviewId === index && translated.translated ? "Original" : "Translate"}
+                      {translated.reviewId === index && translated.translated ? original : translate}
                     </button>
                   </figure>
                 )
