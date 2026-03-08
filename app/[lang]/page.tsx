@@ -59,16 +59,20 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <div className="relative w-full flex flex-col items-center justify-evenly">
               <Header left={dict.get_to_know_more} center={dict.about_lenix} />
               <Experience />
+              <Quotes/>
             </div>
+          </section>
+          <section id="timeline" className="flex relative mb-16 flex-col items-center justify-between">
+            <TimelineJourney/>
           </section>
           <section className="min-h-screen w-full flex justify-center">
             <Testimonials reviews={reviews}/>
           </section>
           <section className="min-h-screen w-full flex overflow-clip">
-            <Meteors/>
             <LOC insights={insights}/>
           </section>
           <section className="h-screen w-full flex justify-center">
+            <Meteors/>
             <LanguagesChart languages={insights.langsBytes}/>
           </section>
           <section className="min-h-screen w-full flex justify-center">
@@ -79,12 +83,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
               <Header left={dict.lenixs} center={dict.ecosystem} />
               <Ecosystem/>
             </BackgroundLines>
-          </section>
-          <section className="flex flex-col items-center justify-between gap-10 w-screen">
-            <Quotes/>
-          </section>
-          <section id="timeline" className="flex relative mb-16 flex-col items-center justify-between">
-            <TimelineJourney/>
           </section>
           <section id="contact" className="w-screen flex flex-col items-center justify-evenly">
             <ContactForm/>
