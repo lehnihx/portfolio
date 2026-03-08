@@ -142,7 +142,7 @@ const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => 
   <ResponsiveContainer width="50%" height={500}>
     <BarChart data={languages} layout="vertical">
       <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-      <XAxis type="number" tickFormatter={v => `${v}b`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
+      <XAxis type="number" tickFormatter={v => `${v}bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
       <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
       <Tooltip formatter={(v: number | undefined) => v ? `${v} bytes` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
       <Bar dataKey="bytes" fill="var(--foreground)" radius={[0, 4, 4, 0]} />
