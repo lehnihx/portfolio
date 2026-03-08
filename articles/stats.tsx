@@ -1,7 +1,6 @@
 "use client"
 import { NumberTicker } from "@/components/ui/number-ticker"
-import { Insights } from "@/lib/insights"
-import { Languages } from "@/lib/types"
+import { Insights, Languages } from "@/lib/types"
 import { useState, useCallback, useMemo } from "react"
 import { CartesianGrid, XAxis, YAxis, Tooltip, Line, LineChart, ReferenceArea, Legend, BarChart, ResponsiveContainer, Bar } from "recharts"
 
@@ -43,7 +42,7 @@ const getAxisYDomain = (
   return [(bottom | 0) - offset, (top | 0) + offset]
 }
 
-const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
+export const Commits = ({ insights }: Insights) => {
   const [zoom, setZoom] = useState<ZoomState>(initialState)
 
   const commitsData = useMemo(() => {
@@ -138,8 +137,8 @@ const HighlightAndZoomLineChart = ({ insights }: { insights: Insights }) => {
   )
 }
 
-const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => (
-  <ResponsiveContainer width="50%" height={500}>
+export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => (
+  <ResponsiveContainer width="50%" height={"50%"}>
     <BarChart data={languages} layout="vertical">
       <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
       <XAxis type="number" tickFormatter={v => `${v}bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
@@ -150,11 +149,9 @@ const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => 
   </ResponsiveContainer>
 )
 
-export const Stats = ({ insights }: { insights: Insights }) => (
+export const LOC = ({ insights }: Insights) => (
   <div className="w-full flex flex-col items-center justify-center gap-4">
     <h2>Lines of code written so far</h2>
     <NumberTicker value={insights.loc || 0} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
-    <HighlightAndZoomLineChart insights={insights} />
-    <LanguagesChart languages={insights.langsBytes} />
   </div>
 )

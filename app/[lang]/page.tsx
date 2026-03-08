@@ -19,7 +19,7 @@ import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
 import cachedReviews from "@/lib/reviews"
-import { Stats } from "@/articles/stats"
+import { Commits, LanguagesChart, LOC } from "@/articles/stats"
 import { cachedInsights } from "@/lib/insights"
 
 export interface Review {
@@ -58,10 +58,18 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Particles className="absolute inset-0 -z-10"/>
             <div className="relative w-full flex flex-col items-center justify-evenly">
               <AboutMeHeader/>
-              <Stats insights={insights}/>
               <Experience />
               <Testimonials reviews={reviews}/>
             </div>
+          </section>
+          <section className="min-h-screen w-full flex">
+            <LOC insights={insights}/>
+          </section>
+          <section className="h-screen w-full flex justify-center">
+            <LanguagesChart languages={insights.langsBytes}/>
+          </section>
+          <section className="min-h-screen w-full flex justify-center">
+            <Commits insights={insights}/>
           </section>
           <section className="w-full">
             <BackgroundLines>
