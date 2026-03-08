@@ -26,6 +26,7 @@ export interface Review {
   name: string
   username: string
   body: string
+  translation: string
   avatar: string
   reviewLink: string
   banner: string | undefined
@@ -55,7 +56,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           </section>
           <section id="about" className="relative overflow-hidden min-h-screen w-full flex items-center">
             <Particles className="absolute inset-0 -z-10"/>
-            <div className="relative z-10 w-full flex flex-col items-center justify-evenly">
+            <div className="relative w-full flex flex-col items-center justify-evenly">
               <AboutMeHeader/>
               <Stats insights={insights}/>
               <Experience />

@@ -20,7 +20,8 @@ const reviews = async (lang: Lang) => {
       const date = new Date(timestamp)
       const { year, month } = { year: date.getFullYear(), month: date.getMonth() + 1 }
       return {
-        content: await fetchMyMemory(message, "ar", lang) ?? message,
+        body: message,
+        translation: await fetchMyMemory(message, "ar", lang) ?? message,
         id,
         channel_id,
         date: `${year}-${month}`,
@@ -31,12 +32,13 @@ const reviews = async (lang: Lang) => {
     return await Promise.all(mappedMessages)
   }
   const hitedCache = await unstable_cache(fetchData, ['discord-reviews'], { revalidate: CACHE_REVALIDATION })()
-  const reviews = hitedCache.map(({ id, content, channel_id, date, author: {
+  const reviews = hitedCache.map(({ id, body, translation, channel_id, date, author: {
     username, id: userId, avatar, global_name, banner, accent_color, locale, verified, avatar_decoration_data, primary_guild
   }}): Review => ({
     name: global_name || username,
     username,
-    body: content,
+    body,
+    translation,
     locale,
     verified,
     date,

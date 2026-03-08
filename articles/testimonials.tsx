@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Review } from "@/app/[lang]/page"
 import Image from "next/image"
 import { ProgressiveBlur } from "@/components/ui/progressive-blur"
-import React from "react"
+import React, { useState } from "react"
 import { HoverCard } from "radix-ui"
 import { Tooltip } from "@/components/ui/tooltip-card"
 import { Badge } from "@/components/ui/badge"
@@ -31,7 +31,7 @@ const UserProfile = ({
     </HoverCard.Trigger>
     <HoverCard.Portal>
       <HoverCard.Content style={{ backgroundColor: color ? `${color}` : undefined }} sideOffset={5}
-        className="w-75 rounded-md bg-border shadow-[hsl(206_22%_7%/35%)_0px_10px_38px_-10px,hsl(206_22%_7%/20%)_0px_10px_20px_-15px] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
+        className="w-75 rounded-md bg-primary-foreground shadow-[hsl(206_22%_7%/35%)_0px_10px_38px_-10px,hsl(206_22%_7%/20%)_0px_10px_20px_-15px] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade data-[state=open]:transition-all"
       >
       <div className="flex flex-col gap-1.75">
       <div style={{ backgroundImage: `url(${banner})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
@@ -76,6 +76,8 @@ const UserProfile = ({
 
 const Testimonials = ({ reviews }: { reviews: Review[] }) => {
   const dialog = useDialog()
+  const [translated, setTranslated] = useState({ reviewId: 0, translated: false })
+
   return (
     <motion.article {...ANIMATION} className="w-full my-16 relative flex flex-col items-center justify-center overflow-hidden">
       <h2>What Lenix&apos;s clients and customers think of him</h2>
@@ -83,7 +85,7 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
         {reviews.map((review, index) => (
           <React.Fragment key={`${review?.username}-${index}`} >
             {review && (() => {
-            const { name, username, date, reviewLink, body } = review
+            const { name, username, date, reviewLink, body, translation } = review
               return (
                 <figure className={cn("relative h-full w-64 cursor-pointer overflow-hidden bg-accent p-6 rounded-md")}>
                   <div className="flex items-center justify-between">
@@ -101,7 +103,14 @@ const Testimonials = ({ reviews }: { reviews: Review[] }) => {
                       <ArrowUpRight/>
                     </Button>
                   </div>
-                  <blockquote className="mt-2 text-sm">{body}</blockquote>
+                  <blockquote className="mt-2 text-sm">{translated.reviewId === index && translated.translated ? translation : body}</blockquote>
+                  <button
+                    type="button"
+                    onClick={() => setTranslated(prev => ({ reviewId: index, translated: !prev.translated }))}
+                    className="mt-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {translated.reviewId === index && translated.translated ? "Original" : "Translate"}
+                  </button>
                 </figure>
               )
             })()}
