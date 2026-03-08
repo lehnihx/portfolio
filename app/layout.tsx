@@ -7,6 +7,8 @@ import { LoadingProvider } from "@/components/loading"
 import { headers } from "next/headers"
 import { ClickProvider } from "@/components/ui/click"
 import { SlowScroll } from "@/components/scroll"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +33,7 @@ const Layout = async ({ children }: { children: Readonly<React.ReactNode> }) => 
             <ClickProvider>
               <SlowScroll>
                 {children}
+                <SpeedInsights/>
               </SlowScroll>
             </ClickProvider>
           </LoadingProvider>
