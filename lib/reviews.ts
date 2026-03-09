@@ -7,31 +7,40 @@ import { fetchMyMemory } from "@/api/mymemory"
 import { Lang } from "./dictionaries"
 import { fetchDiscord } from "@/api/discord"
 
-const reviews = async (lang: Lang) => {
+const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = (() => {
   const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = process.env
   if (!DISCORD_BOT_TOKEN) throw new Error('DISCORD_BOT_TOKEN environment variable is not defined')
+  if (!DISCORD_GUILD_ID) throw new Error('DISCORD_GUILD_ID environment variable is not defined')
+  return { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN }
+})()
 
+const fetchData = async (lang: Lang) => {
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
-  const fetchData = async () => {
-    const messages = await fetchDiscord<APIBaseMessage[]>('channels/1246910653940367500/messages', DISCORD_BOT_TOKEN)
-    if (!messages) return []
-    const mappedMessages = messages.map(async ({ channel_id, id, content, author, timestamp, reactions }) => {
-      const message = filterMessage(content)
-      const date = new Date(timestamp)
-      const { year, month } = { year: date.getFullYear(), month: date.getMonth() + 1 }
-      return {
-        body: message,
-        translation: await fetchMyMemory(message, "ar", lang) ?? message,
-        id,
-        channel_id,
-        date: `${year}-${month}`,
-        author,
-        reactions
-      }
-    })
-    return await Promise.all(mappedMessages)
-  }
-  const hitedCache = await unstable_cache(fetchData, ['discord-reviews'], { revalidate: CACHE_REVALIDATION })()
+
+  const messages = await fetchDiscord<APIBaseMessage[]>('channels/1246910653940367500/messages', DISCORD_BOT_TOKEN)
+  if (!messages) return []
+
+  const mappedMessages = messages.map(async ({ channel_id, id, content, author, timestamp, reactions }) => {
+    const message = filterMessage(content)
+    const date = new Date(timestamp)
+    const { year, month } = { year: date.getFullYear(), month: date.getMonth() + 1 }
+    return {
+      body: message,
+      translation: await fetchMyMemory(message, "ar", lang) ?? message,
+      id,
+      channel_id,
+      date: `${year}-${month}`,
+      author,
+      reactions
+    }
+  })
+  return await Promise.all(mappedMessages)
+}
+
+const cachedFetchData = (lang: Lang) => unstable_cache(() => fetchData(lang), ['discord-reviews', lang], { revalidate: CACHE_REVALIDATION })()
+
+const reviews = async (lang: Lang) => {
+  const hitedCache = await cachedFetchData(lang)
   const reviews = hitedCache.map(({ id, body, translation, channel_id, date, author: {
     username, id: userId, avatar, global_name, banner, accent_color, locale, verified, avatar_decoration_data, primary_guild
   }}): Review => ({
