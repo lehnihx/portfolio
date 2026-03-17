@@ -10,6 +10,26 @@ import { SlowScroll } from "@/components/scroll"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 
+export const metadata = {
+  title: 'Lenix Dev',
+  description: 'Lenix Dev\'s portfolio — Full Stack Developer',
+  metadataBase: new URL('https://lenix.dev'),
+  openGraph: {
+    title: 'Lenix Dev',
+    description: 'Full Stack Developer',
+    url: 'https://lenix.dev',
+    siteName: 'Lenix Dev',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Lenix Dev',
+    description: 'Full Stack Developer',
+    creator: '@lenixdev',
+  },
+}
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

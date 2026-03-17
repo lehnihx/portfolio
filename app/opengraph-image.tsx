@@ -1,53 +1,36 @@
 import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
- 
-// Image metadata
-export const alt = 'About Acme'
-export const size = {
-  width: 1200,
-  height: 630,
-}
- 
+
+export const alt = 'Lenix Dev — Full Stack Developer'
+export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
- 
-// Image generation
+
 const Image = async () => {
-  // Font loading, process.cwd() is Next.js project directory
-  const interSemiBold = await readFile(
-    join(process.cwd(), 'assets/Inter-SemiBold.ttf')
-  )
- 
+  const interSemiBold = await readFile(join(process.cwd(), 'assets/Inter-SemiBold.ttf'))
+
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
-          fontSize: 128,
-          background: 'white',
+          background: '#000000',
           width: '100%',
           height: '100%',
           display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          gap: 16,
         }}
       >
-        About Acme
+        <span style={{ fontSize: 80, fontWeight: 700, color: '#ffffff' }}>Lenix</span>
+        <span style={{ fontSize: 28, color: '#888888' }}>Full Stack Developer</span>
+        <span style={{ fontSize: 20, color: '#555555' }}>lenix.dev</span>
       </div>
     ),
-    // ImageResponse options
     {
-      // For convenience, we can re-use the exported opengraph-image
-      // size config to also set the ImageResponse's width and height.
       ...size,
-      fonts: [
-        {
-          name: 'Inter',
-          data: interSemiBold,
-          style: 'normal',
-          weight: 400,
-        },
-      ],
+      fonts: [{ name: 'Inter', data: interSemiBold, style: 'normal', weight: 600 }],
     }
   )
 }
