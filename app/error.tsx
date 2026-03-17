@@ -1,7 +1,7 @@
 'use client' // Error boundaries must be Client Components
  
 import { useEffect } from 'react'
-import { Error as ErrorComponent } from '@/articles/error'
+import { ErrorScreen } from '@/articles/error'
  
 const Error = ({ error, reset }: {
   error: Error & { digest?: string }
@@ -12,7 +12,7 @@ const Error = ({ error, reset }: {
     console.error(error)
   }, [error])
 
-  return <ErrorComponent>Something went wrong!</ErrorComponent>
+  return <ErrorScreen>Something went wrong!</ErrorScreen>
 }
 
 export default Error

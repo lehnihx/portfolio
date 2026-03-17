@@ -1,20 +1,20 @@
 import type { MetadataRoute } from 'next'
  
-const sitemap = (): MetadataRoute.Sitemap => {
-  return [
-    {
-      url: 'https://lenix.dev',
-      lastModified: new Date(),
-      alternates: {
-        languages: {
-          en: 'https://lenix.dev/en',
-          fr: 'https://lenix.dev/fr',
-          ar: 'https://lenix.dev/ar',
-          de: 'https://lenix.dev/de',
-        },
+export default function manifest(): MetadataRoute.Manifest {
+  return {
+    name: 'Lenix',
+    short_name: 'Lenix Dev',
+    description: "Lenix Dev's portfolio",
+    start_url: '/',
+    display: 'standalone',
+    background_color: '#000',
+    theme_color: '#fff',
+    icons: [
+      {
+        src: '/favicon.ico',
+        sizes: 'any',
+        type: 'image/x-icon',
       },
-    },
-  ]
+    ],
+  }
 }
-
-export default sitemap

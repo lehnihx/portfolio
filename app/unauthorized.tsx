@@ -1,5 +1,5 @@
-import { Error } from "@/articles/error"
+import { ErrorScreen } from "@/articles/error"
 
-const Unauthorized = () => <Error>401</Error>
+const Unauthorized = () => <ErrorScreen>401</ErrorScreen>
 
 export default Unauthorized
