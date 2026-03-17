@@ -74,6 +74,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <Meteors/>
             <LOC insights={insights}/>
           </section>
+          {/* your code onSubmit={handleSubmit} my code onSubmit={(event) => { handleSubmit(event).catch(() => undefined) }}*/}
           <section className="h-screen w-full flex items-center justify-center">
             <LanguagesChart languages={insights.langsBytes}/>
           </section>

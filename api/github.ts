@@ -1,3 +1,4 @@
+import { CACHE_REVALIDATION } from "@/lib/utils"
 import { safeRequest } from "lenix"
 import "server-only"
 
@@ -8,7 +9,8 @@ export const fetchGithub = async <T,>(path: string, token: string) => {
       'Accept': 'application/vnd.github+json',
       'Authorization': `Bearer ${token}`,
       'X-GitHub-Api-Version': '2022-11-28'
-    }
+    },
+    next: { revalidate: CACHE_REVALIDATION },
   })
 
   if (!response.ok) {
