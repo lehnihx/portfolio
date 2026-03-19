@@ -51,7 +51,12 @@ export const Commits = ({ insights }: Insights) => {
   const [zoom, setZoom] = useState<ZoomState>(initialState)
 
   const commitsData = useMemo(() => {
-    const valid = (insights.commits ?? []).filter((d): d is string => d !== undefined)
+    const oneYearAgo = new Date()
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
+
+    const valid = (insights.commits ?? []).filter((d): d is string => 
+      d !== undefined && new Date(d) >= oneYearAgo
+    )
     const grouped = valid.reduce((acc, d) => {
       acc.set(d, (acc.get(d) ?? 0) + 1)
       return acc
