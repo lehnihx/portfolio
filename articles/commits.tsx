@@ -3,6 +3,7 @@ import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
+import { Insights } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { useState, useCallback, useMemo } from "react"
@@ -46,7 +47,7 @@ const getAxisYDomain = (
   return [(bottom | 0) - offset, (top | 0) + offset]
 }
 
-export const CommitsChart = ({ commits }: { commits: (string | undefined)[] }) => {
+export const CommitsChart = ({ commits }: { commits: Awaited<Insights>["commits"] }) => {
   const [zoom, setZoom] = useState<ZoomState>(initialState)
 
   const commitsData = useMemo(() => {

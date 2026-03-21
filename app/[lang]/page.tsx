@@ -48,7 +48,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
   if (!hasLang(lang)) notFound()
 
-  const reviews = cache.reviews(lang)
   const dict = await Dictionary(lang)
 
   return (
@@ -88,12 +87,11 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           </section>
           {/* your code onSubmit={handleSubmit} my code onSubmit={(event) => { handleSubmit(event).catch(() => undefined) }}*/}
           <section className="h-screen w-full flex items-center justify-center">
-            <LanguagesChart>
+            {/* <LanguagesChart>
               <Suspense fallback={<SkeletonLOC />}>
                 <SuspenseLangs />
               </Suspense>
-            </LanguagesChart>
-
+            </LanguagesChart> */}
           </section>
           <section className="min-h-screen w-full flex justify-center">
             <Commits />

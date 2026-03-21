@@ -5,6 +5,7 @@ import { SkeletonLOC } from "../skeletons/loc"
 
 const CommitsData = async () => {
   const insights = await cache.insights()
+  console.log(insights)
   return <CommitsChart commits={insights.commits} />
 }
 
