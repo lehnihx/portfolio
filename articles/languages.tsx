@@ -2,12 +2,12 @@
 import { Header } from "@/components/header"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
-import { Languages } from "@/lib/types"
+import { Insights } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Bar, Tooltip, BarChart } from "recharts"
 
-export const LanguagesChart = ({ languages }: { languages: Languages | undefined }) => {
+export const LanguagesChart = ({ insights }: Insights ) => {
   const { ref, visible, height } = useIsInView()
   const { languages: lang } = useDict()
   return (
@@ -16,7 +16,7 @@ export const LanguagesChart = ({ languages }: { languages: Languages | undefined
         <motion.div {...ANIMATION} className="flex h-full flex-col items-center justify-evenly w-full">
           <Header left={lang[0]} center={lang[1]} right={lang[2]} />
           <ResponsiveContainer width="90%" height="50%">
-            <BarChart data={languages ?? []} layout="vertical">
+            <BarChart data={insights.langsBytes ?? []} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
               <XAxis type="number" tickFormatter={v => `${v} bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
               <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />

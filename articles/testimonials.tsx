@@ -76,7 +76,7 @@ const UserProfile = ({
   </HoverCard.Root>
 )
 
-const Testimonials = ({ reviews }: { reviews: Review[] }) => {
+const Testimonials = ({ reviews }: { reviews: Review[] | undefined }) => {
   const dialog = useDialog()
   const [translated, setTranslated] = useState({ reviewId: 0, translated: false })
   const { testimonials, original, translate } = useDict()
