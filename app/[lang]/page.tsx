@@ -17,10 +17,10 @@ import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
-import { Commits } from "@/articles/commits"
 import { LanguagesChart } from "@/articles/languages"
 import { LOC } from "@/articles/loc"
 import { cache } from "@/lib/cache"
+import { Commits } from "@/components/suspense/commits"
 
 export interface Review {
   name: string
@@ -44,7 +44,6 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
   if (!hasLang(lang)) notFound()
 
   const reviews = cache.reviews(lang)
-  const insights = cache.insights()
   const dict = await Dictionary(lang)
 
   return (
@@ -68,18 +67,18 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <TimelineJourney/>
           </section>
           <section className="min-h-screen w-full flex justify-center">
-            <Testimonials reviews={reviews}/>
+            <Testimonials lang={lang}/>
           </section>
           <section className="relative min-h-screen w-full flex items-center justify-center overflow-clip">
             <Meteors/>
-            <LOC insights={insights}/>
+            <LOC />
           </section>
           {/* your code onSubmit={handleSubmit} my code onSubmit={(event) => { handleSubmit(event).catch(() => undefined) }}*/}
           <section className="h-screen w-full flex items-center justify-center">
-            <LanguagesChart insights={insights}/>
+            <LanguagesChart />
           </section>
           <section className="min-h-screen w-full flex justify-center">
-            <Commits insights={insights}/>
+            <Commits />
           </section>
           <section className="w-full">
             <BackgroundLines className="flex flex-col items-center justify-evenly">

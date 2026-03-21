@@ -3,15 +3,25 @@ import { Lang, langsAllowed } from "./dictionaries"
 import { insights } from "./insights"
 import { reviews } from "./reviews"
 
-const awaitedReviews: Partial<Record<Lang, Awaited<ReturnType<typeof reviews>>>> = {}
-let awaitedInsights: Awaited<ReturnType<typeof insights>> | undefined
+const reviewsPromises: Partial<
+  Record<Lang, Promise<
+    Awaited<
+      ReturnType<typeof reviews>
+    >
+  >>
+> = {}
+let insightsPromise: Promise<
+  Awaited<
+    ReturnType<typeof insights>
+  >
+> | undefined
 
-export const coldStart = async () => {
-  for (const lang of langsAllowed) awaitedReviews[lang] = await reviews(lang)
-  awaitedInsights = await insights()
+export const coldStart = () => {
+  for (const lang of langsAllowed) reviewsPromises[lang] = reviews(lang)
+  insightsPromise = insights()
 }
 
 export const cache = {
-  reviews: (lang: Lang) => awaitedReviews[lang],
-  insights: () => awaitedInsights
+  reviews: (lang: Lang) => reviewsPromises[lang]!,
+  insights: () => insightsPromise!,
 }

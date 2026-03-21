@@ -48,8 +48,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 - [x] implement mailing
 - [ ] implement timeline
 - [x] implement referrals
-- [ ] implement nav
-- [ ] implement file upload
+- [x] implement nav
+- [x] implement file upload
 
 ## Common Errors
 ```bash
