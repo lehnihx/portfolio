@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 
 const sitemap = (): MetadataRoute.Sitemap => ([
   {
-    url: 'https://lenix.dev',
+    url: 'https://lenix.dev/en',
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 1,

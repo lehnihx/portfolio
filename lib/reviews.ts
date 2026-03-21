@@ -14,7 +14,7 @@ const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = (() => {
   return { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN }
 })()
 
-const fetchData = async (lang: Lang) => {
+export const fetchReviews = async (lang: Lang) => {
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
 
   const messages = await fetchDiscord<APIBaseMessage[]>('channels/1246910653940367500/messages', DISCORD_BOT_TOKEN)
@@ -37,7 +37,7 @@ const fetchData = async (lang: Lang) => {
   return await Promise.all(mappedMessages)
 }
 
-const cachedFetchData = (lang: Lang) => unstable_cache(() => fetchData(lang), ['discord-reviews', lang], { revalidate: CACHE_REVALIDATION })()
+const cachedFetchData = (lang: Lang) => unstable_cache(() => fetchReviews(lang), ['discord-reviews', lang], { revalidate: CACHE_REVALIDATION })()
 
 const reviews = async (lang: Lang) => {
   const hitedCache = await cachedFetchData(lang)

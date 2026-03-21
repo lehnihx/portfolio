@@ -14,6 +14,9 @@ export const metadata = {
   title: 'Lenix Dev',
   description: 'Lenix Dev\'s portfolio — Full Stack Developer',
   metadataBase: new URL('https://lenix.dev'),
+  alternates: {
+    canonical: 'https://lenix.dev/en',
+  },
   openGraph: {
     title: 'Lenix Dev',
     description: 'Full Stack Developer',

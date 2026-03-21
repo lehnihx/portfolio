@@ -126,7 +126,7 @@ const organizationsRepositoriesLanguagesBytes = async (token: string) => {
   }, Promise.resolve([] as Languages))
 }
 
-const insights = async () => {
+export const insights = async () => {
   const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
   const validOrganizationCommits = await organizationsCommits(GITHUB_TOKEN)
   const commits = validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
