@@ -7,6 +7,7 @@ const reviewsPromises = {} as Record<Lang, ReturnType<typeof reviews>>
 let insightsPromise: ReturnType<typeof insights> | undefined
 
 export const coldStart = () => {
+  console.debug("started")
   for (const lang of langsAllowed) reviewsPromises[lang] = reviews(lang)
   insightsPromise = insights()
 }
