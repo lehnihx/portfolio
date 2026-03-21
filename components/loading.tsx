@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react'
 import { Squircle } from 'ldrs/react'
-import 'ldrs/react/Squircle.css'
 
 export const LoadingProvider = ({ children }: { children?: React.ReactNode }) => {
   const [loaded, setLoaded] = useState(false)
