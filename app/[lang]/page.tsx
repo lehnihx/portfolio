@@ -21,6 +21,11 @@ import { LanguagesChart } from "@/articles/languages"
 import { LOC } from "@/articles/loc"
 import { cache } from "@/lib/cache"
 import { Commits } from "@/components/suspense/commits"
+import { Suspense } from "react"
+import { SkeletonLOC } from "@/components/skeletons/loc"
+import { SuspenseLOC } from "@/components/suspense/loc"
+import { SuspenseTestimonials } from "@/components/suspense/testimonials"
+import { SuspenseLangs } from "@/components/suspense/languages"
 
 export interface Review {
   name: string
@@ -67,15 +72,28 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
             <TimelineJourney/>
           </section>
           <section className="min-h-screen w-full flex justify-center">
-            <Testimonials lang={lang}/>
+            <Testimonials>
+              <Suspense fallback={<SkeletonLOC />}>
+                <SuspenseTestimonials lang={lang} />
+              </Suspense>
+            </Testimonials>
           </section>
           <section className="relative min-h-screen w-full flex items-center justify-center overflow-clip">
             <Meteors/>
-            <LOC />
+            <LOC>
+              <Suspense fallback={<SkeletonLOC />}>
+                <SuspenseLOC />
+              </Suspense>
+            </LOC>
           </section>
           {/* your code onSubmit={handleSubmit} my code onSubmit={(event) => { handleSubmit(event).catch(() => undefined) }}*/}
           <section className="h-screen w-full flex items-center justify-center">
-            <LanguagesChart />
+            <LanguagesChart>
+              <Suspense fallback={<SkeletonLOC />}>
+                <SuspenseLangs />
+              </Suspense>
+            </LanguagesChart>
+
           </section>
           <section className="min-h-screen w-full flex justify-center">
             <Commits />

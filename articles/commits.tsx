@@ -3,7 +3,6 @@ import { Header } from "@/components/header"
 import { NumberTicker } from "@/components/ui/number-ticker"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
-import { Insights } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
 import { useState, useCallback, useMemo } from "react"
@@ -47,14 +46,14 @@ const getAxisYDomain = (
   return [(bottom | 0) - offset, (top | 0) + offset]
 }
 
-export const SuspenseCommits = ({ insights }: { insights: Awaited<Insights> }) => {
+export const CommitsChart = ({ commits }: { commits: (string | undefined)[] }) => {
   const [zoom, setZoom] = useState<ZoomState>(initialState)
 
   const commitsData = useMemo(() => {
     const oneYearAgo = new Date()
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1)
 
-    const valid = (insights.commits ?? []).filter((d): d is string => 
+    const valid = (commits ?? []).filter((d): d is string => 
       d !== undefined && new Date(d) >= oneYearAgo
     )
     const grouped = valid.reduce((acc, d) => {
@@ -72,7 +71,7 @@ export const SuspenseCommits = ({ insights }: { insights: Awaited<Insights> }) =
         sorted.slice(0, index + 1).reduce((acc, [, c]) => acc + c, 0) / (index + 1)
       ),
     }))
-  }, [insights.commits])
+  }, [commits])
 
   const handleZoomOut = useCallback(() => setZoom(initialState), [])
 
@@ -113,16 +112,16 @@ export const SuspenseCommits = ({ insights }: { insights: Awaited<Insights> }) =
 
   const { left, right, top, bottom, refAreaLeft, refAreaRight } = zoom
   const { ref, visible, height } = useIsInView()
-  const { commits } = useDict()
+  const { commits: commitsDict } = useDict()
   return (
     <div ref={ref} style={{ minHeight: height }} className="w-1/2 portrait:w-full">
       {visible && (
         <motion.div {...ANIMATION} className="h-full mx-10 flex flex-col items-center justify-around">
-          <Header left={commits[0]} center={commits[1]} right={commits[2]} />
-          <NumberTicker value={insights.commits.length || NaN} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
+          <Header left={commitsDict[0]} center={commitsDict[1]} right={commitsDict[2]} />
+          <NumberTicker value={commits.length || NaN} className="text-8xl font-medium tracking-tighter whitespace-pre-wrap text-foreground" />
           <div style={{ userSelect: 'none', width: '100%' }}>
             <button type="button" className="mb-4 px-3 py-1 border border-border rounded-md text-sm text-foreground" onClick={handleZoomOut}>
-              {commits[3]}
+              {commitsDict[3]}
             </button>
 
             <ResponsiveContainer width="100%" height={400}>
@@ -151,6 +150,15 @@ export const SuspenseCommits = ({ insights }: { insights: Awaited<Insights> }) =
           </div>
         </motion.div>
       )}
+    </div>
+  )
+}
+
+export const CommitsShell = ({ children }: { children: React.ReactNode }) => {
+  const { ref, visible, height } = useIsInView()
+  return (
+    <div ref={ref} style={{ minHeight: height }} className="w-1/2 portrait:w-full">
+      {visible && children}
     </div>
   )
 }

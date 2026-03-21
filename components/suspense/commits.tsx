@@ -1,12 +1,17 @@
-import { SuspenseCommits } from "@/articles/commits"
+import { CommitsChart, CommitsShell } from "@/articles/commits"
 import { cache } from "@/lib/cache"
 import { Suspense } from "react"
+import { SkeletonLOC } from "../skeletons/loc"
 
-export const Commits = async () => {
+const CommitsData = async () => {
   const insights = await cache.insights()
-  return (
-    <Suspense fallback={<SuspenseCommits insights={insights} />}>
-      <SkeletonCommits />
-    </Suspense>
-  )
+  return <CommitsChart commits={insights.commits} />
 }
+
+export const Commits = () => (
+  <CommitsShell>
+    <Suspense fallback={<SkeletonLOC />}>
+      <CommitsData />
+    </Suspense>
+  </CommitsShell>
+)
