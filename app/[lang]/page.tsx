@@ -17,11 +17,10 @@ import { BackgroundLines } from "@/components/ui/background-lines"
 import { Particles } from "@/components/ui/particles"
 import { Meteors } from "@/components/ui/meteors"
 import { Testimonials } from "@/articles/testimonials"
-import cachedReviews from "@/lib/reviews"
-import { cachedInsights } from "@/lib/insights"
 import { Commits } from "@/articles/commits"
 import { LanguagesChart } from "@/articles/languages"
 import { LOC } from "@/articles/loc"
+import { cache } from "@/lib/cache"
 
 export interface Review {
   name: string
@@ -43,8 +42,9 @@ export interface Review {
 const Page = async ({ params }: PageProps<'/[lang]'>) => {
   const { lang } = await params
   if (!hasLang(lang)) notFound()
-  const reviews = await cachedReviews(lang)
-  const insights = await cachedInsights()
+
+  const reviews = cache.reviews(lang)
+  const insights = cache.insights()
   const dict = await Dictionary(lang)
 
   return (
@@ -76,7 +76,7 @@ const Page = async ({ params }: PageProps<'/[lang]'>) => {
           </section>
           {/* your code onSubmit={handleSubmit} my code onSubmit={(event) => { handleSubmit(event).catch(() => undefined) }}*/}
           <section className="h-screen w-full flex items-center justify-center">
-            <LanguagesChart languages={insights.langsBytes}/>
+            <LanguagesChart insights={insights}/>
           </section>
           <section className="min-h-screen w-full flex justify-center">
             <Commits insights={insights}/>

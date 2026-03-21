@@ -1,6 +1,6 @@
 import { components } from "@octokit/openapi-types"
 import { Dispatch, SetStateAction } from "react"
-import type { cachedInsights } from '@/lib/insights'
+import { insights } from "./insights"
 
 export interface State<S> { states: Readonly<S>, setStates: Dispatch<SetStateAction<S>> }
 
@@ -23,5 +23,5 @@ export type Languages = Array<{
 }>
 
 export interface Insights {
-  insights: Awaited<ReturnType<typeof cachedInsights>>
+  insights: Awaited<ReturnType<typeof insights>> | undefined
 }

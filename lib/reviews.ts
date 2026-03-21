@@ -1,8 +1,6 @@
 import "server-only"
 import { Review } from "@/app/[lang]/page"
 import { APIBaseMessage } from "discord-api-types/v10"
-import { unstable_cache } from "next/cache"
-import { CACHE_REVALIDATION } from "./utils"
 import { fetchMyMemory } from "@/api/mymemory"
 import { Lang } from "./dictionaries"
 import { fetchDiscord } from "@/api/discord"
@@ -14,7 +12,7 @@ const { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN } = (() => {
   return { DISCORD_GUILD_ID, DISCORD_BOT_TOKEN }
 })()
 
-export const fetchReviews = async (lang: Lang) => {
+const fetchReviews = async (lang: Lang) => {
   const filterMessage = (characters: string) => (characters.split(/Feedback\s*:/)[1] ?? '').replace(/<@\d+>|\*\*|\n/g, '').trim()
 
   const messages = await fetchDiscord<APIBaseMessage[]>('channels/1246910653940367500/messages', DISCORD_BOT_TOKEN)
@@ -37,10 +35,8 @@ export const fetchReviews = async (lang: Lang) => {
   return await Promise.all(mappedMessages)
 }
 
-const cachedFetchData = (lang: Lang) => unstable_cache(() => fetchReviews(lang), ['discord-reviews', lang], { revalidate: CACHE_REVALIDATION })()
-
-const reviews = async (lang: Lang) => {
-  const hitedCache = await cachedFetchData(lang)
+export const reviews = async (lang: Lang) => {
+  const hitedCache = await fetchReviews(lang)
   const reviews = hitedCache.map(({ id, body, translation, channel_id, date, author: {
     username, id: userId, avatar, global_name, banner, accent_color, locale, verified, avatar_decoration_data, primary_guild
   }}): Review => ({
@@ -61,5 +57,3 @@ const reviews = async (lang: Lang) => {
   }))
   return reviews
 }
-
-export default reviews

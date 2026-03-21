@@ -1,8 +1,6 @@
 import 'server-only'
 import { Repository, RepositoryLanguageStats, Organization, Commit, Language, Languages } from '@/lib/types'
 import { wait } from 'lenix'
-import { unstable_cache } from 'next/cache'
-import { CACHE_REVALIDATION } from './utils'
 import { fetchGithub } from '@/api/github'
 import { fetchCodeTabs } from '@/api/codetabs'
 
@@ -141,5 +139,3 @@ export const insights = async () => {
   })()
   return { loc, commits, langsBytes }
 }
-
-export const cachedInsights = unstable_cache(insights, ['insights'], { revalidate: CACHE_REVALIDATION })
