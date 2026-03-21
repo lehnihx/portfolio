@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from "../ui/card"
 import { Skeleton } from "../ui/skeleton"
 
-export const SkeletonCard = () => {
+export const SkeletonLOC = () => {
   return (
     <Card className="w-full max-w-xs">
       <CardHeader>

@@ -1,6 +1,5 @@
 import { components } from "@octokit/openapi-types"
 import { Dispatch, SetStateAction } from "react"
-import { insights } from "./insights"
 
 export interface State<S> { states: Readonly<S>, setStates: Dispatch<SetStateAction<S>> }
 
@@ -22,6 +21,11 @@ export type Languages = Array<{
   bytes: number
 }>
 
-export interface Insights {
-  insights: Awaited<ReturnType<typeof insights>> | undefined
-}
+export type Insights = Promise<{
+  loc: number | undefined
+  commits: (string | undefined)[]
+  langsBytes: {
+    name: string
+    bytes: number
+  }[]
+}>

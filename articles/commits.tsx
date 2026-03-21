@@ -47,7 +47,7 @@ const getAxisYDomain = (
   return [(bottom | 0) - offset, (top | 0) + offset]
 }
 
-export const Commits = ({ insights }: Insights) => {
+export const SuspenseCommits = ({ insights }: { insights: Awaited<Insights> }) => {
   const [zoom, setZoom] = useState<ZoomState>(initialState)
 
   const commitsData = useMemo(() => {

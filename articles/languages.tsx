@@ -1,13 +1,15 @@
 "use client"
 import { Header } from "@/components/header"
+import { SkeletonLOC } from "@/components/skeletons/loc"
+import { SuspenseLangs } from "@/components/suspense/languages"
 import { useDict } from "@/hooks/useDict"
 import { useIsInView } from "@/hooks/useIsInView"
-import { Insights } from "@/lib/types"
 import { ANIMATION } from "@/lib/utils"
 import { motion } from "motion/react"
-import { ResponsiveContainer, CartesianGrid, XAxis, YAxis, Bar, Tooltip, BarChart } from "recharts"
+import { Suspense } from "react"
+import { ResponsiveContainer } from "recharts"
 
-export const LanguagesChart = ({ insights }: Insights ) => {
+export const LanguagesChart = () => {
   const { ref, visible, height } = useIsInView()
   const { languages: lang } = useDict()
   return (
@@ -16,13 +18,9 @@ export const LanguagesChart = ({ insights }: Insights ) => {
         <motion.div {...ANIMATION} className="flex h-full flex-col items-center justify-evenly w-full">
           <Header left={lang[0]} center={lang[1]} right={lang[2]} />
           <ResponsiveContainer width="90%" height="50%">
-            <BarChart data={insights.langsBytes ?? []} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-              <XAxis type="number" tickFormatter={v => `${v} bytes`} stroke="var(--muted-foreground)" axisLine={false} tickLine={false} />
-              <YAxis type="category" dataKey="name" stroke="var(--muted-foreground)" axisLine={false} tickLine={false} width={80} />
-              <Tooltip formatter={(v: number | undefined) => v ? `${v} bytes` : ''} contentStyle={{ backgroundColor: 'var(--popover)', borderColor: 'var(--border)' }} />
-              <Bar dataKey="bytes" fill="var(--foreground)" radius={[0, 4, 4, 0]} />
-            </BarChart>
+            <Suspense fallback={<SkeletonLOC />}>
+              <SuspenseLangs />
+            </Suspense>
           </ResponsiveContainer>
         </motion.div>
       )}

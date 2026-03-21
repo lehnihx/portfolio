@@ -1,5 +1,5 @@
 import 'server-only'
-import { Repository, RepositoryLanguageStats, Organization, Commit, Language, Languages } from '@/lib/types'
+import { Repository, RepositoryLanguageStats, Organization, Commit, Language, Languages, Insights } from '@/lib/types'
 import { wait } from 'lenix'
 import { fetchGithub } from '@/api/github'
 import { fetchCodeTabs } from '@/api/codetabs'
@@ -124,7 +124,7 @@ const organizationsRepositoriesLanguagesBytes = async (token: string) => {
   }, Promise.resolve([] as Languages))
 }
 
-export const insights = async () => {
+export const insights = async (): Insights => {
   const validPersonalCommits = await personalCommits(GITHUB_TOKEN)
   const validOrganizationCommits = await organizationsCommits(GITHUB_TOKEN)
   const commits = validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
