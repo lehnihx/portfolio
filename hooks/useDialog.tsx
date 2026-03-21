@@ -23,7 +23,7 @@ const DialogProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <DialogContext.Provider value={setUrl}>
       {children}
-      <AlertDialog open={!!url} onOpenChange={(open) => open && setUrl(null)}>
+      <AlertDialog open={!!url} onOpenChange={(open) => !open && setUrl(null)}>
         <AlertDialogContent id="global-dialog">
           <AlertDialogHeader>
             <AlertDialogTitle>{open_external_link}</AlertDialogTitle>

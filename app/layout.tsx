@@ -9,6 +9,9 @@ import { ClickProvider } from "@/components/ui/click"
 import { SlowScroll } from "@/components/scroll"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import { coldStart } from "@/lib/cache"
+
+coldStart()
 
 export const metadata = {
   title: 'Lenix Dev',

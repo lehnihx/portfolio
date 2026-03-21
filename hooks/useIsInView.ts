@@ -8,7 +8,7 @@ export const useIsInView = () => {
   const isInView = useInView(ref, { margin: '200px' })
 
   useEffect(() => {
-    if (ref.current) setHeight(ref.current.offsetHeight)
+    if (isInView && ref.current) setHeight(ref.current.offsetHeight)
   }, [isInView])
 
   return { ref, height, visible: isInView }

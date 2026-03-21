@@ -3,16 +3,8 @@ import { Lang, langsAllowed } from "./dictionaries"
 import { insights } from "./insights"
 import { reviews } from "./reviews"
 
-const reviewsPromises: Record<Lang, Promise<
-  Awaited<
-    ReturnType<typeof reviews>
-  >
->> = {}
-let insightsPromise: Promise<
-  Awaited<
-    ReturnType<typeof insights>
-  >
->
+const reviewsPromises = {} as Record<Lang, ReturnType<typeof reviews>>
+let insightsPromise: ReturnType<typeof insights> | undefined
 
 export const coldStart = () => {
   for (const lang of langsAllowed) reviewsPromises[lang] = reviews(lang)
@@ -20,9 +12,12 @@ export const coldStart = () => {
 }
 
 export const cache = {
-  reviews: (lang: Lang) => reviewsPromises[lang],
+  reviews: (lang: Lang) => {
+    if (!reviewsPromises[lang]) reviewsPromises[lang] = reviews(lang)
+    return reviewsPromises[lang]
+  },
   insights: () => {
-    console.log(insightsPromise)
+    if (!insightsPromise) insightsPromise = insights()
     return insightsPromise
   },
 }

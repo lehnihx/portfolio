@@ -2,8 +2,7 @@ import { unstable_cache } from 'next/cache'
 import { ValueOf } from 'next/dist/shared/lib/constants'
 import { CACHE_REVALIDATION } from './utils'
 import { fetchMyMemory } from '@/api/mymemory'
-
-const defaultDictionary = await import('@/lib/dictionaries.json').then((module) => module.default)
+import defaultDictionary from '@/lib/dictionaries.json'
 
 export type Lang = typeof langsAllowed[number]
 export type Dict = typeof defaultDictionary

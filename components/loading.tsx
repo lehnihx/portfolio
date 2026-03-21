@@ -7,7 +7,7 @@ export const LoadingProvider = ({ children }: { children?: React.ReactNode }) =>
 
   useEffect(() => {
     if (document.readyState === 'complete') {
-      queueMicrotask(() => setLoaded(true))
+      setTimeout(() => setLoaded(true), 0)
       return
     }
     const handler = () => setLoaded(true)
