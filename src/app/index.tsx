@@ -5,8 +5,13 @@ export const App = () => {
     <div>
       <h2>Amount of commits</h2>
       <p>{commits.length}</p>
-      <h2>Amount of lines</h2>
-      <p>{loc.length}</p>
+      <h2>Amount of lines wrote</h2>
+      <p>{Object.entries(loc).map(entry => (
+        <div key={entry[0]}>
+          <p>{entry[0]}</p>
+          <p>{entry[1]}</p>
+        </div>
+      ))}</p>
       <h2>Languages used the most</h2>
       {langsBytes.map(lang => (
         <div key={lang.name}>

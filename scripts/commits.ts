@@ -1,6 +1,4 @@
-import { octokit, ownerRepos } from "./client"
-
-const VALID_NAMES = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
+import { octokit, ownerRepos, VALID_NAMES } from "./client"
 
 // skip more that 1 yr
 
