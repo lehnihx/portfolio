@@ -1,40 +1,27 @@
-import { safeRequest, wait } from "lenix"
-import { ownerRepos } from "./client"
+import { wait } from "lenix"
+import { octokit, ownerRepos } from "./client"
 
-interface RepositoryLanguageStats {
-  language: string
-  files: number
-  lines: number
-  blanks: number
-  comments: number
-  linesOfCode: number
+const getStats = async (owner: string, repo: string, retries = 3) => {
+  for (let i = 0; i < retries; i++) {
+    const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
+    if (status === 200) return data
+    console.warn(`retrying ${owner}/${repo}...`)
+    await wait(3000)
+  }
+  console.warn("failed to get stats for", owner, repo)
+  return []
 }
 
-type LangsLOC = Record<string, number>
+export const totalLinesAdded = async () => {
+  let total = 0
+  for (const { name, owner } of ownerRepos) {
 
-const repositoriesLanguages = async (repositories: typeof ownerRepos) => {
-  const result: Record<string, RepositoryLanguageStats[]>[] = []
-  let remainingCount = repositories.length
-  for (const { name, fork, owner: { login } } of repositories) {
-    if (fork) continue
+    const stats = await getStats(owner.login, name)
+    for (const contributor of stats) {
+      if (contributor.author?.login !== 'LenixDev') continue
 
-    await wait(5000)
-    console.log(`${name} was fetched from ${login}, ${--remainingCount} more remaining`)
-    const response = await safeRequest("api.codetabs.com", `v1/loc/?github=${login}/${name}`)
-    if (!response.ok) { console.log(response.statusText); continue }
-
-    const data = await response.json() as RepositoryLanguageStats[]
-    result.push({ [name]: data })
+      for (const week of contributor.weeks) total += week.a ?? 0
+    }
   }
-  return result
-}
-
-export const totalLangsLOC = async () => {
-  const langsLOC: LangsLOC = {}
-  for (const lang of await repositoriesLanguages(ownerRepos)) {
-    const languages = Object.values(lang)[0]
-    for (const language of languages)
-      langsLOC[language.language] = (langsLOC[language.language] ?? 0) + language.lines
-  }
-  return langsLOC
+  return total
 }

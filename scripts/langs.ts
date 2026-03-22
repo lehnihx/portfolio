@@ -4,9 +4,9 @@ type Languages = Array<{ name: string; bytes: number }>
 
 export const totalLangsBytes = async () => {
   const result: Languages = []
-  for (const { fork, name, owner } of ownerRepos) {
+  for (const { fork, name, owner: { login: owner } } of ownerRepos) {
     if (fork) continue
-    const { data: langs } = await octokit.rest.repos.listLanguages({ owner: owner.login, repo: name })
+    const { data: langs } = await octokit.rest.repos.listLanguages({ owner, repo: name })
     for (const [lang, bytes] of Object.entries(langs))
       result.push({ name: lang, bytes })
   }
