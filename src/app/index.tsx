@@ -5,9 +5,9 @@ const excludedLangs = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', '
 export const App = () => {
   return (
     <div>
-      <h2>Amount of commits</h2>
+      <h2>Amount of commits since last year</h2>
       <p>{commits.length}</p>
-      <h2>Amount of lines wrote</h2>
+      <h2>Amount of written lines of codes</h2>
       <p>{loc.toLocaleString()}</p>
       <h2>Languages used the most</h2>
       {langsBytes.map(lang => !excludedLangs.includes(lang.name) && (

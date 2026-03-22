@@ -1,7 +1,5 @@
 import { octokit, ownerRepos, VALID_NAMES } from "./client"
 
-// skip more that 1 yr
-
 const repoDates = async (owner: string, repo: string) => {
   const dates: string[] = []
   const pages =
@@ -12,9 +10,14 @@ const repoDates = async (owner: string, repo: string) => {
 
       if (!commit.author?.date) continue
 
-      dates.push(new Date(commit.author.date).toLocaleDateString('en-US', {
+      const commitDate = new Date(commit.author.date).toLocaleDateString('en-US', {
         year: 'numeric', month: 'short', day: 'numeric'
-      }))
+      })
+      const yearBehind = new Date()
+      yearBehind.setFullYear(yearBehind.getFullYear() - 1)
+      if (new Date(commit.author.date) < yearBehind) continue
+
+      dates.push(commitDate)
     }
   }
   return dates
