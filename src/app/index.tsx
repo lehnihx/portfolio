@@ -1,5 +1,8 @@
 import { commits, langsBytes, loc } from "~/scripts/data.json"
 
+const excludedLangs = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript']
+// if (excludedLangs.includes(lang)) continue
+
 export const App = () => {
   return (
     <div>
