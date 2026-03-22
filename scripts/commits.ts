@@ -1,4 +1,4 @@
-import { octokit, personalRepositories } from "./client"
+import { octokit, ownerRepos } from "./client"
 
 const VALID_NAMES = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
 
@@ -19,28 +19,9 @@ const repoDates = async (owner: string, repo: string) => {
   return dates
 }
 
-export const personalCommits = async () => {
-  const dates: string[] = []
-  for (const { owner, name } of personalRepositories) {
-    dates.push(...await repoDates(owner.login, name))
-  }
-  return dates
-}
-
-export const organizationsCommits = async () => {
-  const { data: orgs } = await octokit.rest.orgs.listForUser({ username: 'lenixdev' })
-  const dates: string[] = []
-  for (const org of orgs) {
-    const { data: repos } = await octokit.rest.repos.listForOrg({ org: org.login, per_page: 100 })
-    for (const { name } of repos) {
-      dates.push(...await repoDates(org.login, name))
-    }
-  }
-  return dates
-}
-
 export const totalCommits = async () => {
-  const validPersonalCommits = await personalCommits()
-  const validOrganizationCommits = await organizationsCommits()
-  return validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
+  const dates: string[] = []
+  for (const { owner, name } of ownerRepos)
+    dates.push(...await repoDates(owner.login, name))
+  return dates
 }
