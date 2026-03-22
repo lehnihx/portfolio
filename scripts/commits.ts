@@ -2,6 +2,8 @@ import { octokit, personalRepositories } from "./client"
 
 const VALID_NAMES = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
 
+// skip more that 1 yr
+
 const repoDates = async (owner: string, repo: string) => {
   const dates: string[] = []
   const pages = octokit.paginate.iterator(octokit.rest.repos.listCommits, { owner, repo, per_page: 100 })
@@ -35,4 +37,10 @@ export const organizationsCommits = async () => {
     }
   }
   return dates
+}
+
+export const totalCommits = async () => {
+  const validPersonalCommits = await personalCommits()
+  const validOrganizationCommits = await organizationsCommits()
+  return validPersonalCommits && validOrganizationCommits ? [...validPersonalCommits, ...validOrganizationCommits] : []
 }
