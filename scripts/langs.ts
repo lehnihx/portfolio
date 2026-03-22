@@ -7,10 +7,7 @@ export const totalLangsBytes = async () => {
   for (const { fork, name, owner: { login: owner } } of ownerRepos) {
     if (fork) continue
 
-    if (!VALID_NAMES.includes(owner)) {
-      console.debug(owner)
-      continue
-    }
+    if (!VALID_NAMES.includes(owner)) continue
 
     const { data: langs } = await octokit.rest.repos.listLanguages({ owner, repo: name })
     for (const [lang, bytes] of Object.entries(langs))

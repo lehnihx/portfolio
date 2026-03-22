@@ -1,7 +1,6 @@
 import { commits, langsBytes, loc } from "~/scripts/data.json"
 
 const excludedLangs = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript']
-// if (excludedLangs.includes(lang)) continue
 
 export const App = () => {
   return (
@@ -9,19 +8,18 @@ export const App = () => {
       <h2>Amount of commits</h2>
       <p>{commits.length}</p>
       <h2>Amount of lines wrote</h2>
-      <p>{Object.entries(loc).map(entry => (
-        <div key={entry[0]}>
-          <p>{entry[0]}</p>
-          <p>{entry[1]}</p>
-        </div>
-      ))}</p>
+      <p>{loc.toLocaleString()}</p>
       <h2>Languages used the most</h2>
-      {langsBytes.map(lang => (
+      {langsBytes.map(lang => !excludedLangs.includes(lang.name) && (
         <div key={lang.name}>
           <p>{lang.name}</p>
           <p>{lang.bytes}</p>
         </div>
       ))}
+      <div>
+        <p>Others</p>
+        {langsBytes.reduce((total, lang) => total + lang.bytes, 0)}
+      </div>
     </div>
   )
 }
