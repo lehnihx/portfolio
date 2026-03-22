@@ -12,7 +12,7 @@ const GITHUB_TOKEN = (() => {
 
 const accumulationInitializer = [] as NonNullable<Commit["commit"]["author"]>["date"][]
 const commitsAuthors = ['Lenix', 'lenixdev', 'LenixDev', 'Lenixx', 'tripplerscripts', 'lenix']
-const excludedLangs = ['HTML', 'CSS', 'JavaScript', 'MDX', 'Shell', 'Batchfile']
+const excludedLangs = ['HTML', 'CSS', 'JavaScript', 'MDX', 'Shell', 'Batchfile', 'Makefile']
 
 const personalRepositories = async (token: string) => fetchGithub<Repository[]>('users/lenixdev/repos', token)
 
