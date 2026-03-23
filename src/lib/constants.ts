@@ -2,9 +2,34 @@ import { langsBytes } from "~/scripts/data.json"
 import { commits } from "~/scripts/data.json"
 
 export const EXCLUDED_LANGS = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript', 'Markdown', 'License', 'JSON', 'YAML', 'TOML', 'SVG']
-export const filteredLangs = langsBytes.filter(l => !EXCLUDED_LANGS.includes(l.name)).slice(0, 8)
+export const filteredLangs = langsBytes.filter(lang => !EXCLUDED_LANGS.includes(lang.name))
 export const totalBytes = filteredLangs.reduce((a, l) => a + l.bytes, 0)
-export const STACK = ['TypeScript', 'React', 'Next.js', 'Rust', 'Tauri', 'Supabase', 'Lua', 'Tailwind', 'Vite']
+export const STACK = [
+  'React',
+  'Next.js',
+  'Tauri',
+  'Supabase',
+  'Tailwind',
+  'Vite',
+  'Expo',
+  'Node.js',
+  'PostgresSql',
+]
+
+export const ECO_SYSTEMS = [
+  'DavinciResolve',
+  'EsLint',
+  'Figma',
+  'FiveM',
+  'LuaRocks',
+  'MySql',
+  'MariaDB',
+  'Vercel',
+  'UML',
+  'Replit',
+  'PNPM',
+  'Ngrok',
+]
 
 export const commitsData = (() => {
   const grouped = new Map<string, number>()
