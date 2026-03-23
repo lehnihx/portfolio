@@ -8,12 +8,17 @@ const repoDates = async (owner: string, repo: string) => {
   for await (const { data } of pages) {
     let done = false
     for (const { commit } of data) {
-      if (!commit.author?.date) continue
-      if (new Date(commit.author.date) < yearBehind) { done = true; break }
-      if (!VALID_NAMES.includes(commit.author?.name ?? '')) continue
-      dates.push(new Date(commit.author.date).toLocaleDateString('en-US', {
-        year: 'numeric', month: 'short', day: 'numeric'
-      }))
+      if (commit.author?.date) {
+        if (new Date(commit.author.date) < yearBehind) {
+          done = true
+          break
+        }
+        if (VALID_NAMES.includes(commit.author.name ?? '')) {
+          dates.push(new Date(commit.author.date).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'short', day: 'numeric'
+          }))
+        }
+      }
     }
     if (done) break
   }

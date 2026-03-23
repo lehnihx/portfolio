@@ -1,9 +1,8 @@
-import { langsBytes } from "~/scripts/data.json"
-import { commits } from "~/scripts/data.json"
+import { langsBytes, commits } from "~/scripts/data.json"
 
 export const EXCLUDED_LANGS = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript', 'Markdown', 'License', 'JSON', 'YAML', 'TOML', 'SVG']
 export const filteredLangs = langsBytes.filter(lang => !EXCLUDED_LANGS.includes(lang.name))
-export const totalBytes = filteredLangs.reduce((a, l) => a + l.bytes, 0)
+export const totalBytes = filteredLangs.reduce((acc, lang) => acc + lang.bytes, 0)
 export const STACK = [
   'Tauri',
   'Supabase',

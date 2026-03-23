@@ -19,14 +19,10 @@ const referrals = [
   },
 ] as const
 
-export const Referrals = () => {
-  return (
-    <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={'var(--background)'}>
-      {referrals.map(({ key, Icon, url }, index) =>
-        <Icon key={`${key}-${index}`} onClick={() => window.open(url, '_blank')}
-          className={`size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`}
-        />
-      )}
-    </Marquee>
-  )
-}
+export const Referrals = () => (
+  <Marquee className='overflow-hidden' autoFill pauseOnHover gradient gradientColor={'var(--background)'}>
+    {referrals.map(({ key, Icon, url }, index) => <Icon key={`${key}-${index}`} onClick={() => window.open(url, '_blank')}
+      className={`size-20 mx-10 cursor-pointer! duration-300 hover:scale-105`} />
+    )}
+  </Marquee>
+)

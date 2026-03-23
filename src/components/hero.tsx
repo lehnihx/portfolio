@@ -14,7 +14,7 @@ export const Hero = () => (
     </h1>
     <div className="relative w-full max-w-4xl px-4">
       <div className="invisible text-sm text-foreground/50 leading-relaxed">
-        {INTRO.reduce((a, b) => a.length > b.length ? a : b)}
+        {INTRO.reduce((acc, itr) => acc.length > itr.length ? acc : itr)}
       </div>
       <TypingAnimation
         as="div"

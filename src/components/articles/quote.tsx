@@ -22,18 +22,20 @@ const blurSlideVariants = {
   },
 }
 
-export function Quotes() {
+export const Quotes = () => {
   const [trigger, setTrigger] = useState(true)
   const [quoteIndex, setQuoteIndex] = useState(() => randomNewNumber(null, QUOTES.length))
   const [completedTriggers, setCompletedTriggers] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => setTrigger(prev => !prev), 5000)
-    return () => clearInterval(interval)
+    const delay = 5000
+    const interval = setInterval(() => setTrigger(prev => !prev), delay)
+    return () => { clearInterval(interval) }
   }, [])
 
   const triggerCompleted = () => {
-    if (completedTriggers % 2 === 1) setQuoteIndex(randomNewNumber(quoteIndex, QUOTES.length))
+    const mod = 2
+    if (completedTriggers % mod === 1) setQuoteIndex(randomNewNumber(quoteIndex, QUOTES.length))
     setCompletedTriggers(prev => prev + 1)
   }
 
@@ -49,7 +51,7 @@ export function Quotes() {
           speedSegment={0.2}
           onAnimationComplete={triggerCompleted}
         >
-          {'"' + QUOTES[quoteIndex] + '"'}
+          {QUOTES[quoteIndex]}
         </TextEffect>
       </div>
       {/* <Referrals /> */}
