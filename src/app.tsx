@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer"
 
 export const App = () => (
   <div className="min-h-screen w-full flex justify-evenly bg-zinc-950 text-zinc-100">
-    <div className="w-2/3 h-full mx-auto px-6 py-20">
+    <div className="landscape:w-2/3 portrait:w-6/7 h-full">
       <div className="min-h-screen flex flex-col justify-center gap-10">
         <Hero />
         <Stack />
