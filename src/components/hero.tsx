@@ -13,7 +13,10 @@ export const Hero = () => (
     <h1 className="text-5xl font-semibold tracking-tight text-white mb-3">
       Lenix
     </h1>
-    <div className="h-10">
+    <div className="relative w-full max-w-4xl px-4">
+      <div className="invisible text-sm text-zinc-400 leading-relaxed">
+        {INTRO.reduce((a, b) => a.length > b.length ? a : b)}
+      </div>
       <TypingAnimation
         as="div"
         words={INTRO}
@@ -21,7 +24,7 @@ export const Hero = () => (
         typeSpeed={50}
         loop
         deleteSpeed={10}
-        className="w-full max-w-4xl mx-auto px-4 text-left text-sm text-zinc-400 leading-relaxed"
+        className="absolute inset-0 text-sm text-zinc-400 leading-relaxed"
       />
     </div>
     <div className="text-zinc-500">
