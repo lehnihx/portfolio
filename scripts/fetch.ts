@@ -24,4 +24,4 @@ const res = await fetch(`https://api.github.com/gists/${process.env.GIST_ID}`, {
 })
 
 if (!res.ok) throw new Error(`Gist PATCH failed: ${res.status} ${await res.text()}`)
-console.log('Gist updated.')
+console.info('Gist updated.')

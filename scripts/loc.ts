@@ -22,8 +22,8 @@ export const totalLinesAdded = async () => {
     for (const contributor of stats)
     if (contributor.author?.login === 'LenixDev')
     for (const week of contributor.weeks) {
-    total.added += week.a ?? 0
-    total.deleted += week.d ?? 0
+      total.added += week.a ?? 0
+      total.deleted += week.d ?? 0
     }
   }
   return total
