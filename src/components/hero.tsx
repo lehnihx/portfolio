@@ -7,14 +7,14 @@ import { TypingAnimation } from "./ui/typing"
 
 export const Hero = () => (
   <motion.div {...fade(0)} className="mb-16 flex flex-col gap-2">
-    <p className="text-[11px] tracking-[3px] text-zinc-500 uppercase mb-5">
+    <p className="text-[11px] tracking-[3px] text-foreground/30 uppercase mb-5">
       Full Stack Developer - Senior FiveM Scripting Engineer
     </p>
-    <h1 className="text-5xl font-semibold tracking-tight text-white mb-3">
+    <h1 className="text-5xl font-semibold tracking-tight text-foreground mb-3">
       Lenix
     </h1>
     <div className="relative w-full max-w-4xl px-4">
-      <div className="invisible text-sm text-zinc-400 leading-relaxed">
+      <div className="invisible text-sm text-foreground/50 leading-relaxed">
         {INTRO.reduce((a, b) => a.length > b.length ? a : b)}
       </div>
       <TypingAnimation
@@ -24,10 +24,10 @@ export const Hero = () => (
         typeSpeed={50}
         loop
         deleteSpeed={10}
-        className="absolute inset-0 text-sm text-zinc-400 leading-relaxed"
+        className="absolute inset-0 text-sm text-foreground/50 leading-relaxed"
       />
     </div>
-    <div className="text-zinc-500">
+    <div className="text-foreground/30">
       <span>I used to do </span>
       <RotatingText
         texts={EXPERIENCE}
