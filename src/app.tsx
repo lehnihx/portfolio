@@ -8,14 +8,14 @@ import { Footer } from "@/components/footer"
 export const App = () => (
   <div className="min-h-screen w-full flex justify-evenly bg-zinc-950 text-zinc-100">
     <div className="w-2/3 h-full mx-auto px-6 py-20">
-      <div className="min-h-screen flex items-center">
+      <div className="min-h-screen flex flex-col justify-center gap-10">
         <Hero />
+        <Stack />
       </div>
       <div className="min-h-screen flex flex-col justify-evenly">
         <Stats />
         <Commits />
         <Langs />
-        <Stack />
       </div>
       <div className="mt-12">
         <Footer />

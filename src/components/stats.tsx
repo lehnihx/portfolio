@@ -10,7 +10,7 @@ export const Stats = () => (
       { label: 'Average commits per commit-day', value: `${(commits.length / commitsData.length).toFixed(1)}`, sub: 'last 12 months' },
       { label: 'Lines refactored', value: `${Math.round(loc["deleted"] / 1000)}k`, sub: 'all time' },
     ].map(({ label, value, sub }) => (
-      <div key={label} className="bg-zinc-950 px-5 py-6">
+      <div key={label} className="bg-zinc-950 px-5 py-6 text-center">
         <p className="text-2xl font-semibold text-white tabular-nums">{value}</p>
         <p className="text-[11px] text-zinc-400 mt-1">{label}</p>
         <p className="text-[10px] text-zinc-600 mt-0.5">{sub}</p>

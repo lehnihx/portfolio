@@ -5,7 +5,7 @@ export const Footer = () => (
       {[
         { label: 'GitHub', url: 'https://github.com/lenixdev' },
         { label: 'LinkedIn', url: 'https://linkedin.com/in/lenixdev' },
-        { label: 'Twitter', url: 'https://x.com/lenixdev' },
+        { label: 'X', url: 'https://x.com/lenixdev' },
       ].map(({ label, url }) => (
         <a key={label} href={url} target="_blank" rel="noopener noreferrer"
           className="text-[11px] tracking-[2px] uppercase text-zinc-600 hover:text-zinc-300 transition-colors">

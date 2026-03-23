@@ -5,30 +5,30 @@ export const EXCLUDED_LANGS = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 
 export const filteredLangs = langsBytes.filter(lang => !EXCLUDED_LANGS.includes(lang.name))
 export const totalBytes = filteredLangs.reduce((a, l) => a + l.bytes, 0)
 export const STACK = [
-  'React',
-  'Next.js',
   'Tauri',
   'Supabase',
-  'Tailwind',
   'Vite',
-  'Expo',
   'Node.js',
   'PostgresSql',
+  'Expo',
+  'Tailwind',
+  'React',
+  'Next.js',
 ]
 
 export const ECO_SYSTEMS = [
-  'DavinciResolve',
-  'EsLint',
-  'Figma',
-  'FiveM',
   'LuaRocks',
+  'FiveM',
   'MySql',
   'MariaDB',
   'Vercel',
-  'UML',
-  'Replit',
-  'PNPM',
+  'ESLint',
   'Ngrok',
+  'PNPM',
+  'UML',
+  'DavinciResolve',
+  'Figma',
+  'Replit',
 ]
 
 export const commitsData = (() => {

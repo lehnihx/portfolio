@@ -40,6 +40,6 @@ export const Hero = () => (
       Problem Solving
       End-to-end FiveM Server Buildin
     </p>
-    <Referrals />
+    {/* <Referrals /> */}
   </motion.div>
 )
