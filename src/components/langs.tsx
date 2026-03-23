@@ -1,4 +1,4 @@
-import { fade, filteredLangs, totalBytes } from "@/constants"
+import { fade, filteredLangs, totalBytes } from "@/lib/constants"
 import { motion } from "motion/react"
 
 export const Langs = () => (

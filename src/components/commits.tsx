@@ -1,4 +1,4 @@
-import { commitsData, fade } from "@/constants"
+import { commitsData, fade } from "@/lib/constants"
 import { motion } from "motion/react"
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts"
 

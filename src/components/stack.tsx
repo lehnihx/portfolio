@@ -1,4 +1,4 @@
-import { fade, STACK } from "@/constants"
+import { fade, STACK } from "@/lib/constants"
 import { motion } from "motion/react"
 
 export const Stack = () => (
