@@ -1,5 +1,6 @@
 import { type ComponentPropsWithoutRef, useEffect, useRef } from "react"
 import { useInView, useMotionValue, useSpring } from "motion/react"
+import { cn } from "@/lib/utils"
 
 interface CountProps extends ComponentPropsWithoutRef<"span"> {
   value: number
@@ -52,7 +53,7 @@ export function Count({
     <span
       ref={ref}
       className={cn(
-        "inline-block tracking-wider text-foreground tabular-nums",
+        "inline-block tracking-wider text-white tabular-nums",
         className
       )}
       {...props}
