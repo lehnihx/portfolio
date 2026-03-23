@@ -31,6 +31,28 @@ export const ECO_SYSTEMS = [
   'Replit',
 ]
 
+export const EXPERIENCE = [
+  'Rockstar Filming',
+  'Trailer & Journey Production',
+  'Scenarios Video Editing',
+  'Tailored Scripts Programming',
+  'FiveM Servers Consultation',
+  'Problem Solving',
+  'End-to-end FiveM Server Building',
+]
+
+export const QUOTES = [
+  "College is one path, but not the only one ;)",
+  "Show, don't tell",
+  "Your portfolio speaks louder than your diploma",
+  "The best teacher is doing",
+  "Certifications prove you passed a test, projects prove you can build",
+  "It's not about where you start, it's where you finish",
+  "Skills pay the bills, not degrees",
+  "Backend engineering is easy only at the beginning",
+  "Focus on what you can do, not what paper says you can do",
+]
+
 export const commitsData = (() => {
   const grouped = new Map<string, number>()
   for (const date of commits) grouped.set(date, (grouped.get(date) ?? 0) + 1)

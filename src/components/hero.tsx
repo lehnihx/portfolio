@@ -1,6 +1,9 @@
-import { fade } from "@/lib/constants"
+import { EXPERIENCE, fade } from "@/lib/constants"
 import { motion } from "motion/react"
-import { Referrals } from "./referrals"
+import RotatingText from "./ui/swap"
+import { TextEffect } from "./ui/flip"
+import { Quotes } from "./articles/quote"
+// import { Referrals } from "./referrals"
 
 export const Hero = () => (
   <motion.div {...fade(0)} className="mb-16 flex flex-col gap-2">
@@ -22,24 +25,15 @@ export const Hero = () => (
       The Stack Was Never The Destination
       I Write Code That Writes Code
 
-      'College is one path, but not the only one ;)'
-      'Show, don't tell'
-      'Your portfolio speaks louder than your diploma'
-      'The best teacher is doing'
-      'Certifications prove you passed a test, projects prove you can build'
-      'It's not about where you start, it's where you finish'
-      'Skills pay the bills, not degrees'
-      'Backend engineering is easy only at the beginning'
-      'Focus on what you can do, not what paper says you can do'
+      
 
-      Rockstar Filming
-      Trailer & Journey Production
-      Scenarios Video Editing
-      Tailored Scripts Programming
-      FiveM Servers Consultation
-      Problem Solving
-      End-to-end FiveM Server Building
+      
     </p>
+    <RotatingText
+      texts={EXPERIENCE}
+      mainClassName="inline-flex flex-wrap whitespace-normal align-baseline"
+    />
+    <Quotes />
     {/* <Referrals /> */}
   </motion.div>
 )
