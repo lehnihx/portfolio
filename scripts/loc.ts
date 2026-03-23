@@ -5,12 +5,13 @@ const waitInterval = 3000
 
 const getStats = async (owner: string, repo: string) => {
   const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
-  console.debug(owner, repo, data.length, data.map(c => ({ 
-    login: c.author?.login, 
-    added: c.weeks.reduce((acc, w) => acc + (w.a ?? 0), 0)
-  })))
-  if (status === 200 && Array.isArray(data) && data.length > 0) return data
-
+  if (status === 200 && Array.isArray(data) && data.length > 0) {
+    console.debug(owner, repo, data.length, data.map(c => ({
+      login: c.author?.login,
+      added: c.weeks.reduce((acc, w) => acc + (w.a ?? 0), 0)
+    })))
+    return data
+  }
   console.warn(`retrying ${owner}/${repo}...`)
   await wait(waitInterval)
 
