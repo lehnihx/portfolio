@@ -11,7 +11,7 @@ export const Hero = () => (
       Lenix
     </h1>
     <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
-      Self-taught developer from Algeria. Started with Lua scripting,
+      Self-taught developer. Started with Lua scripting,
       moved into TypeScript, React, Rust and systems programming.
       Building real products — desktop apps, web platforms, dev tools.
     </p>
@@ -38,7 +38,7 @@ export const Hero = () => (
       Tailored Scripts Programming
       FiveM Servers Consultation
       Problem Solving
-      End-to-end FiveM Server Buildin
+      End-to-end FiveM Server Building
     </p>
     {/* <Referrals /> */}
   </motion.div>
