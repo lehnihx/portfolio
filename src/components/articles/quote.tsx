@@ -29,7 +29,7 @@ export const Quotes = () => {
 
   useEffect(() => {
     const delay = 5000
-    const interval = setInterval(() => setTrigger(prev => !prev), delay)
+    const interval = setInterval(() => { setTrigger(prev => !prev) }, delay)
     return () => { clearInterval(interval) }
   }, [])
 

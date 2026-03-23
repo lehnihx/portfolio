@@ -7,18 +7,16 @@ const repoDates = async (owner: string, repo: string) => {
   const pages = octokit.paginate.iterator(octokit.rest.repos.listCommits, { owner, repo, per_page: 100 })
   for await (const { data } of pages) {
     let done = false
-    for (const { commit } of data) {
-      if (commit.author?.date) {
-        if (new Date(commit.author.date) < yearBehind) {
-          done = true
-          break
-        }
-        if (VALID_NAMES.includes(commit.author.name ?? '')) {
-          dates.push(new Date(commit.author.date).toLocaleDateString('en-US', {
-            year: 'numeric', month: 'short', day: 'numeric'
-          }))
-        }
+    for (const { commit } of data)
+    if (typeof commit.author?.date === 'string') {
+      if (new Date(commit.author.date) < yearBehind) {
+        done = true
+        break
       }
+      if (VALID_NAMES.includes(commit.author.name ?? ''))
+      dates.push(new Date(commit.author.date).toLocaleDateString('en-US', {
+        year: 'numeric', month: 'short', day: 'numeric'
+      }))
     }
     if (done) break
   }

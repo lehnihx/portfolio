@@ -19,13 +19,11 @@ export const totalLinesAdded = async () => {
   for (const { name, owner } of ownerRepos) {
 
     const stats = await getStats(owner.login, name)
-    for (const contributor of stats) {
-      if (contributor.author?.login === 'LenixDev') {
-        for (const week of contributor.weeks) {
-          total.added += week.a ?? 0
-          total.deleted += week.d ?? 0
-        }
-      }
+    for (const contributor of stats)
+    if (contributor.author?.login === 'LenixDev')
+    for (const week of contributor.weeks) {
+    total.added += week.a ?? 0
+    total.deleted += week.d ?? 0
     }
   }
   return total
