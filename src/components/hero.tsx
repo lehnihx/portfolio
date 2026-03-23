@@ -1,12 +1,11 @@
 import { EXPERIENCE, fade, INTRO } from "@/lib/constants"
 import { motion } from "motion/react"
 import RotatingText from "./ui/swap"
-import { Quotes } from "./articles/quote"
 import { TypingAnimation } from "./ui/typing"
 // import { Referrals } from "./referrals"
 
 export const Hero = () => (
-  <motion.div {...fade(0)} className="mb-16 flex flex-col gap-2">
+  <motion.div {...fade(0)} className="flex flex-col justify-center gap-2">
     <p className="text-[11px] tracking-[3px] text-foreground/30 uppercase mb-5">
       Full Stack Developer - Senior FiveM Scripting Engineer
     </p>
@@ -34,9 +33,5 @@ export const Hero = () => (
         mainClassName="inline-flex flex-wrap whitespace-normal align-baseline"
       />
     </div>
-    <div className="h-10">
-      <Quotes />
-    </div>
-    {/* <Referrals /> */}
   </motion.div>
 )

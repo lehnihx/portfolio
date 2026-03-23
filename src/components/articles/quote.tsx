@@ -1,7 +1,8 @@
 "use client"
 import { useState, useEffect } from 'react'
 import { TextEffect } from '../ui/flip'
-import { QUOTES } from '@/lib/constants'
+import { fade, QUOTES } from '@/lib/constants'
+import { motion } from 'motion/react'
 
 const randomNewNumber = (lastNumber: number | null, length: number): number => {
   const n = Math.floor(Math.random() * length)
@@ -37,16 +38,21 @@ export function Quotes() {
   }
 
   return (
-    <TextEffect
-      className='text-ring italic font-light text-center'
-      style={{ fontSize: 'var(--font-size-fluid-sm)', wordBreak: 'break-word', whiteSpace: 'normal' }}
-      per='char'
-      variants={blurSlideVariants}
-      trigger={trigger}
-      speedSegment={0.2}
-      onAnimationComplete={triggerCompleted}
-    >
-      {'"' + QUOTES[quoteIndex] + '"'}
-    </TextEffect>
+    <motion.div {...fade(0)} className="flex flex-col gap-2">
+      <div className="h-10">
+        <TextEffect
+          className='text-ring italic font-light text-center'
+          style={{ fontSize: 'var(--font-size-fluid-sm)', wordBreak: 'break-word', whiteSpace: 'normal' }}
+          per='char'
+          variants={blurSlideVariants}
+          trigger={trigger}
+          speedSegment={0.2}
+          onAnimationComplete={triggerCompleted}
+        >
+          {'"' + QUOTES[quoteIndex] + '"'}
+        </TextEffect>
+      </div>
+      {/* <Referrals /> */}
+    </motion.div>
   )
 }

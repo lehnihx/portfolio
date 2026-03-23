@@ -12,6 +12,9 @@
 }
 
 html, body, #root {
+  background-color: #a0ffed;
+  overflow-y: scroll;
+  scrollbar-width: none;
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }

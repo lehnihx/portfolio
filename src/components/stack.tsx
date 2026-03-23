@@ -2,8 +2,8 @@ import { ECO_SYSTEMS, fade, STACK } from "@/lib/constants"
 import { motion } from "motion/react"
 
 export const Stack = () => (
-  <div className="flex flex-col gap-4">
-    <motion.div {...fade(0.25)} className="flex flex-col items-center">
+  <div className="flex flex-col gap-10">
+    <motion.div {...fade(0.25)} className="flex flex-col items-center gap-2">
       <p className="text-[11px] tracking-[3px] text-foreground/40 uppercase mb-5">Stack</p>
       <div className="flex flex-wrap gap-2">
         {STACK.map(tech => (
@@ -13,7 +13,7 @@ export const Stack = () => (
         ))}
       </div>
     </motion.div>
-    <motion.div {...fade(0.25)} className="flex flex-col items-center">
+    <motion.div {...fade(0.25)} className="flex flex-col items-center gap-2">
       <p className="text-[11px] tracking-[3px] text-foreground/40 uppercase mb-5">Ecosystem</p>
       <div className="flex flex-wrap gap-2">
         {ECO_SYSTEMS.map(eco => (

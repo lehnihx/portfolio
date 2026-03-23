@@ -9,7 +9,7 @@ export const Stats = () => (
       <p className="text-[11px] tracking-[3px] text-foreground/50 uppercase">Experience Insights</p>
       <p className="text-[11px] text-foreground/30">last 12 months - all time</p>
     </div>
-    <div className="grid grid-cols-4 portrait:grid-cols-2 gap-px border border-foreground/20 rounded-lg overflow-hidden mb-16">
+    <div className="grid grid-cols-4 portrait:grid-cols-2 gap-px border border-foreground/10 rounded-lg overflow-hidden mb-16">
       {[
         { label: 'Commits', value: commits.length, sub: 'last 12 months' },
         { label: 'Lines implemented', value: Math.round(loc.added / 1000), sub: 'all time' },
