@@ -42,16 +42,22 @@ export const EXPERIENCE = [
 ]
 
 export const QUOTES = [
+  "Full Stack Is Just Where I Started",
   "College is one path, but not the only one ;)",
-  "Show, don't tell",
+  "Going From Pixels To Silicon",
   "Your portfolio speaks louder than your diploma",
+  "I Build The Tools Others Build With",
   "The best teacher is doing",
   "Certifications prove you passed a test, projects prove you can build",
+  "The Stack Was Never The Destination",
   "It's not about where you start, it's where you finish",
+  "I Write Code That Writes Code",
   "Skills pay the bills, not degrees",
   "Backend engineering is easy only at the beginning",
   "Focus on what you can do, not what paper says you can do",
 ]
+
+export const INTRO = ["Self-taught developer. Started with Lua scripting, moved into TypeScript, React, Rust and systems programming. Building real products — desktop apps, web platforms, dev tools."]
 
 export const commitsData = (() => {
   const grouped = new Map<string, number>()

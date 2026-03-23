@@ -1,8 +1,8 @@
-import { EXPERIENCE, fade } from "@/lib/constants"
+import { EXPERIENCE, fade, INTRO } from "@/lib/constants"
 import { motion } from "motion/react"
 import RotatingText from "./ui/swap"
-import { TextEffect } from "./ui/flip"
 import { Quotes } from "./articles/quote"
+import { TypingAnimation } from "./ui/typing"
 // import { Referrals } from "./referrals"
 
 export const Hero = () => (
@@ -13,27 +13,27 @@ export const Hero = () => (
     <h1 className="text-5xl font-semibold tracking-tight text-white mb-3">
       Lenix
     </h1>
-    <p className="text-sm text-zinc-400 leading-relaxed max-w-sm">
-      Self-taught developer. Started with Lua scripting,
-      moved into TypeScript, React, Rust and systems programming.
-      Building real products — desktop apps, web platforms, dev tools.
-    </p>
-    <p>
-      Full Stack Is Just Where I Started
-      Going From Pixels To Silicon
-      I Build The Tools Others Build With
-      The Stack Was Never The Destination
-      I Write Code That Writes Code
-
-      
-
-      
-    </p>
-    <RotatingText
-      texts={EXPERIENCE}
-      mainClassName="inline-flex flex-wrap whitespace-normal align-baseline"
-    />
-    <Quotes />
+    <div className="h-10">
+      <TypingAnimation
+        as="div"
+        words={INTRO}
+        cursorStyle="line"
+        typeSpeed={50}
+        loop
+        deleteSpeed={10}
+        className="w-full max-w-4xl mx-auto px-4 text-left text-sm text-zinc-400 leading-relaxed"
+      />
+    </div>
+    <div className="text-zinc-500">
+      <span>I used to do </span>
+      <RotatingText
+        texts={EXPERIENCE}
+        mainClassName="inline-flex flex-wrap whitespace-normal align-baseline"
+      />
+    </div>
+    <div className="h-10">
+      <Quotes />
+    </div>
     {/* <Referrals /> */}
   </motion.div>
 )
