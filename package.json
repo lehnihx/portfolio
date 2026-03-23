@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "pnpm fetchapi && tsc -b && vite build",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "fetchapi": "dotenv -e .env -- tsx scripts/fetch.ts"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
