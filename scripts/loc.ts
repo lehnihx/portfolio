@@ -1,17 +1,12 @@
 import { wait } from "lenix"
-import { octokit, ownerRepos } from "./client"
+import { octokit, ownerRepos, VALID_NAMES } from "./client"
 
 const waitInterval = 3000
 
 const getStats = async (owner: string, repo: string) => {
   const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
-  if (status === 200 && Array.isArray(data) && data.length > 0) {
-    console.debug(owner, repo, data.length, data.map(c => ({
-      login: c.author?.login,
-      added: c.weeks.reduce((acc, w) => acc + (w.a ?? 0), 0)
-    })))
-    return data
-  }
+  if (status === 200 && Array.isArray(data) && data.length > 0) return data
+
   console.warn(`retrying ${owner}/${repo}...`)
   await wait(waitInterval)
 
@@ -21,8 +16,8 @@ const getStats = async (owner: string, repo: string) => {
 
 export const totalLinesAdded = async () => {
   const total: { added: number, deleted: number } = { added: 0, deleted: 0 }
-  for (const { name, owner } of ownerRepos) {
-
+  for (const { name, owner } of ownerRepos)
+  if (VALID_NAMES.includes(owner.login)) {
     const stats = await getStats(owner.login, name)
     for (const contributor of stats)
     if (contributor.author?.login === 'LenixDev')
