@@ -1,6 +1,6 @@
 import { caughtFetch } from "lenix"
 
-interface AppData {
+export interface AppData {
   loc: { added: number; deleted: number }
   commits: string[]
   langsBytes: { name: string; bytes: number }[]
