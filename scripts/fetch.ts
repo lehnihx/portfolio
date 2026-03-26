@@ -13,7 +13,7 @@ const langsBytes = await totalLangsBytes()
 
 const content = JSON.stringify({ loc, commits, langsBytes })
 
-const res = await caughtFetch(`https://api.github.com/gists/${process.env.GIST_ID}`, {
+const res = await caughtFetch('api.github.com', `gists/${process.env.GIST_ID}`, {
   method: 'PATCH',
   headers: {
     'Authorization': `token ${process.env.GH_PAT}`,
