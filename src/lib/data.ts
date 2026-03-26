@@ -9,7 +9,6 @@ export interface AppData {
 export const fetchAppData = async (): Promise<AppData> => {
   const res = await caughtFetch('api.github.com', `gists/${import.meta.env.VITE_GIST_ID}`)
   if (!res.ok) throw new Error(`Gist fetch failed: ${res.status}`)
-  console.debug(await res.text())
 
   const gist = await res.json() as { files: { 'data.json': { content: string } } }
   return JSON.parse(gist.files['data.json'].content) as AppData
