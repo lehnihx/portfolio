@@ -25,4 +25,5 @@ const res = await caughtFetch(`https://api.github.com/gists/${process.env.GIST_I
 })
 
 if (!res.ok) throw new Error(`Gist PATCH failed: ${res.status} ${await res.text()}`)
+console.debug(await res.text())
 console.info('Gist updated.')
