@@ -13,8 +13,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     fetchAppData()
-      .then(data => setValue({ status: 'ok', data }))
-      .catch((e: unknown) => setValue({ status: 'error', error: String(e) }))
+      .then(data => { setValue({ status: 'ok', data }) })
+      .catch((e: unknown) => { setValue({ status: 'error', error: String(e) }) })
   }, [])
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>
