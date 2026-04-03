@@ -1,25 +1,68 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node"
 import { Resend } from "resend"
+import formidable from "formidable"
+import { readFileSync } from "fs"
 
 // eslint-disable-next-line no-undef
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resendKey = process.env.RESEND_API_KEY
+if (typeof resendKey !== "string") throw new Error("Missing environment variable: RESEND_API_KEY")
 
+const resend = new Resend(resendKey)
+export const config = { api: { bodyParser: false } }
+
+// eslint-disable-next-line max-statements, max-lines-per-function, complexity
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // eslint-disable-next-line no-undef
+  const audienceId = process.env.RESEND_AUDIENCE_ID
+  if (typeof audienceId !== "string") throw new Error("Missing environment variable: RESEND_AUDIENCE_ID")
+
   if (req.method !== "POST") return res.status(405).end()
 
-  const { name, email, message, subscribe, subject } = req.body
-  console.debug(name, email, message, subscribe, subject)
-  if (typeof name !== "string" || typeof email !== "string" || typeof message !== "string")
+  const form = formidable({ multiples: true, allowEmptyFiles: true, minFileSize: 0 })
+
+  let fields: formidable.Fields = {}
+  let files: formidable.Files = {}
+
+  try {
+    ;[fields, files] = await form.parse(req)
+  } catch (err) {
+    if (err?.code !== "1016") return res.status(500).json({ error: err })
+  }
+
+  const name = fields.name?.[0]?.length === undefined ? "An Anonymous" : fields.name[0]
+  const email = fields.email?.[0]
+  const message = fields.message?.[0]
+  const subject = fields.subject?.[0]?.length === undefined ? `Unsubjected message from ${name}` : fields.subject[0]
+  const subscribe = fields.subscribe?.[0]
+
+  if (email?.length === undefined || message?.length === undefined)
     return res.status(400).json({ error: "Invalid request" })
 
+  const attachments = Object.values(files)
+  .flat()
+  .filter((file) => file !== undefined)
+  .map((file) => ({
+    filename: file.originalFilename ?? "corrupted file name",
+    content: readFileSync(file.filepath),
+  }))
+
   const { error } = await resend.emails.send({
-    from: "Lenix <portfolio@lenix.dev>",
+    from: `${name} <portfolio@lenix.dev>`,
     to: "somenoemail@gmail.com",
-    subject: `Message from ${name.trim() ? name : "Anonymous"}`,
+    subject,
     text: `${message}\n\nReply to: ${email}`,
+    attachments
   })
 
   if (error) return res.status(500).json({ error })
+
+  if (subscribe === "on")
+  await resend.contacts.create({
+    audienceId,
+    email,
+    firstName: name,
+    unsubscribed: false,
+  })
   res.status(200).json({ ok: true })
   return undefined
 }
