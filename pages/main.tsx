@@ -9,23 +9,23 @@ import { DataProvider } from '@/lib/context'
 
 export const Main = () => (
 	<DataProvider>
-		<div className='min-h-screen w-full flex justify-evenly bg-background text-foreground'>
-			<div className='landscape:w-2/3 portrait:w-6/7 h-full'>
-				<div className='h-screen flex flex-col justify-between'>
+		<div className='w-full flex justify-evenly bg-background text-foreground'>
+			<div className='landscape:w-2/3 portrait:w-6/7 h-full flex flex-col gap-20'>
+				<div className='h-screen portrait:min-h-[150vh] flex flex-col justify-between'>
 					<div className='min-h-5/10 flex items-end'>
 						<Hero />
 					</div>
-					<div className='min-h-4/10 flex flex-col justify-center'>
+					<div className='min-h-5/10 flex flex-col justify-center'>
 						<Stack />
-					</div>
-					<div className='min-h-1/10'>
-						<Quotes />
 					</div>
 				</div>
 				<div className='min-h-screen flex flex-col justify-evenly'>
 					<Stats />
 					<Commits />
 					<Langs />
+				</div>
+				<div>
+					<Quotes />
 				</div>
 				<div className='mt-12'>
 					<Footer />

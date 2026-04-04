@@ -75,7 +75,6 @@ export const Quotes = () => {
 					{QUOTES[quoteIndex]}
 				</TextEffect>
 			</div>
-			{/* <Referrals /> */}
 		</motion.div>
 	)
 }
