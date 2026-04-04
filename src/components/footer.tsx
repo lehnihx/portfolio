@@ -3,9 +3,9 @@ import { isContact } from "@/lib/utils";
 export const Footer = () => {
   const contact = isContact()
   return (
-    <div className="border-t border-foreground/10 flex items-center justify-between">
+    <div className="border-t border-foreground/10 flex items-center justify-between gap-10">
       <p className="text-[11px] text-foreground/20">© {new Date().getFullYear()} Lenix</p>
-      <div className="flex gap-5">
+      <div className="flex gap-4">
         {[
           { label: contact ? 'Back' : 'Contact', url: contact ? 'https://lenix.dev' : 'https://contact.lenix.dev', replace: true },
           { label: 'GitHub', url: 'https://github.com/lenixdev' },

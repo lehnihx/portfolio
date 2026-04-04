@@ -23,12 +23,13 @@ export const fade = (delay = 0) => ({
 })
 
 export const STACK = [
+  'React Native',
+  'Expo',
   'Tauri',
   'Supabase',
   'Vite',
   'Node.js',
   'PostgresSql',
-  'Expo',
   'Tailwind',
   'React',
   'Next.js',
