@@ -1,1 +1,1 @@
-export const Required = () => <span className="text-destructive">*</span>
+export const Required = () => <span className='text-destructive'>*</span>

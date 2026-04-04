@@ -7,9 +7,12 @@ import { Contact } from './pages/contact'
 import { isContact } from './lib/utils'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    {isContact() ? <Contact /> : <DataProvider>
-      <Main />
-    </DataProvider>}
-  </StrictMode>,
+	<StrictMode>
+		{isContact() ?
+			<Contact />
+		:	<DataProvider>
+				<Main />
+			</DataProvider>
+		}
+	</StrictMode>,
 )

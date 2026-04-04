@@ -6,14 +6,14 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    tailwindcss(),
-    react(),
-    babel({ presets: [reactCompilerPreset()] })
-  ],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, '/'),
-    }
-  }
+	plugins: [
+		tailwindcss(),
+		react(),
+		babel({ presets: [reactCompilerPreset()] }),
+	],
+	resolve: {
+		alias: {
+			'@': resolve(__dirname, '/'),
+		},
+	},
 })
