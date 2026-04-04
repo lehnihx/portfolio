@@ -4,13 +4,11 @@ import './style.css'
 import { Layout } from './layout'
 import { DataProvider } from './lib/context'
 import { Contact } from './pages/contact'
-
-const isContact = window.location.hostname === 'contact.lenix.dev'
-console.debug(window.location.hostname)
+import { isContact } from './lib/utils'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {isContact ? <Contact /> : <DataProvider>
+    {isContact() ? <Contact /> : <DataProvider>
       <Layout />
     </DataProvider>}
   </StrictMode>,
