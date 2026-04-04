@@ -2,7 +2,7 @@ import { useState, type SyntheticEvent } from "react"
 import { motion } from "motion/react"
 import { fade } from "@/lib/constants"
 import { Footer } from "@/components/footer"
-import { Field, FieldGroup, FieldLabel, FieldSet } from "../components/ui/field"
+import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSet } from "../components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { InputGroup, InputGroupTextarea, InputGroupAddon, InputGroupText, InputGroupButton } from "@/components/ui/input-group"
@@ -17,12 +17,11 @@ export const Contact = () => {
   const handleSubmit = async (event: Readonly<SyntheticEvent<HTMLFormElement>>) => {
     event.preventDefault()
     setStatus("loading")
-    const data = new FormData(event.currentTarget)
+    const body = new FormData(event.currentTarget)
     try {
       const res = await fetch("/api/send", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(data)),
+        body,
       })
       setStatus(res.ok ? "done" : "error")
     } catch {
@@ -45,20 +44,25 @@ export const Contact = () => {
             <FieldGroup>
               <FieldGroup className="flex flex-row">
                 <Field>
-                  <FieldLabel htmlFor="name">Name</FieldLabel>
-                  <Input id="name" autoComplete="off" placeholder="Lenix Dev" />
+                  <FieldLabel htmlFor="name">Name <Required /></FieldLabel>
+                  <Input required id="name" name="name" autoComplete="off" placeholder="Lenix Dev" defaultValue="An Anonymous" />
                 </Field>
                 <Field>
                   <FieldLabel htmlFor="email">Email <Required /></FieldLabel>
-                  <Input required type='email' id="email" placeholder="contact@lenix.dev" />
+                  <Input required name="email" type='email' id="email" placeholder="contact@lenix.dev" />
                 </Field>
               </FieldGroup>
               <Field>
-                <FieldLabel htmlFor="mail">Mail <Required /></FieldLabel>
+                <FieldLabel htmlFor="subject">Subject <Required /></FieldLabel>
+                <Input required name="subject" type='text' id="email" placeholder="Interest" defaultValue="Unsubjected message" />
+              </Field>
+              <Field>
+                <FieldLabel htmlFor="message">Message <Required /></FieldLabel>
                 <InputGroup>
                   <InputGroupTextarea
                     required
-                    id="mail"
+                    id="message"
+                    name="message"
                     placeholder="Write a message..."
                   />
                   <InputGroupAddon align="block-end" className="justify-between">
@@ -80,9 +84,14 @@ export const Contact = () => {
                   </InputGroupAddon>
                 </InputGroup>
               </Field>
+              <Field>
+                <FieldLabel htmlFor="files">Files</FieldLabel>
+                <Input id="files" name='files' type="file" multiple />
+                <FieldDescription>Select files to upload.</FieldDescription>
+              </Field>
               <Field orientation="horizontal">
-                <Switch id="newsletter" />
-                <FieldLabel htmlFor="newsletter">Subscribe to the newsletter</FieldLabel>
+                <Switch name="subscribe" id="newsletter" />
+                <FieldLabel htmlFor="subscribe">Subscribe to the newsletter</FieldLabel>
               </Field>
             </FieldGroup>
           </FieldSet>

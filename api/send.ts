@@ -29,15 +29,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (err?.code !== "1016") return res.status(500).json({ error: err })
   }
 
-  const name = fields.name?.[0]?.length === undefined ? "An Anonymous" : fields.name[0]
+  const name = fields.name?.[0]
   const email = fields.email?.[0]
   const message = fields.message?.[0]
-  const subject = fields.subject?.[0]?.length === undefined ? `Unsubjected message from ${name}` : fields.subject[0]
+  const subject = fields.subject?.[0]
   const subscribe = fields.subscribe?.[0]
 
-  if (email?.length === undefined || message?.length === undefined)
+  if (email?.length === undefined || message?.length === undefined || subject?.length === undefined)
     return res.status(400).json({ error: "Invalid request" })
 
+  if (subscribe === "on") try {
+    const { error } = await resend.contacts.create({
+      audienceId,
+      email,
+      firstName: name,
+      unsubscribed: false,
+    })
+    if (error) return res.status(500).json({ error })
+  } catch {
+    return res.status(500).json({ error: "Failed to subscribe" })
+  }
+  
   const attachments = Object.values(files)
   .flat()
   .filter((file) => file !== undefined)
@@ -47,7 +59,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }))
 
   const { error } = await resend.emails.send({
-    from: `${name} <portfolio@lenix.dev>`,
+    from: "Lenix <portfolio@lenix.dev>",
+    replyTo: email,
     to: "somenoemail@gmail.com",
     subject,
     text: `${message}\n\nReply to: ${email}`,
@@ -56,13 +69,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (error) return res.status(500).json({ error })
 
-  if (subscribe === "on")
-  await resend.contacts.create({
-    audienceId,
-    email,
-    firstName: name,
-    unsubscribed: false,
-  })
+  
   res.status(200).json({ ok: true })
-  return undefined
 }
