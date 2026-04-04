@@ -1,4 +1,4 @@
-import { useState, type SyntheticEvent } from "react"
+import { useRef, useState, type SyntheticEvent } from "react"
 import { motion } from "motion/react"
 import { fade } from "@/lib/constants"
 import { Footer } from "@/components/footer"
@@ -9,13 +9,19 @@ import { InputGroup, InputGroupTextarea, InputGroupAddon, InputGroupText, InputG
 import { raise } from "lenix"
 import { Required } from "@/components/articles/required"
 import { Spinner } from "@/components/ui/spinner"
+import { ArrowRight02FreeIcons, CheckmarkCircle01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 // eslint-disable-next-line max-lines-per-function
 export const Contact = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
-  const [value, setValue] = useState<string>("")
+  const [value, setValue] = useState("")
+  const abortRef = useRef<AbortController | null>(null)
+
+  const handleCancel = () => { abortRef.current?.abort() }
 
   const handleSubmit = async (event: Readonly<SyntheticEvent<HTMLFormElement>>) => {
+    abortRef.current = new AbortController()
     event.preventDefault()
     setStatus("loading")
     const body = new FormData(event.currentTarget)
@@ -23,10 +29,11 @@ export const Contact = () => {
       const res = await fetch("/api/send", {
         method: "POST",
         body,
+        signal: abortRef.current.signal,
       })
       setStatus(res.ok ? "done" : "error")
-    } catch {
-      setStatus("error")
+    } catch (err) {
+      setStatus(err instanceof DOMException && err.name === "AbortError" ? "idle" : "error")
     } finally {
       setTimeout(() => { setStatus("idle") }, 3000)
     }
@@ -66,24 +73,32 @@ export const Contact = () => {
                     id="message"
                     name="message"
                     placeholder="Write a message..."
-                    onChange={(e) => { setValue(e.target.value) }}
+                    onChange={event => { setValue(event.target.value) }}
                   />
                   <InputGroupAddon align="block-end" className="justify-between">
                     <InputGroupText>{value.length}/1000</InputGroupText>
                     {/* eslint-disable-next-line no-nested-ternary */}
-                    {status === 'idle' ? <InputGroupButton aria-invalid={value.length > 1000} disabled={value.length > 1000} type="submit" variant="default" size="sm">
-                      Send
+                    {status === 'idle'
+                    ? <InputGroupButton
+                      aria-invalid={value.length > 1000}
+                      disabled={value.length > 1000}
+                      type="submit" variant="default" size="sm"
+                    >
+                      Send <HugeiconsIcon icon={ArrowRight02FreeIcons} />
                     </InputGroupButton>
                     // eslint-disable-next-line no-nested-ternary
-                    : status === 'loading' ? <InputGroupButton disabled type="submit" variant="default" size="sm">
-                    Sending <Spinner />
-                  </InputGroupButton>
-                    : status === 'done' ? <InputGroupButton disabled type="submit" variant="default" size="sm">
-                    Sent
-                  </InputGroupButton>
-                    : <InputGroupButton disabled type="submit" variant="default" size="sm">
-                    Failed
-                  </InputGroupButton>}
+                    : status === 'loading'
+                    ? <InputGroupButton type="button" variant="default" size="sm" onClick={handleCancel} className="group">
+                      <span className="group-hover:hidden flex items-center gap-1">Sending... <Spinner /></span>
+                      <span className="hidden group-hover:inline">Cancel</span>
+                    </InputGroupButton>
+                    : status === 'done'
+                    ? <InputGroupButton disabled type="button" variant="default" size="sm">
+                      Sent <HugeiconsIcon icon={CheckmarkCircle01Icon} />
+                    </InputGroupButton>
+                    : <InputGroupButton disabled type="button" variant="default" size="sm">
+                      Failed
+                    </InputGroupButton>}
                   </InputGroupAddon>
                 </InputGroup>
               </Field>
