@@ -5,15 +5,12 @@ import { Layout } from './layout'
 import { DataProvider } from './lib/context'
 import { Contact } from './pages/contact'
 
-const { hostname } = new URL(window.location.href)
-const [host] = hostname.split('.')
-console.log(host, hostname)
+const isContact = window.location.hostname === 'contact.lenix.dev'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {host === 'lenix' ? <DataProvider>
+    {isContact ? <Contact /> : <DataProvider>
       <Layout />
-    </DataProvider>
-    : host === 'contact' && <Contact />}
+    </DataProvider>}
   </StrictMode>,
 )
