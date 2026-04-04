@@ -4,9 +4,9 @@ import { Commits } from "@/components/commits"
 import { Langs } from "@/components/langs"
 import { Stack } from "@/components/stack"
 import { Footer } from "@/components/footer"
-import { Quotes } from "./components/articles/quote"
+import { Quotes } from "@/components/articles/quote"
 
-export const Layout = () => (
+export const Main = () => (
   <div className="min-h-screen w-full flex justify-evenly bg-background text-foreground">
     <div className="landscape:w-2/3 portrait:w-6/7 h-full">
       <div className="h-screen flex flex-col justify-between">
