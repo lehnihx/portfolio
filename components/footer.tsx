@@ -15,8 +15,6 @@ export const Footer = () => {
 						replace: true,
 					},
 					{ label: 'GitHub', url: 'https://github.com/lenixdev' },
-					{ label: 'LinkedIn', url: 'https://linkedin.com/in/lenixdev' },
-					{ label: 'X', url: 'https://x.com/lenixdev' },
 				].map(({ label, url, replace }) => (
 					<a
 						key={label}
