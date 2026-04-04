@@ -1,5 +1,7 @@
 import type { AppData } from "./data"
 
+export const EXCLUDED_LANGS = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript', 'Markdown', 'License', 'JSON', 'YAML', 'TOML', 'SVG']
+
 export const commitsToChartData = (commits: string[]) => {
   const grouped = new Map<string, number>()
   for (const date of commits) grouped.set(date, (grouped.get(date) ?? 0) + 1)
@@ -19,9 +21,6 @@ export const fade = (delay = 0) => ({
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.5, delay }
 })
-
-
-export const EXCLUDED_LANGS = ['MDX', 'Shell', 'Batchfile', 'Makefile', 'HTML', 'CSS', 'JavaScript', 'Markdown', 'License', 'JSON', 'YAML', 'TOML', 'SVG']
 
 export const STACK = [
   'Tauri',

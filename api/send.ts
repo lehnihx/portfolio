@@ -11,7 +11,7 @@ const resend = new Resend(resendKey)
 export const config = { api: { bodyParser: false } }
 
 // eslint-disable-next-line max-statements, max-lines-per-function, complexity
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default casync handler(req: VercelRequest, res: VercelResponse) {
   // eslint-disable-next-line no-undef
   const audienceId = process.env.RESEND_AUDIENCE_ID
   if (typeof audienceId !== "string") throw new Error("Missing environment variable: RESEND_AUDIENCE_ID")
