@@ -3,6 +3,7 @@ export const Footer = () => (
     <p className="text-[11px] text-foreground/20">© {new Date().getFullYear()} Lenix</p>
     <div className="flex gap-5">
       {[
+        { label: 'Contact', url: 'https://contact.lenix.dev' },
         { label: 'GitHub', url: 'https://github.com/lenixdev' },
         { label: 'LinkedIn', url: 'https://linkedin.com/in/lenixdev' },
         { label: 'X', url: 'https://x.com/lenixdev' },
