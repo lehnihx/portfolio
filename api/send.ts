@@ -50,9 +50,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: "Failed to subscribe" })
   }
   
-  const attachments = Object.values(files)
+const attachments = Object.values(files)
   .flat()
-  .filter((file) => file !== undefined)
+  .filter((file): file is formidable.File => file !== undefined && file.size > 0 && file.originalFilename !== "")
   .map((file) => ({
     filename: file.originalFilename ?? "corrupted file name",
     content: readFileSync(file.filepath),

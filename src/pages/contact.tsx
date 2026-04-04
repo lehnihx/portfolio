@@ -13,6 +13,7 @@ import { Spinner } from "@/components/ui/spinner"
 // eslint-disable-next-line max-lines-per-function
 export const Contact = () => {
   const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle")
+  const [value, setValue] = useState<string>("")
 
   const handleSubmit = async (event: Readonly<SyntheticEvent<HTMLFormElement>>) => {
     event.preventDefault()
@@ -60,16 +61,18 @@ export const Contact = () => {
                 <FieldLabel htmlFor="message">Message <Required /></FieldLabel>
                 <InputGroup>
                   <InputGroupTextarea
+                    value={value}
                     required
                     id="message"
                     name="message"
                     placeholder="Write a message..."
+                    onChange={(e) => { setValue(e.target.value) }}
                   />
                   <InputGroupAddon align="block-end" className="justify-between">
-                    <InputGroupText>0/280</InputGroupText>
+                    <InputGroupText>{value.length}/1000</InputGroupText>
                     {/* eslint-disable-next-line no-nested-ternary */}
-                    {status === 'idle' ? <InputGroupButton type="submit" variant="default" size="sm">
-                      Post
+                    {status === 'idle' ? <InputGroupButton aria-invalid={value.length > 1000} disabled={value.length > 1000} type="submit" variant="default" size="sm">
+                      Send
                     </InputGroupButton>
                     // eslint-disable-next-line no-nested-ternary
                     : status === 'loading' ? <InputGroupButton disabled type="submit" variant="default" size="sm">
