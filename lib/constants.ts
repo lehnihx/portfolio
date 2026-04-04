@@ -64,6 +64,7 @@ export const ECO_SYSTEMS = [
 	'DavinciResolve',
 	'Figma',
 	'Replit',
+	'Twilio'
 ]
 
 export const EXPERIENCE = [
