@@ -26,7 +26,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     ;[fields, files] = await form.parse(req)
   } catch (err) {
-    if (err?.code !== "1016") return res.status(500).json({ error: err })
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+    if ((err as { code?: string }).code !== "1016") return res.status(500).json({ error: err })
   }
 
   const name = fields.name?.[0]
