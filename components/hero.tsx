@@ -2,7 +2,6 @@ import { EXPERIENCE, fade, INTRO } from '@/lib/constants'
 import { motion } from 'motion/react'
 import RotatingText from './ui/swap'
 import { TypingAnimation } from './ui/typing'
-// import { Referrals } from "./referrals"
 
 export const Hero = () => (
 	<motion.div {...fade(0)} className='flex flex-col justify-center gap-2'>

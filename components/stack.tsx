@@ -1,35 +1,34 @@
 import { ECO_SYSTEMS, fade, STACK } from '@/lib/constants'
 import { motion } from 'motion/react'
+import { Badge } from './ui/badge'
 
 export const Stack = () => (
-	<div className='flex flex-col gap-10'>
+	<div className='flex flex-col gap-5'>
 		<motion.div {...fade(0.25)} className='flex flex-col items-center gap-2'>
-			<p className='text-[11px] tracking-[3px] text-foreground/40 uppercase mb-5'>
+			<p className='text-[11px] tracking-[3px] text-foreground/40 uppercase'>
 				Stack
 			</p>
 			<div className='flex flex-wrap gap-2'>
 				{STACK.map(tech => (
-					<span
+					<Badge
 						key={tech}
-						className='border border-foreground/10 text-foreground/50 text-[11px] tracking-wide px-3 py-1.5 rounded-md'
-					>
-						{tech}
-					</span>
+						variant="outline"
+						className='text-foreground/50'
+					>{tech}</Badge>
 				))}
 			</div>
 		</motion.div>
 		<motion.div {...fade(0.25)} className='flex flex-col items-center gap-2'>
-			<p className='text-[11px] tracking-[3px] text-foreground/40 uppercase mb-5'>
+			<p className='text-[11px] tracking-[3px] text-foreground/40 uppercase'>
 				Ecosystem
 			</p>
 			<div className='flex flex-wrap gap-2'>
 				{ECO_SYSTEMS.map(eco => (
-					<span
+					<Badge
 						key={eco}
-						className='border border-foreground/10 text-foreground/50 text-[11px] tracking-wide px-3 py-1.5 rounded-md'
-					>
-						{eco}
-					</span>
+						variant="outline"
+						className='text-foreground/50'
+					>{eco}</Badge>
 				))}
 			</div>
 		</motion.div>
