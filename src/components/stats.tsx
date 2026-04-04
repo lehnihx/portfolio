@@ -1,7 +1,7 @@
 import { motion } from "motion/react"
 import { Count } from "./ui/count"
-import { useAppData } from "@/lib/context"
 import { commitsToChartData, fade } from "@/lib/constants"
+import { useAppData } from "@/hooks/use-appdata"
 
 export const Stats = () => {
   const ctx = useAppData()
