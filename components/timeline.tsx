@@ -450,7 +450,6 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 						<TimelineIcon
 							icon={icon}
 							color={iconColor}
-							status={status}
 							iconSize={iconsize}
 						/>
 					</div>
