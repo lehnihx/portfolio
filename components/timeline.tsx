@@ -470,7 +470,7 @@ export const TimelineLayout = ({
       <motion.div
         key={index}
         initial={animate ? { opacity: 0, y: 20 } : false}
-        animate={animate ? { opacity: 1, y: 0 } : false}
+        whileInView={animate ? { opacity: 1, y: 0 } : undefined}
         transition={{
           duration: 0.5,
           delay: index * 0.1,
