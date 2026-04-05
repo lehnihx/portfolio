@@ -19,10 +19,10 @@ export const Introduc = () => (
 				className='absolute inset-0 text-sm text-foreground/30 leading-relaxed tracking-[3px]'
 			/>
 		</motion.div>
-		<motion.h1 {...fade(0.5)} className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
+		<motion.h1 {...fade(0.25)} className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
 			Lenix
 		</motion.h1>
-		<motion.div {...fade(1)} className='text-foreground/30'>
+		<motion.div {...fade(0.5)} className='text-foreground/30'>
 			<span>Self-taught computer scientist who loves </span>
 			<RotatingText
 				texts={HOBIES}

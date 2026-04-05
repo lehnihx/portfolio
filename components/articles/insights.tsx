@@ -14,10 +14,10 @@ export const Stats = () => {
 	return (
 		<div>
 			<div className='flex items-center justify-between mb-5'>
-				<motion.p {...fade(0.5)} className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
+				<motion.p {...fade(0.25)} className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
 					Experience Insights
 				</motion.p>
-				<motion.p {...fade(0.5)} className='text-[11px] text-foreground/30'>
+				<motion.p {...fade(0.25)} className='text-[11px] text-foreground/30'>
 					last 12 months - all time
 				</motion.p>
 			</div>
