@@ -1,6 +1,7 @@
-import { ECO_SYSTEMS, fade, STACK } from '@/lib/constants'
+import { ECO_SYSTEMS, STACK } from '@/lib/constants'
 import { motion } from 'motion/react'
 import { Badge } from '../ui/badge'
+import { fade } from '@/lib/utils'
 
 export const Skills = () => (
 	<div className='flex flex-col gap-5'>

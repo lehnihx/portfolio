@@ -1,8 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { TextEffect } from '../ui/flip'
-import { fade, QUOTES } from '@/lib/constants'
+import { QUOTES } from '@/lib/constants'
 import { motion } from 'motion/react'
+import { fade } from '@/lib/utils'
 
 const randomNewNumber = (lastNumber: number | null, length: number): number => {
 	const n = Math.floor(Math.random() * length)

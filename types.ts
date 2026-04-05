@@ -1,4 +1,4 @@
-import type { AppData } from './data'
+import type { AppData } from './lib/data'
 
 export type DataContextValue =
 	| { status: 'loading' }

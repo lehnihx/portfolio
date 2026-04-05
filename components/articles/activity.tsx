@@ -1,5 +1,5 @@
 import { useAppData } from '@/hooks/use-appdata'
-import { commitsToChartData, fade } from '@/lib/constants'
+import { commitsToChartData, fade } from '@/lib/utils'
 import { motion } from 'motion/react'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
 

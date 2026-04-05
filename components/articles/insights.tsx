@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { Count } from '../ui/count'
-import { commitsToChartData, fade } from '@/lib/constants'
+import { commitsToChartData, fade } from '@/lib/utils'
 import { useAppData } from '@/hooks/use-appdata'
 
 // eslint-disable-next-line max-lines-per-function

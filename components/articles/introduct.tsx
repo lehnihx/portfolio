@@ -1,7 +1,8 @@
-import { fade, HEADER, HOBIES } from '@/lib/constants'
+import { HEADER, HOBIES } from '@/lib/constants'
 import { motion } from 'motion/react'
 import { TypingAnimation } from '../ui/typing'
 import RotatingText from '../ui/swap'
+import { fade } from '@/lib/utils'
 
 export const Introduc = () => (
 	<div className='w-full flex flex-col justify-center gap-2'>

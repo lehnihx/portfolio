@@ -1,6 +1,6 @@
 import { useRef, useState, type SyntheticEvent } from 'react'
 import { motion } from 'motion/react'
-import { fade } from '@/lib/constants'
+import { fade } from '@/lib/utils'
 import { Footer } from '@/components/articles/footer'
 import {
 	Field,

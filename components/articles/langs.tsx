@@ -1,5 +1,5 @@
 import { useAppData } from '@/hooks/use-appdata'
-import { fade, filterLangs } from '@/lib/constants'
+import { fade, filterLangs } from '@/lib/utils'
 import { motion } from 'motion/react'
 
 export const Langs = () => {
