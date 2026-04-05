@@ -1,41 +1,46 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Check, GitBranch, Github } from '@hugeicons/core-free-icons'
+import { Tick02Icon } from '@hugeicons/core-free-icons'
 import { TimelineLayout } from '../timeline'
 
 export const Timeline = () => (
   <TimelineLayout
     animate
-    className="min-h-[600px] w-full max-w-2xl mx-auto p-8 flex items-center justify-center"
+    className="min-h-[600px] w-full max-w-full p-8 flex items-center justify-center"
     connectorColor="primary"
     iconColor="primary"
     items={[
       {
-        color: undefined,
-        date: '2024-01-01',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        icon: <HugeiconsIcon icon={Check} />,
         id: 1,
-        status: 'completed',
-        title: 'First event'
+        date: '2008-01-01',
+        title: 'Hello world',
+        description: 'Get into computers world.',
+        icon: <HugeiconsIcon icon={Tick02Icon} />,
+        color: 'success',
       },
       {
-        color: undefined,
-        date: '2024-02-01',
-        description: 'Aut eius excepturi ex recusandae eius est minima molestiae.',
-        icon: <HugeiconsIcon icon={Github} />,
         id: 2,
-        status: 'in-progress',
-        title: 'Second event'
+        date: '2023-10-18',
+        title: 'Revival States Foundation',
+        description: 'Start building a FiveM server by copy pasting some scripts from the community and try to invite as much staff and players as possible.',
+        icon: <HugeiconsIcon icon={Tick02Icon} />,
+        color: 'success',
       },
       {
-        color: undefined,
-        date: '2024-03-01',
-        description: 'Sit culpa quas ex nulla animi qui deleniti minus.',
-        icon: <HugeiconsIcon icon={GitBranch} />,
         id: 3,
-        status: 'pending',
-        title: 'Third event'
-      }
+        date: '2024-02-05',
+        title: 'Trippler Scripts Foundation',
+        description: 'Open an enterprise dedicated to the FiveM community that focuses on creating clean, efficient, and reliable scripts that make server management easier and more sustainable.',
+        icon: <HugeiconsIcon icon={Tick02Icon} />,
+        color: 'success',
+      },
+      {
+        id: 4,
+        date: '2024-09-17',
+        title: 'Lenix Studio Foundation',
+        description: 'Launch a volunteered project focused on FiveM development that helps students, developers, programmers and server owners to achieve their goals and provide services such as end-to-end server building, tailored scripts, rockstar filming, trailer & journey production, scenario video editing, problem solving, support, etc.',
+        icon: <HugeiconsIcon icon={Tick02Icon} />,
+        color: 'success',
+      },
     ]}
     size="md"
   />

@@ -11,7 +11,7 @@ import type { ReactNode } from 'react';
 
 export type TimelineSize = 'sm' | 'md' | 'lg';
 export type TimelineStatus = 'completed' | 'in-progress' | 'pending';
-export type TimelineColor = 'primary' | 'secondary' | 'muted' | 'accent' | 'destructive';
+export type TimelineColor = 'primary' | 'secondary' | 'muted' | 'accent' | 'destructive' | 'success';
 
 export interface TimelineElement {
 	id: number;

@@ -6,11 +6,12 @@ import { Footer } from '@/components/articles/footer'
 import { Quotes } from '@/components/articles/quote'
 import { DataProvider } from '@/lib/context'
 import { Skills } from '@/components/articles/skills'
+import { Timeline } from '@/components/articles/timeline'
 
 export const Main = () => (
 	<DataProvider>
 		<div className='w-full flex justify-evenly bg-background text-foreground'>
-			<div className='landscape:w-2/3 portrait:w-6/7 h-full flex flex-col gap-20'>
+			<div className='landscape:w-2/3 portrait:w-6/7 h-full flex flex-col gap-20 items-center'>
 				<div className='h-screen portrait:min-h-[150vh] flex flex-col justify-between'>
 					<div className='min-h-5/10 flex items-end'>
 						<Introduc />
@@ -24,6 +25,7 @@ export const Main = () => (
 					<Activity />
 					<Langs />
 				</div>
+				<Timeline />
 				<div>
 					<Quotes />
 				</div>

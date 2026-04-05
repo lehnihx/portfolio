@@ -35,7 +35,6 @@ export const filterLangs = (langsBytes: AppData['langsBytes']) => {
 export const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 16 },
   whileInView: { opacity: 1, y: 0 },
-  // viewport: { once: true },
   transition: { duration: 0.5, delay },
 })
 
@@ -58,23 +57,13 @@ export const ECO_SYSTEMS = [
 	'MySql',
 	'MariaDB',
 	'Vercel',
-	'ESLint',
+	'EsLint',
 	'PNPM',
 	'UML',
 	'DavinciResolve',
 	'Figma',
 	'Replit',
 	'Twilio'
-]
-
-export const EXPERIENCE = [
-	'Rockstar Filming',
-	'Trailer & Journey Production',
-	'Scenarios Video Editing',
-	'Tailored Scripts Programming',
-	'FiveM Servers Consultation',
-	'Problem Solving',
-	'End-to-end FiveM Server Building',
 ]
 
 export const QUOTES = [

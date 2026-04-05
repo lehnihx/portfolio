@@ -139,6 +139,7 @@ const TimelineDescription = React.forwardRef<
 ));
 TimelineDescription.displayName = 'TimelineDescription';
 
+// eslint-disable-next-line max-lines-per-function
 const TimelineIcon = ({
   icon,
   color = 'primary',
@@ -147,7 +148,7 @@ const TimelineIcon = ({
   iconSize = 'md',
 }: {
   icon?: React.ReactNode;
-  color?: 'primary' | 'secondary' | 'muted' | 'accent' | 'destructive';
+  color?: 'primary' | 'secondary' | 'muted' | 'accent' | 'destructive' | 'success';
   status?: 'completed' | 'in-progress' | 'pending' | 'error';
   iconSize?: 'sm' | 'md' | 'lg';
 }) => {
@@ -169,6 +170,7 @@ const TimelineIcon = ({
     muted: 'bg-muted text-muted-foreground',
     accent: 'bg-accent text-accent-foreground',
     destructive: 'bg-destructive text-destructive-foreground',
+    success: 'bg-green-900 text-green-500',
   };
 
   return (
@@ -231,7 +233,7 @@ const Timeline = React.forwardRef<HTMLOListElement, TimelineProps>(
         aria-label="Timeline"
         className={cn(
           timelineVariants({ size }),
-          'relative min-h-[600px] w-full max-w-2xl mx-auto py-8',
+          'relative min-h-[600px] w-full max-w-2xl py-8',
           className
         )}
         {...props}
@@ -338,7 +340,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
             <div className="relative flex h-8 w-8 animate-pulse items-center justify-center rounded-full bg-muted ring-8 ring-background">
               <HugeiconsIcon icon={Loader} className="h-4 w-4 animate-spin text-muted-foreground"/>
             </div>
-            {showConnector === true && <div className="h-full w-0.5 animate-pulse bg-muted" />}
+            {showConnector && <div className="h-full w-0.5 animate-pulse bg-muted" />}
           </div>
 
           <div className="flex flex-col gap-2 pl-2">
@@ -372,7 +374,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
               <div className="relative flex h-8 w-8 items-center justify-center rounded-full bg-destructive/20 ring-8 ring-background">
                 <HugeiconsIcon icon={AlertCircle} className="h-4 w-4 text-destructive"/>
               </div>
-              {showConnector === true && <TimelineConnector status="pending" className="h-full" />}
+              {showConnector && <TimelineConnector status="pending" className="h-full" />}
             </div>
 
             <div className="flex flex-col gap-2 pl-2">
@@ -388,7 +390,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 
     const content = (
       <div
-        className="grid grid-cols-[1fr_auto_1fr] gap-4 items-start"
+        className="grid grid-cols-[1fr_auto_1fr] gap-4 items-stretch"
         {...(status === 'in-progress' ? { 'aria-current': 'step' } : {})}
       >
         {/* Date */}
@@ -397,12 +399,12 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
         </div>
 
         {/* Timeline dot and connector */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-6">
           <div className="relative z-10">
             <TimelineIcon icon={icon} color={iconColor} status={status} iconSize={iconsize} />
           </div>
-          {showConnector === true && (
-            <div className="h-16 w-0.5 bg-border mt-2" />
+          {showConnector && (
+            <div className="flex-1 w-0.5 bg-border" />
           )}
         </div>
 
