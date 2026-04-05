@@ -7,6 +7,8 @@ import { isContact } from './lib/utils'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		{isContact() ? <Contact /> :	<Main />}
-	</StrictMode>
+		{isContact() ?
+			<Contact />
+		:	<Main />}
+	</StrictMode>,
 )

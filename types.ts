@@ -5,32 +5,37 @@ export type DataContextValue =
 	| { status: 'error'; error: string }
 	| { status: 'ok'; data: AppData }
 
-
 // Timeline
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-export type TimelineSize = 'sm' | 'md' | 'lg';
-export type TimelineStatus = 'completed' | 'in-progress' | 'pending';
-export type TimelineColor = 'primary' | 'secondary' | 'muted' | 'accent' | 'destructive' | 'success';
+export type TimelineSize = 'sm' | 'md' | 'lg'
+export type TimelineStatus = 'completed' | 'in-progress' | 'pending'
+export type TimelineColor =
+	| 'primary'
+	| 'secondary'
+	| 'muted'
+	| 'accent'
+	| 'destructive'
+	| 'success'
 
 export interface TimelineElement {
-	id: number;
-	date: string;
-	title: string;
-	description: string;
-	icon?: ReactNode | (() => ReactNode);
-	status?: TimelineStatus;
-	color?: TimelineColor;
-	size?: TimelineSize;
-	loading?: boolean;
-	error?: string;
+	id: number
+	date: string
+	title: string
+	description: string
+	icon?: ReactNode | (() => ReactNode)
+	status?: TimelineStatus
+	color?: TimelineColor
+	size?: TimelineSize
+	loading?: boolean
+	error?: string
 }
 
 export interface TimelineProps {
-	items: TimelineElement[];
-	size?: TimelineSize;
-	animate?: boolean;
-	iconColor?: TimelineColor;
-	connectorColor?: TimelineColor;
-	className?: string;
+	items: TimelineElement[]
+	size?: TimelineSize
+	animate?: boolean
+	iconColor?: TimelineColor
+	connectorColor?: TimelineColor
+	className?: string
 }

@@ -39,7 +39,7 @@ export const ECO_SYSTEMS = [
 	'DavinciResolve',
 	'Figma',
 	'Replit',
-	'Twilio'
+	'Twilio',
 ]
 
 export const QUOTES = [
@@ -65,4 +65,6 @@ export const HOBIES = [
 	'skiing',
 ]
 
-export const HEADER: [string] = ['Full Stack Developer - Senior FiveM Scripting Developer']
+export const HEADER: [string] = [
+	'Full Stack Developer - Senior FiveM Scripting Developer',
+]
