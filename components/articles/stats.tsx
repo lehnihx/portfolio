@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { Count } from './ui/count'
+import { Count } from '../ui/count'
 import { commitsToChartData, fade } from '@/lib/constants'
 import { useAppData } from '@/hooks/use-appdata'
 

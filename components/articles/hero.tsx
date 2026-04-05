@@ -1,12 +1,12 @@
 import { EXPERIENCE, fade, INTRO } from '@/lib/constants'
 import { motion } from 'motion/react'
-import RotatingText from './ui/swap'
-import { TypingAnimation } from './ui/typing'
+import RotatingText from '../ui/swap'
+import { TypingAnimation } from '../ui/typing'
 
 export const Hero = () => (
 	<motion.div {...fade(0)} className='flex flex-col justify-center gap-2'>
 		<p className='text-[11px] tracking-[3px] text-foreground/30 uppercase mb-5'>
-			Full Stack Developer - Senior FiveM Scripting Engineer
+			Full Stack Developer - Senior FiveM Scripting Developer
 		</p>
 		<h1 className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
 			Lenix

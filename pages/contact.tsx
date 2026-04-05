@@ -1,7 +1,7 @@
 import { useRef, useState, type SyntheticEvent } from 'react'
 import { motion } from 'motion/react'
 import { fade } from '@/lib/constants'
-import { Footer } from '@/components/footer'
+import { Footer } from '@/components/articles/footer'
 import {
 	Field,
 	FieldDescription,
@@ -19,7 +19,7 @@ import {
 	InputGroupButton,
 } from '@/components/ui/input-group'
 import { raise } from 'lenix'
-import { Required } from '@/components/articles/required'
+import { Required } from '@/components/required'
 import { Spinner } from '@/components/ui/spinner'
 import {
 	ArrowRight02FreeIcons,
