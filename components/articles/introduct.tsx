@@ -1,9 +1,9 @@
-import { fade, HEADER } from '@/lib/constants'
+import { fade, HEADER, HOBIES } from '@/lib/constants'
 import { motion } from 'motion/react'
 import { TypingAnimation } from '../ui/typing'
-import { Hobies } from './hobies'
+import RotatingText from '../ui/swap'
 
-export const Hero = () => (
+export const Introduc = () => (
 	<motion.div {...fade(0)} className='w-full flex flex-col justify-center gap-2'>
 		<div className='relative px-4 uppercase mb-5'>
 			<div className='invisible'>
@@ -22,6 +22,12 @@ export const Hero = () => (
 		<h1 className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
 			Lenix
 		</h1>
-		<Hobies />
+		<div className='text-foreground/30'>
+			<span>Self-taught computer scientist who loves </span>
+			<RotatingText
+				texts={HOBIES}
+				mainClassName='inline-flex flex-wrap whitespace-normal align-baseline'
+			/>
+		</div>
 	</motion.div>
 )

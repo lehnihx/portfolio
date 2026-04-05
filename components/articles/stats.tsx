@@ -3,6 +3,7 @@ import { Count } from '../ui/count'
 import { commitsToChartData, fade } from '@/lib/constants'
 import { useAppData } from '@/hooks/use-appdata'
 
+// eslint-disable-next-line max-lines-per-function
 export const Stats = () => {
 	const ctx = useAppData()
 	if (ctx.status !== 'ok') return null
@@ -29,7 +30,7 @@ export const Stats = () => {
 						sub: 'all time',
 					},
 					{
-						label: 'Average commits per commit-day',
+						label: 'Average commits per active-day',
 						value: (commits.length / commitsData.length).toFixed(1),
 						sub: 'last 12 months',
 					},
@@ -43,7 +44,7 @@ export const Stats = () => {
 						<p className='text-2xl font-semibold text-foreground tabular-nums'>
 							<Count className='text-foreground' value={Number(value)} />
 							{label !== 'Commits'
-								&& label !== 'Average commits per commit-day'
+								&& label !== 'Average commits per active-day'
 								&& 'k'}
 						</p>
 						<p className='text-[11px] text-foreground/60 mt-1'>{label}</p>

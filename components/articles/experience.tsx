@@ -1,11 +1,11 @@
-import { HOBIES } from "@/lib/constants";
+import { EXPERIENCE } from "@/lib/constants";
 import RotatingText from "../ui/swap";
 
-export const Hobies = () => (
+export const Experience = () => (
   <div className='text-foreground/30'>
-    <span>Self-taught computer scientist who loves </span>
+    <span>I used to do </span>
     <RotatingText
-      texts={HOBIES}
+      texts={EXPERIENCE}
       mainClassName='inline-flex flex-wrap whitespace-normal align-baseline'
     />
   </div>

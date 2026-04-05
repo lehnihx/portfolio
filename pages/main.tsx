@@ -1,11 +1,11 @@
-import { Hero } from '@/components/articles/hero'
+import { Introduc } from '@/components/articles/introduct'
 import { Stats } from '@/components/articles/stats'
 import { Commits } from '@/components/articles/commits'
 import { Langs } from '@/components/articles/langs'
-import { Stack } from '@/components/articles/stack'
 import { Footer } from '@/components/articles/footer'
 import { Quotes } from '@/components/articles/quote'
 import { DataProvider } from '@/lib/context'
+import { Stack } from '@/components/articles/stack'
 
 export const Main = () => (
 	<DataProvider>
@@ -13,7 +13,7 @@ export const Main = () => (
 			<div className='landscape:w-2/3 portrait:w-6/7 h-full flex flex-col gap-20'>
 				<div className='h-screen portrait:min-h-[150vh] flex flex-col justify-between'>
 					<div className='min-h-5/10 flex items-end'>
-						<Hero />
+						<Introduc />
 					</div>
 					<div className='min-h-5/10 flex flex-col justify-center'>
 						<Stack />
