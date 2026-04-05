@@ -58,7 +58,6 @@ export const ECO_SYSTEMS = [
 	'MariaDB',
 	'Vercel',
 	'ESLint',
-	'Ngrok',
 	'PNPM',
 	'UML',
 	'DavinciResolve',
@@ -93,6 +92,11 @@ export const QUOTES = [
 	'Focus on what you can do, not what paper says you can do',
 ]
 
-export const INTRO = [
-	'Self-taught developer. Started with Lua scripting, moved into TypeScript, React, Rust and systems programming. Building real products — desktop apps, web platforms, dev tools.',
+export const HOBIES = [
+	'aviation & vehicles simulations',
+	'playing golf',
+	'playing piano',
+	'skiing',
 ]
+
+export const HEADER: [string] = ['Full Stack Developer - Senior FiveM Scripting Developer']
