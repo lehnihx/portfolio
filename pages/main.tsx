@@ -1,11 +1,11 @@
 import { Introduc } from '@/components/articles/introduct'
-import { Stats } from '@/components/articles/stats'
-import { Commits } from '@/components/articles/commits'
+import { Stats } from '@/components/articles/insights'
+import { Activity } from '@/components/articles/activity'
 import { Langs } from '@/components/articles/langs'
 import { Footer } from '@/components/articles/footer'
 import { Quotes } from '@/components/articles/quote'
 import { DataProvider } from '@/lib/context'
-import { Stack } from '@/components/articles/stack'
+import { Skills } from '@/components/articles/skills'
 
 export const Main = () => (
 	<DataProvider>
@@ -16,12 +16,12 @@ export const Main = () => (
 						<Introduc />
 					</div>
 					<div className='min-h-5/10 flex flex-col justify-center'>
-						<Stack />
+						<Skills />
 					</div>
 				</div>
 				<div className='min-h-screen flex flex-col justify-evenly'>
 					<Stats />
-					<Commits />
+					<Activity />
 					<Langs />
 				</div>
 				<div>

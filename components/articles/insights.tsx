@@ -12,16 +12,16 @@ export const Stats = () => {
 	const commitsData = commitsToChartData(commits)
 
 	return (
-		<motion.div {...fade(0.1)}>
+		<div>
 			<div className='flex items-center justify-between mb-5'>
-				<p className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
+				<motion.p {...fade(0.5)} className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
 					Experience Insights
-				</p>
-				<p className='text-[11px] text-foreground/30'>
+				</motion.p>
+				<motion.p {...fade(0.5)} className='text-[11px] text-foreground/30'>
 					last 12 months - all time
-				</p>
+				</motion.p>
 			</div>
-			<div className='grid grid-cols-4 portrait:grid-cols-2 gap-px border border-foreground/10 rounded-lg overflow-hidden mb-16'>
+			<motion.div {...fade(0.5)} className='grid grid-cols-4 portrait:grid-cols-2 gap-px border border-foreground/10 rounded-lg overflow-hidden mb-16'>
 				{[
 					{ label: 'Commits', value: commits.length, sub: 'last 12 months' },
 					{
@@ -51,7 +51,7 @@ export const Stats = () => {
 						<p className='text-[10px] text-foreground/20 mt-0.5'>{sub}</p>
 					</div>
 				))}
-			</div>
-		</motion.div>
+			</motion.div>
+		</div>
 	)
 }

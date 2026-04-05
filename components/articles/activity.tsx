@@ -3,20 +3,20 @@ import { commitsToChartData, fade } from '@/lib/constants'
 import { motion } from 'motion/react'
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from 'recharts'
 
-export const Commits = () => {
+export const Activity = () => {
 	const ctx = useAppData()
 	if (ctx.status !== 'ok') return null
 
 	const commitsData = commitsToChartData(ctx.data.commits)
 	return (
-		<motion.div {...fade(0.15)} className='mb-16'>
+		<div className='mb-16'>
 			<div className='flex items-center justify-between mb-5'>
-				<p className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
+				<motion.p {...fade(1)} className='text-[11px] tracking-[3px] text-foreground/50 uppercase'>
 					Commit Activity
-				</p>
-				<p className='text-[11px] text-foreground/30'>last 12 months</p>
+				</motion.p>
+				<motion.p {...fade(1)} className='text-[11px] text-foreground/30'>last 12 months</motion.p>
 			</div>
-			<div className='border border-foreground/10 rounded-lg p-4'>
+			<motion.div {...fade(1)} className='border border-foreground/10 rounded-lg p-4'>
 				<ResponsiveContainer width='100%' height={120}>
 					<LineChart data={commitsData}>
 						<XAxis dataKey='date' hide />
@@ -42,7 +42,7 @@ export const Commits = () => {
 						/>
 					</LineChart>
 				</ResponsiveContainer>
-			</div>
-		</motion.div>
+			</motion.div>
+		</div>
 	)
 }

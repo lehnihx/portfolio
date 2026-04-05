@@ -4,8 +4,8 @@ import { TypingAnimation } from '../ui/typing'
 import RotatingText from '../ui/swap'
 
 export const Introduc = () => (
-	<motion.div {...fade(0)} className='w-full flex flex-col justify-center gap-2'>
-		<div className='relative px-4 uppercase mb-5'>
+	<div className='w-full flex flex-col justify-center gap-2'>
+		<motion.div {...fade(0)} className='relative px-4 uppercase mb-5'>
 			<div className='invisible'>
 				{HEADER.reduce((acc, itr) => (acc.length > itr.length ? acc : itr))}
 			</div>
@@ -18,16 +18,16 @@ export const Introduc = () => (
 				deleteSpeed={10}
 				className='absolute inset-0 text-sm text-foreground/30 leading-relaxed tracking-[3px]'
 			/>
-		</div>
-		<h1 className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
+		</motion.div>
+		<motion.h1 {...fade(0.5)} className='text-5xl font-semibold tracking-tight text-foreground mb-3'>
 			Lenix
-		</h1>
-		<div className='text-foreground/30'>
+		</motion.h1>
+		<motion.div {...fade(1)} className='text-foreground/30'>
 			<span>Self-taught computer scientist who loves </span>
 			<RotatingText
 				texts={HOBIES}
 				mainClassName='inline-flex flex-wrap whitespace-normal align-baseline'
 			/>
-		</div>
-	</motion.div>
+		</motion.div>
+	</div>
 )
