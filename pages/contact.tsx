@@ -148,8 +148,8 @@ export const Contact = () => {
 											className='justify-between'
 										>
 											<InputGroupText>{value.length}/1000</InputGroupText>
-											{/* eslint-disable-next-line no-nested-ternary */}
 											{
+												// eslint-disable-next-line no-nested-ternary
 												status === 'idle' ?
 													<InputGroupButton
 														aria-invalid={value.length > 1000}

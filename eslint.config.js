@@ -11,7 +11,7 @@ export default defineConfig([
 	globalIgnores(['dist']),
 	{
 		files: ['**/*.{ts,tsx}'],
-		ignores: ['*/components/ui/*'],
+		ignores: ['components/ui/*'],
 		extends: [
 			js.configs.recommended,
 			tseslint.configs.recommended,
