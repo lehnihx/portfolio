@@ -12,17 +12,17 @@ export const Activity = () => {
 		<div className='mb-16'>
 			<div className='flex items-center justify-between mb-5'>
 				<motion.p
-					{...fade(0.25)}
+					{...fade(0.125)}
 					className='text-[11px] tracking-[3px] text-foreground/50 uppercase'
 				>
 					Commit Activity
 				</motion.p>
-				<motion.p {...fade(0.25)} className='text-[11px] text-foreground/30'>
+				<motion.p {...fade(0.125)} className='text-[11px] text-foreground/30'>
 					last 12 months
 				</motion.p>
 			</div>
 			<motion.div
-				{...fade(0.5)}
+				{...fade(0.125)}
 				className='border border-foreground/10 rounded-lg p-4'
 			>
 				<ResponsiveContainer width='100%' height={120}>

@@ -5,7 +5,7 @@ import { TimelineLayout } from '../timeline'
 export const Timeline = () => (
 	<TimelineLayout
 		animate
-		className='min-h-[600px] w-full max-w-full p-8 flex items-center justify-center'
+		className='min-h-[600px] w-full max-w-full flex items-center justify-center'
 		connectorColor='primary'
 		iconColor='primary'
 		items={[

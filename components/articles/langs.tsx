@@ -11,16 +11,16 @@ export const Langs = () => {
 		<div>
 			<div className='flex items-center justify-between mb-6'>
 				<motion.p
-					{...fade(0.25)}
+					{...fade(0.125)}
 					className='text-[11px] tracking-[3px] text-foreground/40 uppercase'
 				>
 					Used Languages
 				</motion.p>
-				<motion.p {...fade(0.25)} className='text-[11px] text-foreground/20'>
+				<motion.p {...fade(0.125)} className='text-[11px] text-foreground/20'>
 					by bytes
 				</motion.p>
 			</div>
-			<motion.div {...fade(0.5)} className='flex flex-col gap-3'>
+			<motion.div {...fade(0.125)} className='flex flex-col gap-3'>
 				{filtered.map((lang, index) => {
 					const pct = (lang.bytes / total) * 100
 					return (
