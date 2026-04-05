@@ -169,8 +169,6 @@ TimelineDescription.displayName = 'TimelineDescription'
 const TimelineIcon = ({
 	icon,
 	color = 'primary',
-	// eslint-disable-next-line no-unused-vars
-	status = 'completed',
 	iconSize = 'md',
 }: {
 	icon?: React.ReactNode
@@ -181,7 +179,6 @@ const TimelineIcon = ({
 		| 'accent'
 		| 'destructive'
 		| 'success'
-	status?: 'completed' | 'in-progress' | 'pending' | 'error'
 	iconSize?: 'sm' | 'md' | 'lg'
 }) => {
 	const sizeClasses = {
