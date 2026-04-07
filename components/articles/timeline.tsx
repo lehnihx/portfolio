@@ -40,7 +40,7 @@ export const Timeline = () => (
 				date: '2024-09-17',
 				title: 'Lenix Studio Foundation',
 				description:
-					'Launch a volunteered project focused on FiveM development that helps students, developers, programmers and server owners to achieve their goals and provide services such as end-to-end server building, tailored scripts, rockstar filming, trailer & journey production, scenario video editing, problem solving, support, etc.',
+					'Launch a volunteered project focused on FiveM development that helps students, developers, programmers and server owners to achieve their goals and provide services such as end-to-end server building, tailored scripts, rockstar filming, trailer & journey production, scenario video editing, problem solving, support, teaching new students, etc.',
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
 			},
