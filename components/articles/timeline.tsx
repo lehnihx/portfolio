@@ -11,7 +11,7 @@ export const Timeline = () => (
 		items={[
 			{
 				id: 1,
-				date: '2008-01-01',
+				date: '2008-04-06',
 				title: 'Hello world',
 				description: 'Get into computers world.',
 				icon: <HugeiconsIcon icon={Tick02Icon} />,

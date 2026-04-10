@@ -14,6 +14,7 @@ export const Footer = () => {
 						url: contact ? 'https://lenix.dev' : 'https://contact.lenix.dev',
 						replace: true,
 					},
+					{ label: 'AI', url: 'https://intell.lenix.dev' },
 					{ label: 'GitHub', url: 'https://github.com/lenixdev' },
 				].map(({ label, url, replace }) => (
 					<a
