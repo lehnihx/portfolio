@@ -68,7 +68,7 @@ export const Contact = () => {
 
 	return (
 		<div className='bg-background flex flex-col items-center'>
-			<div className='min-h-screen flex flex-col justify-between min-w-2/5 items-center'>
+			<div className='min-h-screen flex flex-col justify-between min-w-2/5 portrait:min-w-9/10 items-center'>
 				<motion.div
 					{...fade(0)}
 					className='flex flex-col gap-10 h-full w-full justify-center py-16 flex-1'
