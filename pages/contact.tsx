@@ -123,7 +123,7 @@ export const Contact = () => {
 										required
 										name='subject'
 										type='text'
-										id='email'
+										id='subject'
 										placeholder='Interest'
 										defaultValue='Unsubjected message'
 									/>
@@ -206,7 +206,7 @@ export const Contact = () => {
 									<FieldDescription>Select files to upload.</FieldDescription>
 								</Field>
 								<Field orientation='horizontal'>
-									<Switch name='subscribe' id='newsletter' />
+									<Switch name='subscribe' id='subscribe' />
 									<FieldLabel
 										htmlFor='subscribe'
 										className='text-foreground/40'
