@@ -1,10 +1,15 @@
-import { wait } from 'lenix'
+import { raise, wait } from 'lenix'
 import { octokit, ownerRepos, VALID_NAMES } from './client'
 
 const getStats = async (owner: string, repo: string) => {
-	const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
-	if (status === 202) return null
-	return Array.isArray(data) ? data : []
+	try {
+		const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
+		if (status === 202) return null
+		return Array.isArray(data) ? data : []
+	} catch {
+		raise(`failed ${owner}/${repo}, skipping`)
+		return []
+	}
 }
 
 export const totalLinesAdded = async () => {
@@ -18,14 +23,13 @@ export const totalLinesAdded = async () => {
 		results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
 	}
 
-	for (const [_, stats] of results.entries())
-		if (stats)
-			for (const contributor of stats)
-				if (contributor.author?.login === 'LenixDev')
-					for (const week of contributor.weeks) {
-						total.added += week.a ?? 0
-						total.deleted += week.d ?? 0
-					}
-
+	for (const [, stats] of results.entries())
+	if (stats)
+	for (const contributor of stats)
+	if (contributor.author?.login === 'LenixDev')
+	for (const week of contributor.weeks) {
+		total.added += week.a ?? 0
+		total.deleted += week.d ?? 0
+	}
 	return total
 }
