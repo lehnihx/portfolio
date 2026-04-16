@@ -13,13 +13,12 @@ const getStats = async (owner: string, repo: string, retry = 0) => {
 		owner,
 		repo,
 	})
-	if (status === 200 && Array.isArray(data) && data.length > 0) return data
-
-  console.warn(`retrying ${owner}/${repo}... (${retry + 1}/${maxRetries})`)
-	await wait(waitInterval)
-
-	// 😌 consistency is key in life; f*ck it I'm not letting microsoft go 😂
-	return getStats(owner, repo, retry + 1)
+	if (status === 202) {
+		console.warn(`retrying ${owner}/${repo}... (${retry + 1}/${maxRetries})`)
+		await wait(waitInterval)
+		return getStats(owner, repo, retry + 1)
+	}
+	return Array.isArray(data) ? data : []
 }
 
 export const totalLinesAdded = async () => {
