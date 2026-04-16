@@ -10,6 +10,8 @@ export const Stats = () => {
 
 	const { loc, commits } = ctx.data
 	const commitsData = commitsToChartData(commits)
+	const assertions = Math.round(loc.added / 1000)
+	const deletions = Math.round(loc.deleted / 1000)
 
 	return (
 		<div>
@@ -32,7 +34,7 @@ export const Stats = () => {
 					{ label: 'Commits', value: commits.length, sub: 'last 12 months' },
 					{
 						label: 'Lines implemented',
-						value: Math.round(loc.added / 1000),
+						value: assertions > 0 ? assertions : -1,
 						sub: 'all time',
 					},
 					{
@@ -42,7 +44,7 @@ export const Stats = () => {
 					},
 					{
 						label: 'Lines refactored',
-						value: Math.round(loc.deleted / 1000),
+						value: deletions > 0 ? deletions : -1,
 						sub: 'all time',
 					},
 				].map(({ label, value, sub }) => (
