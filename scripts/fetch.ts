@@ -3,10 +3,9 @@ import { totalCommits } from './commits'
 import { totalLinesAdded } from './loc'
 import { caughtFetch } from 'lenix'
 
-if (typeof process.env.GITHUB_TOKEN !== 'string')
-	throw new Error('GITHUB_TOKEN missing')
-if (typeof process.env.GIST_ID !== 'string') throw new Error('GIST_ID missing')
-if (typeof process.env.GH_PAT !== 'string') throw new Error('GH_PAT missing')
+if (typeof process.env.GH_TOKEN !== 'string')
+	throw new Error('GH_TOKEN missing')
+if (typeof process.env.VITE_GIST_ID !== 'string') throw new Error('VITE_GIST_ID missing')
 
 const loc = await totalLinesAdded()
 const commits = await totalCommits()
@@ -16,11 +15,11 @@ const content = JSON.stringify({ loc, commits, langsBytes })
 
 const res = await caughtFetch(
 	'api.github.com',
-	`gists/${process.env.GIST_ID}`,
+	`gists/${process.env.VITE_GIST_ID}`,
 	{
 		method: 'PATCH',
 		headers: {
-			Authorization: `token ${process.env.GH_PAT}`,
+			Authorization: `token ${process.env.GH_TOKEN}`,
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({

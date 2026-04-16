@@ -18,7 +18,6 @@ jobs:
       - run: pnpm install
       - name: Run fetch script
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          GIST_ID: ${{ secrets.GIST_ID }}
-          GH_PAT: ${{ secrets.GH_PAT }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          VITE_GIST_ID: ${{ secrets.VITE_GIST_ID }}
         run: pnpm fetchapi
