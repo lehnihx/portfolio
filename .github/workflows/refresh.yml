@@ -20,4 +20,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           VITE_GIST_ID: ${{ secrets.VITE_GIST_ID }}
-        run: pnpm fetchapi
+        run: pnpm tsx scripts/fetch.ts
