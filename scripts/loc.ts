@@ -1,33 +1,31 @@
 import { wait } from 'lenix'
 import { octokit, ownerRepos, VALID_NAMES } from './client'
 
-const waitInterval = 10000
-
-const getStats = async (owner: string, repo: string, retry = 0) => {
-	const { data, status } = await octokit.rest.repos.getContributorsStats({
-		owner,
-		repo,
-	})
-	if (status === 202) {
-		console.warn(`retrying ${owner}/${repo}... (${retry + 1})`)
-		await wait(waitInterval)
-		return getStats(owner, repo, retry + 1)
-	}
+const getStats = async (owner: string, repo: string) => {
+	const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
+	if (status === 202) return null
 	return Array.isArray(data) ? data : []
 }
 
 export const totalLinesAdded = async () => {
-	const total: { added: number; deleted: number } = { added: 0, deleted: 0 }
-	for (const { name, owner } of ownerRepos)
-		if (VALID_NAMES.includes(owner.login)) {
-			const stats = await getStats(owner.login, name)
+	const total = { added: 0, deleted: 0 }
+	const targets = ownerRepos.filter(({ owner }) => VALID_NAMES.includes(owner.login))
+
+	let results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
+
+	if (results.some(r => r === null)) {
+		await wait(30000)
+		results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
+	}
+
+	for (const [_, stats] of results.entries())
+		if (stats)
 			for (const contributor of stats)
 				if (contributor.author?.login === 'LenixDev')
-					// eslint-disable-next-line max-depth
 					for (const week of contributor.weeks) {
 						total.added += week.a ?? 0
 						total.deleted += week.d ?? 0
 					}
-		}
+
 	return total
 }
