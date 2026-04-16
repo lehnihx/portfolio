@@ -2,19 +2,14 @@ import { wait } from 'lenix'
 import { octokit, ownerRepos, VALID_NAMES } from './client'
 
 const waitInterval = 10000
-const maxRetries = 20
 
 const getStats = async (owner: string, repo: string, retry = 0) => {
-	if (retry >= maxRetries) {
-    console.warn(`giving up on ${owner}/${repo}`)
-    return []
-  }
 	const { data, status } = await octokit.rest.repos.getContributorsStats({
 		owner,
 		repo,
 	})
 	if (status === 202) {
-		console.warn(`retrying ${owner}/${repo}... (${retry + 1}/${maxRetries})`)
+		console.warn(`retrying ${owner}/${repo}... (${retry + 1})`)
 		await wait(waitInterval)
 		return getStats(owner, repo, retry + 1)
 	}
