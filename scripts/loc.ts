@@ -1,20 +1,25 @@
 import { wait } from 'lenix'
 import { octokit, ownerRepos, VALID_NAMES } from './client'
 
-const waitInterval = 3000
+const waitInterval = 10000
+const maxRetries = 20
 
-const getStats = async (owner: string, repo: string) => {
+const getStats = async (owner: string, repo: string, retry = 0) => {
+	if (retry >= maxRetries) {
+    console.warn(`giving up on ${owner}/${repo}`)
+    return []
+  }
 	const { data, status } = await octokit.rest.repos.getContributorsStats({
 		owner,
 		repo,
 	})
 	if (status === 200 && Array.isArray(data) && data.length > 0) return data
 
-	console.warn(`retrying ${owner}/${repo}...`)
+  console.warn(`retrying ${owner}/${repo}... (${retry + 1}/${maxRetries})`)
 	await wait(waitInterval)
 
 	// 😌 consistency is key in life; f*ck it I'm not letting microsoft go 😂
-	return getStats(owner, repo)
+	return getStats(owner, repo, retry + 1)
 }
 
 export const totalLinesAdded = async () => {
