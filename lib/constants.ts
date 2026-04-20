@@ -22,19 +22,17 @@ export const STACK = [
 	'Tailwind',
 	'React',
 	'Next.js',
+	'AI'
 ]
 
 export const ECO_SYSTEMS = [
-	'LuaRocks',
-	'FiveM',
-	'MySql',
-	'MariaDB',
+	'Deno',
+	'JSR',
+	'Groq',
+	'VSCode',
 	'Vercel',
-	'EsLint',
-	'PNPM',
+	'FiveM',
 	'UML',
-	'DavinciResolve',
-	'Figma',
 	'Replit',
 	'Twilio',
 ]
@@ -51,12 +49,17 @@ export const QUOTES = [
 ]
 
 export const HOBIES = [
+	'swimming',
 	'aviation & vehicles simulations',
 	'playing golf',
 	'playing piano',
 	'skiing',
+	'bicycles',
+	'music',
+	'video games',
+	'movies',
 ]
 
 export const HEADER: [string] = [
-	'Full Stack Developer - Senior FiveM Scripting Developer',
+	'Full-Stack Software Engineer',
 ]
