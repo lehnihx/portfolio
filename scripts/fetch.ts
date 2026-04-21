@@ -7,9 +7,9 @@ if (typeof process.env.GH_TOKEN !== 'string')
 	throw new Error('GH_TOKEN missing')
 if (typeof process.env.VITE_GIST_ID !== 'string') throw new Error('VITE_GIST_ID missing')
 
+const loc = await totalLinesAdded()
 const commits = await totalCommits()
 const langsBytes = await totalLangsBytes()
-const loc = await totalLinesAdded()
 
 const content = JSON.stringify({ loc, commits, langsBytes })
 

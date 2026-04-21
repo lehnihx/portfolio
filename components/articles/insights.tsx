@@ -35,7 +35,7 @@ export const Stats = () => {
 					{
 						label: 'Lines implemented',
 						value: assertions > 0 ? assertions : -1,
-						sub: 'all time',
+						sub: 'specific time',
 					},
 					{
 						label: 'Average commits per active-day',
@@ -45,7 +45,7 @@ export const Stats = () => {
 					{
 						label: 'Lines refactored',
 						value: deletions > 0 ? deletions : -1,
-						sub: 'all time',
+						sub: 'specific time',
 					},
 				].map(({ label, value, sub }) => (
 					<div key={label} className=' px-5 py-6 text-center'>

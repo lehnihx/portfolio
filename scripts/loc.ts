@@ -1,14 +1,16 @@
-import { raise, wait } from 'lenix'
+import { raise } from 'lenix'
 import { octokit, ownerRepos, VALID_NAMES } from './client'
 
 const getStats = async (owner: string, repo: string) => {
 	try {
 		const { data, status } = await octokit.rest.repos.getContributorsStats({ owner, repo })
-		if (status === 202) return null
+		if (status === 202) {
+			console.warn(`github currently has an unfixed error, tried on: ${owner}/${repo}, skipping`)
+			return null
+		}
 		return Array.isArray(data) ? data : []
-	} catch {
-		raise(`failed ${owner}/${repo}, skipping`)
-		return []
+	} catch(err) {
+		raise(err)
 	}
 }
 
@@ -16,12 +18,7 @@ export const totalLinesAdded = async () => {
 	const total = { added: 0, deleted: 0 }
 	const targets = ownerRepos.filter(({ owner }) => VALID_NAMES.includes(owner.login))
 
-	let results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
-
-	if (results.some(r => r === null)) {
-		await wait(30000)
-		results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
-	}
+	const results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
 
 	for (const [, stats] of results.entries())
 	if (stats)
