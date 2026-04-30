@@ -34,7 +34,7 @@ export const Stats = () => {
 					{ label: 'Commits', value: commits.length, sub: 'last 12 months' },
 					{
 						label: 'Lines implemented',
-						value: assertions > 0 ? assertions : -0,
+						value: assertions > 0 ? assertions : -1,
 						sub: 'specific time',
 					},
 					{
@@ -44,7 +44,7 @@ export const Stats = () => {
 					},
 					{
 						label: 'Lines refactored',
-						value: deletions > 0 ? deletions : -0,
+						value: deletions > 0 ? deletions : -1,
 						sub: 'specific time',
 					},
 				].map(({ label, value, sub }) => (
