@@ -220,7 +220,7 @@ const TimelineIcon = ({
 						colorClasses[color],
 					)}
 				>
-					{Boolean(icon) ?
+					{icon ?
 						<div
 							className={cn(
 								'flex items-center justify-center',
@@ -232,7 +232,7 @@ const TimelineIcon = ({
 					:	<div className={cn('rounded-full', iconSizeClasses[iconSize])} />}
 				</div>
 			</TooltipTrigger>
-			<TooltipContent className={`${hover.length > 0 ? 'opacity-100' : 'opacity-0'}`}>
+			<TooltipContent className={hover.length > 0 ? 'opacity-100' : 'opacity-0'}>
 				<p>{hover}</p>
 			</TooltipContent>
 		</Tooltip>

@@ -18,7 +18,7 @@ export const totalLinesAdded = async () => {
 	const total = { added: 0, deleted: 0 }
 	const targets = ownerRepos.filter(({ owner }) => VALID_NAMES.includes(owner.login))
 
-	const results = await Promise.all(targets.map(({ owner, name }) => getStats(owner.login, name)))
+	const results = await Promise.all(targets.map(async ({ owner, name }) => getStats(owner.login, name)))
 
 	for (const [, stats] of results.entries())
 	if (stats)
