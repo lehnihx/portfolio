@@ -1,5 +1,5 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { ExclamationMarkIcon, PauseCircleIcon, PauseIcon, SettingsError02Icon, Tick02Icon, Time04Icon, TimeHalfPassIcon, Warning, X } from '@hugeicons/core-free-icons'
+import { ExclamationMarkIcon, PauseCircleIcon, Tick02Icon, Time04Icon, TimeHalfPassIcon, X } from '@hugeicons/core-free-icons'
 import { TimelineLayout } from '../timeline'
 
 export const Timeline = () => (

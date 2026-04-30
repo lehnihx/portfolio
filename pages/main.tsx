@@ -16,6 +16,7 @@ export const Main = () => (
 						<Introduc />
 					</div>
 					<div className='min-h-5/10 flex flex-col justify-center'>
+					{/*  */}
 					</div>
 				</div>
 				<div className='min-h-screen flex flex-col justify-evenly'>
