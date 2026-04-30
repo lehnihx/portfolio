@@ -238,7 +238,7 @@ export const Timeline = () => (
 				title: 'Intellenix: AI Mobile App Assistant',
 				description: 'Built a cross-platform assistant that rejects the "generalist" approach. Instead of knowing a little about everything, Intellenix is engineered to go deep into specific domains and tasks, providing high-level expertise where general AI usually fails.',
 				techs: ['React Native', 'TypeScript', 'Expo', 'React', 'Supabase', 'Groq', 'Node.js', 'Vercel', 'Tamagui', 'i18next', 'Eslint', 'Prettier', 'Stylistic'],
-				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
 				iconHover: 'In progress'
 			},
