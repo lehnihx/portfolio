@@ -7,6 +7,7 @@ import { motion, type HTMLMotionProps } from 'framer-motion'
 import type { TimelineColor, TimelineElement } from '@/types'
 import { AlertCircle, Loader } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
+import { Badge } from './ui/badge'
 
 const timelineVariants = cva('flex flex-col relative', {
 	variants: {
@@ -319,6 +320,8 @@ interface TimelineItemProps extends Omit<HTMLMotionProps<'li'>, 'ref'> {
 	loading?: boolean
 	/** Error message */
 	error?: string
+	/** Array of techs */
+	techs?: string[]
 }
 
 const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
@@ -345,6 +348,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 			animate,
 			// eslint-disable-next-line no-unused-vars
 			transition,
+			techs,
 			...props
 		},
 		ref,
@@ -462,6 +466,11 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 						<TimelineTitle>{title}</TimelineTitle>
 					</TimelineHeader>
 					<TimelineDescription>{description}</TimelineDescription>
+					<div className='flex flex-wrap gap-1'>
+						{techs?.map((tech, i) => (
+							<Badge key={i} variant='outline' className='text-foreground/40'>{tech}</Badge>
+						))}
+					</div>
 				</TimelineContent>
 			</div>
 		)
@@ -537,6 +546,7 @@ export const TimelineLayout = ({
 					iconColor={item.color ?? iconColor}
 					connectorColor={item.color ?? connectorColor}
 					showConnector={index !== items.length - 1}
+					techs={item.techs}
 				/>
 			</motion.div>
 		))}
