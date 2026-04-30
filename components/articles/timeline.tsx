@@ -26,6 +26,7 @@ export const Timeline = () => (
         techs: ['Lua', 'YARN', 'Xampp', 'HeidiSQL'],
         icon: <HugeiconsIcon icon={X} />,
         color: 'destructive',
+				iconHover: 'Could not find the right partner'
       },
       {
         id: 3,
@@ -35,6 +36,7 @@ export const Timeline = () => (
         techs: ['Lua', 'TypeScript', 'FiveM Native', 'Figma', 'MySQL', 'Node.js', 'NPM', 'Git', 'MariaDB', 'React', 'SQL', 'Tailwind', 'Vite', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={X} />,
         color: 'destructive',
+				iconHover: 'Niche market'
       },
       {
         id: 4,
@@ -71,6 +73,7 @@ export const Timeline = () => (
         techs: ['Lua5.4', 'API', 'FiveM Native'],
         icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
         color: 'secondary',
+				iconHover: 'Abandoned'
       },
 			{
 				id: 8,
@@ -107,6 +110,7 @@ export const Timeline = () => (
 				techs: ['TypeScript', 'MySQL', 'Figma', 'Axios', 'Node.js', 'FiveM Native'],
 				icon: <HugeiconsIcon icon={X} />,
 				color: 'destructive',
+				iconHover: 'Unserious partnerships'
 			},
 			{
 				id: 12,
@@ -179,6 +183,7 @@ export const Timeline = () => (
 				techs: ['React Native', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
 				color: 'paused',
+				iconHover: 'Paused'
 			},
 			{
 				id: 18,
@@ -188,6 +193,7 @@ export const Timeline = () => (
         techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
         color: 'paused',
+				iconHover: 'Paused'
       },
 			// {
 			// 	id: 19,
@@ -221,9 +227,10 @@ export const Timeline = () => (
 				date: '2026-04-07',
 				title: 'Sysenix: Next-Gen AI Desktop OS',
 				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
-				techs: ['MacOS', 'Rust', 'AI', 'Systems'],
+				techs: ['macOS', 'Rust', 'AI', 'Systems'],
 				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
+				iconHover: 'In progress'
 			},
 		]}
 		size='md'

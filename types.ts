@@ -32,13 +32,5 @@ export interface TimelineElement {
 	size?: TimelineSize
 	loading?: boolean
 	error?: string
-}
-
-export interface TimelineProps {
-	items: TimelineElement[]
-	size?: TimelineSize
-	animate?: boolean
-	iconColor?: TimelineColor
-	connectorColor?: TimelineColor
-	className?: string
+	iconHover?: string
 }

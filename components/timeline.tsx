@@ -8,6 +8,7 @@ import type { TimelineColor, TimelineElement } from '@/types'
 import { AlertCircle, Loader } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Badge } from './ui/badge'
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
 
 const timelineVariants = cva('flex flex-col relative', {
 	variants: {
@@ -171,6 +172,7 @@ const TimelineIcon = ({
 	icon,
 	color = 'primary',
 	iconSize = 'md',
+	hover = ''
 }: {
 	icon?: React.ReactNode
 	color?:
@@ -183,6 +185,7 @@ const TimelineIcon = ({
 		| 'pending'
 		| 'paused'
 	iconSize?: 'sm' | 'md' | 'lg'
+	hover?: string
 }) => {
 	const sizeClasses = {
 		sm: 'h-8 w-8',
@@ -208,24 +211,31 @@ const TimelineIcon = ({
 	}
 
 	return (
-		<div
-			className={cn(
-				'relative flex items-center justify-center rounded-full ring-8 ring-background shadow-sm',
-				sizeClasses[iconSize],
-				colorClasses[color],
-			)}
-		>
-			{Boolean(icon) ?
+		<Tooltip>
+			<TooltipTrigger asChild>
 				<div
 					className={cn(
-						'flex items-center justify-center',
-						iconSizeClasses[iconSize],
+						'relative flex items-center justify-center rounded-full ring-8 ring-background shadow-sm',
+						sizeClasses[iconSize],
+						colorClasses[color],
 					)}
 				>
-					{icon}
+					{Boolean(icon) ?
+						<div
+							className={cn(
+								'flex items-center justify-center',
+								iconSizeClasses[iconSize],
+							)}
+						>
+							{icon}
+						</div>
+					:	<div className={cn('rounded-full', iconSizeClasses[iconSize])} />}
 				</div>
-			:	<div className={cn('rounded-full', iconSizeClasses[iconSize])} />}
-		</div>
+			</TooltipTrigger>
+			<TooltipContent className={`${hover.length > 0 ? 'opacity-100' : 'opacity-0'}`}>
+				<p>{hover}</p>
+			</TooltipContent>
+		</Tooltip>
 	)
 }
 
@@ -326,6 +336,8 @@ interface TimelineItemProps extends Omit<HTMLMotionProps<'li'>, 'ref'> {
 	error?: string
 	/** Array of techs */
 	techs?: string[]
+	/** Icon hover text */
+	iconHover?: string
 }
 
 const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
@@ -353,6 +365,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 			// eslint-disable-next-line no-unused-vars
 			transition,
 			techs,
+			iconHover,
 			...props
 		},
 		ref,
@@ -459,6 +472,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 							icon={icon}
 							color={iconColor}
 							iconSize={iconsize}
+							hover={iconHover}
 						/>
 					</div>
 					{showConnector && <div className='flex-1 w-0.5 bg-border' />}
@@ -551,6 +565,7 @@ export const TimelineLayout = ({
 					connectorColor={item.color ?? connectorColor}
 					showConnector={index !== items.length - 1}
 					techs={item.techs}
+					iconHover={item.iconHover}
 				/>
 			</motion.div>
 		))}
