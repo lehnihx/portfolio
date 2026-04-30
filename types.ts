@@ -25,7 +25,7 @@ export interface TimelineElement {
 	date: string
 	title: string
 	description: string
-	techs: string[]
+	techs?: string[]
 	icon?: ReactNode | (() => ReactNode)
 	status?: TimelineStatus
 	color?: TimelineColor

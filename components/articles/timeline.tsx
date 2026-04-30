@@ -1,5 +1,5 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { ExclamationMarkIcon, PauseCircleIcon, PauseIcon, SettingsError02Icon, Tick02Icon, Time04Icon, Warning, X } from '@hugeicons/core-free-icons'
+import { ExclamationMarkIcon, PauseCircleIcon, PauseIcon, SettingsError02Icon, Tick02Icon, Time04Icon, TimeHalfPassIcon, Warning, X } from '@hugeicons/core-free-icons'
 import { TimelineLayout } from '../timeline'
 
 export const Timeline = () => (
@@ -215,7 +215,7 @@ export const Timeline = () => (
 				color: 'success',
 			},
 			{
-				id: 22,
+				id: 21,
 				date: '2026-03-21',
 				title: 'Commenix: AI-Powered DX Tooling',
 				description: 'A VS Code extension that reads your staged code changes and automatically writes perfect Git commit messages that support multiple AI models.',
@@ -225,13 +225,23 @@ export const Timeline = () => (
 			},
 			{
 				id: 23,
+				date: '2026-03-25',
+				title: 'Tonelix: AI Mobile Music App',
+				description: 'Built a cross-platform music app that uses YouTube as a data source, integrating AI for various tasks.',
+				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
+				color: 'primary',
+				iconHover: 'Not started yet'
+			},
+			{
+				id: 22,
 				date: '2026-04-07',
 				title: 'Intellenix: AI Mobile App Assistant',
 				description: 'Built a cross-platform assistant that rejects the "generalist" approach. Instead of knowing a little about everything, Intellenix is engineered to go deep into specific domains and tasks, providing high-level expertise where general AI usually fails.',
 				techs: ['React Native', 'TypeScript', 'Expo', 'React', 'Supabase', 'Groq', 'Node.js', 'Vercel', 'Tamagui', 'i18next', 'Eslint', 'Prettier', 'Stylistic'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
-				color: 'success',
-			}
+				color: 'pending',
+				iconHover: 'In progress'
+			},
 		]}
 		size='md'
 	/>

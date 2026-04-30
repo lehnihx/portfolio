@@ -564,7 +564,7 @@ export const TimelineLayout = ({
 					iconColor={item.color ?? iconColor}
 					connectorColor={item.color ?? connectorColor}
 					showConnector={index !== items.length - 1}
-					techs={item.techs}
+					techs={item.techs ?? []}
 					iconHover={item.iconHover}
 				/>
 			</motion.div>
