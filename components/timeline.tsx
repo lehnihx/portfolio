@@ -180,6 +180,8 @@ const TimelineIcon = ({
 		| 'accent'
 		| 'destructive'
 		| 'success'
+		| 'pending'
+		| 'paused'
 	iconSize?: 'sm' | 'md' | 'lg'
 }) => {
 	const sizeClasses = {
@@ -199,8 +201,10 @@ const TimelineIcon = ({
 		secondary: 'bg-secondary text-secondary-foreground',
 		muted: 'bg-muted text-muted-foreground',
 		accent: 'bg-accent text-accent-foreground',
-		destructive: 'bg-destructive text-destructive-foreground',
+		destructive: 'bg-red-900 text-destructive',
 		success: 'bg-green-900 text-green-500',
+		pending: 'bg-blue-900 text-blue-400',
+		paused: 'bg-yellow-900 text-orange-400',
 	}
 
 	return (

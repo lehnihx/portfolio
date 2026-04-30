@@ -17,6 +17,8 @@ export type TimelineColor =
 	| 'accent'
 	| 'destructive'
 	| 'success'
+	| 'pending'
+	| 'paused'
 
 export interface TimelineElement {
 	id: number

@@ -1,5 +1,5 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Tick02Icon } from '@hugeicons/core-free-icons'
+import { ExclamationMarkIcon, PauseCircleIcon, PauseIcon, SettingsError02Icon, Tick02Icon, Time04Icon, Warning, X } from '@hugeicons/core-free-icons'
 import { TimelineLayout } from '../timeline'
 
 export const Timeline = () => (
@@ -24,8 +24,8 @@ export const Timeline = () => (
         title: '@Revival States',
         description: 'Started my journey as a Full-Stack Developer, try to reach to the top best FiveM servers in the middle east, invite as much people as I can.',
         techs: ['Lua', 'YARN', 'Xampp', 'HeidiSQL'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+        icon: <HugeiconsIcon icon={X} />,
+        color: 'destructive',
       },
       {
         id: 3,
@@ -33,8 +33,8 @@ export const Timeline = () => (
         title: '@Trippler Scripts',
         description: 'Stopped copying and started creating. Launched Trippler Scripts Enterprise to provide the community with clean, optimized, and actually reliable scripts.',
         techs: ['Lua', 'TypeScript', 'FiveM Native', 'Figma', 'MySQL', 'Node.js', 'NPM', 'Git', 'MariaDB', 'React', 'SQL', 'Tailwind', 'Vite', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+        icon: <HugeiconsIcon icon={X} />,
+        color: 'destructive',
       },
       {
         id: 4,
@@ -69,8 +69,8 @@ export const Timeline = () => (
         title: 'The Interoperability Layer',
         description: 'Built a smart compatibility layer that lets scripts made for different frameworks talk to each other without manual rewriting.',
         techs: ['Lua5.4', 'API', 'FiveM Native'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+        icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
+        color: 'secondary',
       },
 			{
 				id: 8,
@@ -105,8 +105,8 @@ export const Timeline = () => (
 				title: 'B2B Strategic Partnerships',
 				description: 'Negotiated and built a sponsorship custom scripts for the top #10 AR-SA servers, reaching massive traffic levels and community engagement.',
 				techs: ['TypeScript', 'MySQL', 'Figma', 'Axios', 'Node.js', 'FiveM Native'],
-				icon: <HugeiconsIcon icon={Tick02Icon} />,
-				color: 'success',
+				icon: <HugeiconsIcon icon={X} />,
+				color: 'destructive',
 			},
 			{
 				id: 12,
@@ -177,8 +177,8 @@ export const Timeline = () => (
 				title: 'Thrivenix: Mobile App',
 				description: 'A cross-platform lifestyle app built integrated with an AI chat tab. Support multiple language, themes, AI settings, app performance, and more.',
 				techs: ['React Native', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
-				icon: <HugeiconsIcon icon={Tick02Icon} />,
-				color: 'success',
+        icon: <HugeiconsIcon icon={PauseCircleIcon} />,
+				color: 'paused',
 			},
 			{
 				id: 18,
@@ -186,8 +186,8 @@ export const Timeline = () => (
         title: 'Enterprise Management Platform',
         description: 'Built a massive management suite for educational institutes, running natively on Mac, Windows, and Linux. Plus to that it contains a compatible web interface.',
         techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+        icon: <HugeiconsIcon icon={PauseCircleIcon} />,
+        color: 'paused',
       },
 			// {
 			// 	id: 19,
@@ -222,8 +222,8 @@ export const Timeline = () => (
 				title: 'Sysenix: Next-Gen AI Desktop OS',
 				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
 				techs: ['MacOS', 'Rust', 'AI', 'Systems'],
-				icon: <HugeiconsIcon icon={Tick02Icon} />,
-				color: 'success',
+				icon: <HugeiconsIcon icon={Time04Icon} />,
+				color: 'pending',
 			},
 		]}
 		size='md'
