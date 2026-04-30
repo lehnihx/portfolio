@@ -89,7 +89,7 @@ export const Timeline = () => (
         date: '2025-10-13',
         title: 'Documentation Hub',
 				description: 'Built a central home for all my projects. Create a space where developers can actually find what they need, making my tools easier to use and much more professional to scale.',
-				techs: ['Next.js', 'MDX', 'Tailwind', 'Nextra', 'Node.js'],
+				techs: ['Next.js', 'MDX', 'Tailwind', 'Vercel', 'Nextra', 'Node.js'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
       },
@@ -180,7 +180,7 @@ export const Timeline = () => (
 				date: '2026-03-08',
 				title: 'Thrivenix: Mobile App',
 				description: 'A cross-platform lifestyle app built integrated with an AI chat tab. Support multiple language, themes, AI settings, app performance, and more.',
-				techs: ['React Native', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
+				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
 				color: 'paused',
 				iconHover: 'Paused'
@@ -195,15 +195,16 @@ export const Timeline = () => (
         color: 'paused',
 				iconHover: 'Paused'
       },
-			// {
-			// 	id: 19,
-			// 	date: '2026-03-09',
-			// 	title: 'Sysenix: Autonomous OS Agent',
-			// 	description: 'My smartest project yet: an AI agent that watches your Mac, logs changes, and can undo them or control the UI for you.',
-			// 	techs: ['AI Agents', 'macOS Internals', 'System Tracking'],
-			// 	icon: <HugeiconsIcon icon={Tick02Icon} />,
-			// 	color: 'success',
-			// },
+			{
+				id: 19,
+				date: '2026-03-09',
+				title: 'Sysenix: Next-Gen AI Desktop OS',
+				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
+				techs: ['macOS', 'Rust', 'AI', 'Systems'],
+				icon: <HugeiconsIcon icon={Time04Icon} />,
+				color: 'pending',
+				iconHover: 'In progress'
+			},
 			{
 				id: 20,
 				date: '2026-03-19',
@@ -225,13 +226,12 @@ export const Timeline = () => (
 			{
 				id: 23,
 				date: '2026-04-07',
-				title: 'Sysenix: Next-Gen AI Desktop OS',
-				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
-				techs: ['macOS', 'Rust', 'AI', 'Systems'],
-				icon: <HugeiconsIcon icon={Time04Icon} />,
-				color: 'pending',
-				iconHover: 'In progress'
-			},
+				title: 'Intellenix: AI Mobile App Assistant',
+				description: 'Built a cross-platform assistant that rejects the "generalist" approach. Instead of knowing a little about everything, Intellenix is engineered to go deep into specific domains and tasks, providing high-level expertise where general AI usually fails.',
+				techs: ['React Native', 'TypeScript', 'Expo', 'React', 'Supabase', 'Groq', 'Node.js', 'Vercel', 'Tamagui', 'i18next', 'Eslint', 'Prettier', 'Stylistic'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
+			}
 		]}
 		size='md'
 	/>
