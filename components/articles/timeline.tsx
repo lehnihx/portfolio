@@ -180,7 +180,7 @@ export const Timeline = () => (
 				date: '2026-03-08',
 				title: 'Thrivenix: Mobile App',
 				description: 'A cross-platform lifestyle app built integrated with an AI chat tab. Support multiple language, themes, AI settings, app performance, and more.',
-				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
+				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Twilio', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
 				color: 'paused',
 				iconHover: 'Paused'

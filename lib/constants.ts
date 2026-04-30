@@ -11,32 +11,6 @@ export const EXCLUDED_LANGS = [
 	'SVG',
 ]
 
-export const STACK = [
-	'React Native',
-	'Expo',
-	'Tauri',
-	'Supabase',
-	'Vite',
-	'Node.js',
-	'PostgresSql',
-	'Tailwind',
-	'React',
-	'Next.js',
-	'AI'
-]
-
-export const ECO_SYSTEMS = [
-	'Deno',
-	'JSR',
-	'Groq',
-	'VSCode',
-	'Vercel',
-	'FiveM',
-	'UML',
-	'Replit',
-	'Twilio',
-]
-
 export const QUOTES = [
 	'Full Stack Is Just Where I Started',
 	'Going From Pixels To Silicon',

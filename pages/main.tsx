@@ -5,7 +5,6 @@ import { Langs } from '@/components/articles/langs'
 import { Footer } from '@/components/articles/footer'
 import { Quotes } from '@/components/articles/quote'
 import { DataProvider } from '@/lib/context'
-import { Skills } from '@/components/articles/skills'
 import { Timeline } from '@/components/articles/timeline'
 
 export const Main = () => (
@@ -17,7 +16,6 @@ export const Main = () => (
 						<Introduc />
 					</div>
 					<div className='min-h-5/10 flex flex-col justify-center'>
-						<Skills />
 					</div>
 				</div>
 				<div className='min-h-screen flex flex-col justify-evenly'>
