@@ -23,15 +23,11 @@ export const QUOTES = [
 ]
 
 export const HOBIES = [
-	'swimming',
-	'aviation & vehicles simulations',
-	'playing golf',
-	'playing piano',
-	'skiing',
 	'bicycles',
-	'music',
-	'video games',
-	'movies',
+	'swimming',
+	'skiing',
+	'playing piano',
+	'playing golf',
 ]
 
 export const HEADER: [string] = [

@@ -110,7 +110,7 @@ export const Timeline = () => (
 				techs: ['TypeScript', 'MySQL', 'Figma', 'Axios', 'Node.js', 'FiveM Native'],
 				icon: <HugeiconsIcon icon={X} />,
 				color: 'destructive',
-				iconHover: 'Unserious partnerships'
+				iconHover: 'Parterships aren\'t professional'
 			},
 			{
 				id: 12,
