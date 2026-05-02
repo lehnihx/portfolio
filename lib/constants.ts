@@ -30,6 +30,13 @@ export const HOBIES = [
 	'playing golf',
 ]
 
-export const HEADER: [string] = [
-	'Full-Stack Software Engineer',
+export const HEADER = [
+  'AI Engineer',
+  'Full-Stack Engineer',
+  'Systems Engineer',
+  'Mobile Engineer',
+  'DevOps Engineer',
+  'Open Source Maintainer',
+  'Technical Consultant',
+  'DevEx Engineer',
 ]
