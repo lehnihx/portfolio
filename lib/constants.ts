@@ -34,9 +34,9 @@ export const HEADER = [
   'AI Engineer',
   'Full-Stack Engineer',
   'Systems Engineer',
-  'Mobile Engineer',
-  'DevOps Engineer',
+  'Mobile Apps Engineer',
+  'Dev-Ops Engineer',
   'Open Source Maintainer',
   'Technical Consultant',
-  'DevEx Engineer',
+  'Dev-Ex Engineer',
 ]
