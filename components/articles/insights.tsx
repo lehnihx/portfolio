@@ -54,6 +54,7 @@ export const Stats = () => {
 							{label !== 'Commits'
 								&& label !== 'Average commits per active-day'
 								&& 'k'}
+							{sub === 'specific time' && '+'}
 						</p>
 						<p className='text-[11px] text-foreground/60 mt-1'>{label}</p>
 						<p className='text-[10px] text-foreground/20 mt-0.5'>{sub}</p>
