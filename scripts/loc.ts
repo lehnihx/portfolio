@@ -62,7 +62,6 @@ export const totalLinesAdded = async () => {
 			const { added, deleted } = await getStatsFallback(owner.login, name)
 			total.added += added
 			total.deleted += deleted
-			console.info(name, owner.login)
 		} catch(err) {
 			raise(err)
 		}
