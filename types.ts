@@ -33,4 +33,5 @@ export interface TimelineElement {
 	loading?: boolean
 	error?: string
 	iconHover?: string
+	url?: string
 }

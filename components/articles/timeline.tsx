@@ -22,7 +22,7 @@ export const Timeline = () => (
         id: 2,
         date: '2023-10-18',
         title: '@Revival States',
-        description: 'Started my journey as a Full-Stack Developer, try to reach to the top best FiveM servers in the middle east, invite as much people as I can.',
+        description: 'Start my journey as a Full-Stack Developer, try to reach to the top best FiveM servers in the middle east, invite as much people as I can.',
         techs: ['Lua', 'YARN', 'Xampp', 'HeidiSQL'],
         icon: <HugeiconsIcon icon={X} />,
         color: 'destructive',
@@ -36,7 +36,8 @@ export const Timeline = () => (
         techs: ['Lua', 'TypeScript', 'FiveM Native', 'Figma', 'MySQL', 'Node.js', 'NPM', 'Git', 'MariaDB', 'React', 'SQL', 'Tailwind', 'Vite', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={X} />,
         color: 'destructive',
-				iconHover: 'Niche market'
+				iconHover: 'Niche market',
+				url: 'https://github.com/tripplerscripts'
       },
       {
         id: 4,
@@ -46,6 +47,7 @@ export const Timeline = () => (
         techs: ['TypeScript', 'Lua', 'UML', 'Business Strategy'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/lenixstudio'
       },
       {
         id: 6,
@@ -54,7 +56,8 @@ export const Timeline = () => (
 				description: 'Authored the #1 most used FiveM NPM package globally. Optimized Lua 5.4/5.5 utility scripts to eliminate server exploitation and peak-load lag.',
         techs: ['Lua5.4', 'FiveM Native', 'TypeScript', 'NPM'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success'
+        color: 'success',
+				url: 'https://github.com/tripplerscripts/tr_lib'
       },
 			{
 				id: 24,
@@ -64,6 +67,7 @@ export const Timeline = () => (
 				techs: ['FiveM Native', 'NPM', 'TypeScript', 'Lua5.4'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/tripplerscripts/tr_kit'
 			},
       {
         id: 7,
@@ -73,7 +77,8 @@ export const Timeline = () => (
         techs: ['Lua5.4', 'API', 'FiveM Native'],
         icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
         color: 'secondary',
-				iconHover: 'Abandoned'
+				iconHover: 'Abandoned',
+				url: 'https://github.com/tripplerscripts/tr_adapter'
       },
 			{
 				id: 8,
@@ -83,6 +88,7 @@ export const Timeline = () => (
         techs: ['JavaScript', 'Terser', 'Node.js'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/lenixstudio/lenix_builder'
       },
 			{
         id: 9,
@@ -92,6 +98,7 @@ export const Timeline = () => (
 				techs: ['Next.js', 'MDX', 'Tailwind', 'Vercel', 'Nextra', 'Node.js'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/tripplerscripts/docs'
       },
 			{
 				id: 10,
@@ -101,6 +108,7 @@ export const Timeline = () => (
 				techs: ['GLSL', 'Shaders', 'Graphics Programming', 'FiveM', 'Chromium', 'Node.js', 'JavaScript'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/gtasnail/fivem-glsl/pull/2'
 			},
 			{
 				id: 11,
@@ -110,7 +118,8 @@ export const Timeline = () => (
 				techs: ['TypeScript', 'MySQL', 'Figma', 'Axios', 'Node.js', 'FiveM Native'],
 				icon: <HugeiconsIcon icon={X} />,
 				color: 'destructive',
-				iconHover: 'Parterships aren\'t professional'
+				iconHover: 'Parterships weren\'t professional',
+				url: 'https://github.com/tripplerscripts/tr_sponsor'
 			},
 			{
 				id: 12,
@@ -120,6 +129,7 @@ export const Timeline = () => (
         techs: ['Node.js', 'ESLint', 'Prettier', 'ESLint Stylistic', 'NPM'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/lenixdev/lenix'
       },
 			{
 				id: 13,
@@ -129,6 +139,7 @@ export const Timeline = () => (
 				techs: ['YAML', 'Github-Actions', 'SQL'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/lenixstudio/lenix_txadminrecipes'
 			},
       {
         id: 5,
@@ -138,6 +149,7 @@ export const Timeline = () => (
         techs: ['Lua5.5', 'React', 'TypeScript', 'Tailwind', 'Node.js', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/orgs/Project-Sloth/people'
       },
 			{
 				id: 14,
@@ -147,6 +159,7 @@ export const Timeline = () => (
 				techs: ['C#', 'TypeScript', '.Net', 'React', 'Vite', 'Node.js', 'Tailwind', 'Eslint'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/lenixstudio/lenix_sdk'
 			},
 			{
 				id: 15,
@@ -156,6 +169,7 @@ export const Timeline = () => (
         techs: ['QBox', 'Typescript', 'Mariadb', 'Bun', 'TanStack', 'Node.js', 'Zod', 'Vite', 'Tailwind', 'FiveM Native', 'Emotion', 'Radix-ui', 'Recharts', 'Prettier'],
         icon: <HugeiconsIcon icon={Tick02Icon} />,
         color: 'success',
+				url: 'https://github.com/lenixdev/ox_banking'
       },
 			{
 				id: 21,
@@ -165,6 +179,7 @@ export const Timeline = () => (
 				techs: ['Lua5.4', 'LuaRocks', 'Shell', 'MacOS Internals'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/LenixDev/lenix/tree/main/oop'
 			},
 			{
 				id: 16,
@@ -174,6 +189,7 @@ export const Timeline = () => (
 				techs: ['Next.js', 'Tailwind', 'Vite', 'Node.js', 'Shadcn', 'Resend', 'Octokit', 'Vercel', 'Babel', 'Tailwind', 'Radix-ui', 'Framer Motion', 'Recharts', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/LenixDev/portfolio'
 			},
 			{
 				id: 17,
@@ -183,7 +199,8 @@ export const Timeline = () => (
 				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Twilio', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
 				color: 'paused',
-				iconHover: 'Paused'
+				iconHover: 'Paused',
+				url: 'https://github.com/lenixdev/thrivenix'
 			},
 			{
 				id: 18,
@@ -193,7 +210,8 @@ export const Timeline = () => (
         techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
         color: 'paused',
-				iconHover: 'Paused'
+				iconHover: 'Paused',
+				url: 'https://github.com/lenixdev/institute'
       },
 			{
 				id: 19,
@@ -203,7 +221,8 @@ export const Timeline = () => (
 				techs: ['macOS', 'Rust', 'AI', 'Systems'],
 				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
-				iconHover: 'In progress'
+				iconHover: 'In progress',
+				url: 'https://github.com/lenixdev/sysenix'
 			},
 			{
 				id: 20,
@@ -213,6 +232,7 @@ export const Timeline = () => (
 				techs: ['Rust', 'Groq'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/LenixDev/lenix/tree/main/ai'
 			},
 			{
 				id: 21,
@@ -222,6 +242,7 @@ export const Timeline = () => (
 				techs: ['VS Code API', 'Groq', 'Node.js', 'TypeScript', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
+				url: 'https://github.com/lenixdev/commenix'
 			},
 			{
 				id: 23,
@@ -230,7 +251,8 @@ export const Timeline = () => (
 				description: 'Built a cross-platform music app that uses YouTube as a data source, integrating AI for various tasks.',
 				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
 				color: 'primary',
-				iconHover: 'Not started yet'
+				iconHover: 'Not started yet',
+				url: 'https://github.com/lenixdev/tonelix'
 			},
 			{
 				id: 22,
@@ -240,7 +262,8 @@ export const Timeline = () => (
 				techs: ['React Native', 'TypeScript', 'Expo', 'React', 'Supabase', 'Groq', 'Node.js', 'Vercel', 'Tamagui', 'i18next', 'Eslint', 'Prettier', 'Stylistic'],
 				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
-				iconHover: 'In progress'
+				iconHover: 'In progress',
+				url: 'https://github.com/lenixdev/intellenix'
 			},
 		]}
 		size='md'

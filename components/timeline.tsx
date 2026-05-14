@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { motion, type HTMLMotionProps } from 'framer-motion'
 import type { TimelineColor, TimelineElement } from '@/types'
-import { AlertCircle, Loader } from '@hugeicons/core-free-icons'
+import { AlertCircle, ArrowUpRight, Loader } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { Badge } from './ui/badge'
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip'
@@ -338,6 +338,8 @@ interface TimelineItemProps extends Omit<HTMLMotionProps<'li'>, 'ref'> {
 	techs?: string[]
 	/** Icon hover text */
 	iconHover?: string
+	/**  */
+	url?: string
 }
 
 const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
@@ -366,6 +368,7 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 			transition,
 			techs,
 			iconHover,
+			url,
 			...props
 		},
 		ref,
@@ -481,7 +484,18 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 				{/* Content */}
 				<TimelineContent>
 					<TimelineHeader>
-						<TimelineTitle>{title}</TimelineTitle>
+						<TimelineTitle className={`${url && 'hover:text-foreground hover:underline'}`}>
+							{url ?
+								<a
+									target='_blank'
+									href={url}
+									className='flex group items-center'
+								>
+									{title}
+									<HugeiconsIcon icon={ArrowUpRight} className='opacity-0 group-hover:opacity-100' />
+								</a>
+							: title}
+						</TimelineTitle>
 					</TimelineHeader>
 					<TimelineDescription>{description}</TimelineDescription>
 					<div className='flex flex-wrap gap-1'>
@@ -566,6 +580,7 @@ export const TimelineLayout = ({
 					showConnector={index !== items.length - 1}
 					techs={item.techs ?? []}
 					iconHover={item.iconHover}
+					url={item.url}
 				/>
 			</motion.div>
 		))}
