@@ -11,7 +11,7 @@
 	xml:space="preserve"
 >
 	<style>
-		path { fill: dark; }
+		path { fill: white; }
 	</style>
 	<path
 		opacity="1.000000"
