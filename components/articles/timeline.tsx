@@ -219,9 +219,9 @@ export const Timeline = () => (
 				title: 'Sysenix: Next-Gen AI Desktop OS',
 				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
 				techs: ['macOS', 'Rust', 'AI', 'Systems'],
-				icon: <HugeiconsIcon icon={Time04Icon} />,
+				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
 				color: 'pending',
-				iconHover: 'In progress',
+				iconHover: 'Delayed',
 				url: 'https://github.com/lenixdev/sysenix'
 			},
 			{

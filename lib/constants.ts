@@ -26,8 +26,8 @@ export const HOBIES = [
 	'bicycles',
 	'swimming',
 	'skiing',
-	'playing piano',
-	'playing golf',
+	'piano',
+	'golf',
 ]
 
 export const HEADER = [
