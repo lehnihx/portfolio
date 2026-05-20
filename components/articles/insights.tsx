@@ -23,7 +23,7 @@ export const Stats = () => {
 					Experience Insights
 				</motion.p>
 				<motion.p {...fade(0.125)} className='text-[11px] text-foreground/30'>
-					last 12 months - all time
+					last 12 months - live
 				</motion.p>
 			</div>
 			<motion.div
