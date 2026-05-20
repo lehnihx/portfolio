@@ -219,9 +219,9 @@ export const Timeline = () => (
 				title: 'Sysenix: Next-Gen AI Desktop OS',
 				description: 'Created a smart system agent powered with AI that track, controls and execute tasks on the user\'s Mac for him with a high quality UX.',
 				techs: ['macOS', 'Rust', 'AI', 'Systems'],
-				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
+				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
-				iconHover: 'Delayed',
+				iconHover: 'In progress',
 				url: 'https://github.com/lenixdev/sysenix'
 			},
 			{
@@ -261,8 +261,8 @@ export const Timeline = () => (
 				description: 'Built a cross-platform assistant that rejects the "generalist" approach. Instead of knowing a little about everything, Intellenix is engineered to go deep into specific domains and tasks, providing high-level expertise where general AI usually fails.',
 				techs: ['React Native', 'TypeScript', 'Expo', 'React', 'Supabase', 'Groq', 'Node.js', 'Vercel', 'Tamagui', 'i18next', 'Eslint', 'Prettier', 'Stylistic'],
 				icon: <HugeiconsIcon icon={Time04Icon} />,
-				color: 'pending',
-				iconHover: 'In progress',
+				color: 'paused',
+				iconHover: 'Paused',
 				url: 'https://github.com/lenixdev/intellenix'
 			},
 		]}
