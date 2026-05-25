@@ -1,4 +1,6 @@
 import { isContact } from '@/lib/utils'
+import { ArrowUpRight } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 
 export const Footer = () => {
 	const contact = isContact()
@@ -9,22 +11,23 @@ export const Footer = () => {
 			</p>
 			<div className='flex gap-4'>
 				{[
+					{ label: 'AI', url: 'https://ai.lenix.dev' },
+					{ label: 'GitHub', url: 'https://github.com/lenixdev' },
 					{
 						label: contact ? 'Back' : 'Contact',
 						url: contact ? 'https://lenix.dev' : 'https://contact.lenix.dev',
 						replace: true,
 					},
-					{ label: 'AI', url: 'https://ai.lenix.dev' },
-					{ label: 'GitHub', url: 'https://github.com/lenixdev' },
 				].map(({ label, url, replace }) => (
 					<a
 						key={label}
 						href={url}
 						target={replace === true ? '_self' : '_blank'}
 						rel='noopener noreferrer'
-						className='text-[11px] tracking-[2px] uppercase text-foreground/20 hover:text-foreground transition-colors'
+						className='text-[11px] tracking-[2px] uppercase text-foreground/20 hover:text-foreground transition-colors group flex items-center gap-1'
 					>
 						{label}
+						{!replace && <HugeiconsIcon icon={ArrowUpRight} size={15} className='opacity-0 group-hover:opacity-100' />}
 					</a>
 				))}
 			</div>
