@@ -198,8 +198,8 @@ export const Timeline = () => (
 				description: 'A cross-platform lifestyle app built integrated with an AI chat tab. Support multiple language, themes, AI settings, app performance, and more.',
 				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Twilio', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
-				color: 'paused',
-				iconHover: 'Paused',
+				color: 'secondary',
+				iconHover: 'Abandoned',
 				url: 'https://github.com/lenixdev/thrivenix'
 			},
 			{
@@ -209,8 +209,8 @@ export const Timeline = () => (
         description: 'Built a massive management suite for educational institutes, running natively on Mac, Windows, and Linux. Plus to that it contains a compatible web interface.',
         techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
         icon: <HugeiconsIcon icon={PauseCircleIcon} />,
-        color: 'paused',
-				iconHover: 'Paused',
+        color: 'secondary',
+				iconHover: 'Abandoned',
 				url: 'https://github.com/lenixdev/institute'
       },
 			{

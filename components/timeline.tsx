@@ -561,8 +561,8 @@ export const TimelineLayout = ({
 				initial={animate ? { opacity: 0, y: 20 } : false}
 				whileInView={animate ? { opacity: 1, y: 0 } : undefined}
 				transition={{
-					duration: 0.5,
-					delay: index * 0.05,
+					duration: 0.3,
+					delay: index * 0.01,
 					ease: 'easeOut',
 				}}
 			>
