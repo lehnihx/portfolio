@@ -251,7 +251,7 @@ export const Timeline = () => (
 				description: 'Built a cross-platform music app that uses YouTube as a data source, integrating AI for various tasks.',
 				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
 				color: 'primary',
-				iconHover: 'Not started yet',
+				iconHover: 'Unplaned yet',
 				url: 'https://github.com/lenixdev/tonelix'
 			},
 			{

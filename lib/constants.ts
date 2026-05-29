@@ -9,6 +9,7 @@ export const EXCLUDED_LANGS = [
 	'YAML',
 	'TOML',
 	'SVG',
+	'Hack'
 ]
 
 export const QUOTES = [
