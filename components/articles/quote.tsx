@@ -1,7 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { TextEffect } from '../ui/flip'
-import { QUOTES } from '@/lib/constants'
+import { QUOTES } from '@/constants'
 import { motion } from 'motion/react'
 import { fade } from '@/lib/utils'
 

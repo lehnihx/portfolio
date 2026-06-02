@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import { EXCLUDED_LANGS } from './constants'
+import { EXCLUDED_LANGS } from '../constants'
 import type { AppData } from './data'
 
 export function cn(...inputs: ClassValue[]) {

@@ -1,4 +1,4 @@
-import { HEADER, HOBIES } from '@/lib/constants'
+import { HEADER, HOBIES } from '@/constants'
 import { motion } from 'motion/react'
 import { TypingAnimation } from '../ui/typing'
 import RotatingText from '../ui/swap'

@@ -249,9 +249,9 @@ export const Timeline = () => (
 				date: '2026-03-25',
 				title: 'Tonelix: AI Mobile Music App',
 				description: 'Built a cross-platform music app that uses YouTube as a data source, integrating AI for various tasks.',
-				icon: <HugeiconsIcon icon={TimeHalfPassIcon} />,
-				color: 'primary',
-				iconHover: 'Unplaned yet',
+				icon: <HugeiconsIcon icon={X} />,
+				color: 'secondary',
+				iconHover: 'Canceled',
 				url: 'https://github.com/lenixdev/tonelix'
 			},
 			{
