@@ -1,5 +1,5 @@
 import { HugeiconsIcon } from '@hugeicons/react'
-import { ExclamationMarkIcon, Tick02Icon, Time04Icon, TimeHalfPassIcon, X } from '@hugeicons/core-free-icons'
+import { ExclamationMarkIcon, Tick02Icon, Time04Icon, X } from '@hugeicons/core-free-icons'
 import { TimelineLayout } from '../timeline'
 
 export const Timeline = () => (
