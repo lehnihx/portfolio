@@ -3,7 +3,6 @@ import { Count } from '../ui/count'
 import { commitsToChartData, fade } from '@/lib/utils'
 import { useAppData } from '@/hooks/use-appdata'
 
-// eslint-disable-next-line max-lines-per-function
 export const Stats = () => {
 	const ctx = useAppData()
 	if (ctx.status !== 'ok') return null

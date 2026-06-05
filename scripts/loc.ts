@@ -57,7 +57,7 @@ export const totalLinesAdded = async () => {
 						total.deleted += week.d ?? 0
 					}
 				}
-				return
+				continue
 			}
 			const { added, deleted } = await getStatsFallback(owner.login, name)
 			total.added += added
