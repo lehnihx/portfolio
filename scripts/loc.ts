@@ -9,7 +9,7 @@ const getStats = async (owner: string, repo: string) => {
 			return null
 		}
 		return Array.isArray(data) ? data : []
-	} catch(err) {
+	} catch (err) {
 		raise(err)
 	}
 }
@@ -27,14 +27,14 @@ const getStatsFallback = async (owner: string, repo: string) => {
 
 	for await (const { data } of pages) {
 		for (const { sha: ref, author } of data) {
-			if (author?.login !== 'LenixDev') continue
+			if (author?.login !== 'lehnhix') continue
 			if (seenRefs.has(ref)) continue
 			seenRefs.add(ref)
-	
+
 			const { data: commit } = await octokit.rest.repos.getCommit({ owner, repo, ref })
 			added += commit.stats?.additions ?? 0
 			deleted += commit.stats?.deletions ?? 0
-	
+
 			await wait(100)
 		}
 	}
@@ -51,7 +51,7 @@ export const totalLinesAdded = async () => {
 			const stats = await getStats(owner.login, name)
 			if (stats) {
 				for (const contributor of stats) {
-					if (contributor.author?.login !== 'LenixDev') continue
+					if (contributor.author?.login !== 'lehnhix') continue
 					for (const week of contributor.weeks) {
 						total.added += week.a ?? 0
 						total.deleted += week.d ?? 0
@@ -62,7 +62,7 @@ export const totalLinesAdded = async () => {
 			const { added, deleted } = await getStatsFallback(owner.login, name)
 			total.added += added
 			total.deleted += deleted
-		} catch(err) {
+		} catch (err) {
 			raise(err)
 		}
 	}

@@ -77,7 +77,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 	const { error } = await resend.emails.send({
 		from: 'Lenix <portfolio@lenix.dev>',
 		replyTo: email,
-		to: 'lenixdev@icloud.com',
+		to: 'lehnhix@icloud.com',
 		subject,
 		text: `${message}\n\nReply to: ${email}`,
 		attachments,

@@ -12,7 +12,7 @@ export const Footer = () => {
 			<div className='flex gap-4'>
 				{[
 					{ label: 'AI', url: 'https://ai.lenix.dev' },
-					{ label: 'GitHub', url: 'https://github.com/lenixdev' },
+					{ label: 'GitHub', url: 'https://github.com/lehnhix' },
 					{
 						label: contact ? 'Back' : 'Contact',
 						url: contact ? 'https://lenix.dev' : 'https://contact.lenix.dev',

@@ -9,56 +9,56 @@ export const Timeline = () => (
 		connectorColor='primary'
 		iconColor='primary'
 		items={[
-      {
-        id: 1,
-        date: '2008-04-06',
-        title: 'The First Connection',
-        description: 'The day I touched a computer for the first time and realized that I\'m in love.',
-        techs: ['Hardware', 'OS Basics'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
-      },
 			{
-        id: 2,
-        date: '2023-10-18',
-        title: '@Revival States',
-        description: 'Start my journey as a Full-Stack Developer, try to reach to the top best FiveM servers in the middle east, invite as much people as I can.',
-        techs: ['Lua', 'YARN', 'Xampp', 'HeidiSQL'],
-        icon: <HugeiconsIcon icon={X} />,
-        color: 'destructive',
+				id: 1,
+				date: '2008-04-06',
+				title: 'The First Connection',
+				description: 'The day I touched a computer for the first time and realized that I\'m in love.',
+				techs: ['Hardware', 'OS Basics'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
+			},
+			{
+				id: 2,
+				date: '2023-10-18',
+				title: '@Revival States',
+				description: 'Start my journey as a Full-Stack Developer, try to reach to the top best FiveM servers in the middle east, invite as much people as I can.',
+				techs: ['Lua', 'YARN', 'Xampp', 'HeidiSQL'],
+				icon: <HugeiconsIcon icon={X} />,
+				color: 'destructive',
 				iconHover: 'Could not find the right partner'
-      },
-      {
-        id: 3,
-        date: '2024-02-05',
-        title: '@Trippler Scripts',
-        description: 'Stopped copying and started creating. Launched Trippler Scripts Enterprise to provide the community with clean, optimized, and actually reliable scripts.',
-        techs: ['Lua', 'TypeScript', 'FiveM Native', 'Figma', 'MySQL', 'Node.js', 'NPM', 'Git', 'MariaDB', 'React', 'SQL', 'Tailwind', 'Vite', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={X} />,
-        color: 'destructive',
+			},
+			{
+				id: 3,
+				date: '2024-02-05',
+				title: '@Trippler Scripts',
+				description: 'Stopped copying and started creating. Launched Trippler Scripts Enterprise to provide the community with clean, optimized, and actually reliable scripts.',
+				techs: ['Lua', 'TypeScript', 'FiveM Native', 'Figma', 'MySQL', 'Node.js', 'NPM', 'Git', 'MariaDB', 'React', 'SQL', 'Tailwind', 'Vite', 'Eslint', 'Prettier'],
+				icon: <HugeiconsIcon icon={X} />,
+				color: 'destructive',
 				iconHover: 'Niche market',
 				url: 'https://github.com/tripplerscripts'
-      },
-      {
-        id: 4,
-        date: '2024-09-17',
-        title: '@Lenix Studio',
-        description: 'Launched a consultancy serving 20+ studio clients. handled everything from end-to-end server builds, tailored scripts and servers problem solving to mentoring new developers from the commmuity.',
-        techs: ['TypeScript', 'Lua', 'UML', 'Business Strategy'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+			},
+			{
+				id: 4,
+				date: '2024-09-17',
+				title: '@Lenix Studio',
+				description: 'Launched a consultancy serving 20+ studio clients. handled everything from end-to-end server builds, tailored scripts and servers problem solving to mentoring new developers from the commmuity.',
+				techs: ['TypeScript', 'Lua', 'UML', 'Business Strategy'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
 				url: 'https://github.com/lenixstudio'
-      },
-      {
-        id: 6,
-        date: '2025-09-10',
-        title: 'The FiveM Library',
+			},
+			{
+				id: 6,
+				date: '2025-09-10',
+				title: 'The FiveM Library',
 				description: 'Authored the #1 most used FiveM NPM package globally. Optimized Lua 5.4/5.5 utility scripts to eliminate server exploitation and peak-load lag.',
-        techs: ['Lua5.4', 'FiveM Native', 'TypeScript', 'NPM'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+				techs: ['Lua5.4', 'FiveM Native', 'TypeScript', 'NPM'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
 				url: 'https://github.com/tripplerscripts/tr_lib'
-      },
+			},
 			{
 				id: 24,
 				date: '2025-09-10',
@@ -69,37 +69,37 @@ export const Timeline = () => (
 				color: 'success',
 				url: 'https://github.com/tripplerscripts/tr_kit'
 			},
-      {
-        id: 7,
-        date: '2025-09-13',
-        title: 'The Interoperability Layer',
-        description: 'Built a smart compatibility layer that lets scripts made for different frameworks talk to each other without manual rewriting.',
-        techs: ['Lua5.4', 'API', 'FiveM Native'],
-        icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
-        color: 'secondary',
+			{
+				id: 7,
+				date: '2025-09-13',
+				title: 'The Interoperability Layer',
+				description: 'Built a smart compatibility layer that lets scripts made for different frameworks talk to each other without manual rewriting.',
+				techs: ['Lua5.4', 'API', 'FiveM Native'],
+				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
+				color: 'secondary',
 				iconHover: 'Abandoned',
 				url: 'https://github.com/tripplerscripts/tr_adapter'
-      },
+			},
 			{
 				id: 8,
-        date: '2025-10-10',
-        title: 'Automated Protection Pipeline',
-        description: 'Developed a tool that automatically minifies and obfuscates code before release, keeping my intellectual property safe from community leakers.',
-        techs: ['JavaScript', 'Terser', 'Node.js'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+				date: '2025-10-10',
+				title: 'Automated Protection Pipeline',
+				description: 'Developed a tool that automatically minifies and obfuscates code before release, keeping my intellectual property safe from community leakers.',
+				techs: ['JavaScript', 'Terser', 'Node.js'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
 				url: 'https://github.com/lenixstudio/lenix_builder'
-      },
+			},
 			{
-        id: 9,
-        date: '2025-10-13',
-        title: 'Documentation Hub',
+				id: 9,
+				date: '2025-10-13',
+				title: 'Documentation Hub',
 				description: 'Built a central home for all my projects. Create a space where developers can actually find what they need, making my tools easier to use and much more professional to scale.',
 				techs: ['Next.js', 'MDX', 'Tailwind', 'Vercel', 'Nextra', 'Node.js'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
 				url: 'https://github.com/tripplerscripts/docs'
-      },
+			},
 			{
 				id: 10,
 				date: '2025-11-23',
@@ -123,14 +123,14 @@ export const Timeline = () => (
 			},
 			{
 				id: 12,
-        date: '2025-12-13',
-        title: 'Interactive DX Configuration CLI',
-        description: 'Engineered a tool that walks you through ESLint/Prettier setup, teaching you the rules instead of just importing presets.',
-        techs: ['Node.js', 'ESLint', 'Prettier', 'ESLint Stylistic', 'NPM'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
-				url: 'https://github.com/lenixdev/lenix'
-      },
+				date: '2025-12-13',
+				title: 'Interactive DX Configuration CLI',
+				description: 'Engineered a tool that walks you through ESLint/Prettier setup, teaching you the rules instead of just importing presets.',
+				techs: ['Node.js', 'ESLint', 'Prettier', 'ESLint Stylistic', 'NPM'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
+				url: 'https://github.com/lehnhix/lenix'
+			},
 			{
 				id: 13,
 				date: '2026-01-10',
@@ -141,16 +141,16 @@ export const Timeline = () => (
 				color: 'success',
 				url: 'https://github.com/lenixstudio/lenix_txadminrecipes'
 			},
-      {
-        id: 5,
-        date: '2026-01-27',
-        title: 'Core Member @Project Sloth',
-        description: 'Selected for one of the most respected organizations if not the most into the dev members. Contributing to open-source tools used by thousands of servers.',
-        techs: ['Lua5.5', 'React', 'TypeScript', 'Tailwind', 'Node.js', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
+			{
+				id: 5,
+				date: '2026-01-27',
+				title: 'Core Member @Project Sloth',
+				description: 'Selected for one of the most respected organizations if not the most into the dev members. Contributing to open-source tools used by thousands of servers.',
+				techs: ['Lua5.5', 'React', 'TypeScript', 'Tailwind', 'Node.js', 'Eslint', 'Prettier'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
 				url: 'https://github.com/orgs/Project-Sloth/people'
-      },
+			},
 			{
 				id: 14,
 				date: '2026-02-01',
@@ -163,14 +163,14 @@ export const Timeline = () => (
 			},
 			{
 				id: 15,
-        date: '2026-02-09',
-        title: 'Architectural Framework Refactor',
-        description: 'Converted a major banking system to the QBox framework, pushing 142 commits to rewrite the core logic from scratch.',
-        techs: ['QBox', 'Typescript', 'Mariadb', 'Bun', 'TanStack', 'Node.js', 'Zod', 'Vite', 'Tailwind', 'FiveM Native', 'Emotion', 'Radix-ui', 'Recharts', 'Prettier'],
-        icon: <HugeiconsIcon icon={Tick02Icon} />,
-        color: 'success',
-				url: 'https://github.com/lenixdev/ox_banking'
-      },
+				date: '2026-02-09',
+				title: 'Architectural Framework Refactor',
+				description: 'Converted a major banking system to the QBox framework, pushing 142 commits to rewrite the core logic from scratch.',
+				techs: ['QBox', 'Typescript', 'Mariadb', 'Bun', 'TanStack', 'Node.js', 'Zod', 'Vite', 'Tailwind', 'FiveM Native', 'Emotion', 'Radix-ui', 'Recharts', 'Prettier'],
+				icon: <HugeiconsIcon icon={Tick02Icon} />,
+				color: 'success',
+				url: 'https://github.com/lehnhix/ox_banking'
+			},
 			{
 				id: 21,
 				date: '2026-02-10',
@@ -179,7 +179,7 @@ export const Timeline = () => (
 				techs: ['Lua5.4', 'LuaRocks', 'Shell', 'MacOS Internals'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/LenixDev/lenix/tree/main/oop'
+				url: 'https://github.com/lehnhix/lenix/tree/main/oop'
 			},
 			{
 				id: 16,
@@ -189,7 +189,7 @@ export const Timeline = () => (
 				techs: ['Next.js', 'Tailwind', 'Vite', 'Node.js', 'Shadcn', 'Resend', 'Octokit', 'Vercel', 'Babel', 'Tailwind', 'Radix-ui', 'Framer Motion', 'Recharts', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/LenixDev/portfolio'
+				url: 'https://github.com/lehnhix/portfolio'
 			},
 			{
 				id: 17,
@@ -197,22 +197,22 @@ export const Timeline = () => (
 				title: 'Thrivenix: Mobile App',
 				description: 'A cross-platform lifestyle app built integrated with an AI chat tab. Support multiple language, themes, AI settings, app performance, and more.',
 				techs: ['React Native', 'Expo', 'Supabase', 'Node.js', 'PLpgSQL', 'Groq', 'Twilio', 'Uniwind', 'HeroUI', 'i18next', 'React', 'Tailwind', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
+				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
 				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lenixdev/thrivenix'
+				url: 'https://github.com/lehnhix/thrivenix'
 			},
 			{
 				id: 18,
-        date: '2026-03-08',
-        title: 'Enterprise Management Platform',
-        description: 'Built a massive management suite for educational institutes, running natively on Mac, Windows, and Linux. Plus to that it contains a compatible web interface.',
-        techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
-        icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
-        color: 'secondary',
+				date: '2026-03-08',
+				title: 'Enterprise Management Platform',
+				description: 'Built a massive management suite for educational institutes, running natively on Mac, Windows, and Linux. Plus to that it contains a compatible web interface.',
+				techs: ['Tauri', 'React', 'Rust', 'Supabase', 'PostgreSql', 'Deno', 'Tailwind', 'Shadcn', 'TanStack', 'Next.js', 'Radix-ui', 'i18next', 'Vite', 'Eslint', 'Prettier'],
+				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
+				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lenixdev/institute'
-      },
+				url: 'https://github.com/lehnhix/institute'
+			},
 			{
 				id: 19,
 				date: '2026-03-09',
@@ -222,7 +222,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
 				iconHover: 'In progress',
-				url: 'https://github.com/lenixdev/sysenix'
+				url: 'https://github.com/lehnhix/sysenix'
 			},
 			{
 				id: 20,
@@ -232,7 +232,7 @@ export const Timeline = () => (
 				techs: ['Rust', 'Groq'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/LenixDev/lenix/tree/main/ai'
+				url: 'https://github.com/lehnhix/lenix/tree/main/ai'
 			},
 			{
 				id: 21,
@@ -242,7 +242,7 @@ export const Timeline = () => (
 				techs: ['VS Code API', 'Groq', 'Node.js', 'TypeScript', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lenixdev/commenix'
+				url: 'https://github.com/lehnhix/commenix'
 			},
 			{
 				id: 23,
@@ -252,7 +252,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={X} />,
 				color: 'secondary',
 				iconHover: 'Canceled',
-				url: 'https://github.com/lenixdev/tonelix'
+				url: 'https://github.com/lehnhix/tonelix'
 			},
 			{
 				id: 22,
@@ -263,7 +263,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
 				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lenixdev/intellenix'
+				url: 'https://github.com/lehnhix/intellenix'
 			},
 		]}
 		size='md'
