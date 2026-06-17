@@ -129,7 +129,7 @@ export const Timeline = () => (
 				techs: ['Node.js', 'ESLint', 'Prettier', 'ESLint Stylistic', 'NPM'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/lenix'
+				url: 'https://github.com/lehnihx/lenix'
 			},
 			{
 				id: 13,
@@ -169,7 +169,7 @@ export const Timeline = () => (
 				techs: ['QBox', 'Typescript', 'Mariadb', 'Bun', 'TanStack', 'Node.js', 'Zod', 'Vite', 'Tailwind', 'FiveM Native', 'Emotion', 'Radix-ui', 'Recharts', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/ox_banking'
+				url: 'https://github.com/lehnihx/ox_banking'
 			},
 			{
 				id: 21,
@@ -179,7 +179,7 @@ export const Timeline = () => (
 				techs: ['Lua5.4', 'LuaRocks', 'Shell', 'MacOS Internals'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/lenix/tree/main/oop'
+				url: 'https://github.com/lehnihx/lenix/tree/main/oop'
 			},
 			{
 				id: 16,
@@ -189,7 +189,7 @@ export const Timeline = () => (
 				techs: ['Next.js', 'Tailwind', 'Vite', 'Node.js', 'Shadcn', 'Resend', 'Octokit', 'Vercel', 'Babel', 'Tailwind', 'Radix-ui', 'Framer Motion', 'Recharts', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/portfolio'
+				url: 'https://github.com/lehnihx/portfolio'
 			},
 			{
 				id: 17,
@@ -200,7 +200,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
 				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lehnhix/thrivenix'
+				url: 'https://github.com/lehnihx/thrivenix'
 			},
 			{
 				id: 18,
@@ -211,7 +211,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
 				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lehnhix/institute'
+				url: 'https://github.com/lehnihx/institute'
 			},
 			{
 				id: 19,
@@ -222,7 +222,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={Time04Icon} />,
 				color: 'pending',
 				iconHover: 'In progress',
-				url: 'https://github.com/lehnhix/sysenix'
+				url: 'https://github.com/lehnihx/sysenix'
 			},
 			{
 				id: 20,
@@ -232,7 +232,7 @@ export const Timeline = () => (
 				techs: ['Rust', 'Groq'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/lenix/tree/main/ai'
+				url: 'https://github.com/lehnihx/lenix/tree/main/ai'
 			},
 			{
 				id: 21,
@@ -242,7 +242,7 @@ export const Timeline = () => (
 				techs: ['VS Code API', 'Groq', 'Node.js', 'TypeScript', 'Eslint', 'Prettier'],
 				icon: <HugeiconsIcon icon={Tick02Icon} />,
 				color: 'success',
-				url: 'https://github.com/lehnhix/commenix'
+				url: 'https://github.com/lehnihx/commenix'
 			},
 			{
 				id: 23,
@@ -252,7 +252,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={X} />,
 				color: 'secondary',
 				iconHover: 'Canceled',
-				url: 'https://github.com/lehnhix/tonelix'
+				url: 'https://github.com/lehnihx/tonelix'
 			},
 			{
 				id: 22,
@@ -263,7 +263,7 @@ export const Timeline = () => (
 				icon: <HugeiconsIcon icon={ExclamationMarkIcon} />,
 				color: 'secondary',
 				iconHover: 'Abandoned',
-				url: 'https://github.com/lehnhix/intellenix'
+				url: 'https://github.com/lehnihx/intellenix'
 			},
 		]}
 		size='md'

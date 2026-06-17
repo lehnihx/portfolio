@@ -11,7 +11,7 @@ export const Footer = () => {
 			</p>
 			<div className='flex gap-4'>
 				{[
-					{ label: 'GitHub', url: 'https://github.com/lehnhix' },
+					{ label: 'GitHub', url: 'https://github.com/lehnihx' },
 					{
 						label: contact ? 'Back' : 'Contact',
 						url: contact ? 'https://lenix.dev' : 'https://contact.lenix.dev',
