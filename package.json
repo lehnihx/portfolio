@@ -9,7 +9,6 @@
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"fetchapi": "dotenv -e .env -- tsx scripts/fetch.ts",
-		"re-i": "rm -rf node_modules && pnpm i",
 		"serve": "pnpm vercel dev",
 		"format": "pnpm exec prettier . --write"
 	},
