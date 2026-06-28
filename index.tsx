@@ -3,15 +3,19 @@ import { createRoot } from 'react-dom/client'
 import './style.css'
 import { Main } from '@/pages/main'
 import { Contact } from './pages/contact'
-import { isContact } from './lib/utils'
 import { TooltipProvider } from './components/ui/tooltip'
+import { BrowserRouter, Route, Routes } from 'react-router'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<TooltipProvider>
-			{isContact() ?
-				<Contact />
-			:	<Main />}
+			<BrowserRouter>
+				<Routes>
+					<Route path='/' element={<Main />} />
+					<Route path='/contact' element={<Contact />} />
+					<Route path='*' element={<Main />} />
+				</Routes>
+			</BrowserRouter>
 		</TooltipProvider>
 	</StrictMode>,
 )

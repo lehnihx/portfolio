@@ -7,8 +7,6 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-export const isContact = () => window.location.hostname === 'contact.lenix.dev'
-
 export const commitsToChartData = (commits: string[]) => {
 	const grouped = new Map<string, number>()
 	for (const date of commits) grouped.set(date, (grouped.get(date) ?? 0) + 1)
