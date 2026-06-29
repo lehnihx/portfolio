@@ -6,6 +6,7 @@ import { Contact } from './pages/contact'
 import { TooltipProvider } from './components/ui/tooltip'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { Services } from './pages/services'
+import { Toaster } from 'sonner'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
 					<Route path='services' element={<Services />} />
 					<Route path='*' element={<Main />} />
 				</Routes>
+				<Toaster />
 			</BrowserRouter>
 		</TooltipProvider>
 	</StrictMode>,
