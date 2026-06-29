@@ -8,7 +8,7 @@ export const Hero = () => {
 				Developer tools built to save time.
 			</h1>
 			<p className="leading-7 not-first:mt-6">
-				Productivity software, extensions, and utilities designed for everyday development.
+				Productivity software, extensions, and utilities designed for everyday development. All products are delivered digitally after payment.
 			</p>
 			<Button onClick={() => 
 				toast("Not available yet :(")

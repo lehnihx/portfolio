@@ -30,11 +30,11 @@ export function Pricing() {
 				<TabsContent value="1">
 					<Card>
 						<CardHeader>
-							<CardTitle>FiveM Server Receipt</CardTitle>
+							<CardTitle>FiveM Receipt Generator</CardTitle>
 						</CardHeader>
 						<CardContent className="text-sm text-muted-foreground">
 							<p className="leading-7 not-first:mt-6">
-								A ready-to-use FiveM server files for your server
+								Professional FiveM receipt system with configurable templates and framework selection.
 							</p>
 							<ul className="ml-6 list-disc [&>li]:mt-2">
 								<li>Lifetime license</li>
@@ -59,7 +59,7 @@ export function Pricing() {
 						</CardHeader>
 						<CardContent className="text-sm text-muted-foreground">
 							<p className="leading-7 not-first:mt-6">
-								VSCode extension contain bunch of feature integrated with AI that make it easier for the everyday developer
+								AI-powered VSCode extension that speeds up development with reusable snippets, commands, and productivity tools.
 							</p>
 							<ul className="ml-6 list-disc [&>li]:mt-2">
 								<li>Early access</li>
