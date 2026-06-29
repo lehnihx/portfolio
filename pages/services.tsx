@@ -8,10 +8,8 @@ export const Services = () => {
 	return (
 		<div className="w-full bg-background flex justify-center">
 			<div className="flex justify-between flex-col h-full w-2/3">
-				<div className="flex justify-center flex-col min-h-screen w-full">
+				<div className="flex justify-evenly flex-col min-h-screen w-full gap-10 py-50">
 					<Hero />
-				</div>
-				<div className="flex justify-evenly flex-col min-h-screen w-full">
 					<ServicesDescription />
 					<Pricing />
 					<Faq />

@@ -19,7 +19,7 @@ export function ServicesDescription() {
 			</h3>
 			<Tabs defaultValue="1" className="w-full">
 				<TabsList>
-					<TabsTrigger value="1">FiveM</TabsTrigger>
+					<TabsTrigger value="1">Game Dev</TabsTrigger>
 					<TabsTrigger value="2">Web</TabsTrigger>
 					<TabsTrigger value="3">Mobile</TabsTrigger>
 					<TabsTrigger value="4">AI</TabsTrigger>
