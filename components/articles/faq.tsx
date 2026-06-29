@@ -7,32 +7,34 @@ import {
 
 export function Faq() {
   return (
-    <Accordion
-      type="single"
-      collapsible
-      defaultValue="1"
-    >
-      <AccordionItem value="1">
-        <AccordionTrigger>What are your shipping options?</AccordionTrigger>
-        <AccordionContent>
-          We offer standard (5-7 days), express (2-3 days), and overnight
-          shipping. Free shipping on international orders.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="2">
-        <AccordionTrigger>What is your return policy?</AccordionTrigger>
-        <AccordionContent>
-          Returns accepted within 30 days. Items must be unused and in original
-          packaging. Refunds processed within 5-7 business days.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="3">
-        <AccordionTrigger>How can I contact customer support?</AccordionTrigger>
-        <AccordionContent>
-          Reach us via email, live chat, or phone. We respond within 24 hours
-          during business days.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <div className="flex flex-col gap-2">
+			<h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+				FAQ
+			</h3>
+			<Accordion
+				type="single"
+				collapsible
+				defaultValue="1"
+			>
+				<AccordionItem value="1">
+					<AccordionTrigger>What do you build?</AccordionTrigger>
+					<AccordionContent>
+						Custom software tailored to your needs.
+					</AccordionContent>
+				</AccordionItem>
+				<AccordionItem value="2">
+					<AccordionTrigger>How do I get a quote?</AccordionTrigger>
+					<AccordionContent>
+						Contact me with your project details.
+					</AccordionContent>
+				</AccordionItem>
+				<AccordionItem value="3">
+					<AccordionTrigger>Do you work with international clients?</AccordionTrigger>
+					<AccordionContent>
+						Yes.
+					</AccordionContent>
+				</AccordionItem>
+			</Accordion>
+		</div>
   )
 }
