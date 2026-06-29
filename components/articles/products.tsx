@@ -47,7 +47,7 @@ export function Pricing() {
 							<CardDescription>One-time purchase <b>199.99€</b></CardDescription>
 							<Badge variant='outline'>Digital Download</Badge>
 							<Button onClick={() =>
-								toast("Payment failed :(")
+								toast("Purchases are temporarily unavailable :(")
 							}>Buy Now</Button>
 						</CardFooter>
 					</Card>
@@ -71,7 +71,7 @@ export function Pricing() {
 							<CardDescription>One-time purchase <b>99.99€</b></CardDescription>
 							<Badge variant='outline'>Digital Download</Badge>
 							<Button onClick={() =>
-								toast("Payment failed :(")
+								toast("Purchases are temporarily unavailable :(")
 							}>Buy Now
 						</Button>
 						</CardFooter>
