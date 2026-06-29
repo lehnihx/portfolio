@@ -19,7 +19,7 @@ export const Main = () => (
 					</div>
 					<div className='min-h-5/10 flex flex-col justify-center items-center'>
 						<Button asChild>
-							<Link to="/services">Visit Services</Link>
+							<Link to="/products">Visit Products</Link>
 					</Button>
 					</div>
 				</div>
