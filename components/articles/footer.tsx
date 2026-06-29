@@ -1,24 +1,22 @@
 import { ArrowUpRight } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { Link, useLocation } from 'react-router'
+import { Link } from 'react-router'
 
-export const Footer = () => {
-	const { pathname } = useLocation()
-	const contact = pathname.replace(/\/$/, '') === '/contact'
+export const Footer = ({ className, items }: {
+	className?: string,
+	items: {
+		label: string
+		url: string
+		replace?: boolean
+	}[]
+}) => {
 	return (
-		<div className='border-t border-foreground/10 flex items-center justify-between gap-10'>
+		<div className={`border-t border-foreground/10 flex items-center justify-between gap-10 ${className}`}>
 			<p className='text-[11px] text-foreground/20'>
 				© {new Date().getFullYear()} Lenix
 			</p>
 			<div className='flex gap-4'>
-				{[
-					{ label: 'GitHub', url: 'https://github.com/lehnihx' },
-					{
-						label: contact ? 'Back' : 'Contact',
-						url: contact ? '/' : '/contact',
-						replace: true,
-					},
-				].map(({ label, url, replace }) => (
+				{items.map(({ label, url, replace }) => (
 					<Link
 						to={url}
 						key={label}

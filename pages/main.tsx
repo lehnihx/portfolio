@@ -6,6 +6,8 @@ import { Footer } from '@/components/articles/footer'
 import { Quotes } from '@/components/articles/quote'
 import { DataProvider } from '@/lib/context'
 import { Timeline } from '@/components/articles/timeline'
+import { Button } from '@/components/ui/button'
+import { Link } from 'react-router'
 
 export const Main = () => (
 	<DataProvider>
@@ -15,8 +17,10 @@ export const Main = () => (
 					<div className='min-h-5/10 flex items-end'>
 						<Introduc />
 					</div>
-					<div className='min-h-5/10 flex flex-col justify-center'>
-					{/*  */}
+					<div className='min-h-5/10 flex flex-col justify-center items-center'>
+						<Button asChild>
+							<Link to="/services">Visit Services</Link>
+					</Button>
 					</div>
 				</div>
 				<div className='min-h-screen flex flex-col justify-evenly'>
@@ -29,7 +33,14 @@ export const Main = () => (
 					<Quotes />
 				</div>
 				<div className='mt-12'>
-					<Footer />
+					<Footer items={[
+						{ label: 'GitHub', url: 'https://github.com/lehnihx' },
+						{
+							label: 'Contact',
+							url: '/contact',
+							replace: true,
+						},
+					]} />
 				</div>
 			</div>
 		</div>
