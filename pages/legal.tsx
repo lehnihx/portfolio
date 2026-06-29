@@ -127,7 +127,7 @@ export const Legal = () => {
 						</Accordion>
 					</div>
 					<div>
-						<h2 id="refund" className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
+						<h2 id="refunds" className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0">
 							Refund Policy
 						</h2>
 						<Accordion
