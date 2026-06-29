@@ -4,24 +4,39 @@ import './style.css'
 import { Main } from '@/pages/main'
 import { Contact } from './pages/contact'
 import { TooltipProvider } from './components/ui/tooltip'
-import { BrowserRouter, Route, Routes } from 'react-router'
+import {
+	createBrowserRouter,
+	Outlet,
+	RouterProvider,
+	ScrollRestoration,
+} from 'react-router'
 import { Services } from './pages/services'
 import { Toaster } from 'sonner'
 import { Legal } from './pages/legal'
 
+const Root = () => (
+	<TooltipProvider>
+		<Outlet />
+		<ScrollRestoration />
+		<Toaster />
+	</TooltipProvider>
+)
+
+const router = createBrowserRouter([
+	{
+		element: <Root />,
+		children: [
+			{ path: '/', element: <Main /> },
+			{ path: '/contact', element: <Contact /> },
+			{ path: '/services', element: <Services /> },
+			{ path: '/services/legal', element: <Legal /> },
+			{ path: '*', element: <Main /> },
+		],
+	},
+])
+
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
-		<TooltipProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<Main />} />
-					<Route path='/contact' element={<Contact />} />
-					<Route path='/services' element={<Services />} />
-					<Route path='/services/legal' element={<Legal />} />
-					<Route path='*' element={<Main />} />
-				</Routes>
-				<Toaster />
-			</BrowserRouter>
-		</TooltipProvider>
+		<RouterProvider router={router} />
 	</StrictMode>,
 )
