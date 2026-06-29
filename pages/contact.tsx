@@ -26,7 +26,6 @@ import {
 	CheckmarkCircle01Icon,
 } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { useLocation } from 'react-router'
 
 // eslint-disable-next-line max-lines-per-function
 export const Contact = () => {
@@ -36,9 +35,6 @@ export const Contact = () => {
 	const [value, setValue] = useState('')
 	const abortRef = useRef<AbortController | null>(null)
 	
-	const { pathname } = useLocation()
-	const contact = pathname.replace(/\/$/, '') === '/contact'
-
 	const handleCancel = () => {
 		abortRef.current?.abort()
 	}
@@ -227,7 +223,7 @@ export const Contact = () => {
 						[
 							{ label: 'GitHub', url: 'https://github.com/lehnihx' },
 							{
-								label: 'Back',
+								label: 'Home',
 								url: '/',
 								replace: true,
 							},

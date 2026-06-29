@@ -22,7 +22,8 @@ export const Services = () => {
 					<Faq />
 				</div>
 				<Footer className="w-full" items={[
-					{ label: 'Legal', url: '/legal' },
+					{ label: 'Legal', url: '/legal', replace: true },
+					{ label: 'Contact', url: '/contact', replace: true }
 				]} />
 			</div>
 		</div>
