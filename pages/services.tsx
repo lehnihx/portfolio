@@ -6,8 +6,8 @@ import { ServicesDescription } from "@/components/articles/services"
 export const Services = () => {
 	return (
 		<div className="w-full bg-background h-screen flex justify-center">
-			<div className="flex justify-between flex-col items-center h-full w-2/3">
-				<div className="flex justify-evenly items-center flex-col h-full w-full">
+			<div className="flex justify-between flex-col h-full w-2/3">
+				<div className="flex justify-evenly flex-col h-full w-full">
 					<Hero />
 					<ServicesDescription />
 					<Faq />
